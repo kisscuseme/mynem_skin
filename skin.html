@@ -1,0 +1,1637 @@
+<!doctype html>
+<html lang="ko">
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="initial-scale=1.0, width=device-width">
+		<meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
+		<title>[##_page_title_##]</title>
+		<link rel="preconnect" href="https://fonts.googleapis.com">
+		<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;600&display=block" as="font" crossorigin="anonymous">
+		<link rel="preload" href="./style.css" as="style">
+		<link rel="stylesheet" href="./style.css">
+		<style>
+			<s_if_var_custom-font>
+				@font-face {
+					font-family: 'IropkeBatang';
+					src: local(IropkeBatangM),
+						url('./images/iropkebatangm-webfont.woff2') format('woff2'),
+						url('./images/iropkebatangm-webfont.woff') format('woff');
+					font-weight: normal;
+					font-style: normal;
+					font-display: block;
+				}
+				@font-face {
+					font-family: 'NanumBarunpen';
+					src: local(NanumBarunpen),
+						url("./images/nanumbarunpenR.woff2") format("woff2"),
+						url("./images/nanumbarunpenR.woff") format("woff");
+					font-weight: normal;
+					font-style: normal;
+					font-display: block;
+				}
+				@font-face {
+					font-family: 'NanumBarunpen';
+					src: local(NanumBarunpen),
+						url("./images/nanumbarunpenB.woff2") format("woff2"),
+						url("./images/nanumbarunpenB.woff") format("woff");
+					font-weight: bold;
+					font-style: normal;
+					font-display: block;
+				}
+			</s_if_var_custom-font>
+
+			/* font family */
+			html, button, textarea, input,
+			.container_postbtn .postbtn_like .wrap_btn .btn_post .uoc-icon .txt_like,
+			#tistoryEtcLayer .bundle_post .btn_mark,
+			.container_postbtn button em {
+				font-family: <s_if_var_custom-font>[##_var_custom-font_##]</s_if_var_custom-font>"Noto Sans DemiLight",AppleSDGothicNeo,"Malgun Gothic","맑은 고딕","돋움",dotum,sans-serif,'Font_Awesome_5_Free' !important;
+			}
+			figure[data-ke-type='opengraph'] div.og-text p.og-title,
+			#tt-body-page figure[data-ke-type='opengraph'] div.og-text p.og-title {
+				font-family: <s_if_var_custom-font>[##_var_custom-font_##]</s_if_var_custom-font>"Noto Sans DemiLight",AppleSDGothicNeo,"Malgun Gothic","맑은 고딕","돋움",dotum,sans-serif,'Font_Awesome_5_Free' !important;
+				font-size: 22px !important;
+				max-width: 100%;
+			}
+			figure[data-ke-type='opengraph'] div.og-text p.og-desc,
+			#tt-body-page figure[data-ke-type='opengraph'] div.og-text p.og-desc {
+				font-family: <s_if_var_custom-font>[##_var_custom-font_##]</s_if_var_custom-font>"Noto Sans DemiLight",AppleSDGothicNeo,"Malgun Gothic","맑은 고딕","돋움",dotum,sans-serif,'Font_Awesome_5_Free' !important;
+				font-size: 15px !important;
+			}
+			figure[data-ke-type='opengraph'] div.og-text p.og-host,
+			#tt-body-page figure[data-ke-type='opengraph'] div.og-text p.og-host {
+				font-family: <s_if_var_custom-font>[##_var_custom-font_##]</s_if_var_custom-font>"Noto Sans DemiLight",AppleSDGothicNeo,"Malgun Gothic","맑은 고딕","돋움",dotum,sans-serif,'Font_Awesome_5_Free' !important;
+				font-size: 14px !important;
+				bottom: 10px;
+			}
+
+			<s_not_var_custom-font>
+				.like_bubble {
+					margin-bottom: 10px !important;
+				}
+				.like_bubble .inner {
+					line-height: 1.9em;
+					margin-left: 4px;
+				}
+				.move-top-btn:after {
+					top: 5%;
+				}
+			</s_not_var_custom-font>
+			<s_if_var_custom-font-forced>
+				.content-article p span {
+					font-family: <s_if_var_custom-font>[##_var_custom-font_##]</s_if_var_custom-font>"Noto Sans DemiLight",AppleSDGothicNeo,"Malgun Gothic","맑은 고딕","돋움",dotum,sans-serif,'Font_Awesome_5_Free' !important;
+				}
+			</s_if_var_custom-font-forced>
+			<s_if_var_sidebar-left>
+				article {
+					float: right;
+				}
+				aside {
+					float: left;
+				}
+			</s_if_var_sidebar-left>
+			<s_not_var_sidebar-left>
+				article {
+					float: left;
+				}
+				aside {
+					float: right;
+				}
+			</s_not_var_sidebar-left>
+			<s_if_var_paper-style>
+				section, footer, .floating-toc {
+					background-image: url('./images/paper.jpg');
+				}
+			</s_if_var_paper-style>
+			<s_not_var_paper-style>
+				section, footer, .floating-toc {
+					background: #fff;
+				}
+			</s_not_var_paper-style>
+			<s_if_var_blog-title-color>
+				header p a {color:[##_var_blog-title-color_##] !important}
+			</s_if_var_blog-title-color>
+
+			<s_if_var_blog-menu-color>
+				#blog-menu ul li a {color:[##_var_blog-menu-color_##] !important}
+			</s_if_var_blog-menu-color>
+
+			<s_if_var_background-color>
+				header:after, section:after, footer:after, .content-title:after, .top-button .menu button:before,
+				.book-toc:after, .floating-toc:after, .top-button .menu button:before, .move-top-btn:before,
+				.mobile-menu aside:after, .toast-wrap:after,
+				#toc-body::-webkit-scrollbar-track, ::-webkit-scrollbar-track {background-color:[##_var_background-color_##] !important}
+			</s_if_var_background-color>
+			
+			<s_if_var_sidebar-color>
+				.sidebar h2 {background-color:[##_var_sidebar-color_##] !important}
+			</s_if_var_sidebar-color>
+
+			<s_if_var_sidebar-text-color>
+				.sidebar h2 {color:[##_var_sidebar-text-color_##] !important}
+			</s_if_var_sidebar-text-color>
+			
+			<s_if_var_etc-color>
+				.sidebar .category .c_cnt,
+				article .another_category th a,
+				.pagination .next:before,
+				.pagination .prev:before, .content-title .meta a,
+				.content-article h2 button, .content-title .category, .content-title .meta,
+				.content-article h3 button, #tt-body-search .post-header h1 span:before,
+				.content-article h4 button, .tags a:before, #tt-body-tag .post-header h1 span:before, .cover-special ul li .category,
+				.more-reply, #toc-title p, .search button:before, .content-article a, .toast, .change-font-btn, .post-item .meta .category,
+				.book-toc p, #toc > li:before, #toc > li > ul > li:before, #toc > li > ul > li > ul > li:before, .cover-list ul li .meta .category,
+				.comments h2 .count, article .another_category th:before, .post-header h1 em, .bgm-btn, .dark-mode-btn-dark, .dark-mode-btn-default,
+				.move-top-btn:after,.top-button .menu button:after, .post-header h1:before, article h2:before {color:[##_var_etc-color_##] !important}
+				#toc-title p #toggle, .floating-icon:after,
+				.sidebar .category .category_list .link_item:before, #current-bgm:before, h2 .bgm-btn,
+				.sidebar .category .sub_category_list .link_sub_item:before {color:[##_var_etc-color_##] !important;opacity:0.7;}
+				.content-article h2 {border-left: [##_var_etc-color_##]ff 16px solid !important;border-bottom: 1px solid [##_var_etc-color_##]ff !important;}
+				.content-article h3 {border-left: [##_var_etc-color_##]cc 12px solid !important;border-bottom: 1px solid [##_var_etc-color_##]cc !important;}
+				.content-article h4 {border-left: [##_var_etc-color_##]88 8px solid !important;border-bottom: 1px solid [##_var_etc-color_##]88 !important;}
+				.comment-form .submit button,
+				.progress-bar-vertical, .progress-bar-horizontal,
+				.progress-bar-etc-vertical, .progress-bar-etc-horizontal,
+				.sidebar .close:before, .sidebar .close:after {background-color:[##_var_etc-color_##] !important}
+				.move-top-btn, .top-button .menu button, .sidebar .close, .top-button .profile button {border: 1px solid [##_var_etc-color_##] !important}
+				::-webkit-scrollbar-thumb, #toc-body::-webkit-scrollbar-thumb {background-color:[##_var_etc-color_##]55 !important}
+				.search input {border-bottom: 1px solid [##_var_etc-color_##]55;}
+
+				/* solid style */
+				<s_if_var_sidebar-solid-style>
+					.sidebar .category, .sidebar .notice,  .sidebar .recent, 
+					.sidebar .popular, .sidebar .recent-comment, .sidebar .tags,
+					.sidebar .count, .sidebar .module_plugin {
+						border: 1px solid [##_var_etc-color_##]55;
+					}
+					.sidebar .category h2, .sidebar .notice h2,  .sidebar .recent h2, 
+					.sidebar .popular h2, .sidebar .recent-comment h2, .sidebar .tags h2,
+					.sidebar .count h2, .sidebar .module_plugin div:not(.change-font-box, .lang-box, .dark-mode-box) h2,
+					.sidebar .module_plugin #bgm-title, .sidebar .module_plugin #recommend-ads-title {
+						border-bottom: 1px dashed [##_var_etc-color_##]55;
+					}
+					.sidebar .module_plugin .change-font-box h2,
+					.sidebar .module_plugin .lang-box h2, .dark-mode-box h2 {
+						border-right: 1px dashed [##_var_etc-color_##]55;
+					}
+				</s_if_var_sidebar-solid-style>
+				<s_if_var_content-solid-style>
+					section .content-wrapper {
+						border: 1px solid [##_var_etc-color_##]55;
+					}
+				</s_if_var_content-solid-style>
+				<s_if_var_title-solid-style>
+					.content-title {
+						border: 1px solid [##_var_etc-color_##]55;
+					}
+				</s_if_var_title-solid-style>
+				<s_if_var_toc-solid-style>
+					.floating-toc, .book-toc {
+						border: 1px solid [##_var_etc-color_##]55;
+					}
+				</s_if_var_toc-solid-style>
+				<s_if_var_opengraph-solid-style>
+					figure[data-ke-type='opengraph'], #tt-body-page figure[data-ke-type='opengraph'] {
+						border: 1px solid [##_var_etc-color_##]55;
+					}
+				</s_if_var_opengraph-solid-style>
+				<s_if_var_cover-solid-style>
+					.cover-list ul li a, .post-item a, .cover-special ul li {
+						border: 1px solid [##_var_etc-color_##]55;
+					}
+				</s_if_var_cover-solid-style>
+				<s_if_var_ads-solid-style>
+					.main-ads, #ad-top-left, #ad-top-right {
+						border: 1px solid [##_var_etc-color_##]55;
+					}
+				</s_if_var_ads-solid-style>
+			</s_if_var_etc-color>
+
+			<s_if_var_post-header-style>
+				article h2.header:before {content: "[##_var_post-header-style_##]" !important;padding-right:3px;font-size:0.9em;}
+			</s_if_var_post-header-style>
+			<s_if_var_thum-img>
+				.thum:after {background-image:url('[##_var_thum-img_##]');background-size:[##_var_thum-img-size_##];opacity:[##_var_thum-img-opacity_##];}
+			</s_if_var_thum-img>
+			<s_if_var_grid-title-lines>
+				.post-item .title {-webkit-line-clamp:[##_var_grid-title-lines_##];}
+			</s_if_var_grid-title-lines>
+			<s_if_var_grid-excerpt-lines>
+				.post-item .excerpt {-webkit-line-clamp:[##_var_grid-excerpt-lines_##]}
+			</s_if_var_grid-excerpt-lines>
+			<s_if_var_grid-height-fixed>
+				.post-item .title {height:calc([##_var_grid-title-lines_##] * 27px);}
+				.post-item .excerpt {height:calc([##_var_grid-excerpt-lines_##] * 23px);}
+				.post-item .meta {height:21px;}
+				@media screen and (max-width: 767px) {
+					.post-item .title {height:calc([##_var_grid-title-lines_##] * 25px);}
+					.post-item .excerpt {height:calc([##_var_grid-excerpt-lines_##] * 21px);}
+					.post-item .meta {height:16px;}
+				}
+			</s_if_var_grid-height-fixed>
+			
+			<s_if_var_category-header-style-1>
+				.sidebar .category .category_list .link_item:before {content: "[##_var_category-header-style-1_##]" !important}
+			</s_if_var_category-header-style-1>
+			<s_if_var_category-header-style-2>
+				.sidebar .category .sub_category_list .link_sub_item:before {content: "[##_var_category-header-style-2_##]" !important}
+			</s_if_var_category-header-style-2>
+			<s_if_var_toc-header-style-1>
+				#toc > li:before {content: "[##_var_toc-header-style-1_##]" !important}
+			</s_if_var_toc-header-style-1>
+			<s_if_var_toc-header-style-2>
+				#toc > li > ul > li:before {content: "[##_var_toc-header-style-2_##]" !important}
+			</s_if_var_toc-header-style-2>
+			<s_if_var_toc-header-style-3>
+				#toc > li > ul > li > ul > li:before {content: "[##_var_toc-header-style-3_##]" !important}
+			</s_if_var_toc-header-style-3>
+			<s_not_var_width-toc-yn>
+				.book-toc {width:fit-content}
+			</s_not_var_width-toc-yn>
+			<s_not_var_content-max-width-yn>
+				article {width:calc(100vw - 350px);max-width:[##_var_article-max-width_##]px;}
+				@media (min-width: 1860px) {
+					/* 목차로직 작성예정 */
+				}
+				@media (min-width: 1600px) {
+					article {
+						margin-right: calc(100vw - 1600px);
+					}
+				}
+				@media (max-width: 1079px) {
+					.cover-special ul li img {
+						width: calc((100vw - 42px) * 0.5) !important;
+						height: calc((100vw - 42px) * 0.5) !important;
+					}
+					.top-button {
+						position: fixed;
+					}
+					.top-button .profile {
+						display: none;
+					}
+					.top-button .menu {
+						display: block;
+						position: relative;
+						float: left;
+						margin-left: 14px;
+					}
+					.top-button .menu button {
+						display: block;
+						overflow: hidden;
+						width: 32px;
+						height: 32px;
+						border-radius: 50%;
+						background-color: #fff;
+					}
+					.top-button .menu button:before {
+						content: "";
+						position: absolute;
+						width: 100%;
+						height: 100%;
+						top: 0;
+						left: 0;
+						opacity: 0.1;
+						border-radius: 50%;
+					}
+					.top-button .menu button:after {
+						content: "\f0c9";
+						position: absolute;
+						top: 9px;
+						left: 10px;
+						visibility: visible;
+					}
+					article {
+						float: none !important;
+						width: auto;
+					}
+					.mobile-menu aside {
+						right: 0;
+						padding-left: 1px;
+						padding-right: 1px;
+					}
+					.mobile-menu aside:after {
+						content: "";
+						position: fixed;
+						width: 100%;
+						height: 100%;
+						top: 0;
+						z-index: -1;
+						opacity: 0.1;
+					}
+					.sidebar {
+						position: fixed;
+						top: 0;
+						right: -313px;
+						z-index: 130;
+						float: none;
+						overflow-y: auto;
+						overflow-x: hidden;
+						width: 313px;
+						height: 100%;
+						padding: 70px 0 0 0;
+						background-color: #fff;
+						box-sizing: border-box;
+						transition: left 0.3s;
+						-webkit-transition: right 0.3s;
+					}
+					.sidebar .close {
+						position: absolute;
+						top: 10px;
+						right: 10px;
+						display: block;
+						width: 30px;
+						height: 30px;
+						border-radius: 50%;
+						text-indent: -999em;
+						outline: none;
+					}
+					.sidebar .close span {display: none;}
+					.sidebar .close:before,
+					.sidebar .close:after {
+						content: "";
+						position: absolute;
+						top: 50%;
+						left: 50%;
+						width: 16px;
+						height: 1px;
+						margin: 0 0 0 -8px;
+					}
+					.sidebar .close:before {
+						transform: rotate(-45deg);
+					}
+					.sidebar .close:after {
+						transform: rotate(45deg);
+					}
+
+					.sidebar .profile {
+						display: block;
+						position: relative;
+						margin-bottom: -40px;
+					}
+					.sidebar .profile:before {
+						content: "";
+						position: absolute;
+						top: 0;
+						z-index: 0;
+						width: 100%;
+						height: 100%;
+						background-color: #f5f5f5;
+						padding-right: 28px;
+					}
+					.sidebar .profile ul {
+						position: relative;
+						z-index: 10;
+						text-align: center;
+					}
+					.sidebar .profile ul li {
+						display: inline-block;
+						padding: 16px 0 18px;
+						font-size: 0.875em;
+						color: #555;
+						vertical-align: middle;
+					}
+					.sidebar .profile ul li a {
+						display: inline-block;
+						vertical-align: middle;
+					}
+					.sidebar .profile ul li:before {
+						content: "";
+						display: inline-block;
+						width: 1px;
+						height: 7px;
+						margin: 0 30px 0 26px;
+						background-size: 200px auto;
+						vertical-align: middle;
+					}
+					.sidebar .profile ul li:first-child:before {
+						content: none;
+					}
+					.content-title h1 {
+						-webkit-line-clamp: 3;
+					}
+					.content-title .title-box {
+						height: 99px;
+					}
+					.comment-list ul li ul li .author-meta {
+						padding-left: 95px;
+					}
+					.comment-list ul li .author-meta .date {
+						display: block;
+						margin-left: -13px;
+					}
+					.comment-list ul li ul li p {
+						padding-left: 25px;
+					}
+					.comment-list ul li p {
+						padding: 25px 0 15px 5px;
+					}
+					.comment-list ul li ul li {
+						padding: 15px 0 0 0;
+					}
+					.comment-list ul li {
+						padding: 15px 0 0 0;
+					}
+					.more-reply {
+						margin-bottom: 0;
+					}
+					#blog-menu {
+						float: none;
+					}
+					header {
+						height: 137px;
+					}
+				}
+			</s_not_var_content-max-width-yn>
+			<s_if_var_content-max-width-yn>
+				<s_if_var_content-max-width>
+					section .content-wrapper {max-width:[##_var_content-max-width_##]px;}
+					header .inner {max-width:[##_var_content-max-width_##]px;}
+					footer .inner {max-width:[##_var_content-max-width_##]px;}
+					article {width:calc([##_var_content-max-width_##]px - 332px);max-width:[##_var_article-max-width_##]px;}
+					.cover-special ul li img {
+						width: calc(([##_var_content-max-width_##]px - 342px) * 0.5);
+						height: calc(([##_var_content-max-width_##]px - 342px) * 0.5);
+					}
+					@media (max-width: calc([##_var_content-max-width_##]px - 1px)) {
+						article {
+							max-width: [##_var_content-max-width_##]px;
+							width: calc(100vw - 30px);
+						}
+						.cover-special ul li img {
+							width: calc((100vw - 40px) * 0.5) !important;
+							height: calc((100vw - 40px) * 0.5) !important;
+						}
+						.top-button {
+							position: fixed;
+						}
+						.top-button .profile {
+							display: none;
+						}
+						.top-button .menu {
+							display: block;
+							position: relative;
+							float: left;
+							margin-left: 14px;
+						}
+						.top-button .menu button {
+							display: block;
+							overflow: hidden;
+							width: 32px;
+							height: 32px;
+							border-radius: 50%;
+							background-color: #fff;
+						}
+						.top-button .menu button:before {
+							content: "";
+							position: absolute;
+							width: 100%;
+							height: 100%;
+							top: 0;
+							left: 0;
+							opacity: 0.1;
+							border-radius: 50%;
+						}
+						.top-button .menu button:after {
+							content: "\f0c9";
+							position: absolute;
+							top: 9px;
+							left: 10px;
+							visibility: visible;
+						}
+						article {
+							float: none !important;
+							width: auto;
+						}
+						.mobile-menu aside {
+							right: 0;
+							padding-left: 1px;
+							padding-right: 1px;
+						}
+						.mobile-menu aside:after {
+							content: "";
+							position: fixed;
+							width: 100%;
+							height: 100%;
+							top: 0;
+							z-index: -1;
+							opacity: 0.1;
+						}
+						.sidebar {
+							position: fixed;
+							top: 0;
+							right: -313px;
+							z-index: 130;
+							float: none;
+							overflow-y: auto;
+							overflow-x: hidden;
+							width: 313px;
+							height: 100%;
+							padding: 70px 0 0 0;
+							background-color: #fff;
+							box-sizing: border-box;
+							transition: left 0.3s;
+							-webkit-transition: right 0.3s;
+						}
+						.sidebar .close {
+							position: absolute;
+							top: 10px;
+							right: 10px;
+							display: block;
+							width: 30px;
+							height: 30px;
+							border-radius: 50%;
+							text-indent: -999em;
+							outline: none;
+						}
+						.sidebar .close span {display: none;}
+						.sidebar .close:before,
+						.sidebar .close:after {
+							content: "";
+							position: absolute;
+							top: 50%;
+							left: 50%;
+							width: 16px;
+							height: 1px;
+							margin: 0 0 0 -8px;
+						}
+						.sidebar .close:before {
+							transform: rotate(-45deg);
+						}
+						.sidebar .close:after {
+							transform: rotate(45deg);
+						}
+
+						.sidebar .profile {
+							display: block;
+							position: relative;
+							margin-bottom: -40px;
+						}
+						.sidebar .profile:before {
+							content: "";
+							position: absolute;
+							top: 0;
+							z-index: 0;
+							width: 100%;
+							height: 100%;
+							background-color: #f5f5f5;
+							padding-right: 28px;
+						}
+						.sidebar .profile ul {
+							position: relative;
+							z-index: 10;
+							text-align: center;
+						}
+						.sidebar .profile ul li {
+							display: inline-block;
+							padding: 16px 0 18px;
+							font-size: 0.875em;
+							color: #555;
+							vertical-align: middle;
+						}
+						.sidebar .profile ul li a {
+							display: inline-block;
+							vertical-align: middle;
+						}
+						.sidebar .profile ul li:before {
+							content: "";
+							display: inline-block;
+							width: 1px;
+							height: 7px;
+							margin: 0 30px 0 26px;
+							background-size: 200px auto;
+							vertical-align: middle;
+						}
+						.sidebar .profile ul li:first-child:before {
+							content: none;
+						}
+						.content-title h1 {
+							-webkit-line-clamp: 3;
+						}
+						.content-title .title-box {
+							height: 99px;
+						}
+						.comment-list ul li ul li .author-meta {
+							padding-left: 95px;
+						}
+						.comment-list ul li .author-meta .date {
+							display: block;
+							margin-left: -13px;
+						}
+						.comment-list ul li ul li p {
+							padding-left: 25px;
+						}
+						.comment-list ul li p {
+							padding: 25px 0 15px 5px;
+						}
+						.comment-list ul li ul li {
+							padding: 15px 0 0 0;
+						}
+						.comment-list ul li {
+							padding: 15px 0 0 0;
+						}
+						.more-reply {
+							margin-bottom: 0;
+						}
+						#blog-menu {
+							float: none;
+						}
+						header {
+							height: 137px;
+						}
+					}
+				</s_if_var_content-max-width>
+			</s_if_var_content-max-width-yn>
+			<s_if_var_fix-ads-space>
+				#upper .revenue_unit_wrap {
+					height: 105px !important;
+				}
+				#lower .revenue_unit_wrap {
+					height: 105px !important;
+				}
+				.sidebar .revenue_unit_wrap .adsense {
+					width: 300px !important;
+					height: 600px !important;
+					margin-left: auto;
+					margin-right: auto;
+				}
+				.sidebar .revenue_unit_wrap .adfit {
+					width: 300px !important;
+					height: 255px !important;
+					margin-left: auto;
+					margin-right: auto;
+				}
+				.tt_article_useless_p_margin .revenue_unit_wrap {
+					height: 105px !important;
+				}
+			</s_if_var_fix-ads-space>
+			<s_if_var_hide-sidebar>
+				@media (max-width: 100vw) {
+					.cover-special ul li img {
+						max-width: calc(([##_var_content-max-width_##]px - 30px) * 0.5);
+						max-height: calc(([##_var_content-max-width_##]px - 30px) * 0.5);
+						width: calc((100vw - 30px) * 0.5);
+						height: calc((100vw - 30px) * 0.5);
+					}
+					.top-button {
+						position: fixed;
+					}
+					.top-button .profile {
+						display: none;
+					}
+					.top-button .menu {
+						display: block;
+						position: relative;
+						float: left;
+						margin-left: 14px;
+					}
+					.top-button .menu button {
+						display: block;
+						overflow: hidden;
+						width: 32px;
+						height: 32px;
+						border-radius: 50%;
+						background-color: #fff;
+					}
+					.top-button .menu button:before {
+						content: "";
+						position: absolute;
+						width: 100%;
+						height: 100%;
+						top: 0;
+						left: 0;
+						opacity: 0.1;
+						border-radius: 50%;
+					}
+					.top-button .menu button:after {
+						content: "\f0c9";
+						position: absolute;
+						top: 9px;
+						left: 10px;
+						visibility: visible;
+					}
+					article {
+						float: none !important;
+						width: auto;
+					}
+					.mobile-menu aside {
+						right: 0;
+						padding-left: 1px;
+					}
+					.mobile-menu aside:after {
+						content: "";
+						position: fixed;
+						width: 100%;
+						height: 100%;
+						top: 0;
+						z-index: -1;
+						opacity: 0.1;
+					}
+					.sidebar {
+						position: fixed;
+						top: 0;
+						right: -313px;
+						z-index: 1000;
+						float: none;
+						overflow-y: auto;
+						overflow-x: hidden;
+						width: 313px;
+						height: 100%;
+						padding: 70px 0 0 0;
+						background-color: #fff;
+						box-sizing: border-box;
+						transition: left 0.3s;
+						-webkit-transition: right 0.3s;
+					}
+					.sidebar .close {
+						position: absolute;
+						top: 10px;
+						right: 10px;
+						display: block;
+						width: 30px;
+						height: 30px;
+						border-radius: 50%;
+						text-indent: -999em;
+						outline: none;
+					}
+					.sidebar .close span {display: none;}
+					.sidebar .close:before,
+					.sidebar .close:after {
+						content: "";
+						position: absolute;
+						top: 50%;
+						left: 50%;
+						width: 16px;
+						height: 1px;
+						margin: 0 0 0 -8px;
+					}
+					.sidebar .close:before {
+						transform: rotate(-45deg);
+					}
+					.sidebar .close:after {
+						transform: rotate(45deg);
+					}
+
+					.sidebar .profile {
+						display: block;
+						position: relative;
+						margin-bottom: -40px;
+					}
+					.sidebar .profile:before {
+						content: "";
+						position: absolute;
+						top: 0;
+						z-index: 0;
+						width: 100%;
+						height: 100%;
+						background-color: #f5f5f5;
+						padding-right: 28px;
+					}
+					.sidebar .profile ul {
+						position: relative;
+						z-index: 10;
+						text-align: center;
+					}
+					.sidebar .profile ul li {
+						display: inline-block;
+						padding: 16px 0 18px;
+						font-size: 0.875em;
+						color: #555;
+						vertical-align: middle;
+					}
+					.sidebar .profile ul li a {
+						display: inline-block;
+						vertical-align: middle;
+					}
+					.sidebar .profile ul li:before {
+						content: "";
+						display: inline-block;
+						width: 1px;
+						height: 7px;
+						margin: 0 30px 0 26px;
+						background-size: 200px auto;
+						vertical-align: middle;
+					}
+					.sidebar .profile ul li:first-child:before {
+						content: none;
+					}
+				}
+			</s_if_var_hide-sidebar>
+			<s_if_var_default-dark-mode>
+				section,header,footer,textarea,
+				.floating-toc , .top-button .menu button,.sidebar .close,.move-top-btn,
+				#tistoryEtcLayer, .sidebar .profile ul, .top-button .profile ul li a,
+				.comment-list ul li .author-meta .control .link a {
+					background: black !important;
+				}
+				a,h1,h2,h3,h4,p,span:not(#bgm-status,.bubble_image),input,textarea,
+				#toc *, #blog-menu ul li a, .container_postbtn .btn_post .txt_like,
+				.container_postbtn .btn_post .txt_like, .another_category h4,
+				.container_postbtn .btn_menu_toolbar .txt_state,
+				#tistoryEtcLayer .bundle_post .btn_mark, header p a {
+					color: #d6d6d6 !important;
+				}
+				.sidebar h2, .mobile-menu aside {
+					color:#d6d6d6 !important;
+					background:black !important;
+				}
+				.btn_menu_toolbar, #wrapper div div.profile button {
+					opacity: 0.5;
+				}
+				ins,img {
+					opacity: 0.9 !important;
+				}
+			</s_if_var_default-dark-mode>
+		</style>
+	</head>
+	<body id="[##_body_id_##]">
+		<s_t3>
+			<div id="wrapper">
+				<div class="top-button">
+					<div class="profile">
+						<button type="button">[##_blog_image_##]</button>
+						<nav>
+							<ul>
+								<li><a href="[##_owner_url_##]">관리</a></li>
+								<li><a href="[##_owner_url_##]/entry/post ">글쓰기</a></li>
+								<li class="login"><a href="#">로그인</a></li>
+								<li class="logout"><a href="#">로그아웃</a></li>
+							</ul>
+						</nav>
+					</div>
+					<div class="menu">
+						<button type="button"></button>
+					</div>
+				</div>
+				<header>
+					<div class="inner">
+						<p>
+							<a href="[##_blog_link_##]">
+								[##_title_##]
+							</a>
+						</p>
+						<nav id="blog-menu">
+							[##_blog_menu_##]
+						</nav>
+					</div>
+				</header>
+				<section style="z-index:110;">
+					<div class="progress-bar-ani">
+						<div class="progress-bar-horizontal" <s_not_var_progress-top>style="display:none;"</s_not_var_progress-top>></div>
+						<div class="progress-bar-vertical" <s_not_var_progress-left>style="display:none;"</s_not_var_progress-left>></div>
+						<div class="progress-bar-etc-horizontal" <s_not_var_progress-bottom>style="display:none;"</s_not_var_progress-bottom>></div>
+						<div class="progress-bar-etc-vertical" <s_not_var_progress-right>style="display:none;"</s_not_var_progress-right>></div>
+					</div>
+					<div class="content-wrapper">
+						<article>
+							<div id="upper">
+								[##_revenue_list_upper_##]
+							</div>
+							<s_cover_group>
+								<s_cover_rep>
+									<s_cover name='mynem-cover-grid'>
+										<h2 class="header">[##_cover_title_##]</h2>
+										<div class="inner">
+											<s_cover_item>
+												<div class="post-item">
+													<a href="[##_cover_item_url_##]">
+														<s_if_var_grid-thum-yn>
+															<span class="thum">
+																<s_cover_item_thumbnail>
+																	<img src="//i1.daumcdn.net/thumb/S300x230/?fname=[##_cover_item_thumbnail_##]" alt="" loading="lazy">
+																</s_cover_item_thumbnail>
+															</span>
+														</s_if_var_grid-thum-yn>
+														<span class="title">[##_cover_item_title_##]</span>
+														<s_if_var_grid-excerpt-yn>
+															<span class="excerpt">[##_cover_item_summary_##]</span>
+														</s_if_var_grid-excerpt-yn>
+														<s_if_var_grid-meta-yn>
+															<s_cover_item_article_info>
+																<span class="meta">
+																	<span class="category">[##_cover_item_category_##]</span>
+																	<span class="date">[##_cover_item_simple_date_##]</span>
+																	<s_if_var_show-cover-comments>
+																		<span class="comment">&#xf4ad; [##_cover_item_comment_count_##]</span>
+																	</s_if_var_show-cover-comments>
+																</span>
+															</s_cover_item_article_info>
+														</s_if_var_grid-meta-yn>
+													</a>
+												</div>
+											</s_cover_item>
+										</div>
+									</s_cover>
+									<s_cover name='mynem-cover-list'>
+										<div class="cover-list">
+											<h2 class="header">[##_cover_title_##]</h2>
+											<ul>
+												<s_cover_item>
+													<li>
+														<a href="[##_cover_item_url_##]">
+															<figure>
+																<s_cover_item_thumbnail>
+																	<img src="//i1.daumcdn.net/thumb/S300x230/?fname=[##_cover_item_thumbnail_##]" alt="" loading="lazy">
+																</s_cover_item_thumbnail>
+															</figure>
+															<span class="title">[##_cover_item_title_##]</span>
+															<span class="excerpt">[##_cover_item_summary_##]</span>
+															<s_cover_item_article_info>
+																<span class="meta">
+																	<span class="category">[##_cover_item_category_##]</span>
+																	<span class="date">[##_cover_item_simple_date_##]</span>
+																	<s_if_var_show-cover-comments>
+																		<span class="comment">&#xf4ad; [##_cover_item_comment_count_##]</span>
+																	</s_if_var_show-cover-comments>
+																</span>
+															</s_cover_item_article_info>
+														</a>
+													</li>
+												</s_cover_item>
+											</ul>
+										</div>
+									</s_cover>
+									<s_cover name='mynem-cover-special'>
+										<div class="cover-special">
+											<h2 class="header">[##_cover_title_##]</h2>
+											<ul>
+												<s_cover_item>
+													<li>
+														<a href="[##_cover_item_url_##]" class="btn view">
+															<s_cover_item_thumbnail><img src="//i1.daumcdn.net/thumb/C600x600/?fname=[##_cover_item_thumbnail_##]"></s_cover_item_thumbnail>
+															<span class="box">
+																<s_cover_item_article_info>
+																	<span class="category">[##_cover_item_category_##]</span>
+																	<span class="meta">
+																		<span class="date">[##_cover_item_simple_date_##]</span>
+																		<s_if_var_show-cover-comments>
+																			<span class="comment">&#xf4ad; [##_cover_item_comment_count_##]</span>
+																		</s_if_var_show-cover-comments>
+																	</span>
+																</s_cover_item_article_info>
+																<span class="title">[##_cover_item_title_##]</span>
+																<span class="excerpt">[##_cover_item_summary_##]</span>
+															</span>
+														</a>
+													</li>
+												</s_cover_item>
+											</ul>
+										</div>
+									</s_cover>
+								</s_cover_rep>
+							</s_cover_group>
+							<s_page_rep>
+								<div class="content-title">
+									<div class="inner">
+										<h1>[##_article_rep_title_##]</h1>
+										<span class="meta">
+											<span class="author">[##_article_rep_author_##]</span>
+											<span class="date">[##_article_rep_simple_date_##]</span>
+										</span>
+									</div>
+								</div>
+								<div class="content-article">
+									[##_article_rep_desc_##]
+								</div>
+							</s_page_rep>
+
+							<s_notice_rep>
+								<div class="content-title notice">
+									<div class="inner">
+										<h1><a href="[##_notice_rep_link_##]">[##_notice_rep_title_##]</a></h1>
+										<span class="meta">
+											<span class="date">[##_notice_rep_simple_date_##]</span>
+										</span>
+									</div>
+								</div>
+								<div class="content-article">
+									[##_notice_rep_desc_##]
+								</div>
+							</s_notice_rep>
+
+							<s_list>
+								<div class="post-header">
+									<h1><span>[##_list_conform_##]</span><em>[##_list_count_##]</em></h1>
+								</div>
+								<s_list_empty>
+									<div class="no-content">
+										<ul>
+											<li>조회된 내용이 없습니다.</li>
+										</ul>
+									</div>
+								</s_list_empty>
+							</s_list>
+							
+							<s_article_protected>
+								<s_index_article_rep>
+									<div class="post-item protected">
+										<a href="[##_article_rep_link_##]">
+											<span class="thum"></span>
+											<span class="title">[##_article_rep_title_##]</span>
+											<span class="excerpt">보호되어 있는 글 입니다.</span>
+											<span class="meta">
+												<span class="date">[##_article_rep_simple_date_##]</span>
+											</span>
+										</a>
+									</div>
+								</s_index_article_rep>
+
+								<s_permalink_article_rep>
+									<div class="content-article">
+										<form class="protected_form" onsubmit="{reloadEntry(14);return false;}">
+											<h2>보호되어 있는 글입니다.</h2>
+											<p>내용을 보시려면 비밀번호를 입력하세요.</p>
+											<input type="password" id="entry14password" name="entry14password" value="" placeholder="비밀번호">
+											<button type="submit" class="btn">확인</button>
+										</form>
+									</div>
+								</s_permalink_article_rep>
+							</s_article_protected>
+							
+							<div class="inner">
+								<s_article_rep>
+									<s_index_article_rep>
+										<div class="post-item">
+											<a href="[##_article_rep_link_##]">
+												<s_if_var_grid-thum-yn>
+													<span class="thum">
+														<s_article_rep_thumbnail>
+															<img src="//i1.daumcdn.net/thumb/S300x230/?fname=[##_article_rep_thumbnail_raw_url_##]" alt="">
+														</s_article_rep_thumbnail>
+													</span>
+												</s_if_var_grid-thum-yn>
+												<span class="title">[##_article_rep_title_##]</span>
+												<s_if_var_grid-excerpt-yn>
+													<span class="excerpt">[##_article_rep_summary_##]</span>
+												</s_if_var_grid-excerpt-yn>
+												<s_if_var_grid-meta-yn>
+													<span class="meta">
+														<span class="date">[##_article_rep_simple_date_##]</span>
+													</span>
+												</s_if_var_grid-meta-yn>
+
+											</a>
+										</div>
+									</s_index_article_rep>
+
+									<s_permalink_article_rep>
+										<div class="content-title">
+											<div class="inner">
+												<span class="category">[##_article_rep_category_##]</span>
+												<div class="title-box">
+													<h1>[##_article_rep_title_##]</h1>
+												</div>
+												<span class="meta">
+													<span class="author">[##_article_rep_author_##]</span>
+													<span class="date">[##_article_rep_simple_date_##]</span>
+													<s_ad_div>
+														<a href="[##_s_ad_m_link_##]">수정</a>
+														<a href="#" onclick="[##_s_ad_d_onclick_##]">삭제</a>
+													</s_ad_div>
+												</span>
+											</div>
+										</div>
+
+										<div class="content-article">
+											<!-- 상단 광고 2개 삽입 start -->
+											<s_if_var_content-google-ads>
+												<div class="top-ads">
+													<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+													<div id="ad-top-left" class="revenue_unit_item adsense">
+														<ins class="adsbygoogle top-left"
+																 data-ad-client="[##_var_content-data-ad-client_##]"
+																 data-ad-slot="[##_var_content-data-ad-slot-1_##]"
+																 data-ad-format="rectangle"
+																 data-full-width-responsive="true"></ins>
+														<script>
+															if($(window).width() < 710) {
+																$('#ad-top-left').remove();
+															} else {
+																(adsbygoogle = window.adsbygoogle || []).push({});
+															}
+														</script>
+													</div>
+													<div id="ad-top-right" class="revenue_unit_item adsense">
+														<ins class="adsbygoogle top-right"
+																 data-ad-client="[##_var_content-data-ad-client_##]"
+																 data-ad-slot="[##_var_content-data-ad-slot-2_##]"
+																 data-ad-format="rectangle"
+																 data-full-width-responsive="true"></ins>
+														<script>
+															(adsbygoogle = window.adsbygoogle || []).push({});
+														</script>
+													</div>
+												</div>
+											</s_if_var_content-google-ads>
+											<!-- 상단 광고 2개 삽입 end -->
+											[##_article_rep_desc_##]
+										</div>
+										<div style="margin-top:30px;"></div>
+										<s_tag_label>
+											<div class="tags">
+												<h2>태그</h2>
+												[##_tag_label_rep_##]
+											</div>
+										</s_tag_label>
+										<div style="margin-top:30px;"></div>
+										<s_if_var_related-google-ads>
+											<div class="related-articles">
+												<h2>추천 글</h2>
+												<div class="related-articles-wrap">
+													<ins class="adsbygoogle"
+															 style="display:block"
+															 data-ad-format="autorelaxed"
+															 data-ad-client="[##_var_related-data-ad-client_##]"
+															 data-ad-slot="[##_var_related-data-ad-slot_##]"></ins>
+													<script>
+														(adsbygoogle = window.adsbygoogle || []).push({});
+													</script>
+												</div>
+											<div style="margin-top:30px;"></div>
+										</s_if_var_related-google-ads>
+										<div class="comments">
+											<h2>댓글<span class="count"><s_rp_count>[##_article_rep_rp_cnt_##]</s_rp_count></span></h2>
+											<s_rp>
+												<s_rp_container>
+													<div class="comment-list">
+														<ul>
+															<s_rp_rep>
+																<li id="[##_rp_rep_id_##]">
+																	<div class="author-meta">
+																		<img src="[##_rp_rep_logo_##]" class="avatar" alt="">
+																		<span class="nickname">[##_rp_rep_name_##]</span>
+																		<span class="date">[##_rp_rep_date_##]</span>
+																		<span class="control">
+																			<button type="button">더보기</button>
+																			<div class="link">
+																				<a href="[##_rp_rep_link_##]">댓글주소</a>
+																				<a href="#" onclick="[##_rp_rep_onclick_delete_##]">수정/삭제</a>
+																			</div>
+																		</span>
+																	</div>
+																	<p>[##_rp_rep_desc_##]<br>
+																		<a href="#" onclick="[##_rp_rep_onclick_reply_##]" class="reply">답글</a></p>
+																	<s_rp2_container>
+																		<ul>
+																			<s_rp2_rep>
+																				<li id="[##_rp_rep_id_##]">
+																					<div class="author-meta">
+																						<img src="[##_rp_rep_logo_##]" class="avatar" alt="">
+																						<span class="nickname">[##_rp_rep_name_##]</span>
+																						<span class="date">[##_rp_rep_date_##]</span>
+																						<span class="control">
+																							<button type="button">더보기</button>
+																							<div class="link">
+																								<a href="[##_rp_rep_link_##]">댓글주소</a>
+																								<a href="#" onclick="[##_rp_rep_onclick_delete_##]">수정/삭제</a>
+																							</div>
+																						</span>
+																					</div>
+																					<p>[##_rp_rep_desc_##]</p>
+																				</li>
+																			</s_rp2_rep>
+																		</ul>
+																	</s_rp2_container>
+																</li>
+															</s_rp_rep>
+														</ul>
+													</div>
+												</s_rp_container>
+
+												<s_rp_input_form>
+													<div class="comment-form">
+														<s_rp_member>
+															<div class="field">
+																<s_rp_guest>
+																	<input type="text" name="[##_rp_input_name_##]" placeholder="이름" value="[##_guest_name_##]">
+																	<input type="password" name="[##_rp_input_password_##]" maxlength="8" placeholder="비밀번호" value="[##_rp_admin_check_##]">
+																</s_rp_guest>
+																<div class="secret">
+																	<input type="checkbox" name="[##_rp_input_is_secret_##]" id="secret">
+																	<label for="secret" tabindex="0">비밀글</label>
+																</div>
+															</div>
+														</s_rp_member>
+														<textarea name="[##_rp_input_comment_##]" cols="" rows="4" placeholder="여러분의 소중한 댓글을 입력해주세요."></textarea>
+														<div class="submit">
+															<button type="submit" class="btn" onclick="[##_rp_onclick_submit_##]">등록</button>
+														</div>
+													</div>
+												</s_rp_input_form>
+											</s_rp>
+										</div>
+									</s_permalink_article_rep>
+								</s_article_rep>
+							</div>
+
+							<s_tag>
+								<div class="post-header">
+									<h1>태그</h1>
+								</div>
+								<div class="tags">
+									<s_tag_rep>
+										<a href="[##_tag_link_##]">[##_tag_name_##]</a>
+									</s_tag_rep>
+								</div>
+							</s_tag>
+
+							<s_guest>
+								<div class="comments">
+									<div class="post-header">
+										<h1>방명록</h1>
+									</div>
+
+									<s_guest_input_form>
+										<div class="comment-form">
+											<s_guest_member>
+												<div class="field">
+													<s_guest_form>
+														<input type="text" name="[##_guest_input_name_##]" placeholder="이름" value="[##_guest_name_##]">
+														<input type="password" name="[##_guest_input_password_##]" placeholder="암호" value="[##_guest_password_##]">
+													</s_guest_form>
+												</div>
+											</s_guest_member>
+											<textarea name="[##_guest_textarea_body_##]" cols="" rows="4" placeholder="여러분의 소중한 댓글을 입력해주세요."></textarea>
+											<div class="submit">
+												<button type="submit" class="btn" onclick="[##_guest_onclick_submit_##]">등록</button>
+											</div>
+										</div>
+									</s_guest_input_form>
+
+									<s_guest_container>
+										<div class="comment-list">
+											<ul>
+												<s_guest_rep>
+													<li id="[##_guest_rep_id_##]">
+														<div class="author-meta">
+															<img src="[##_guest_rep_logo_##]" class="avatar" alt="프로필사진">
+															<span class="nickname">[##_guest_rep_name_##]</span>
+															<span class="date">[##_guest_rep_date_##]</span>
+															<span class="control">
+																<button type="button">더보기</button>
+																<div class="link">
+																	<a href="#" onclick="[##_guest_rep_onclick_delete_##]">수정/삭제</a>
+																</div>
+															</span>
+														</div>
+														<p>[##_guest_rep_desc_##]<br>
+															<a href="#" class="reply" onclick="[##_guest_rep_onclick_reply_##]">답변</a></p>
+														<s_guest_reply_container>
+															<ul>
+																<s_guest_reply_rep>
+																	<li id="[##_guest_rep_id_##]">
+																		<div class="author-meta">
+																			<img src="[##_guest_rep_logo_##]" class="avatar" alt="프로필사진">
+																			<span class="nickname">[##_guest_rep_name_##]</span>
+																			<span class="date">[##_guest_rep_date_##]</span>
+																			<span class="control">
+																				<button type="button">더보기</button>
+																				<div class="link">
+																					<a href="#" onclick="[##_guest_rep_onclick_delete_##]">수정/삭제</a>
+																				</div>
+																			</span>
+																		</div>
+																		<p>[##_guest_rep_desc_##]</p>
+																	</li>
+																</s_guest_reply_rep>
+															</ul>
+														</s_guest_reply_container>
+													</li>
+												</s_guest_rep>
+											</ul>
+										</div>
+									</s_guest_container>
+								</div>
+							</s_guest>
+
+							<s_paging>
+								<div class="pagination">
+									<a [##_prev_page_##] class="prev [##_no_more_prev_##]">이전</a>
+									<s_paging_rep>
+										<a [##_paging_rep_link_##]>[##_paging_rep_link_num_##]</a>
+									</s_paging_rep>
+									<a [##_next_page_##] class="next [##_no_more_next_##]">다음</a>
+								</div>
+							</s_paging>
+							<!-- 메인 일치하는 광고 -->
+							<s_if_var_main-google-ads>
+								<s_if_var_main-ad-title><h2>[##_var_main-ad-title_##]</h2></s_if_var_main-ad-title>
+								<div class="main-ads">
+									<ins class="adsbygoogle"
+										 style="display:block"
+										 data-ad-format="autorelaxed"
+										 data-ad-client="[##_var_main-data-ad-client_##]"
+										 data-ad-slot="[##_var_main-data-ad-slot_##]"></ins>
+									<script>
+										if(checkMainPage()) {
+											(adsbygoogle = window.adsbygoogle || []).push({});
+										} else {
+											var mainAds = $('.main-ads');
+											if(mainAds.prev().prop('tagName') == 'H2') {
+												mainAds.prev().remove();
+											}
+											mainAds.remove();
+										}
+									</script>
+								</div>
+							</s_if_var_main-google-ads>
+							<div id="lower">
+								[##_revenue_list_lower_##]
+							</div>
+						</article>
+
+						<aside class="sidebar">
+							<!-- 검색바 -->
+							<div class="search">
+								<s_search>
+									<input type="text" name="[##_search_name_##]" value="[##_search_text_##]" placeholder="검색 내용을 입력하세요." onkeypress="if (event.keyCode == 13) { [##_search_onclick_submit_##] }">
+									<button type="submit" onclick="[##_search_onclick_submit_##]">검색</button>
+								</s_search>
+							</div>
+							<!-- 번역 서비스 -->
+							<s_if_var_lang-trans>
+								<div class="module module_plugin">
+									<div class="lang-box">
+										<h2>다국어 번역</h2>
+										<!-- GTranslate: https://gtranslate.io/ -->
+										<a href="#" onclick="doGTranslateCustom('ko|ko');return false;" title="한국어" class="gflag nturl">
+											<img class="flag" src="./images/ko.png" height="24" width="24" alt="한국어" loading="lazy" />
+										</a>
+										<s_if_var_en-yn>
+											<a href="#" onclick="doGTranslateCustom('ko|en');return false;" title="영어" class="gflag nturl">
+												<img class="flag" src="./images/en.png" height="24" width="24" alt="영어" loading="lazy" />
+											</a>
+										</s_if_var_en-yn>
+										<s_if_var_cn-yn>
+											<a href="#" onclick="doGTranslateCustom('ko|zh-CN');return false;" title="중국어 간체" class="gflag nturl">
+												<img class="flag" src="./images/zh-CN.png" height="24" width="24" alt="중국어 간체" loading="lazy" />
+											</a>
+										</s_if_var_cn-yn>
+										<s_if_var_tw-yn>
+											<a href="#" onclick="doGTranslateCustom('ko|zh-TW');return false;" title="중국어 번체" class="gflag nturl">
+												<img class="flag" src="./images/zh-TW.png" height="24" width="24" alt="중국어 번체" loading="lazy" />
+											</a>
+										</s_if_var_tw-yn>
+										<s_if_var_ja-yn>
+											<a href="#" onclick="doGTranslateCustom('ko|ja');return false;" title="일본어" class="gflag nturl">
+												<img class="flag" src="./images/ja.png" height="24" width="24" alt="일본어" loading="lazy" />
+											</a>
+										</s_if_var_ja-yn>
+										<s_if_var_es-yn>
+											<a href="#" onclick="doGTranslateCustom('ko|es');return false;" title="스페인어" class="gflag nturl">
+												<img class="flag" src="./images/es.png" height="24" width="24" alt="스페인어" loading="lazy" />
+											</a>
+										</s_if_var_es-yn>
+										<style>
+											<!--
+											a.gflag {text-decoration:none !important;margin:auto;}
+											a.gflag:hover {text-decoration:none !important;}
+											#goog-gt-tt {display:none !important;}
+											.goog-te-banner-frame {display:none !important;}
+											.goog-te-menu-value:hover {text-decoration:none !important;}
+											body {top:0 !important;}
+											#google_translate_element2 {display:none!important;}
+											-->
+										</style>
+										<div id="google_translate_element2"></div>
+									</div>
+								</div>
+							</s_if_var_lang-trans>
+							<!-- 다크 모드 -->
+							<s_if_var_dark-mode>
+								<s_not_var_default-dark-mode>
+								<div class="module module_plugin">
+									<div class="dark-mode-box">
+										<h2>다크 모드</h2>
+										<button class="dark-mode-btn-dark" onclick="darkMode('+')" >&#xf186;</button> <!-- moon -->
+										<button class="dark-mode-btn-default" onclick="darkMode('-')">&#xf185;</button> <!-- sun -->
+									</div>
+								</div>
+								</s_not_var_default-dark-mode>
+							</s_if_var_dark-mode>
+							<!-- 글자크기 -->
+							<s_if_var_adjust-font-size>
+								<div class="module module_plugin">
+									<div class="change-font-box">
+											<h2>글자 크기</h2>
+											<button class="change-font-btn" onclick="changeFontSize('+')" >&#xf00e;</button> <!-- size up -->
+											<button class="change-font-btn" onclick="changeFontSize('-')">&#xf010;</button> <!-- size down -->
+											<button class="change-font-btn" onclick="changeFontSize('')">&#xf3e5;</button> <!-- default -->
+									</div>
+								</div>
+							</s_if_var_adjust-font-size>
+							<!-- 배경음악 -->
+							<s_if_var_bgm-yn>
+								<div class="module module_plugin">
+									<h2 id="bgm-title">
+										<span id="current-bgm">플레이 버튼을 눌러 주세요</span>
+										<button class="bgm-btn" onclick="bgmMute()" style="margin:auto;" id='bgm-mute'>
+											&#xf6a9; <!-- mute btn -->
+										</button>	
+									</h2>
+									<div class="bgm-box">
+										<button class="bgm-btn" onclick="nextBgm('-')" style="margin:auto;">
+											&#xf048; <!-- prev btn -->
+										</button>
+										<button class="bgm-btn" onclick="toggleBgm()" id='bgm-switch' style="margin:auto;">
+											<span id="bgm-status">&#xf04b;</span> <!-- play btn -->
+										</button>
+										<button class="bgm-btn" onclick="nextBgm('+')" style="margin:auto;">
+											&#xf051; <!-- next btn -->
+										</button>
+										<button class="bgm-btn" onclick="bgmVolume('+')" style="margin:auto;">
+											&#xf028; <!-- volume up btn -->
+										</button>
+										<button class="bgm-btn" onclick="bgmVolume('-')" style="margin:auto;">
+											&#xf027; <!-- volume down btn -->
+										</button>
+									</div>
+								</div>
+							</s_if_var_bgm-yn>
+							<s_sidebar>
+								<s_sidebar_element>
+									<!-- 카테고리 -->
+									<div class="category">
+										<h2>카테고리</h2>
+										[##_category_list_##]
+									</div>
+								</s_sidebar_element>
+								<s_sidebar_element>
+									<!-- 공지사항 -->
+									<s_rct_notice>
+										<div class="notice">
+											<h2>공지사항</h2>
+											<ul>
+												<s_rct_notice_rep>
+													<li><a href="[##_notice_rep_link_##]">[##_notice_rep_title_##]</a></li>
+												</s_rct_notice_rep>
+											</ul>
+										</div>
+									</s_rct_notice>
+								</s_sidebar_element>
+								<s_sidebar_element>
+									<!-- 최근글/인기글 -->
+									<div class="recent content-item">
+										<h2>최근 글</h2>
+										<ul>
+											<s_rctps_rep>
+												<li>
+													<a href="[##_rctps_rep_link_##]">
+														<span class="thum">
+															<s_rctps_rep_thumbnail>
+																<img src="//i1.daumcdn.net/thumb/S90x60/?fname=[##_rctps_rep_thumbnail_##]" alt="" />
+															</s_rctps_rep_thumbnail>
+														</span>
+														<span class="title">[##_rctps_rep_title_##]</span>
+														<span class="date">[##_rctps_rep_simple_date_##]</span>
+													</a>
+												</li>
+											</s_rctps_rep>
+										</ul>
+									</div>
+									<div class="popular content-item">
+										<h2>인기 글</h2>
+										<ul>
+											<s_rctps_popular_rep>
+												<li>
+													<a href="[##_rctps_rep_link_##]">
+														<span class="thum">
+															<s_rctps_rep_thumbnail>
+																<img src="//i1.daumcdn.net/thumb/S90x60/?fname=[##_rctps_rep_thumbnail_##]" alt="" />
+															</s_rctps_rep_thumbnail>
+														</span>
+														<span class="title">[##_rctps_rep_title_##]</span>
+														<span class="date">[##_rctps_rep_simple_date_##]</span>
+													</a>
+												</li>
+											</s_rctps_popular_rep>
+										</ul>
+									</div>
+								</s_sidebar_element>
+							</s_sidebar>
+							<s_if_var_sidebar-google-ads>
+								<div class="module module_plugin">
+									<h2 id="recommend-ads-title">추천 글</h2>
+									<div id="recommend-ads" class="revenue_unit_item adsense">
+										<ins class="adsbygoogle"
+												 style="display:inline-block;width:calc([##_var_content-max-width_##]px * 27.777777777777778 / 100 - 20px);height:880px;"
+												 data-ad-client="[##_var_sidebar-data-ad-client_##]"
+												 data-ad-slot="[##_var_sidebar-data-ad-slot_##]"></ins>
+										<script>
+											(adsbygoogle = window.adsbygoogle || []).push({});
+										</script>
+									</div>
+								</div>
+							</s_if_var_sidebar-google-ads>
+							<s_sidebar>
+								<s_sidebar_element>
+									<!-- 최근댓글 -->
+									<div class="recent-comment">
+										<h2>최근 댓글</h2>
+										<ul>
+											<s_rctrp_rep>
+												<li><a href="[##_rctrp_rep_link_##]">[##_rctrp_rep_desc_##]</a></li>
+											</s_rctrp_rep>
+										</ul>
+									</div>
+								</s_sidebar_element>
+								<s_sidebar_element>
+									<!-- 태그 -->
+									<div class="tags">
+										<h2>태그</h2>
+										<s_random_tags>
+											<a href="[##_tag_link_##]">[##_tag_name_##]</a>
+										</s_random_tags>
+									</div>
+								</s_sidebar_element>
+								<s_sidebar_element>
+									<!-- 전체 방문자 -->
+									<div class="count">
+										<h2>방문자 통계</h2>
+										<p class="total">[##_count_total_##]</p>
+										<p>오늘 : [##_count_today_##]</p>
+										<p>어제 : [##_count_yesterday_##]</p>
+									</div>
+								</s_sidebar_element>
+							</s_sidebar>
+						</aside>
+					</div>
+				</section>
+
+				<footer>
+					<div class="inner">
+						<a href="#" class="page-top">TOP</a>
+						<p class="meta"><s_if_var_footer-text-1>[##_var_footer-text-1_##]</s_if_var_footer-text-1></p>
+						<p class="copyright"><s_if_var_footer-text-2>[##_var_footer-text-2_##]</s_if_var_footer-text-2></p>
+						<p class="maker"><a href="https://sangminem.tistory.com/506" target="_blank">Mynem Skin 2.1</a></p>
+					</div>
+				</footer>
+			</div>
+			
+			<!-- 상단 이동 버튼 -->
+			<a class="move-top-btn"></a>
+
+			<!-- 떠다니는 목차 -->
+			<div class="floating-toc"></div>
+
+			<!-- 토스트 메시지 -->
+			<div id="toast" class="toast-wrap" style="display:none;">
+				<div class="toast"></div>
+			</div>
+
+			<!-- 배경음악 태그 -->
+			<audio id='bgm' crossorigin='anonymous' muted></audio>
+
+			<!-- 1픽셀 이미지 -->
+			<img id="blank-img" src="./images/blank.png" style="display:none;">
+
+			<!-- 설정 값 -->
+			<input type='hidden' id='toast-after-like-yn' value="[##_var_toast-after-like-yn_##]">
+			<input type='hidden' id='toast-after-like' value="[##_var_toast-after-like-text_##]">
+			<input type='hidden' id='make-bell-yn' value="[##_var_make-bell-yn_##]">
+			<input type='hidden' id='make-bell' value="[##_var_make-bell-text_##]">
+			<input type='hidden' id='auto-toc-yn' value="[##_var_auto-toc-yn_##]">
+			<input type='hidden' id='fold-comment-yn' value="[##_var_fold-comment-yn_##]">
+			<input type='hidden' id='fold-comment-num' value="[##_var_fold-comment-num_##]">
+			<input type='hidden' id='floating-toc-position' value="[##_var_floating-toc-position_##]">
+			<input type='hidden' id='bgm-yn' value="[##_var_bgm-yn_##]">
+			<input type='hidden' id='bgm-autoplay-yn' value="[##_var_bgm-autoplay-yn_##]">
+			<input type='hidden' id='bgm-src-1' value="[##_var_bgm-src-1_##]">
+			<input type='hidden' id='bgm-title-1' value="[##_var_bgm-title-1_##]">
+			<input type='hidden' id='bgm-src-2' value="[##_var_bgm-src-2_##]">
+			<input type='hidden' id='bgm-title-2' value="[##_var_bgm-title-2_##]">
+			<input type='hidden' id='bgm-src-3' value="[##_var_bgm-src-3_##]">
+			<input type='hidden' id='bgm-title-3' value="[##_var_bgm-title-3_##]">
+			<input type='hidden' id='bgm-src-4' value="[##_var_bgm-src-4_##]">
+			<input type='hidden' id='bgm-title-4' value="[##_var_bgm-title-4_##]">
+			<input type='hidden' id='bgm-src-5' value="[##_var_bgm-src-5_##]">
+			<input type='hidden' id='bgm-title-5' value="[##_var_bgm-title-5_##]">
+			<input type='hidden' id='bgm-src-6' value="[##_var_bgm-src-6_##]">
+			<input type='hidden' id='bgm-title-6' value="[##_var_bgm-title-6_##]">
+			<input type='hidden' id='bgm-src-7' value="[##_var_bgm-src-7_##]">
+			<input type='hidden' id='bgm-title-7' value="[##_var_bgm-title-7_##]">
+			<input type='hidden' id='bgm-src-8' value="[##_var_bgm-src-8_##]">
+			<input type='hidden' id='bgm-title-8' value="[##_var_bgm-title-8_##]">
+			<input type='hidden' id='bgm-src-9' value="[##_var_bgm-src-9_##]">
+			<input type='hidden' id='bgm-title-9' value="[##_var_bgm-title-9_##]">
+			<input type='hidden' id='bgm-src-10' value="[##_var_bgm-src-10_##]">
+			<input type='hidden' id='bgm-title-10' value="[##_var_bgm-title-10_##]">
+			<input type='hidden' id='hide-sidebar' value="[##_var_hide-sidebar_##]">
+			<input type='hidden' id='fixed-header' value="[##_var_fixed-header_##]">
+		</s_t3>
+		<script>
+			window.$ = window.jQuery = window.tjQuery;
+		</script>
+		<script src="./images/common.js"></script>
+		<script>
+			function googleTranslateElementInit2() {new google.translate.TranslateElement({pageLanguage: 'ko',autoDisplay: false}, 'google_translate_element2');}
+		</script>
+		<script src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit2"></script>
+		<script>
+			/* <![CDATA[ */
+			eval(function(p,a,c,k,e,r){e=function(c){return(c<a?'':e(parseInt(c/a)))+((c=c%a)>35?String.fromCharCode(c+29):c.toString(36))};if(!''.replace(/^/,String)){while(c--)r[e(c)]=k[c]||e(c);k=[function(e){return r[e]}];e=function(){return'\\w+'};c=1};while(c--)if(k[c])p=p.replace(new RegExp('\\b'+e(c)+'\\b','g'),k[c]);return p}('6 7(a,b){n{4(2.9){3 c=2.9("o");c.p(b,f,f);a.q(c)}g{3 c=2.r();a.s(\'t\'+b,c)}}u(e){}}6 h(a){4(a.8)a=a.8;4(a==\'\')v;3 b=a.w(\'|\')[1];3 c;3 d=2.x(\'y\');z(3 i=0;i<d.5;i++)4(d[i].A==\'B-C-D\')c=d[i];4(2.j(\'k\')==E||2.j(\'k\').l.5==0||c.5==0||c.l.5==0){F(6(){h(a)},G)}g{c.8=b;7(c,\'m\');7(c,\'m\')}}',43,43,'||document|var|if|length|function|GTranslateFireEvent|value|createEvent||||||true|else|doGTranslate||getElementById|google_translate_element2|innerHTML|change|try|HTMLEvents|initEvent|dispatchEvent|createEventObject|fireEvent|on|catch|return|split|getElementsByTagName|select|for|className|goog|te|combo|null|setTimeout|500'.split('|'),0,{}))
+			/* ]]> */
+		</script>
+		<script src="./images/jquery.toc.min.js"></script>
+		<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+	</body>
+</html>
