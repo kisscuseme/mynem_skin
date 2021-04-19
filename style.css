@@ -121,7 +121,6 @@ header p a {
 }
 #blog-menu {
 	padding-top: 70px;
-	float: right;
 	overflow: auto;
 }
 #blog-menu ul {
@@ -131,6 +130,9 @@ header p a {
 #blog-menu ul li {
 	float: left;
 	padding: 0 20px;
+}
+#blog-menu ul li:first-child {
+	padding-left: 0px;
 }
 #blog-menu ul li a {
 	position: relative;
@@ -259,7 +261,7 @@ article h2,
 	width: 31%;
 	margin: 0 0 20px 3.5%;
 }
-@media screen and (min-width:768px) {
+@media (min-width:768px) {
 	.post-item:nth-child(3n+1) {
 		clear: both;
 		margin-left: 0;
@@ -387,7 +389,7 @@ article h2,
 }
 .cover-list ul li figure {
 	float: left;
-	margin-right: 2.5%;
+	margin-right: 2%;
 	position: relative;
 	display: block;
 	overflow: hidden;
@@ -436,7 +438,7 @@ article h2,
 .cover-list ul li .excerpt {
 	overflow: hidden;
 	max-width: 95%;
-	margin-bottom: 10px;
+	margin-bottom: 12px;
 	text-overflow: ellipsis;
 	line-height: 1.5rem;
 	display: block;
@@ -588,6 +590,7 @@ article h2,
 /* pagination */
 .pagination {
 	text-align: center;
+	margin-bottom: 20px;
 }
 .pagination a {
 	display: inline-block;
@@ -630,7 +633,6 @@ article h2,
 /* sidebar */
 .sidebar {
 	width: 300px;
-	padding: 20px 0 0;
 	box-sizing: border-box;
 }
 .sidebar .close,
@@ -776,8 +778,8 @@ article h2,
 /* top button */
 .top-button {
 	position: absolute;
-	top: 10px;
-	right: 10px;
+	top: 15px;
+	right: 15px;
 	z-index: 120;
 }
 .top-button .profile {
@@ -947,7 +949,7 @@ article h2,
 	box-sizing: border-box;
 	padding: 20px;
 	box-shadow: 0 0 16px -4px #ddd;
-	margin-bottom: 20px;
+	margin-bottom: 10px;
 }
 .content-title:after {
 	content: "";
@@ -1007,7 +1009,6 @@ article h2,
 	height: 2px;
 	margin: 0 8px 0 4px;
 	background-color: rgba(0,0,0,0.6);
-	vertical-align: middle;
 }
 .content-title .meta span:first-child:before {
 	content: none;
@@ -1375,7 +1376,7 @@ article .another_category th span {
 /* tags */
 .tags a {
 	display: inline-block;
-	padding: 0 10px 0 10px;
+	padding: 10px 10px 0 10px;
 	font-size: 0.8125em;
 	line-height: 1.25rem;
 }
@@ -1913,6 +1914,7 @@ article .tags a {
 	font-weight: bold;
 	font-size: 1.2em !important;
 	color: #396120;
+	cursor: pointer;
 }
 #toc * {
 	font-size: 20px;
@@ -1934,6 +1936,9 @@ article .tags a {
 	text-indent: 0;
 	list-style-type: none;
 	margin-bottom: 10px;
+}
+#toc > li:last-child {
+	margin-bottom: 0px;
 }
 #toc > li:before {
   padding-right: 10px;
@@ -1977,9 +1982,6 @@ article .tags a {
 #toc > li > ul > li > ul > li > a {
 	font-size: 0.875em;
 }
-#toc > li.selected:before {content:"\f00c" !important;font-size:0.6em;padding-right:6px;}
-#toc > li ul li.selected:before {content:"\f00c" !important;font-size:0.6em;padding-right:4px;}
-#toc > li ul li ul li.selected:before {content:"\f00c" !important;font-size:0.6em;padding-right:6px;}
 .floating-toc {
 	position: absolute;
 	padding: 10px;
@@ -2003,11 +2005,15 @@ article .tags a {
 	font-size: 0.9em !important;
 	cursor: pointer;
 }
-.floating-toc #toc-body,
-.floating-toc-new #toc-body {
+.floating-toc #toc-body {
 	margin-top: 10px;
 	overflow: auto;
 	max-width: 250px;
+	max-height: 500px;
+}
+.floating-toc-new #toc-body {
+	margin-top: 10px;
+	overflow: auto;
 	max-height: 500px;
 }
 .floating-toc #toc-body #toc *,
@@ -2145,12 +2151,6 @@ article .tags a {
 .revenue_unit_wrap {
 	overflow: auto;
 }
-#upper {
-	margin-bottom: 20px;
-}
-#lower {
-	margin-top: 10px;
-}
 .gcse-searchbox {
 	height: 31px;
 }
@@ -2211,7 +2211,7 @@ article .tags a {
 }
 
 /* mobile */
-@media screen and (max-width: 767px) {
+@media (max-width: 767px) {
 	header p {
 		font-size: 1.25em !important;
 	}
@@ -2252,7 +2252,7 @@ article .tags a {
 		font-size: 0.875em;
 	}
 	.cover-list ul li .excerpt {
-		margin-bottom: 5px;
+		margin-bottom: 7px;
 		-webkit-line-clamp: 2;
 		font-size: 0.7em;
 		line-height: 1.5;
@@ -2328,11 +2328,6 @@ article .tags a {
 		vertical-align: middle;
 		font-size: 0.6em;
 	}
-	.cover-special ul li img {
-		width: calc(100vw - 30px) !important;
-		height: calc(100vw - 30px) !important;
-		float: none;
-	}
 	.cover-special ul li:nth-child(even) img {
 		float: none;
 	}
@@ -2352,5 +2347,12 @@ article .tags a {
 	#toc-body::-webkit-scrollbar {
 		width: 3px;
 		height: 3px;
+	}
+	.top-button {
+		top: 10px;
+		right: 10px;
+	}
+	.floating-toc #toc-body {
+		max-width: 250px;
 	}
 }

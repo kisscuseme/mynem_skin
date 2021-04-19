@@ -5,55 +5,220 @@ function delay(ms) {
         },ms);
     });
 }
+var clickContentFlag = true;
+function clickContentTitle() {
+    if(clickContentFlag) {
+        clickContentFlag = false;
+        $('.book-toc #toc').slideToggle(300, 'linear', function() {
+            var title = $('.book-toc>p>span#toggle');
+            if(title.hasClass('open')) {
+                title.html("&#xf103;");
+                title.removeClass('open');
+            } else {
+                title.html("&#xf102;");
+                title.addClass('open');
+            }
+            clickContentFlag = true;
+        });
+    }
+}
 function makeToc() {
     var $toc = $("#toc");
     if($('#auto-toc-yn').val() && $toc.length == 0) {
         var titleLength = $('.tt_article_useless_p_margin h2,h3,h4').length - $('.another_category h4').length - $('h3.tit_list_type').length;
         var firstContent = $('.tt_article_useless_p_margin').children().eq(0);
         if(titleLength > 0 && firstContent.length > 0) {
-            firstContent.before('<div class="book-toc"><p>목차</p><ul id="toc"></ul></div>');
+            firstContent.before('<div class="book-toc"><p>목차<span id="toggle" style="padding-left:10px;">&#xf103;</span></p><ul id="toc"></ul></div>');
             $toc = $("#toc");
         }
     }
     if($toc.length > 0) {
+        if($('#fold-toc-yn').val()) {
+            $toc.css('display','none');
+        }
         $toc.toc({content: ".tt_article_useless_p_margin", headings: "h2,h3,h4"});
+        $('.book-toc p').append('<span id="toggle" style="padding-left:10px;">&#xf103;</span>');
         if($('.another_category').length > 0) {
             $toc.find('li:last').remove();
         }
         makeClipboardLink();
     }
+
+    $('.book-toc p').off('click').on('click', function(){
+        clickContentTitle();
+    });
+
+    $('.book-toc p').off('touchend').on('touchend', function(event){
+        clickContentTitle();
+    });
 }
 
-var $floatingTocNew = $('.floating-toc-new');
-var $bookToc = $('.book-toc');
+var floatingTocNew = $('.floating-toc-new');
+var bookToc = $('.book-toc');
+var contentMiddleYn = $('#content-middle-yn').val();
 var animating = false;
 var timer = 0;
-function makeFloatingToc() {
-    var tocTitle = $('<div id="toc-title"><div class="floating-icon"></div><p>목차</p></div>');
-    //목차 아이콘으로 표시
-    if(window.innerWidth < 768) {
-        tocTitle.find('p').css('display','none');
-    } else {
-        tocTitle.find('.floating-icon').css('display','none');
+var clickFloatingFlag = true;
+function clickFloatingTitle() {
+    if(clickFloatingFlag) {
+        clickFloatingFlag = false;
+        floatingTocNew.css('height','');
+        $('.floating-toc-new #toc').css('display','');
+        // 여유공간이 있을 경우
+        if((contentMiddleYn && (window.innerWidth-$('.content-wrapper').outerWidth())/2 > 250)
+          ||(!contentMiddleYn && window.innerWidth-$('.content-wrapper').outerWidth() > 250)) {
+            $('#toc-body').slideToggle(300, 'linear', function() {
+                var title = $('#toc-title>p>span#toggle');
+                if(title.hasClass('close')) {
+                    title.html("&#xf102;");
+                    title.removeClass('close');
+                } else {
+                    title.html("&#xf103;");
+                    title.addClass('close');
+                }
+                clickFloatingFlag = true;
+            });
+        // 여유공간이 없을 경우
+        } else {
+            var title = $('#toc-title>p>span#toggle');
+            if(!title.hasClass('close')) {
+                floatingTocNew.css('width','80%');
+                floatingTocNew.css('max-width','250px');
+            }
+            $('#toc-body').slideToggle(300, 'linear', function() {
+                if(title.hasClass('close')) {
+                    title.html("&#xf102;");
+                    title.removeClass('close');
+                    floatingTocNew.css('width','50px');
+                } else {
+                    title.html("&#xf103;");
+                    title.addClass('close');
+                }
+                clickFloatingFlag = true;
+            });
+        }
     }
-    $floatingTocNew.append(tocTitle);
-    var tocBody = $('<div id="toc-body""></div>').append($bookToc.find('#toc').clone());
-    $floatingTocNew.append(tocBody);
+}
+function checkContentPosition() {
+    var titleList = $('.tt_article_useless_p_margin').find('h2,h3,h4');
+    var scrollY = window.scrollY + 50 + ($('#fixed-header').val()?($('header').length>0?$('header').height()+5:0):0);
+    if(titleList.length > 1) {
+        for(var i=0; i < titleList.length; i++) {
+            var tocList = $('.floating-toc-new #toc').find('a');
+            if(i < titleList.length-1) {
+                if(titleList.eq(i).offset().top < scrollY && titleList.eq(i+1).offset().top > scrollY) {
+                    tocList.removeAttr('class');
+                    tocList.parent().removeAttr('class');
+                    tocList.eq(i).addClass('floating-toc-title-ani');
+                    tocList.eq(i).addClass('selected');
+                    break;
+                }
+            } else {
+                if(titleList.eq(i).offset().top < scrollY) {
+                    tocList.removeAttr('class');
+                    tocList.parent().removeAttr('class');
+                    tocList.eq(i).addClass('floating-toc-title-ani');
+                    tocList.eq(i).addClass('selected');
+                    break;
+                }
+            }
+        }
+    }
+}
+
+function makeFloatingToc() {
+    if(bookToc.length > 0) {
+        var tocTitle = $('<div id="toc-title"><p>목차<span id="toggle" style="padding-left:5px;">&#xf102;</span></p></div>');
+        floatingTocNew.append(tocTitle);
+        var tocBody = $('<div id="toc-body""></div>').append(bookToc.find('#toc').clone());
+        floatingTocNew.append(tocBody);
+
+        $('#toc-title').off('click').on('click', function(){
+            clickFloatingTitle();
+        });
+
+        $('#toc-title').off('touchend').on('touchend', function(){
+            clickFloatingTitle();
+        });
+
+        //목차 항목 클릭
+        $('#toc-body').find('a').off('click').on('click', function(){
+            checkPosition();
+        });
+    }
 }
 function appendTocNew() {
-    if(window.scrollY > $bookToc.outerHeight() + $bookToc.offset().top) {
-        if(!animating) {
-            animating = true;
-            $floatingTocNew.animate({
-                'opacity': '1.0', 'height': ($('#toc-title').height()+$('#toc-body').height()+16)+'px'
-            }, 500);
+    if(bookToc.length > 0) {
+        if((contentMiddleYn && (window.innerWidth-$('.content-wrapper').outerWidth())/2 > 250)
+          ||(!contentMiddleYn && window.innerWidth-$('.content-wrapper').outerWidth() > 250)) {
+            if(window.scrollY > bookToc.outerHeight() + bookToc.offset().top - $('header').height()) {
+                if(!animating) {
+                    animating = true;
+                    $('.floating-toc-new #toc').css('display','');
+                    $('#toc-body').css('display','');
+                    floatingTocNew.css('display','');
+                    floatingTocNew.css('width','');
+                    floatingTocNew.css('max-width','');
+                    floatingTocNew.css('top','');
+                    floatingTocNew.css('margin-right','');
+                    var title = $('#toc-title>p>span#toggle');
+                    if(title.hasClass('close')) {
+                        title.html("&#xf102;");
+                        title.removeClass('close');
+                    }
+                    floatingTocNew.animate({
+                        'opacity': '1.0', 'height': ($('#toc-title').height()+$('#toc-body').height()+10)+'px'
+                    }, 500);
+                    if($('#fixed-header').val()) {
+                        floatingTocNew.css('top',($('header').height()+15)+'px');
+                    } else {
+                        floatingTocNew.css('top','50px');
+                    }
+                }
+            } else {
+                if(animating) {
+                    animating = false;
+                    floatingTocNew.animate({
+                        'opacity': '0.0', 'height': '1px'
+                    }, 500);
+                }
+            }
+        } else {
+            var title = $('#toc-title>p>span#toggle');
+            if(window.scrollY > bookToc.outerHeight() + bookToc.offset().top - $('header').height()) {
+                if(!animating) {
+                    animating = true;
+                    floatingTocNew.css('display','');
+                    if(!title.hasClass('close')) {
+                        title.html("&#xf103;");
+                        $('#toc-body').css('display','none');
+                        floatingTocNew.css('width','50px');
+                        floatingTocNew.css('height','20px');
+                        floatingTocNew.css('margin-right','0px');
+                        floatingTocNew.css('margin-left','0px');
+                        floatingTocNew.css('opacity','0.9');
+                        if($('#fixed-header').val()) {
+                            floatingTocNew.css('top',($('header').height()+8)+'px');
+                        } else {
+                            floatingTocNew.css('top','50px');
+                        }
+                    }
+                }
+            } else {
+                if(animating) {
+                    animating = false;
+                    floatingTocNew.css('display','none');
+                    if(title.hasClass('close')) {
+                        title.html("&#xf102;");
+                        title.removeClass('close');
+                        $('#toc-body').css('display','');
+                    }
+                }
+            }
         }
-    } else {
-        if(animating) {
-            animating = false;
-            $floatingTocNew.animate({
-                'opacity': '0.0', 'height': '1px'
-            }, 500);
+
+        if(floatingTocNew.height() > floatingTocNew.find('#toc-title').height()) {
+            checkContentPosition();
         }
     }
 }
@@ -163,13 +328,13 @@ function appendToc() {
         var scrollY = window.scrollY + 50;
         if(titleList.length > 1) {
             for(var i=0; i < titleList.length; i++) {
-                var tocList = $('#toc').find('a');
+                var tocList = $('.floating-toc #toc').find('a');
                 if(i < titleList.length-1) {
                     if(titleList.eq(i).offset().top < scrollY && titleList.eq(i+1).offset().top > scrollY) {
                         tocList.removeAttr('class');
                         tocList.parent().removeAttr('class');
                         tocList.eq(i).addClass('floating-toc-title-ani');
-                        tocList.eq(i).parent().addClass('selected');
+                        tocList.eq(i).addClass('selected');
                         break;
                     }
                 } else {
@@ -177,7 +342,7 @@ function appendToc() {
                         tocList.removeAttr('class');
                         tocList.parent().removeAttr('class');
                         tocList.eq(i).addClass('floating-toc-title-ani');
-                        tocList.eq(i).parent().addClass('selected');
+                        tocList.eq(i).addClass('selected');
                         break;
                     }
                 }
@@ -220,7 +385,7 @@ function appendToc() {
     }
 
     if(bookToc.length > 0 && window.scrollY > bookToc.offset().top + bookToc.innerHeight()) {
-        if(floatingToc.height() === 0 && $('#toc-title').length === 0 && bookToc.innerHeight() > 70 && safeFlag) {
+        if(floatingToc.height() === 0 && $('#toc-title').length === 0 && safeFlag) {
             safeFlag = false;
             floatingToc.css('display','block');
             var tocTitle = $('<div id="toc-title"><div class="floating-icon"></div><p>목차 <span id="toggle" class="open" style="color:#517135;">펼치기</span></p></div>');
@@ -233,7 +398,7 @@ function appendToc() {
             floatingToc.append(tocTitle);
             var tocBody = $('<div id="toc-body" style="display:none;"></div>').append(bookToc.find('#toc').clone());
             floatingToc.append(tocBody);
-
+            floatingToc.find('#toc').css('display','');
             floatingToc.css('padding', '0');
             $('#toc-title').css('padding', '10px');
             var dragTimerId = 0;
@@ -311,7 +476,7 @@ function copyTitleToClipboard(titleIndex) {
     dummy.select();
     document.execCommand("copy");
     document.body.removeChild(dummy);
-    showToast("Copied!","bottom");
+    showToast("제목 링크가 복사되었습니다!");
 }
 
 function makeClipboardLink() {
@@ -334,8 +499,7 @@ function smoothScroll() {
         var windowTop = $(window).scrollTop();
         var offsetTop = 0;
         var moveFlag = false;
-        var header = $('header');
-        var headerHeight = header.length>0?header.height():0;
+        var headerHeight = $('#fixed-header').val()?($('header').length>0?$('header').height()+5:0):0;
         
         if(typeof aHref !== 'undefined' && aHref.length > 1 && aHref.indexOf('#') > -1) {
             var regExp = /[\{\}\[\]\/?.,;:|\)*~`!^\-_+<>@\#$%&\\\=\(\'\"]/gi;
@@ -370,6 +534,16 @@ function smoothScroll() {
                     currentPosition = null;
                 }
             }, speed);
+
+            if(aHref.indexOf('#') > -1
+              && ($(self).parent().parent().parent().prop('id') == 'toc-body'
+              || $(self).parent().parent().parent().parent().parent().prop('id') == 'toc-body'
+              || $(self).parent().parent().parent().parent().parent().parent().parent().prop('id') == 'toc-body')
+              && ((contentMiddleYn && (window.innerWidth-$('.content-wrapper').outerWidth())/2 <= 250)
+              ||(!contentMiddleYn && window.innerWidth-$('.content-wrapper').outerWidth() <= 250))) {
+                clickFloatingTitle();
+            }
+
             return false;
         }
     });
@@ -590,7 +764,6 @@ function removeDimmed(){
     $('section').css('z-index','110');
 }
 
-var repeatCnt = 0;
 function darkModeAfterTranslate(type) {
     delay(200).then(function() {        
         repeatCnt++;
@@ -861,7 +1034,7 @@ function lazyLoading() {
 }
 
 function fixedRecommendAds(type) {
-    var recommendAds = $('#recommend-ads');
+    var recommendAds = $('#recommend-ads').parent();
     var adsenseAd = $('aside .revenue_unit_wrap .adsense');
     var adfitAd = $('aside .revenue_unit_wrap .adfit');
     var blankLeftSide = (window.innerWidth - ($('.content-wrapper').width() + 20))/2 - $('aside #recommend-ads').outerWidth();
@@ -869,34 +1042,32 @@ function fixedRecommendAds(type) {
     if (type == undefined && (isHideSidebar || (window.innerWidth > 1079 && window.scrollY > $('aside').height() + 150 && window.innerHeight > 650))) {
         if(recommendAds.length > 0) {
             recommendAds.css('position', 'fixed');
-            recommendAds.find('ins.adsbygoogle').css('box-shadow', '0 0 16px -4px #ddd');
             if(window.innerHeight > 820) {
-                recommendAds.css('top', '-40px');
-                recommendAds.css('transform', 'scale(0.9)');
-            } else if(window.innerHeight > 730) {
-                recommendAds.css('top', '-80px');
+                recommendAds.css('top', 'calc(' + $('header').height() + 'px - 85px)');
                 recommendAds.css('transform', 'scale(0.8)');
-            } else if(window.innerHeight > 650) {
-                recommendAds.css('top', '-120px');
+            } else if(window.innerHeight > 730) {
+                recommendAds.css('top', 'calc(' + $('header').height() + 'px - 130px)');
                 recommendAds.css('transform', 'scale(0.7)');
+            } else if(window.innerHeight > 650) {
+                recommendAds.css('top', 'calc(' + $('header').height() + 'px - 180px)');
+                recommendAds.css('transform', 'scale(0.6)');
             }
             if(isHideSidebar) {
                 recommendAds.css('left', blankLeftSide/2 + 'px');
             }
         } else if(adsenseAd.length > 0) {
             adsenseAd.parent().css('position', 'fixed');
-            adsenseAd.parent().css('top', '10px');
+            adsenseAd.parent().css('top', 'calc(' + $('header').height() + 'px + 10px)');
             adsenseAd.css('box-shadow', '0 0 16px -4px #ddd');
 
         } else if(adfitAd.length > 0) {
             adfitAd.parent().css('position', 'fixed');
-            adfitAd.parent().css('top', '10px');
+            adfitAd.parent().css('top', 'calc(' + $('header').height() + 'px + 10px)');
             adfitAd.css('box-shadow', '0 0 16px -4px #ddd');
         }
     } else {
         if(recommendAds.length > 0) {
             recommendAds.removeAttr('style');
-            recommendAds.find('ins.adsbygoogle').removeAttr('style');
         } else if(adsenseAd.length > 0) {
             adsenseAd.parent().removeAttr('style');
             adsenseAd.removeAttr('style');
@@ -914,7 +1085,7 @@ function moveToTheTitle() {
         var titleId = decodeURIComponent(location.href.substr(location.href.indexOf('#')+1)).replace(regExp,"\\$&");
         var title = $(titleId.length>0?'#'+titleId:'');
         if(title.length > 0 && ['H2','H3','H4','LI'].indexOf(title.prop('tagName')) > -1) {
-            scrollTo(0, title.offset().top);
+            scrollTo(0, title.offset().top - ($('#fixed-header').val()?($('header').length>0?$('header').height()+5:0):0));
             moveToTheTitleTimer = setTimeout(function() {
                 if(repeatCnt < 3) {
                     moveToTheTitle();
@@ -924,35 +1095,6 @@ function moveToTheTitle() {
                     repeatCnt = 0;
                 }
             }, 200);
-        }
-    }
-}
-
-function checkMainPage() {
-    if(window.location.pathname == '/') {
-        return true;
-    }
-    return false;
-}
-
-function browserCheck(type){
-    if(type == 'mac') {
-        if(navigator.userAgent.toLowerCase().indexOf('macintosh') > 0) {
-            return true;
-        } else {
-            return false;
-        }
-    } else if(type == 'ios') {
-        if(navigator.userAgent.toLowerCase().indexOf('iphone') > 0) {
-            return true;
-        } else {
-            return false;
-        }
-    } else {
-        if(navigator.userAgent.toLowerCase().indexOf('chrome') > 0) {
-            return true;
-        } else {
-            return false;
         }
     }
 }
@@ -1167,6 +1309,7 @@ function darkMode(type) {
         $('#toc *').attr('style','color: #d6d6d6 !important');
         $('.sidebar h2').attr('style','color:#d6d6d6 !important;background:black !important');
         $('.floating-toc').addClass('dark-mode-floating-toc');
+        $('.floating-toc-new').addClass('dark-mode-floating-toc');
         $('#blog-menu ul li a').attr('style','color: #d6d6d6 !important');
         $('.container_postbtn .btn_post .txt_like').attr('style','color: #d6d6d6 !important');
         $('.mobile-menu aside').attr('style','color:#d6d6d6 !important;background:black !important');
@@ -1189,6 +1332,7 @@ function darkMode(type) {
         $('#toc *').removeAttr('style');
         $('.sidebar h2').removeAttr('style');
         $('.floating-toc').removeClass('dark-mode-floating-toc');
+        $('.floating-toc-new').removeClass('dark-mode-floating-toc');
         $('#blog-menu ul li a').removeAttr('style');
         $('.container_postbtn .btn_post .txt_like').removeAttr('style');
         $('aside').removeAttr('style');
@@ -1223,6 +1367,7 @@ var $header = $('header');
 var headerPosition = $header.css('position');
 var $topButton = $('.top-button');
 var $contentTitle = $('article .inner .content-title');
+var flagForMoveToTheTitle = true;
 function fixedHeader() {
     if($('#fixed-header').val()){
         if(headerPosition != 'sticky') {
@@ -1234,33 +1379,57 @@ function fixedHeader() {
         }
 
         if(window.scrollY > 0) {
-            $header.css('height', ($headerTitle.height()+15)+'px');
+            $('#blog-menu').css('display','none');
+            $header.css('height', ($headerTitle.height()+20)+'px');
             $header.css('background', '#fff');
             $header.css('opacity', '0.9');
             $header.css('transition', "0.3s linear");
-            $header.css('border-bottom', '1px dashed #ccc');
             if($contentTitle.length > 0 && window.scrollY > $contentTitle.offset().top + $contentTitle.outerHeight()) {
                 $headerTitle.html($('.content-title .inner .title-box h1').text());
+                $headerTitle.attr('href', '#');
             } else {
                 $headerTitle.html(headerTitleText);
+                $headerTitle.attr('href', '/');
             }
+            $('.progress-bar-horizontal').css('top', ($headerTitle.height()+20)+'px');
         } else {
+            $('#blog-menu').css('display','');
             $header.css('height', '');
             $header.css('background', '');
             $headerTitle.html(headerTitleText);
             $header.css('border-bottom', '');
         }
 
-        var floatingToc = $('.floating-toc');
-        if(floatingToc.height() > 0) {
+        if($('.floating-toc').height() > 0) {
             $('.floating-toc').css('top', ($headerTitle.height()+20)+'px');
         }
+        if($('.floating-toc-new').height() > 0) {
+            $('.floating-toc-new').css('top', ($('header').height()+15)+'px');
+        }
+        if(location.href.indexOf('#') > -1 && flagForMoveToTheTitle) {
+            flagForMoveToTheTitle = false;
+            moveToTheTitle();
+        }
+    }
+}
+
+function selectMakeFloatingToc() {
+    if($('#floating-toc-type').val() == 'new') {
+        makeFloatingToc()
+    }
+}
+
+function selectAppendToc() {
+    if($('#floating-toc-type').val() == 'new') {
+        appendTocNew();
+    } else {
+        appendToc();
     }
 }
 
 $(document).ready(function() {
     makeToc();
-    makeFloatingToc();
+    selectMakeFloatingToc();
     commentControl();
     commentAutoLink();
     common();
@@ -1278,8 +1447,7 @@ $(document).ready(function() {
         progressBarHorizontal();
         progressBarEtcVertical();
         progressBarEtcHorizontal();
-        // appendToc();
-        appendTocNew();
+        selectAppendToc();        
         fixedRecommendAds();
         stopScrollTimer();
         fixedHeader();

@@ -2,7 +2,7 @@
 <skin>
 	<information>
 		<name>Mynem Skin</name>
-		<version>2.1</version>
+		<version>2.2</version>
 		<description>
 			<![CDATA[ 심플하면서 막강한 기능을 가진 미넴 스킨 입니다.
 			많은 사용자가 원하는 방향으로 발전해 나갈 예정입니다. ]]>
@@ -64,24 +64,16 @@
 	<variables>
 		<variablegroup name="주요 설정">
 			<variable>
-				<name>content-max-width-yn</name>
-				<label><![CDATA[ 화면 너비 값 사용 ]]></label>
+				<name>content-middle-yn</name>
+				<label><![CDATA[ 컨텐츠 중앙 위치 ]]></label>
 				<description><![CDATA[]]></description>
 				<type>BOOL</type>
 				<option />
 				<default>true</default>
 			</variable>
 			<variable>
-				<name>content-max-width</name>
-				<label><![CDATA[ 화면 너비 (기본: 1080) ]]></label>
-				<description><![CDATA[]]></description>
-				<type>STRING</type>
-				<option />
-				<default>1080</default>
-			</variable>
-			<variable>
 				<name>article-max-width</name>
-				<label><![CDATA[ 본문 최대 너비 ]]></label>
+				<label><![CDATA[ 컨텐츠 최대 너비 ]]></label>
 				<description><![CDATA[]]></description>
 				<type>STRING</type>
 				<option />
@@ -105,11 +97,11 @@
 			</variable>
 			<variable>
 				<name>fixed-header</name>
-				<label><![CDATA[ 헤더 영역 고정 ]]></label>
+				<label><![CDATA[ 헤더 고정 ]]></label>
 				<description><![CDATA[]]></description>
 				<type>BOOL</type>
 				<option/>
-				<default>false</default>
+				<default>true</default>
 			</variable>
 		</variablegroup>
 
@@ -166,14 +158,6 @@
 
 		<variablegroup name="커버 공통 설정">
 			<variable>
-				<name>post-header-style</name>
-				<label><![CDATA[ 타이틀 글머리 ]]></label>
-				<description><![CDATA[]]></description>
-				<type>STRING</type>
-				<option />
-				<default><![CDATA[ \f292 ]]></default>
-			</variable>
-			<variable>
 				<name>show-cover-comments</name>
 				<label><![CDATA[ 커버 댓글 개수 보이기 ]]></label>
 				<description><![CDATA[]]></description>
@@ -191,14 +175,6 @@
 				<type>BOOL</type>
 				<option/>
 				<default>true</default>
-			</variable>
-			<variable>
-				<name>list-excerpt-yn</name>
-				<label><![CDATA[ 내용 보이기 ]]></label>
-				<description><![CDATA[]]></description>
-				<type>BOOL</type>
-				<option/>
-				<default>false</default>
 			</variable>
 			<variable>
 				<name>list-meta-yn</name>
@@ -264,7 +240,7 @@
 		<variablegroup name="사이드바 설정">
 			<variable>
 				<name>adjust-font-size</name>
-				<label><![CDATA[ 글자 크기 조절 ]]></label>
+				<label><![CDATA[ 글자 크기 조절 사용 ]]></label>
 				<description><![CDATA[]]></description>
 				<type>BOOL</type>
 				<option/>
@@ -272,7 +248,7 @@
 			</variable>
 			<variable>
 				<name>lang-trans</name>
-				<label><![CDATA[ 다국어 번역 ]]></label>
+				<label><![CDATA[ 다국어 번역 사용 ]]></label>
 				<description><![CDATA[]]></description>
 				<type>BOOL</type>
 				<option/>
@@ -280,7 +256,7 @@
 			</variable>
 			<variable>
 				<name>dark-mode</name>
-				<label><![CDATA[ 다크 모드 ]]></label>
+				<label><![CDATA[ 다크 모드 사용 ]]></label>
 				<description><![CDATA[]]></description>
 				<type>BOOL</type>
 				<option/>
@@ -468,6 +444,22 @@
 				<type>BOOL</type>
 				<option />
 				<default>true</default>
+			</variable>
+			<variable>
+				<name>fold-toc-yn</name>
+				<label><![CDATA[ 기본 목차 접기 ]]></label>
+				<description><![CDATA[]]></description>
+				<type>BOOL</type>
+				<option />
+				<default>true</default>
+			</variable>
+			<variable>
+				<name>floating-toc-type</name>
+				<label><![CDATA[ 플로팅 목차 스타일 ]]></label>
+				<description><![CDATA[]]></description>
+				<type>SELECT</type>
+				<option><![CDATA[[{"name":"floating-toc-old","label":"구 버전","value":"old"}, {"name":"floating-toc-new","label":"신 버전","value":"new"}]]]></option>
+				<default>new</default>
 			</variable>
 			<variable>
 				<name>floating-toc-position</name>
@@ -701,7 +693,7 @@
 				<description><![CDATA[]]></description>
 				<type>STRING</type>
 				<option />
-				<default><![CDATA[]]></default>
+				<default><![CDATA[추천 글]]></default>
 			</variable>
 		</variablegroup>
 
