@@ -120,26 +120,26 @@
 				}
 			</s_not_var_paper-style>
 			<s_if_var_blog-title-color>
-				header p a {color:[##_var_blog-title-color_##] !important}
+				header p a {color:[##_var_blog-title-color_##]}
 			</s_if_var_blog-title-color>
 
 			<s_if_var_blog-menu-color>
-				#blog-menu ul li a {color:[##_var_blog-menu-color_##] !important}
+				#blog-menu ul li a {color:[##_var_blog-menu-color_##]}
 			</s_if_var_blog-menu-color>
 
 			<s_if_var_background-color>
 				header:after, section:after, footer:after, .content-title:after, .top-button .menu button:before,
 				.book-toc:after, .floating-toc:after, .top-button .menu button:before, .move-top-btn:before,
 				.mobile-menu aside:after, .toast-wrap:after, .floating-toc-new:after,
-				#toc-body::-webkit-scrollbar-track, ::-webkit-scrollbar-track {background-color:[##_var_background-color_##] !important}
+				#toc-body::-webkit-scrollbar-track, ::-webkit-scrollbar-track {background-color:[##_var_background-color_##]}
 			</s_if_var_background-color>
 			
 			<s_if_var_sidebar-color>
-				.sidebar h2 {background-color:[##_var_sidebar-color_##] !important}
+				.sidebar h2 {background-color:[##_var_sidebar-color_##]}
 			</s_if_var_sidebar-color>
 
 			<s_if_var_sidebar-text-color>
-				.sidebar h2 {color:[##_var_sidebar-text-color_##] !important}
+				.sidebar h2 {color:[##_var_sidebar-text-color_##]}
 			</s_if_var_sidebar-text-color>
 			
 			<s_if_var_etc-color>
@@ -151,10 +151,10 @@
 				.content-article h3 button, #tt-body-search .post-header h1 span:before,
 				.content-article h4 button, .tags a:before, #tt-body-tag .post-header h1 span:before, .cover-special ul li .category,
 				.more-reply, #toc-title p, .search button:before, .content-article a, .toast, .change-font-btn, .post-item .meta .category,
-				.book-toc p, #toc > li:before, #toc > li > ul > li:before, #toc > li > ul > li > ul > li:before, .cover-list ul li .meta .category,
+				.content-article .book-toc p, .content-article .book-toc p span#toggle, #toc > li:before, #toc > li > ul > li:before, #toc > li > ul > li > ul > li:before, .cover-list ul li .meta .category,
 				.comments h2 .count, article .another_category th:before, .post-header h1 em, .bgm-btn, .dark-mode-btn-dark, .dark-mode-btn-default,
-				.move-top-btn:after,.top-button .menu button:after, .post-header h1:before, article h2:before,
-				#toc > li a:after, #toc > li > ul > li a:after, #toc > li > ul > li > ul > li a:after {color:[##_var_etc-color_##] !important}
+				.move-top-btn:after,.top-button .menu button:after, .post-header h1:before, article h2:before, .content-article .copy-title-btn,
+				#toc > li a:after, #toc > li > ul > li a:after, #toc > li > ul > li > ul > li a:after {color:[##_var_etc-color_##]}
 				#toc-title p #toggle, .floating-icon:after,
 				.sidebar .category .category_list .link_item:before, #current-bgm:before, h2 .bgm-btn,
 				.sidebar .category .sub_category_list .link_sub_item:before {color:[##_var_etc-color_##] !important;opacity:0.7;}
@@ -164,7 +164,7 @@
 				.comment-form .submit button,
 				.progress-bar-vertical, .progress-bar-horizontal,
 				.progress-bar-etc-vertical, .progress-bar-etc-horizontal,
-				.sidebar .close:before, .sidebar .close:after {background-color:[##_var_etc-color_##] !important}
+				.sidebar .close:before, .sidebar .close:after {background-color:[##_var_etc-color_##]}
 				.move-top-btn, .top-button .menu button, .sidebar .close, .top-button .profile button {border: 1px solid [##_var_etc-color_##] !important}
 				::-webkit-scrollbar-thumb, #toc-body::-webkit-scrollbar-thumb {background-color:[##_var_etc-color_##]55 !important}
 				.search input {border-bottom: 1px solid [##_var_etc-color_##]55;}
@@ -198,7 +198,7 @@
 					}
 				</s_if_var_title-solid-style>
 				<s_if_var_toc-solid-style>
-					.floating-toc, .book-toc {
+					.floating-toc, .floating-toc-new, .book-toc {
 						border: 1px solid [##_var_etc-color_##]55;
 					}
 				</s_if_var_toc-solid-style>
@@ -217,6 +217,11 @@
 						border: 1px solid [##_var_etc-color_##]55;
 					}
 				</s_if_var_ads-solid-style>
+				<s_if_var_image-solid-style>
+					#tt-body-page figure img {
+						border: 1px solid [##_var_etc-color_##]55;
+					}
+				</s_if_var_image-solid-style>
 			</s_if_var_etc-color>
 			
 			<s_if_var_thum-img>
@@ -288,7 +293,14 @@
 					opacity: 0.1;
 					z-index: -1;
 				}
-				@media (max-width: calc([##_var_article-max-width_##]px - 1px)) {
+				@media (max-width: calc([##_var_article-max-width_##]px + 270px)) {
+						.floating-toc-new {
+							float: left;
+							left: 0;
+							margin-left: 10px;
+						}
+				}
+				@media (max-width: calc([##_var_article-max-width_##]px + 32px)) {
 					section .content-wrapper {
 						width: initial !important;
 					}
@@ -340,6 +352,7 @@
 					article {
 						float: none !important;
 						width: auto;
+						padding-left: 0px;
 					}
 					.mobile-menu aside {
 						right: 0;
@@ -870,31 +883,6 @@
 					}
 				}
 			</s_if_var_hide-sidebar>
-			<s_if_var_default-dark-mode>
-				section,header,footer,textarea,
-				.floating-toc,.floating-toc-new,.top-button .menu button,.sidebar .close,.move-top-btn,
-				#tistoryEtcLayer, .sidebar .profile ul, .top-button .profile ul li a,
-				.comment-list ul li .author-meta .control .link a {
-					background: black !important;
-				}
-				a,h1,h2,h3,h4,p,span:not(#bgm-status,.bubble_image),input,textarea,
-				#toc *, #blog-menu ul li a, .container_postbtn .btn_post .txt_like,
-				.container_postbtn .btn_post .txt_like, .another_category h4,
-				.container_postbtn .btn_menu_toolbar .txt_state,
-				#tistoryEtcLayer .bundle_post .btn_mark, header p a {
-					color: #d6d6d6 !important;
-				}
-				.sidebar h2, .mobile-menu aside {
-					color:#d6d6d6 !important;
-					background:black !important;
-				}
-				.btn_menu_toolbar, #wrapper div div.profile button {
-					opacity: 0.5;
-				}
-				ins,img {
-					opacity: 0.9 !important;
-				}
-			</s_if_var_default-dark-mode>
 			<s_not_var_list-meta-yn>
 				.cover-list ul li .excerpt {
 					-webkit-line-clamp: 3;
@@ -910,9 +898,9 @@
 		<script>
 			window.$ = window.jQuery = window.tjQuery;
 		</script>
-		<script src="./images/preload.js"></script>
 	</head>
 	<body id="[##_body_id_##]">
+		<script src="./images/preload.js"></script>
 		<s_t3>
 			<div id="wrapper">
 				<div class="top-button">
@@ -950,7 +938,7 @@
 						<div class="progress-bar-etc-horizontal" <s_not_var_progress-bottom>style="display:none;"</s_not_var_progress-bottom>></div>
 						<div class="progress-bar-etc-vertical" <s_not_var_progress-right>style="display:none;"</s_not_var_progress-right>></div>
 					</div>
-					<div class="floating-toc-new" style="height:1px;"></div>
+					<div class="floating-toc-new"></div>
 					<div class="content-wrapper">
 						<aside class="sidebar">
 							<!-- 검색바 -->
@@ -994,9 +982,6 @@
 												<img class="flag" src="./images/es.png" height="24" width="24" alt="스페인어" loading="lazy" />
 											</a>
 										</s_if_var_es-yn>
-										<a href='https://sangminem.tistory.com/311' class="gflag nturl">
-											<img src="https://tistory1.daumcdn.net/tistory/4029016/skin/images/tetris_color_24.png" height="24" width="24" alt="테트리스" loading="lazy" />
-										</a>
 										<style>
 											<!--
 											a.gflag {text-decoration:none !important;margin:auto;}
@@ -1014,15 +999,13 @@
 							</s_if_var_lang-trans>
 							<!-- 다크 모드 -->
 							<s_if_var_dark-mode>
-								<s_not_var_default-dark-mode>
 								<div class="module module_plugin">
 									<div class="dark-mode-box">
 										<h2>다크 모드</h2>
-										<button class="dark-mode-btn-dark" onclick="darkMode('+')" >&#xf186;</button> <!-- moon -->
-										<button class="dark-mode-btn-default" onclick="darkMode('-')">&#xf185;</button> <!-- sun -->
+										<button class="dark-mode-btn-dark" onclick="setDarkMode('+')" >&#xf186;</button> <!-- moon -->
+										<button class="dark-mode-btn-default" onclick="setDarkMode('-')">&#xf185;</button> <!-- sun -->
 									</div>
 								</div>
-								</s_not_var_default-dark-mode>
 							</s_if_var_dark-mode>
 							<!-- 글자크기 -->
 							<s_if_var_adjust-font-size>
@@ -1663,16 +1646,6 @@
 			<img id="blank-img" src="./images/blank.png" style="display:none;">
 
 			<!-- 설정 값 -->
-			<input type='hidden' id='toast-after-like-yn' value="[##_var_toast-after-like-yn_##]">
-			<input type='hidden' id='toast-after-like' value="[##_var_toast-after-like-text_##]">
-			<input type='hidden' id='make-bell-yn' value="[##_var_make-bell-yn_##]">
-			<input type='hidden' id='make-bell' value="[##_var_make-bell-text_##]">
-			<input type='hidden' id='auto-toc-yn' value="[##_var_auto-toc-yn_##]">
-			<input type='hidden' id='fold-comment-yn' value="[##_var_fold-comment-yn_##]">
-			<input type='hidden' id='fold-comment-num' value="[##_var_fold-comment-num_##]">
-			<input type='hidden' id='floating-toc-position' value="[##_var_floating-toc-position_##]">
-			<input type='hidden' id='bgm-yn' value="[##_var_bgm-yn_##]">
-			<input type='hidden' id='bgm-autoplay-yn' value="[##_var_bgm-autoplay-yn_##]">
 			<input type='hidden' id='bgm-src-1' value="[##_var_bgm-src-1_##]">
 			<input type='hidden' id='bgm-title-1' value="[##_var_bgm-title-1_##]">
 			<input type='hidden' id='bgm-src-2' value="[##_var_bgm-src-2_##]">
@@ -1693,11 +1666,24 @@
 			<input type='hidden' id='bgm-title-9' value="[##_var_bgm-title-9_##]">
 			<input type='hidden' id='bgm-src-10' value="[##_var_bgm-src-10_##]">
 			<input type='hidden' id='bgm-title-10' value="[##_var_bgm-title-10_##]">
+			<input type='hidden' id='toast-after-like-yn' value="[##_var_toast-after-like-yn_##]">
+			<input type='hidden' id='toast-after-like' value="[##_var_toast-after-like-text_##]">
+			<input type='hidden' id='make-bell-yn' value="[##_var_make-bell-yn_##]">
+			<input type='hidden' id='make-bell' value="[##_var_make-bell-text_##]">
+			<input type='hidden' id='auto-toc-yn' value="[##_var_auto-toc-yn_##]">
+			<input type='hidden' id='fold-comment-yn' value="[##_var_fold-comment-yn_##]">
+			<input type='hidden' id='fold-comment-num' value="[##_var_fold-comment-num_##]">
+			<input type='hidden' id='floating-toc-position' value="[##_var_floating-toc-position_##]">
+			<input type='hidden' id='bgm-yn' value="[##_var_bgm-yn_##]">
+			<input type='hidden' id='bgm-autoplay-yn' value="[##_var_bgm-autoplay-yn_##]">
 			<input type='hidden' id='hide-sidebar' value="[##_var_hide-sidebar_##]">
 			<input type='hidden' id='fixed-header' value="[##_var_fixed-header_##]">
 			<input type='hidden' id='floating-toc-type' value="[##_var_floating-toc-type_##]">
 			<input type='hidden' id='content-middle-yn' value="[##_var_content-middle-yn_##]">
 			<input type='hidden' id='fold-toc-yn' value="[##_var_fold-toc-yn_##]">
+			<input type='hidden' id='dark-mode' value="[##_var_dark-mode_##]">
+			<input type='hidden' id='default-dark-mode' value="[##_var_default-dark-mode_##]">
+			<input type='hidden' id='lazy-loading' value="[##_var_lazy-loading_##]">
 		</s_t3>
 		<script src="./images/common.js"></script>
 		<script>

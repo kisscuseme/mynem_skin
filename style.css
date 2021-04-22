@@ -639,8 +639,7 @@ article h2,
 .sidebar .profile {
 	display: none;
 }
-.sidebar div,
-.sidebar div ul {
+.sidebar div {
 	min-height: 30px;
 }
 .sidebar h2 {
@@ -656,8 +655,8 @@ article h2,
 .sidebar .category .link_tit {
 	display: none;
 }
-.sidebar .category ul li ul {
-	padding: 10px 0 0 0;
+.sidebar .category .category_list {
+	padding: 10px 0 10px 0;
 }
 .sidebar .category .category_list .link_item {
 	font-size: 0.875em;
@@ -668,8 +667,14 @@ article h2,
 .sidebar .category ul li ul li {
 	padding: 0 0 10px 10px;
 }
+.sidebar .category ul li ul li:last-child {
+	padding-bottom: 0;
+}
 .sidebar .category ul li ul li ul li:last-child {
 	padding-bottom: 0;
+}
+.sidebar .category .sub_category_list {
+	padding: 10px 0 0 0;
 }
 .sidebar .category .sub_category_list .link_sub_item {
 	font-size: 0.8125em;
@@ -1251,6 +1256,12 @@ article h2,
 	padding: 3px 0 10px 10px;
 	margin-bottom: 15px;
 }
+.content-article .copy-title-btn {
+	width:25px;
+	height:25px;
+	margin-left:10px;
+	font-size:0.8em;
+}
 
 /* override */
 h1, h1[data-ke-size] { font-size:1.5em !important; }
@@ -1312,7 +1323,7 @@ article .another_category h4 {
 	margin: 0 0 5px !important;
 	padding: 0 !important;
 	font-size: 1rem !important;
-	color: #000 !important;
+	color: #000;
 	font-weight: bold;
 	border: 0 !important;
 	visibility: hidden;
@@ -1913,12 +1924,11 @@ article .tags a {
 .book-toc p {
 	font-weight: bold;
 	font-size: 1.2em !important;
-	color: #396120;
 	cursor: pointer;
 }
 #toc * {
 	font-size: 20px;
-	color: #000 !important;
+	color: #000;
 }
 #toc {
 	margin-bottom: 0;
@@ -2014,7 +2024,7 @@ article .tags a {
 .floating-toc-new #toc-body {
 	margin-top: 10px;
 	overflow: auto;
-	max-height: 500px;
+	max-height: 70vh;
 }
 .floating-toc #toc-body #toc *,
 .floating-toc-new #toc-body #toc * {
@@ -2194,6 +2204,65 @@ article .tags a {
 	margin: auto;
 }
 
+body.dark-mode section,body.dark-mode header,body.dark-mode footer,body.dark-mode textarea,
+body.dark-mode .floating-toc,body.dark-mode .floating-toc-new,
+body.dark-mode .top-button .menu button,body.dark-mode .sidebar .close,
+body.dark-mode .move-top-btn, body.dark-mode #tistoryEtcLayer,
+body.dark-mode .sidebar .profile ul, body.dark-mode .top-button .profile ul li a,
+body.dark-mode .comment-list ul li .author-meta .control .link a {
+	background: black;
+}
+body.dark-mode a,body.dark-mode h1,body.dark-mode h2,body.dark-mode h3,body.dark-mode h4,body.dark-mode p,
+body.dark-mode span:not(#bgm-status,.bubble_image, .hljs-selector-id, .hljs-selector-class, .hljs-attribute,
+.hljs-number, .hljs-meta, .hljs-string, .hljs-keyword, .hljs-name, .hljs-tag, .hljs-comment, .hljs-attr, .hljs-function,
+.hljs-literal, .hljs-selector-pseudo, .hljs-built_in, .hljs-selector-attr, .hljs-selector-tag, .hljs-title, .hljs-params),
+body.dark-mode input,body.dark-mode textarea,
+body.dark-mode #toc *, body.dark-mode #blog-menu ul li a, body.dark-mode .container_postbtn .btn_post .txt_like,
+body.dark-mode .container_postbtn .btn_post .txt_like,
+body.dark-mode .container_postbtn .btn_menu_toolbar .txt_state,
+body.dark-mode #tistoryEtcLayer .bundle_post .btn_mark, body.dark-mode header p a,
+body.dark-mode figure[data-ke-type='opengraph'] div.og-text p.og-title,
+body.dark-mode#tt-body-page figure[data-ke-type='opengraph'] div.og-text p.og-title,
+body.dark-mode .comment-list ul li .author-meta .nickname a,
+body.dark-mode .comment-list ul li .author-meta a {
+	color: #d6d6d6;
+}
+body.dark-mode .sidebar h2, body.dark-mode.mobile-menu aside {
+	color:#d6d6d6;
+	background:black;
+}
+body.dark-mode .btn_menu_toolbar, body.dark-mode #wrapper div div.profile button {
+	opacity: 0.5;
+}
+body.dark-mode ins,body.dark-mode img {
+	opacity: 0.9 !important;
+}
+body.dark-mode .another_category.another_category_color_gray h4,
+body.dark-mode .container_postbtn .btn_post .txt_like,
+body.dark-mode .comment-list ul li .author-meta .control .link a {
+	color: #d6d6d6 !important;
+}
+
+body.dark-mode .floating-toc-new, body.dark-mode img:not(.flag), body.dark-mode section .content-wrapper,
+body.dark-mode .post-item a, body.dark-mode .post-item .thum, body.dark-mode .cover-list ul li a,
+body.dark-mode .cover-list ul li figure, body.dark-mode .cover-special ul li,
+body.dark-mode .sidebar .category,
+body.dark-mode .sidebar .notice, 
+body.dark-mode .sidebar .recent, 
+body.dark-mode .sidebar .popular, 
+body.dark-mode .sidebar .recent-comment,
+body.dark-mode .sidebar .tags,
+body.dark-mode .sidebar .count,
+body.dark-mode .sidebar .module_plugin,
+body.dark-mode .sidebar .revenue_unit_wrap,
+body.dark-mode .content-title, body.dark-mode .content-article pre, body.dark-mode figure.fileblock a,
+body.dark-mode #tt-body-page figure.fileblock a, body.dark-mode figure[data-ke-type='opengraph'] a,
+body.dark-mode #tt-body-page figure[data-ke-type='opengraph'] a, body.dark-mode .related-articles-wrap,
+body.dark-mode .main-ads, body.dark-mode #ad-top-left, body.dark-mode #ad-top-right,
+body.dark-mode .book-toc, body.dark-mode .floating-toc, body.dark-mode .game-container {
+	box-shadow: 0 0 16px -4px #222 !important;
+}
+
 /* mobile menu */
 #dimmed {
 	position: fixed;
@@ -2343,10 +2412,6 @@ article .tags a {
 	::-webkit-scrollbar-track {
 		border-radius: 5px;
 		box-shadow: inset 0px 0px 3px white;
-	}
-	#toc-body::-webkit-scrollbar {
-		width: 3px;
-		height: 3px;
 	}
 	.top-button {
 		top: 10px;
