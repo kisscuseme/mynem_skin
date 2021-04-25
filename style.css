@@ -53,6 +53,7 @@ ul li {
 div, dl, dt, dd, ul, ol, li, h1, h2, h3, h4, h5, h6, pre, code, form, fieldset, legend, input, textarea, p, blockquote, th, td, figure, button {
 	margin: 0;
 	padding: 0;
+	text-underline-position: under;
 }
 html, body {
 	width: 100%;
@@ -163,7 +164,7 @@ header p a {
 /* footer */
 footer {
 	position: relative;
-	z-index: 100;
+	z-index: 109;
 }
 footer:after {
 	content:"";
@@ -335,7 +336,7 @@ article h2,
 	-webkit-box-orient: vertical;
 	font-size: 0.7em;
 	color: #888;
-	line-height: 1.5;
+	line-height: 1.6;
 }
 .post-item .meta span:before {
 	content: "";
@@ -634,12 +635,16 @@ article h2,
 .sidebar {
 	width: 300px;
 	box-sizing: border-box;
+	overflow:auto;
+	position: sticky;
+	top: 0px;
+	padding-top: 10px;
 }
 .sidebar .close,
 .sidebar .profile {
 	display: none;
 }
-.sidebar div {
+.sidebar div:not(#aside-top-blank) {
 	min-height: 30px;
 }
 .sidebar h2 {
@@ -778,6 +783,12 @@ article h2,
 .sidebar #recommend-ads > ins {
 	width: 280px !important;
 	height: 880px !important;
+}
+.sidebar::-webkit-scrollbar {
+	display: none;
+}
+.sidebar .revenue_unit_wrap {
+	overflow-x: hidden;
 }
 
 /* top button */
@@ -1014,6 +1025,7 @@ article h2,
 	height: 2px;
 	margin: 0 8px 0 4px;
 	background-color: rgba(0,0,0,0.6);
+	vertical-align: middle;
 }
 .content-title .meta span:first-child:before {
 	content: none;
@@ -1214,9 +1226,10 @@ article h2,
 	font-size: 1.625em;
 	line-height: 2.125rem;
 	color: #555;
+	border-left: none !important;
 }
 .content-article .protected_form p {
-	margin-bottom: 34px;
+	margin: 34px 0 34px;
 	font-weight: 300;
 	font-size: 1em;
 	line-height: 1.75;
@@ -1234,6 +1247,7 @@ article h2,
 }
 .content-article .protected_form .btn {
 	margin-left: 5px;
+	vertical-align: -webkit-baseline-middle;
 }
 .content-article h2 {
 	text-align: left;
@@ -1323,7 +1337,7 @@ article .another_category h4 {
 	margin: 0 0 5px !important;
 	padding: 0 !important;
 	font-size: 1rem !important;
-	color: #000;
+	color: #000 !important;
 	font-weight: bold;
 	border: 0 !important;
 	visibility: hidden;
@@ -1351,12 +1365,8 @@ article .another_category th {
 	white-space: nowrap;
 }
 article .another_category th:before {
-	color: #517135 !important;
 	content: "\f0da";
 	padding: 0 5px 0 15px;
-}
-article .another_category th a {
-	color: #517135 !important;
 }
 article .another_category th a:hover {
 	text-decoration: underline;
@@ -1721,7 +1731,7 @@ article .tags a {
 .progress-bar-ani {
 	animation: blinker-progress-bar 3s linear infinite;
 	position: relative;
-	z-index: 1000;
+	z-index: 129;
 }
 @keyframes blinker-progress-bar {
 	0% {
@@ -2009,6 +2019,25 @@ article .tags a {
 	opacity: 0.1;
 	z-index: -1;
 }
+.floating-toc-new {
+	position: fixed;
+	top: 10px;
+	padding: 10px;
+	box-shadow: 0 0 16px -4px #ddd;
+	overflow: hidden;
+	opacity: 0.0;
+	z-index: 129;
+}
+.floating-toc-new:after {
+	content:"";
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	opacity: 0.1;
+	z-index: -1;
+}
 .floating-toc p,
 .floating-toc-new p {
 	font-weight: bold;
@@ -2212,10 +2241,14 @@ body.dark-mode .sidebar .profile ul, body.dark-mode .top-button .profile ul li a
 body.dark-mode .comment-list ul li .author-meta .control .link a {
 	background: black;
 }
+body.dark-mode .content-title .meta a:before, body.dark-mode .content-title .meta span:not(.author):before {
+	background: rgb(255,255,255,0.6);
+}
 body.dark-mode a,body.dark-mode h1,body.dark-mode h2,body.dark-mode h3,body.dark-mode h4,body.dark-mode p,
-body.dark-mode span:not(#bgm-status,.bubble_image, .hljs-selector-id, .hljs-selector-class, .hljs-attribute,
+body.dark-mode span:not(#bgm-status, .bubble_image, .hljs-selector-id, .hljs-selector-class, .hljs-attribute,
 .hljs-number, .hljs-meta, .hljs-string, .hljs-keyword, .hljs-name, .hljs-tag, .hljs-comment, .hljs-attr, .hljs-function,
-.hljs-literal, .hljs-selector-pseudo, .hljs-built_in, .hljs-selector-attr, .hljs-selector-tag, .hljs-title, .hljs-params),
+.hljs-literal, .hljs-selector-pseudo, .hljs-built_in, .hljs-selector-attr, .hljs-selector-tag, .hljs-title, .hljs-params,
+.category),
 body.dark-mode input,body.dark-mode textarea,
 body.dark-mode #toc *, body.dark-mode #blog-menu ul li a, body.dark-mode .container_postbtn .btn_post .txt_like,
 body.dark-mode .container_postbtn .btn_post .txt_like,
@@ -2239,7 +2272,8 @@ body.dark-mode ins,body.dark-mode img {
 }
 body.dark-mode .another_category.another_category_color_gray h4,
 body.dark-mode .container_postbtn .btn_post .txt_like,
-body.dark-mode .comment-list ul li .author-meta .control .link a {
+body.dark-mode .comment-list ul li .author-meta .control .link a,
+body.dark-mode article .another_category h4 {
 	color: #d6d6d6 !important;
 }
 
@@ -2261,6 +2295,9 @@ body.dark-mode #tt-body-page figure[data-ke-type='opengraph'] a, body.dark-mode 
 body.dark-mode .main-ads, body.dark-mode #ad-top-left, body.dark-mode #ad-top-right,
 body.dark-mode .book-toc, body.dark-mode .floating-toc, body.dark-mode .game-container {
 	box-shadow: 0 0 16px -4px #222 !important;
+}
+body.dark-mode footer .inner {
+	text-shadow: 3px 3px 3px #333;
 }
 
 /* mobile menu */
@@ -2341,6 +2378,7 @@ body.dark-mode .book-toc, body.dark-mode .floating-toc, body.dark-mode .game-con
 	}
 	.post-item .title {
 		font-size: 0.875em;
+		line-height: 1.6;
 	}
 	.post-item .excerpt {
 		font-size: 0.7em;
