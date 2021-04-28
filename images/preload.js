@@ -2,8 +2,6 @@ function darkMode() {
     if((localStorage.getItem('dark-mode') == null && window.matchMedia("(prefers-color-scheme: dark)").matches)
       || localStorage.getItem('dark-mode')== 'y') {
         $('body').addClass('dark-mode');
-    } else {
-        $('body').removeClass('dark-mode');
     }
 }
 

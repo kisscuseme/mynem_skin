@@ -101,7 +101,7 @@
 				<description><![CDATA[]]></description>
 				<type>BOOL</type>
 				<option/>
-				<default>true</default>
+				<default>false</default>
 			</variable>
 		</variablegroup>
 
@@ -112,7 +112,7 @@
 				<description><![CDATA[]]></description>
 				<type>COLOR</type>
 				<option />
-				<default>#000000</default>
+				<default>#6A4A00</default>
 			</variable>
 			<variable>
 				<name>blog-menu-color</name>
@@ -120,7 +120,7 @@
 				<description><![CDATA[]]></description>
 				<type>COLOR</type>
 				<option />
-				<default>#000000</default>
+				<default>#6A4A00</default>
 			</variable>
 			<variable>
 				<name>background-color</name>
@@ -128,7 +128,7 @@
 				<description><![CDATA[]]></description>
 				<type>COLOR</type>
 				<option />
-				<default>#BDD0EC</default>
+				<default>#FFFAED</default>
 			</variable>
 			<variable>
 				<name>sidebar-color</name>
@@ -136,7 +136,7 @@
 				<description><![CDATA[]]></description>
 				<type>COLOR</type>
 				<option />
-				<default>#F0F4FB</default>
+				<default>#FFFAED</default>
 			</variable>
 			<variable>
 				<name>sidebar-text-color</name>
@@ -144,7 +144,7 @@
 				<description><![CDATA[]]></description>
 				<type>COLOR</type>
 				<option />
-				<default>#000</default>
+				<default>#9F6F00</default>
 			</variable>
 			<variable>
 				<name>etc-color</name>
@@ -152,7 +152,7 @@
 				<description><![CDATA[]]></description>
 				<type>COLOR</type>
 				<option />
-				<default>#1565C4</default>
+				<default>#9F6F00</default>
 			</variable>
 		</variablegroup>
 
@@ -460,6 +460,14 @@
 				<type>SELECT</type>
 				<option><![CDATA[[{"name":"floating-toc-old","label":"구 버전","value":"old"}, {"name":"floating-toc-new","label":"신 버전","value":"new"}]]]></option>
 				<default>new</default>
+			</variable>
+			<variable>
+				<name>toc-unfold-yn</name>
+				<label><![CDATA[ 신 버전 목차 펼치기 ]]></label>
+				<description><![CDATA[]]></description>
+				<type>BOOL</type>
+				<option />
+				<default>true</default>
 			</variable>
 			<variable>
 				<name>floating-toc-position</name>

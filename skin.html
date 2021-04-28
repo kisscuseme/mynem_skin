@@ -132,6 +132,10 @@
 				.book-toc:after, .floating-toc:after, .top-button .menu button:before, .move-top-btn:before,
 				.mobile-menu aside:after, .toast-wrap:after, .floating-toc-new:after,
 				#toc-body::-webkit-scrollbar-track, ::-webkit-scrollbar-track {background-color:[##_var_background-color_##]}
+
+				.cover-list ul li a, .post-item a, .cover-special ul li {
+					background: [##_var_background-color_##]1A;
+				}
 			</s_if_var_background-color>
 			
 			<s_if_var_sidebar-color>
@@ -165,11 +169,14 @@
 				.progress-bar-vertical, .progress-bar-horizontal,
 				.progress-bar-etc-vertical, .progress-bar-etc-horizontal,
 				.sidebar .close:before, .sidebar .close:after {background-color:[##_var_etc-color_##]}
-				.move-top-btn, .top-button .menu button, .sidebar .close, .top-button .profile button {border: 1px solid [##_var_etc-color_##] !important}
+				.move-top-btn, .top-button .menu button, .sidebar .close, .top-button .profile button {border: 1px solid [##_var_etc-color_##]55 !important}
 				::-webkit-scrollbar-thumb, #toc-body::-webkit-scrollbar-thumb {background-color:[##_var_etc-color_##]55 !important}
 				.search input {border-bottom: 1px solid [##_var_etc-color_##]55;}
 				article .another_category.another_category_color_gray a {
 					color:[##_var_etc-color_##] !important;
+				}
+				.sidebar .category ul li ul li {
+					border-bottom: 1px dashed [##_var_etc-color_##]55;
 				}
 
 				/* solid style */
@@ -295,8 +302,8 @@
 						width: initial !important;
 					}
 					.cover-special ul li img {
-						width: calc((100vw - 40px) * 0.5) !important;
-						height: calc((100vw - 40px) * 0.5) !important;
+						width: calc((100vw - 48px) * 0.5) !important;
+						height: calc((100vw - 48px) * 0.5) !important;
 					}
 					.top-button {
 						position: fixed;
@@ -476,8 +483,8 @@
 						display: none !important;
 					}
 					.cover-special ul li img {
-						width: calc((100vw - 42px) * 0.5) !important;
-						height: calc((100vw - 42px) * 0.5) !important;
+						width: calc((100vw - 48px) * 0.5) !important;
+						height: calc((100vw - 48px) * 0.5) !important;
 					}
 					.top-button {
 						position: fixed;
@@ -1376,7 +1383,7 @@
 														<s_if_var_grid-thum-yn>
 															<span class="thum">
 																<s_cover_item_thumbnail>
-																	<img src="//i1.daumcdn.net/thumb/S300x230/?fname=[##_cover_item_thumbnail_##]" alt="" loading="lazy">
+																	<img src="//i1.daumcdn.net/thumb/S300x300/?fname=[##_cover_item_thumbnail_##]" alt="" loading="lazy">
 																</s_cover_item_thumbnail>
 															</span>
 														</s_if_var_grid-thum-yn>
@@ -1410,7 +1417,7 @@
 															<s_if_var_list-thum-yn>
 																<figure>
 																	<s_cover_item_thumbnail>
-																		<img src="//i1.daumcdn.net/thumb/S300x230/?fname=[##_cover_item_thumbnail_##]" alt="" loading="lazy">
+																		<img src="//i1.daumcdn.net/thumb/S300x300/?fname=[##_cover_item_thumbnail_##]" alt="" loading="lazy">
 																	</s_cover_item_thumbnail>
 																</figure>
 															</s_if_var_list-thum-yn>
@@ -1897,6 +1904,7 @@
 			<input type='hidden' id='progress-left' value="[##_var_progress-left_##]">
 			<input type='hidden' id='progress-right' value="[##_var_progress-right_##]">
 			<input type='hidden' id='progress-bottom' value="[##_var_progress-bottom_##]">
+			<input type='hidden' id='toc-unfold-yn' value="[##_var_toc-unfold-yn_##]">
 		</s_t3>
 		<script src="./images/common.js"></script>
 		<script>
