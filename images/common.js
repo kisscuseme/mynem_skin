@@ -5,7 +5,20 @@ function delay(ms) {
         },ms);
     });
 }
+
+var floatingTocNew = $('.floating-toc-new');
+var bookToc = $('.book-toc');
+var contentMiddleYn = $('#content-middle-yn').val();
+var animating = false;
+var mobileAnimating = false;
+var timer = 0;
+var clickFloatingFlag = true;
+var title = null;
+var floatingTocPostion = $('#floating-toc-position').val();
+var adsTocPosition = $('#ads-toc-position').val();
+var articleMaxWidth = Number($('#article-max-width').val());
 var clickContentFlag = true;
+var tocUnfoldYn = $('#toc-unfold-yn').val();
 function clickContentTitle() {
     if(clickContentFlag) {
         clickContentFlag = false;
@@ -31,7 +44,7 @@ function makeToc() {
         var titleLength = $('.tt_article_useless_p_margin h2,h3,h4').length - $('.another_category h4').length - $('h3.tit_list_type').length;
         var firstContent = $('.tt_article_useless_p_margin').children().eq(0);
         if(titleLength > 0 && firstContent.length > 0) {
-            firstContent.before('<div class="book-toc"><p>목차<span id="toggle" style="padding-left:10px;">&#xf103;</span></p><ul id="toc"></ul></div>');
+            firstContent.before('<div class="book-toc"><p>목차</p><ul id="toc"></ul></div>');
             $toc = $("#toc");
         }
     }
@@ -45,6 +58,7 @@ function makeToc() {
             $toc.find('li:last').remove();
         }
         makeClipboardLink();
+        bookToc = $('.book-toc');
     }
 
     $('.book-toc p').off('click touchend').on('click touchend', function(){
@@ -79,14 +93,6 @@ function checkContentPosition() {
     }
 }
 
-var floatingTocNew = $('.floating-toc-new');
-var bookToc = $('.book-toc');
-var contentMiddleYn = $('#content-middle-yn').val();
-var animating = false;
-var mobileAnimating = false;
-var timer = 0;
-var clickFloatingFlag = true;
-var title = null;
 function clickFloatingTitle() {
     if(clickFloatingFlag) {
         clickFloatingFlag = false;
@@ -96,7 +102,9 @@ function clickFloatingTitle() {
         if((contentMiddleYn && (window.innerWidth-$('.content-wrapper').outerWidth())/2 > 250)
           ||(!contentMiddleYn && window.innerWidth > 1413)) {
             if(title.hasClass('close')) {
-                fixedRecommendAds('unfold');
+                if(!contentMiddleYn || (contentMiddleYn && adsTocPosition)) {
+                    fixedRecommendAds('unfold');
+                }
             }
             $('#toc-body').slideToggle(300, 'linear', function() {
                 if(title.hasClass('close')) {
@@ -106,7 +114,9 @@ function clickFloatingTitle() {
                 } else {
                     title.addClass('close');
                     title.html("&#xf103;");
-                    fixedRecommendAds('toc');
+                    if(!contentMiddleYn || (contentMiddleYn && adsTocPosition)) {
+                        fixedRecommendAds('toc');
+                    }
                 }
                 clickFloatingFlag = true;
             });
@@ -118,7 +128,8 @@ function clickFloatingTitle() {
                 floatingTocNew.css('max-width','250px');
                 floatingTocNew.css('transform','scale(1.0)');
                 checkContentPosition();
-                if((window.innerWidth > 1079 && window.innerWidth <= 1413) && ($('#floating-toc-position').val() || !contentMiddleYn)) {
+                if(((window.innerWidth > 1079 && window.innerWidth < 1400) && (floatingTocPostion && !contentMiddleYn))
+                  || (window.innerWidth > articleMaxWidth+32 && (floatingTocPostion && contentMiddleYn))) {
                     floatingTocNew.css('right','0px');
                 } else {
                     floatingTocNew.css('left','0px');
@@ -132,7 +143,8 @@ function clickFloatingTitle() {
                     title.addClass('close');
                     floatingTocNew.css('width','fit-content');
                     floatingTocNew.css('transform','scale(0.8)');
-                    if((window.innerWidth > 1079 && window.innerWidth <= 1413) && ($('#floating-toc-position').val() || !contentMiddleYn)) {
+                    if(((window.innerWidth > 1079 && window.innerWidth < 1400) && (floatingTocPostion && !contentMiddleYn))
+                      || (window.innerWidth > articleMaxWidth+32 && (floatingTocPostion && contentMiddleYn))) {
                         floatingTocNew.css('right','-8px');
                     } else {
                         floatingTocNew.css('left','-8px');
@@ -182,7 +194,6 @@ function initFloatingTocNew() {
     title.addClass('close');
 }
 
-var tocUnfoldYn = $('#toc-unfold-yn').val();
 function appendTocNew() {
     if(bookToc.length > 0) {
         var headerHeight = $('#fixed-header').val()?$('header').height():0;
@@ -194,7 +205,7 @@ function appendTocNew() {
                     mobileAnimating = false;
                     initFloatingTocNew();
                     
-                    if(tocUnfoldYn) {
+                    if(tocUnfoldYn && contentMiddleYn) {
                         $('#toc-body').css('display','');
                         floatingTocNew.css('height','');
                         title.html("&#xf102;");
@@ -230,7 +241,8 @@ function appendTocNew() {
                     floatingTocNew.css('margin-left','0px');
                     floatingTocNew.css('opacity','0.9');
                     floatingTocNew.css('transform','scale(0.8)');
-                    if((window.innerWidth > 1079 && window.innerWidth <= 1413) && ($('#floating-toc-position').val() || !contentMiddleYn)) {
+                    if(((window.innerWidth > 1079 && window.innerWidth < 1400) && (floatingTocPostion && !contentMiddleYn))
+                      || (window.innerWidth > articleMaxWidth+32 && (floatingTocPostion && contentMiddleYn))) {
                         floatingTocNew.css('right','-8px');
                     } else {
                         floatingTocNew.css('left','-8px');
@@ -252,7 +264,7 @@ function appendTocNew() {
             floatingTocNew.css('top',($('header').height()+10)+'px');
         } else {
             if($('#hide-sidebar').val()) {
-                if($('#floating-toc-position').val()) {
+                if(floatingTocPostion) {
                     floatingTocNew.css('top','60px');
                 } else {
                     floatingTocNew.css('top','10px');
@@ -319,14 +331,14 @@ function appendToc() {
                                 if(floatingToc.innerHeight() > $(window).innerHeight() || floatingTocInnerWidth > windowWidth) {
                                     floatingToc.css('display', 'none');
                                 } else {
-                                    if($('#floating-toc-position').val()) {
+                                    if(floatingTocPostion) {
                                         floatingToc.css('left','');
                                         floatingToc.css('right','0');
                                     }
                                     floatingToc.css('opacity', '0.0');
                                     setTimeout(function() {
                                         if($('.content-wrapper').offset().left - 20 > floatingTocInnerWidth) {
-                                            if($('#floating-toc-position').val()) {
+                                            if(floatingTocPostion) {
                                                 floatingToc.css('left', '');
                                                 floatingToc.css('right', ($('.content-wrapper').offset().left - floatingTocInnerWidth - 20) + "px");
                                             } else {
@@ -1078,7 +1090,7 @@ function fixedRecommendAds(type) {
     var tocTargetWithRecommendAds = recommendAds.length > 0?recommendAds:(adsenseAd.length > 0?adsenseAd:adfitAd.length > 0?adfitAd:null);
     var tocTarget = tocSelector == 'all'?tocTargetWithRecommendAds:tocTargetWithoutRecommendAds;
     var removeStyleFlag = false;
-    var headerHeight = $('#fixed-header').val()?$('header').height()+5:($('#hide-sidebar').val()?($('#floating-toc-position').val()?5:60):5);
+    var headerHeight = $('#fixed-header').val()?$('header').height()+5:($('#hide-sidebar').val()?(floatingTocPostion?5:60):5);
     if (type == undefined && (isHideSidebar || (window.innerWidth > 1079 && window.scrollY > $('aside').height() + 150 && window.innerHeight > 650))) {
         if(recommendAds.length > 0) {
             if(window.innerHeight > 820) {
@@ -1097,7 +1109,7 @@ function fixedRecommendAds(type) {
         }
         if(tocTarget != null) {
             if(isHideSidebar) {
-                if($('#floating-toc-position').val()) {
+                if(floatingTocPostion) {
                     tocTarget.css('left', blankLeftSide/2 + 'px');
                 } else {
                     tocTarget.css('right', blankLeftSide/2 + 'px');
@@ -1107,16 +1119,16 @@ function fixedRecommendAds(type) {
     } else if(type == 'toc') {
         if(tocTarget != null) {
             var tocLeft = ((window.innerWidth - ($('.content-wrapper').width() + 20))/2 - tocTarget.parent().outerWidth())/2;
-            if((contentMiddleYn && tocLeft >= 0) || (!contentMiddleYn && window.innerWidth > 1413)) {
+            if((contentMiddleYn && tocLeft >= 0) || (!contentMiddleYn && window.innerWidth >= 1400)) {
                 if(window.scrollY > $('header').height()
-                  && ((bookToc.length > 0 && $('#toc-title>p>span#toggle').hasClass('close')) || bookToc.length == 0)) {
+                  && ((bookToc.length > 0 && $('#toc-title>p>span#toggle').hasClass('close') && (!contentMiddleYn || (contentMiddleYn && adsTocPosition)))
+                  || (contentMiddleYn && !adsTocPosition) || bookToc.length == 0)) {
                     var tocOffsetTop = bookToc.length > 0?50:0;
                     var tocOffsetLeft = 0;
                     if(contentMiddleYn) {
                         tocOffsetLeft = $('.floating-toc-new')[0].offsetLeft+tocLeft-10;
                     } else {
-                        var articleMaxWidth = Number($('#article-max-width').val());
-                        tocOffsetLeft = $('.floating-toc-new')[0].offsetLeft+((window.innerWidth>(articleMaxWidth+300)?window.innerWidth-(articleMaxWidth+300)+4:0)+320-tocTarget.parent().width())/2;
+                        tocOffsetLeft = $('.floating-toc-new')[0].offsetLeft+5;
                     }
                     if(recommendAds.length > 0) {
                         var scaleRatio = 0.9;
@@ -1127,7 +1139,11 @@ function fixedRecommendAds(type) {
                         tocTarget.css('top', 'calc(' + (tocOffsetTop+headerHeight) + 'px - '+((1-scaleRatio)*450)+'px)');
                         tocTarget.css('transform', 'scale('+scaleRatio+')');
                         tocTarget.css('position', 'fixed');
-                        tocTarget.css('left', tocOffsetLeft + 'px');
+                        if(adsTocPosition || !contentMiddleYn) {
+                            tocTarget.css('left', tocOffsetLeft + 'px');
+                        } else{
+                            tocTarget.css('right', tocOffsetLeft + 'px');
+                        }
                     } else {
                         tocTarget.parent().css('height',tocTarget.parent().height()+'px');
                         tocTarget.parent().css('background-image','url(//t1.daumcdn.net/tistory_admin/static/revenue/adsense.svg)');
@@ -1135,7 +1151,11 @@ function fixedRecommendAds(type) {
                         tocTarget.parent().css('background-position','center');
                         tocTarget.css('position', 'fixed');
                         tocTarget.css('top', (tocOffsetTop+headerHeight) + 'px');
-                        tocTarget.css('left', tocOffsetLeft + 'px');
+                        if(adsTocPosition || !contentMiddleYn) {
+                            tocTarget.css('left', tocOffsetLeft + 'px');
+                        } else{
+                            tocTarget.css('right', tocOffsetLeft + 'px');
+                        }
                     }
                 } else {
                     removeStyleFlag = true;
@@ -1471,7 +1491,7 @@ function fixedHeader() {
 
 function selectMakeFloatingToc() {
     if($('#floating-toc-type').val() == 'new') {
-        makeFloatingToc()
+        makeFloatingToc();
     }
 }
 

@@ -478,6 +478,14 @@
 				<default>true</default>
 			</variable>
 			<variable>
+				<name>ads-toc-position</name>
+				<label><![CDATA[ 목차 광고 같은 위치 ]]></label>
+				<description><![CDATA[]]></description>
+				<type>BOOL</type>
+				<option />
+				<default>false</default>
+			</variable>
+			<variable>
 				<name>toc-header-style-1</name>
 				<label><![CDATA[ 목차 제목1 글머리 ]]></label>
 				<description><![CDATA[]]></description>

@@ -690,11 +690,13 @@
 			</s_if_var_content-middle-yn>
 			<s_not_var_content-middle-yn>
 				article {
-					width: calc(100vw - 300px - 300px - 66px);
-					max-width: calc([##_var_article-max-width_##]px - 300px - 66px);
-					margin-right:330px;
+					width: calc(100vw - 330px - 335px);
 				}
-				section .content-wrapper, header .inner, footer .inner {
+				section .content-wrapper {
+					margin-left: 1px;
+					margin-right: 330px;
+				}
+				header .inner, footer .inner {
 					margin-left: 1px;
 					margin-right: 1px;
 				}
@@ -702,24 +704,14 @@
 					float: right;
 					right: 0;
 					margin-right: 10px;
-					width: 300px;
+					width: 290px;
 				}
-				@media (min-width: calc([##_var_article-max-width_##]px + 300px)) {
+				@media (max-width: 1400px) {
 					article {
-						margin-right: calc(100vw - [##_var_article-max-width_##]px + 30px);
+						width: calc(100vw - 330px - 6px);
 					}
-					.floating-toc-new {
-						width: calc(100vw - [##_var_article-max-width_##]px);
-					}
-				}
-				@media (max-width: 1413px) {
-					article{
-						width: calc(100vw - 300px - 300px - 66px + 329px);
-						margin-right:1px;
-					}
-					.floating-toc-new {
-						float: left;
-						margin-left: 10px;
+					section .content-wrapper {
+						margin-right: 1px;
 					}
 				}
 				@media (max-width: 1079px) {
@@ -1547,7 +1539,7 @@
 												<s_if_var_grid-thum-yn>
 													<span class="thum">
 														<s_article_rep_thumbnail>
-															<img src="//i1.daumcdn.net/thumb/S300x230/?fname=[##_article_rep_thumbnail_raw_url_##]" alt="">
+															<img src="//i1.daumcdn.net/thumb/S300x300/?fname=[##_article_rep_thumbnail_raw_url_##]" alt="">
 														</s_article_rep_thumbnail>
 													</span>
 												</s_if_var_grid-thum-yn>
@@ -1905,6 +1897,7 @@
 			<input type='hidden' id='progress-right' value="[##_var_progress-right_##]">
 			<input type='hidden' id='progress-bottom' value="[##_var_progress-bottom_##]">
 			<input type='hidden' id='toc-unfold-yn' value="[##_var_toc-unfold-yn_##]">
+			<input type='hidden' id='ads-toc-position' value="[##_var_ads-toc-position_##]">
 		</s_t3>
 		<script src="./images/common.js"></script>
 		<script>
