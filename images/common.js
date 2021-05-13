@@ -1123,7 +1123,7 @@ function fixedRecommendAds(type) {
                 if(window.scrollY > $('header').height()
                   && ((bookToc.length > 0 && $('#toc-title>p>span#toggle').hasClass('close') && (!contentMiddleYn || (contentMiddleYn && adsTocPosition)))
                   || (contentMiddleYn && !adsTocPosition) || bookToc.length == 0)) {
-                    var tocOffsetTop = bookToc.length > 0?50:0;
+                    var tocOffsetTop = bookToc.length > 0?(contentMiddleYn && !adsTocPosition?0:50):0;
                     var tocOffsetLeft = 0;
                     if(contentMiddleYn) {
                         tocOffsetLeft = $('.floating-toc-new')[0].offsetLeft+tocLeft-10;

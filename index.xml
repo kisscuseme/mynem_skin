@@ -93,7 +93,7 @@
 				<description><![CDATA[]]></description>
 				<type>BOOL</type>
 				<option/>
-				<default>true</default>
+				<default>false</default>
 			</variable>
 			<variable>
 				<name>fixed-header</name>

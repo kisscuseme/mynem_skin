@@ -1335,6 +1335,13 @@ figure[data-ke-type='opengraph'] div.og-text {
 		font-size:16px !important;
 	}
 }
+ul[data-ke-list-type='disc'],
+ul[data-ke-list-type='disc'] li,
+#tt-body-page ul[data-ke-list-type='disc'],
+#tt-body-page ul[data-ke-list-type='disc'] li {
+	list-style-type: none;
+}
+
 
 /* another category */
 article .another_category {
@@ -1471,6 +1478,7 @@ article .tags a {
 	padding: 2px 0 0 80px;
 	font-size: 0.8125em;
 	color: #555;
+	min-height: 35px;
 }
 .comment-list ul li .author-meta .date {
 	margin-right: 40px;
