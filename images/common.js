@@ -540,7 +540,8 @@ function makeClipboardLink() {
     var tocLink = $('#toc a');
     tocLink.each(function(i, aLink) {
         var regExp = /[\{\}\[\]\/?.,;:|\)*~`!^\-_+<>@\#$%&\\\=\(\'\"]/gi;
-        var titleId = decodeURIComponent(aLink.href.substr(aLink.href.indexOf('#')+1)).replace(regExp,"\\$&");
+        var titleTemp = aLink.href.substr(aLink.href.indexOf('#')+1).replace('%%','##_percent_##%');
+        var titleId = decodeURIComponent(titleTemp).replace('##_percent_##','%').replace(regExp,"\\$&");
         var titleElem = $('#'+titleId);
         titleElem.append('<button class="copy-title-btn" onclick="copyTitleToClipboard('+i+')">\uf0c1</button>');
     });
