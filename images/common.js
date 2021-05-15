@@ -538,13 +538,12 @@ function copyTitleToClipboard(titleIndex) {
 
 function makeClipboardLink() {
     var tocLink = $('#toc a');
-    tocLink.each(function(i, aLink) {
+    for(var i=0; i < tocLink.length; i++) {
         var regExp = /[\{\}\[\]\/?.,;:|\)*~`!^\-_+<>@\#$%&\\\=\(\'\"]/gi;
-        var titleTemp = aLink.href.substr(aLink.href.indexOf('#')+1).replace('%%','##_percent_##%');
-        var titleId = decodeURIComponent(titleTemp).replace('##_percent_##','%').replace(regExp,"\\$&");
+        var titleId = tocLink.eq(i).attr('href').substr(1).replace(regExp,"\\$&");
         var titleElem = $('#'+titleId);
         titleElem.append('<button class="copy-title-btn" onclick="copyTitleToClipboard('+i+')">\uf0c1</button>');
-    });
+    }
 }
 
 var repeatCnt = 0;
