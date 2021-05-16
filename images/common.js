@@ -1514,7 +1514,7 @@ function detectTop() {
 function foldFloatingToc() {
     if(!((contentMiddleYn && (window.innerWidth-$('.content-wrapper').outerWidth())/2 > 250)
       ||(!contentMiddleYn && window.innerWidth > 1413))) {
-        if(!title.hasClass('close')) {
+        if(title != null && title.length > 0 && !title.hasClass('close')) {
             clickFloatingTitle();
         }
     }
