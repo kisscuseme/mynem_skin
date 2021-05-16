@@ -1511,6 +1511,15 @@ function detectTop() {
     }
 }
 
+function foldFloatingToc() {
+    if(!((contentMiddleYn && (window.innerWidth-$('.content-wrapper').outerWidth())/2 > 250)
+      ||(!contentMiddleYn && window.innerWidth > 1413))) {
+        if(!title.hasClass('close')) {
+            clickFloatingTitle();
+        }
+    }
+}
+
 var previousScrollTop = 0;
 function stickySidebar() {
     if($('.sidebar')[0].scrollHeight-$('.sidebar')[0].scrollTop > $('#wrapper')[0].scrollHeight-window.scrollY-80) {
@@ -1547,5 +1556,6 @@ $(document).ready(function() {
         fixedHeader();
         detectTop();
         stickySidebar();
+        foldFloatingToc();
     });
 });
