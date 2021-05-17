@@ -244,13 +244,13 @@ article h2,
 
 @keyframes post-item-ani {
 	25% {
-		transform: rotate( 1deg ) scale(1.01);
+		transform: rotate( 0.5deg ) scale(1.005);
 	}
   50% {
     transform: rotate( 0deg ) scale(1);
   }
 	75% {
-		transform: rotate( -1deg ) scale(1.01);
+		transform: rotate( -0.5deg ) scale(1.005);
 	}
 }
 .post-item a:hover {
@@ -490,13 +490,13 @@ article h2,
 }
 @keyframes cover-special-ani {
 	25% {
-		transform: scale(0.98);
+		transform: scale(0.995);
 	}
   50% {
     transform: scale(1);
   }
 	75% {
-		transform: scale(1.02);
+		transform: scale(1.005);
 	}
 }
 .cover-special ul li img:hover {
@@ -1957,8 +1957,11 @@ article .tags a {
 	color: #000;
 }
 #toc {
+	margin-top: 5px;
 	margin-bottom: 0;
   padding-left: 0;
+	max-height: 800px;
+	overflow: auto;
 }
 #toc a:hover {
 	color: #000;

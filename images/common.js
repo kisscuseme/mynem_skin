@@ -24,7 +24,7 @@ function clickContentTitle() {
         clickContentFlag = false;
         var listCnt = $('#toc').find('a').length;
         var calcSpeed = 300*listCnt/20;
-        calcSpeed = calcSpeed<300?300:calcSpeed>1500?1500:calcSpeed;
+        calcSpeed = calcSpeed<300?300:calcSpeed>500?500:calcSpeed;
         $('.book-toc #toc').slideToggle(calcSpeed, 'linear', function() {
             var title = $('.book-toc>p>span#toggle');
             if(title.hasClass('open')) {
@@ -267,10 +267,10 @@ function appendTocNew() {
                 if(floatingTocPostion) {
                     floatingTocNew.css('top','60px');
                 } else {
-                    floatingTocNew.css('top','10px');
+                    floatingTocNew.css('top','30px');
                 }
             } else {
-                floatingTocNew.css('top','10px');
+                floatingTocNew.css('top','30px');
             }
         }
 
