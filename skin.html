@@ -162,74 +162,90 @@
 				#toc-title p #toggle, .floating-icon:after,
 				.sidebar .category .category_list .link_item:before, #current-bgm:before, h2 .bgm-btn,
 				.sidebar .category .sub_category_list .link_sub_item:before {color:[##_var_etc-color_##] !important;opacity:0.7;}
-				.content-article h2 {border-left: [##_var_etc-color_##]ff 16px solid !important;border-bottom: 1px solid [##_var_etc-color_##]ff !important;}
-				.content-article h3 {border-left: [##_var_etc-color_##]cc 12px solid !important;border-bottom: 1px solid [##_var_etc-color_##]cc !important;}
-				.content-article h4 {border-left: [##_var_etc-color_##]88 8px solid !important;border-bottom: 1px solid [##_var_etc-color_##]88 !important;}
+				.content-article h2 {border-left: [##_var_etc-color_##]ff 16px solid !important;border-bottom: 4px solid [##_var_etc-color_##]ff !important;}
+				.content-article h3 {border-left: [##_var_etc-color_##]cc 12px solid !important;border-bottom: 3px solid [##_var_etc-color_##]cc !important;}
+				.content-article h4 {border-left: [##_var_etc-color_##]88 8px solid !important;border-bottom: 2px solid [##_var_etc-color_##]88 !important;}
 				.comment-form .submit button,
 				.progress-bar-vertical, .progress-bar-horizontal,
 				.progress-bar-etc-vertical, .progress-bar-etc-horizontal,
 				.sidebar .close:before, .sidebar .close:after {background-color:[##_var_etc-color_##]}
-				.move-top-btn, .top-button .menu button, .sidebar .close, .top-button .profile button {border: 1px solid [##_var_etc-color_##]55 !important}
+				.move-top-btn, .top-button .menu button, .sidebar .close, .top-button .profile button {border: [##_var_border-size_##]px solid [##_var_etc-color_##]55 !important}
 				::-webkit-scrollbar-thumb, #toc-body::-webkit-scrollbar-thumb {background-color:[##_var_etc-color_##]55 !important}
-				.search input {border-bottom: 1px solid [##_var_etc-color_##]55;}
+				.search input {border-bottom: [##_var_border-size_##]px solid [##_var_etc-color_##]55;}
 				article .another_category.another_category_color_gray a {
 					color:[##_var_etc-color_##] !important;
 				}
 				.sidebar .category ul li ul li {
-					border-bottom: 1px dashed [##_var_etc-color_##]55;
+					border-bottom: [##_var_border-size_##]px dashed [##_var_etc-color_##]55;
 				}
 
 				/* solid style */
 				<s_if_var_sidebar-solid-style>
-					.sidebar .category, .sidebar .notice,  .sidebar .recent, 
+					.container_postbtn .postbtn_like {
+						border: [##_var_border-size_##]px solid #ccc !important;
+					}
+					.comment-form textarea,
+					.comment-list .tt_more_preview_comments_text,
+					figure.fileblock, #tt-body-page figure.fileblock {
+						border: [##_var_border-size_##]px solid #ccc;
+					}
+					.comment-list, .comment-list ul li ul li {
+						border-top: [##_var_border-size_##]px dashed #ccc;
+					}
+					.comment-list ul li {
+						border-bottom: [##_var_border-size_##]px dashed #ccc;
+					}
+				</s_if_var_sidebar-solid-style>
+				<s_if_var_sidebar-solid-style>
+					.sidebar .category, .sidebar .notice, .sidebar .recent, .sidebar .profile-info, 
 					.sidebar .popular, .sidebar .recent-comment, .sidebar .tags,
 					.sidebar .count, .sidebar .module_plugin {
-						border: 1px solid [##_var_etc-color_##]55;
+						border: [##_var_border-size_##]px solid [##_var_etc-color_##]55;
 					}
-					.sidebar .category h2, .sidebar .notice h2,  .sidebar .recent h2, 
+					.sidebar .category h2, .sidebar .notice h2,  .sidebar .recent h2, .sidebar .profile-info h2,
 					.sidebar .popular h2, .sidebar .recent-comment h2, .sidebar .tags h2,
 					.sidebar .count h2, .sidebar .module_plugin div:not(.change-font-box, .lang-box, .dark-mode-box) h2,
 					.sidebar .module_plugin #bgm-title, .sidebar .module_plugin #recommend-ads-title {
-						border-bottom: 1px dashed [##_var_etc-color_##]55;
+						border-bottom: [##_var_border-size_##]px dashed [##_var_etc-color_##]55;
 					}
 					.sidebar .module_plugin .change-font-box h2,
 					.sidebar .module_plugin .lang-box h2, .dark-mode-box h2 {
-						border-right: 1px dashed [##_var_etc-color_##]55;
+						border-right: [##_var_border-size_##]px dashed [##_var_etc-color_##]55;
 					}
 				</s_if_var_sidebar-solid-style>
 				<s_if_var_content-solid-style>
 					section .content-wrapper {
-						border: 1px solid [##_var_etc-color_##]55;
+						border: [##_var_border-size_##]px solid [##_var_etc-color_##]55;
 					}
 				</s_if_var_content-solid-style>
 				<s_if_var_title-solid-style>
 					.content-title {
-						border: 1px solid [##_var_etc-color_##]55;
+						border: [##_var_border-size_##]px solid [##_var_etc-color_##]55;
 					}
 				</s_if_var_title-solid-style>
 				<s_if_var_toc-solid-style>
 					.floating-toc, .floating-toc-new, .book-toc {
-						border: 1px solid [##_var_etc-color_##]55;
+						border: [##_var_border-size_##]px solid [##_var_etc-color_##]55;
 					}
 				</s_if_var_toc-solid-style>
 				<s_if_var_opengraph-solid-style>
 					figure[data-ke-type='opengraph'], #tt-body-page figure[data-ke-type='opengraph'] {
-						border: 1px solid [##_var_etc-color_##]55;
+						border: [##_var_border-size_##]px solid [##_var_etc-color_##]55;
 					}
 				</s_if_var_opengraph-solid-style>
 				<s_if_var_cover-solid-style>
 					.cover-list ul li a, .post-item a, .cover-special ul li {
-						border: 1px solid [##_var_etc-color_##]55;
+						border: [##_var_border-size_##]px solid [##_var_etc-color_##]55;
 					}
 				</s_if_var_cover-solid-style>
 				<s_if_var_ads-solid-style>
 					.main-ads, #ad-top-left, #ad-top-right {
-						border: 1px solid [##_var_etc-color_##]55;
+						border: [##_var_border-size_##]px solid [##_var_etc-color_##]55;
 					}
 				</s_if_var_ads-solid-style>
 				<s_if_var_image-solid-style>
 					#tt-body-page figure img {
-						border: 1px solid [##_var_etc-color_##]55;
+						border: [##_var_border-size_##]px solid [##_var_etc-color_##]55;
 					}
 				</s_if_var_image-solid-style>
 			</s_if_var_etc-color>
@@ -275,6 +291,12 @@
 			<s_not_var_width-toc-yn>
 				.book-toc {width:fit-content}
 			</s_not_var_width-toc-yn>
+			<s_not_var_toc-width-scroll>
+				.floating-toc #toc-body #toc,
+				.floating-toc-new #toc-body #toc {
+					width: max-content;
+				}
+			</s_not_var_toc-width-scroll>
 			<s_if_var_content-middle-yn>
 				section .content-wrapper {max-width:[##_var_article-max-width_##]px;}
 				header .inner {max-width:[##_var_article-max-width_##]px;}
@@ -1128,7 +1150,12 @@
 					<div class="inner">
 						<p>
 							<a href="[##_blog_link_##]">
-								[##_title_##]
+								<s_if_var_blog-logo-image>
+									<img src="[##_var_blog-logo-image_##]" alt="[##_title_##]" style="max-height:60px;">
+								</s_if_var_blog-logo-image>
+								<s_not_var_blog-logo-image>
+									[##_title_##]
+								</s_not_var_blog-logo-image>
 							</a>
 						</p>
 						<nav id="blog-menu">
@@ -1253,6 +1280,22 @@
 									</div>
 								</div>
 							</s_if_var_bgm-yn>
+							<!-- 프로필 -->
+							<s_if_var_profile-info>
+								<div class="profile-info">
+									<h2>프로필</h2>
+									<div style="padding:10px;">
+										<s_if_var_profile-image>
+											<img src="[##_var_profile-image_##]" alt="[##_title_##]" style="width:100%;">
+										</s_if_var_profile-image>
+										<s_not_var_profile-image>
+											<img src="./images/logo.svg" style="width:100%;">
+										</s_not_var_profile-image>
+										<p style="font-size:0.8em;font-weight:bold;text-align:center;margin-top:10px;">[##_var_profile-description_##]</p>
+										<p style="font-size:0.8em;font-weight:bold;color:#555;text-align:center;margin-top:10px;">[##_var_profile-more-details_##]</p>
+									</div>
+								</div>
+							</s_if_var_profile-info>
 							<s_sidebar>
 								<s_sidebar_element>
 									<!-- 카테고리 -->
@@ -1830,7 +1873,7 @@
 						<a href="#" class="page-top">TOP</a>
 						<p class="meta"><s_if_var_footer-text-1>[##_var_footer-text-1_##]</s_if_var_footer-text-1></p>
 						<p class="copyright"><s_if_var_footer-text-2>[##_var_footer-text-2_##]</s_if_var_footer-text-2></p>
-						<p class="maker"><a href="https://sangminem.tistory.com/506" target="_blank">Mynem Skin 2.31</a></p>
+						<p class="maker"><a href="https://sangminem.tistory.com/506" target="_blank">Mynem Skin 2.33</a></p>
 					</div>
 				</footer>
 			</div>

@@ -270,7 +270,12 @@ function appendTocNew() {
                     floatingTocNew.css('top','30px');
                 }
             } else {
-                floatingTocNew.css('top','30px');
+                if(((window.innerWidth > 1079 && window.innerWidth < 1400) && (floatingTocPostion && !contentMiddleYn))
+                  || (window.innerWidth > articleMaxWidth+32 && (floatingTocPostion && contentMiddleYn))) {
+                    floatingTocNew.css('top','10px');
+                } else {
+                    floatingTocNew.css('top','30px');
+                }
             }
         }
 
@@ -550,7 +555,7 @@ var repeatCnt = 0;
 var smoothScrollTimer = 0;
 var currentPosition = null;
 function smoothScroll() {
-    $('a:not(.lb-prev, .lb-next, .lb-close, .btn-toggle-moreless)').off().on('click', function () {
+    $('a:not(.lb-prev, .lb-next, .lb-close, .btn-toggle-moreless, .btn_mark)').off().on('click', function () {
         var self = this;
         var aHref = $.attr(self, 'href');
         var windowTop = $(window).scrollTop();
@@ -835,7 +840,8 @@ function doGTranslateCustom(param) {
 function makeBell() {
     if($('#make-bell-yn').val()) {
         if(location.href.indexOf('notice') < 0) {
-            var bubbleTag = '<div class="like_bubble"><span class="bubble_image"></span><div class="inner">'+$('#make-bell').val()+'</div></div>';
+            var makeBellStr = $('#make-bell').val().replaceAll("&lt;","<").replaceAll("&gt;",">")
+            var bubbleTag = '<div class="like_bubble"><span class="bubble_image"></span><div class="inner">' + makeBellStr + '</div></div>';
             $(bubbleTag).insertBefore($('.container_postbtn').children().eq(0));
         }
     }
@@ -932,18 +938,40 @@ function common(){
     });
 
     var userDarkMode = localStorage.getItem('dark-mode');
-    var sidebarDarkMode = $('#dark-mode').val();
     var defaultDarkMode = $('#default-dark-mode').val();
 
     if(userDarkMode == null) {
         if(defaultDarkMode) {
-            $('body').addClass('dark-mode');
-            localStorage.setItem('dark-mode','y');
+            setDarkMode('+');
         } else {
-            $('body').removeClass('dark-mode');
-            localStorage.setItem('dark-mode','n');
+            setDarkMode('-');
+        }
+    } else {
+        if(userDarkMode == 'y') {
+            setDarkMode('+');
+        } else {
+            setDarkMode('-');
         }
     }
+
+    $('.share-btn').on('click', function() {
+        var sns = $('#tistorySnsLayer');
+        if(sns.length > 0) {
+            if(sns.css('display') == 'block') {
+                sns.css('display', 'none');
+                sns.removeClass('custom');
+            } else {
+                setTimeout(function() {
+                    $('button.btn_share').click();
+                    sns.css('position', 'fixed');
+                    sns.css('left', '');
+                    sns.css('top', '');
+                    sns.css('right', '10px');
+                    sns.css('bottom', '80px');
+                }, 200);
+            }
+        }
+    });
 }
 
 function updateTagsAttr() {
@@ -1362,7 +1390,7 @@ function bgmEvents() {
         for(var i=1;i<11;i++) {
             if($('#bgm-src-'+i).length > 0 && $('#bgm-src-'+i).val().length > 0) {
                 var item = {
-                    src: $('#bgm-src-'+i).val(),
+                    src: $('#bgm-src-'+i).val().replaceAll('&amp;','&'),
                     title: $('#bgm-title-'+i).val()
                 }
                 bgmSource.push(item);
@@ -1538,7 +1566,6 @@ $(document).ready(function() {
     selectMakeFloatingToc();
     commentControl();
     commentAutoLink();
-    common();
     smoothScroll();
     initFoldReply();
     updateTagsAttr();
@@ -1547,6 +1574,7 @@ $(document).ready(function() {
     makeBell();
     toastAfterLike();
     bgmEvents();
+    common();
     
     $(window).on('scroll resize', function() {
         scrollProgressBar();

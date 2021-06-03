@@ -2,7 +2,7 @@
 <skin>
 	<information>
 		<name>Mynem Skin</name>
-		<version>2.31</version>
+		<version>2.33</version>
 		<description>
 			<![CDATA[ 심플하면서 막강한 기능을 가진 미넴 스킨 입니다.
 			많은 사용자가 원하는 방향으로 발전해 나갈 예정입니다. ]]>
@@ -102,6 +102,14 @@
 				<type>BOOL</type>
 				<option/>
 				<default>false</default>
+			</variable>
+			<variable>
+				<name>blog-logo-image</name>
+				<label><![CDATA[ 블로그 상단 이미지 적용 ]]></label>
+				<description><![CDATA[]]></description>
+				<type>IMAGE</type>
+				<option />
+				<default></default>
 			</variable>
 		</variablegroup>
 
@@ -260,7 +268,39 @@
 				<description><![CDATA[]]></description>
 				<type>BOOL</type>
 				<option/>
-				<default>true</default>
+				<default>false</default>
+			</variable>
+			<variable>
+				<name>profile-info</name>
+				<label><![CDATA[ 프로필 사용 ]]></label>
+				<description><![CDATA[]]></description>
+				<type>BOOL</type>
+				<option/>
+				<default>false</default>
+			</variable>
+			<variable>
+				<name>profile-image</name>
+				<label><![CDATA[ 프로필 이미지 ]]></label>
+				<description><![CDATA[]]></description>
+				<type>IMAGE</type>
+				<option />
+				<default></default>
+			</variable>
+			<variable>
+				<name>profile-description</name>
+				<label><![CDATA[ 프로필 자기소개 ]]></label>
+				<description><![CDATA[]]></description>
+				<type>STRING</type>
+				<option />
+				<default><![CDATA[ ]]></default>
+			</variable>
+			<variable>
+				<name>profile-more-details</name>
+				<label><![CDATA[ 프로필 상세 ]]></label>
+				<description><![CDATA[]]></description>
+				<type>STRING</type>
+				<option />
+				<default><![CDATA[ ]]></default>
 			</variable>
 			<variable>
 				<name>category-header-style-1</name>
@@ -446,6 +486,14 @@
 				<default>true</default>
 			</variable>
 			<variable>
+				<name>toc-width-scroll</name>
+				<label><![CDATA[ 목차 자동 줄바꿈 ]]></label>
+				<description><![CDATA[]]></description>
+				<type>BOOL</type>
+				<option />
+				<default>false</default>
+			</variable>
+			<variable>
 				<name>fold-toc-yn</name>
 				<label><![CDATA[ 기본 목차 접기 ]]></label>
 				<description><![CDATA[]]></description>
@@ -558,6 +606,14 @@
 		</variablegroup>
 
 		<variablegroup name="스킨 테두리 설정">
+			<variable>
+				<name>border-size</name>
+				<label><![CDATA[ 테두리 두께 ]]></label>
+				<description><![CDATA[]]></description>
+				<type>STRING</type>
+				<option />
+				<default>1</default>
+			</variable>
 			<variable>
 				<name>sidebar-solid-style</name>
 				<label><![CDATA[ 사이드바 ]]></label>
