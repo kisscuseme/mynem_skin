@@ -502,6 +502,14 @@
 				<default>true</default>
 			</variable>
 			<variable>
+				<name>ignore-toc-yn</name>
+				<label><![CDATA[ 본문 목차 태그 무시 ]]></label>
+				<description><![CDATA[]]></description>
+				<type>BOOL</type>
+				<option />
+				<default>false</default>
+			</variable>
+			<variable>
 				<name>floating-toc-type</name>
 				<label><![CDATA[ 플로팅 목차 스타일 ]]></label>
 				<description><![CDATA[]]></description>
@@ -711,7 +719,7 @@
 				<description><![CDATA[]]></description>
 				<type>BOOL</type>
 				<option/>
-				<default>true</default>
+				<default>false</default>
 			</variable>
 		</variablegroup>
 

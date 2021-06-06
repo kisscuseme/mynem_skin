@@ -26,48 +26,64 @@ function clickContentTitle() {
         var calcSpeed = 300*listCnt/20;
         calcSpeed = calcSpeed<300?300:calcSpeed>500?500:calcSpeed;
         $('.book-toc #toc').slideToggle(calcSpeed, 'linear', function() {
-            var title = $('.book-toc>p>span#toggle');
-            if(title.hasClass('open')) {
-                title.html("&#xf103;");
-                title.removeClass('open');
+            var tocTitle = $('.book-toc>p>span#toggle');
+            if(tocTitle.hasClass('open')) {
+                tocTitle.html("&#xf103;");
+                tocTitle.removeClass('open');
             } else {
-                title.html("&#xf102;");
-                title.addClass('open');
+                tocTitle.html("&#xf102;");
+                tocTitle.addClass('open');
             }
             clickContentFlag = true;
         });
     }
 }
 function makeToc() {
-    var $toc = $("#toc");
-    if($('#auto-toc-yn').val() && $toc.length == 0) {
-        var titleLength = $('.tt_article_useless_p_margin h2,h3,h4').length - $('.another_category h4').length - $('h3.tit_list_type').length;
-        var firstContent = $('.tt_article_useless_p_margin').children().eq(0);
-        if(titleLength > 0 && firstContent.length > 0) {
-            firstContent.before('<div class="book-toc"><p>목차</p><ul id="toc"></ul></div>');
-            $toc = $("#toc");
-        }
-    }
-    if($toc.length > 0) {
-        if($('#fold-toc-yn').val()) {
-            $toc.css('display','none');
-        }
-        $toc.toc({content: ".tt_article_useless_p_margin", headings: "h2,h3,h4"});
-        $('.book-toc p').append('<span id="toggle" style="padding-left:10px;">&#xf103;</span>');
-        if($('.another_category').length > 0) {
-            $toc.find('li:last').remove();
-        }
-        makeClipboardLink();
-        bookToc = $('.book-toc');
-    }
+    var titleLength = $('.content-article h2,h3,h4').length - $('.another_category h4').length - $('h3.tit_list_type').length;
 
-    $('.book-toc p').off('click touchend').on('click touchend', function(){
-        clickContentTitle();
-    });
+    if(titleLength > 0) {
+        if($('.book-toc').length == 1) {
+            if($('#auto-toc-yn').val()) {
+                $('.book-toc').css('display', 'block');
+            }
+        } else if($('.book-toc').length > 1) {
+            if($('#ignore-toc-yn').val()) {
+                $('.book-toc').eq(1).remove();
+            } else {
+                $('.book-toc').eq(0).remove();
+            }
+            $('.book-toc').css('display', 'block');
+        }
+
+        var $toc = $("#toc");
+        if($toc.length > 0) {
+            var foldIcon = '&#xf102;';
+            if($('#fold-toc-yn').val()) {
+                $toc.css('display','none');
+                foldIcon = '&#xf103;';
+            } else{
+                $toc.css('display','block');
+            }
+            $toc.toc({content: ".content-article", headings: "h2,h3,h4"});
+            $('.book-toc p').append('<span id="toggle" style="padding-left:10px;">'+foldIcon+'</span>');
+            if($('.another_category').length > 0) {
+                $toc.find('li:last').remove();
+            }
+            if(!$('#fold-toc-yn').val()) {
+                $('.book-toc>p>span#toggle').addClass('open');
+            }
+            makeClipboardLink();
+            bookToc = $('.book-toc');
+        }
+    
+        $('.book-toc p').off('click touchend').on('click touchend', function(){
+            clickContentTitle();
+        });
+    }
 }
 
 function checkContentPosition() {
-    var titleList = $('.tt_article_useless_p_margin').find('h2,h3,h4');
+    var titleList = $('.content-article').find('h2,h3,h4');
     var scrollY = window.scrollY + 50 + ($('#fixed-header').val()?($('header').length>0?$('header').height()+5:0):0);
     if(titleList.length > 1) {
         for(var i=0; i < titleList.length; i++) {
@@ -157,7 +173,8 @@ function clickFloatingTitle() {
 }
 
 function makeFloatingToc() {
-    if(bookToc.length > 0) {
+    var titleLength = $('.content-article h2,h3,h4').length - $('.another_category h4').length - $('h3.tit_list_type').length;
+    if(bookToc.length > 0 && titleLength > 0) {
         var tocTitle = $('<div id="toc-title"><p>목차<span id="toggle" class="close" style="padding-left:5px;">&#xf103;</span></p></div>');
         floatingTocNew.append(tocTitle);
         var tocBody = $('<div id="toc-body"></div>').append(bookToc.find('#toc').clone());
@@ -195,7 +212,7 @@ function initFloatingTocNew() {
 }
 
 function appendTocNew() {
-    if(bookToc.length > 0) {
+    if(bookToc.length > 0 && title != null) {
         var headerHeight = $('#fixed-header').val()?$('header').height():0;
         if((contentMiddleYn && (window.innerWidth-$('.content-wrapper').outerWidth())/2 > 250)
           ||(!contentMiddleYn && window.innerWidth > 1413)) {
@@ -386,7 +403,7 @@ function appendToc() {
     }
 
     function checkPosition() {
-        var titleList = $('.tt_article_useless_p_margin').find('h2,h3,h4');
+        var titleList = $('.content-article').find('h2,h3,h4');
         var scrollY = window.scrollY + 50 + ($('#fixed-header').val()?($('header').length>0?$('header').height()+5:0):0);
         if(titleList.length > 1) {
             for(var i=0; i < titleList.length; i++) {
@@ -976,9 +993,9 @@ function common(){
 
 function updateTagsAttr() {
     //이미지에 alt 태그 부여
-    var $titleList = $('.content-title .inner h1, .tt_article_useless_p_margin h2, h3, h4');
+    var $titleList = $('.content-title .inner h1, .content-article h2, h3, h4');
     var titleListLength = $titleList.length - 2;
-    var $images = $('.tt_article_useless_p_margin').find('img');
+    var $images = $('.content-article').find('img');
     var cnt = 0;
     var limitCnt = 0;
     var title, title1, title2, title3, title4;

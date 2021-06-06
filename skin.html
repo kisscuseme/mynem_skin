@@ -5,11 +5,9 @@
 		<meta name="viewport" content="initial-scale=1.0, width=device-width">
 		<meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
 		<title>[##_page_title_##]</title>
-		<link rel="preconnect" href="https://fonts.googleapis.com">
+		<!-- <link rel="preconnect" href="https://fonts.googleapis.com"> -->
 		<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;600&display=block" as="font" crossorigin="anonymous">
-		<s_if_var_custom-font>
-			<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bitter:ital,wght@0,400;0,600;1,400;1,600&display=block" as="font" crossorigin="anonymous">
-		</s_if_var_custom-font>
+		<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bitter:ital,wght@0,400;0,600;1,400;1,600&display=block" as="font" crossorigin="anonymous">
 		<link rel="preload" href="./style.css" as="style">
 		<link rel="stylesheet" href="./style.css">
 		<style>
@@ -85,6 +83,15 @@
 				.move-top-btn:after {
 					top: 5%;
 				}
+				#tt-body-page .share-btn:after {
+					top: 5%;
+				}
+				.dark-mode-on-btn:after {
+					top: 5%;
+				}
+				.dark-mode-off-btn:after {
+					top: 5%;
+				}
 			</s_not_var_custom-font>
 			<s_if_var_custom-font-forced>
 				.content-article p span {
@@ -130,7 +137,7 @@
 			<s_if_var_background-color>
 				header:after, section:after, footer:after, .content-title:after, .top-button .menu button:before,
 				.book-toc:after, .floating-toc:after, .top-button .menu button:before, .move-top-btn:before,
-				.mobile-menu aside:after, .toast-wrap:after, .floating-toc-new:after,
+				.mobile-menu aside:after, .toast-wrap:after, .floating-toc-new:after, .share-btn:before, .dark-mode-on-btn:before, .dark-mode-off-btn:before,
 				#toc-body::-webkit-scrollbar-track, ::-webkit-scrollbar-track {background-color:[##_var_background-color_##]}
 
 				.cover-list ul li a, .post-item a, .cover-special ul li {
@@ -158,6 +165,7 @@
 				.content-article .book-toc p, .content-article .book-toc p span#toggle, #toc > li:before, #toc > li > ul > li:before, #toc > li > ul > li > ul > li:before, .cover-list ul li .meta .category,
 				.comments h2 .count, article .another_category th:before, .post-header h1 em, .bgm-btn, .dark-mode-btn-dark, .dark-mode-btn-default,
 				.move-top-btn:after,.top-button .menu button:after, .post-header h1:before, article h2:before, .content-article .copy-title-btn,
+				.share-btn:after,.dark-mode-on-btn:after,.dark-mode-off-btn:after,
 				#toc > li a:after, #toc > li > ul > li a:after, #toc > li > ul > li > ul > li a:after {color:[##_var_etc-color_##]}
 				#toc-title p #toggle, .floating-icon:after,
 				.sidebar .category .category_list .link_item:before, #current-bgm:before, h2 .bgm-btn,
@@ -169,7 +177,8 @@
 				.progress-bar-vertical, .progress-bar-horizontal,
 				.progress-bar-etc-vertical, .progress-bar-etc-horizontal,
 				.sidebar .close:before, .sidebar .close:after {background-color:[##_var_etc-color_##]}
-				.move-top-btn, .top-button .menu button, .sidebar .close, .top-button .profile button {border: [##_var_border-size_##]px solid [##_var_etc-color_##]55 !important}
+				.move-top-btn, .top-button .menu button, .sidebar .close, .top-button .profile button,
+				.share-btn, .dark-mode-on-btn, .dark-mode-off-btn {border: [##_var_border-size_##]px solid [##_var_etc-color_##]55 !important}
 				::-webkit-scrollbar-thumb, #toc-body::-webkit-scrollbar-thumb {background-color:[##_var_etc-color_##]55 !important}
 				.search input {border-bottom: [##_var_border-size_##]px solid [##_var_etc-color_##]55;}
 				article .another_category.another_category_color_gray a {
@@ -181,7 +190,17 @@
 
 				/* solid style */
 				<s_if_var_sidebar-solid-style>
-					.container_postbtn .postbtn_like {
+					.comment-form .field {
+						border-top: [##_var_border-size_##]px solid #ccc;
+						border-left: [##_var_border-size_##]px solid #ccc;
+						border-right: [##_var_border-size_##]px solid #ccc;
+						border-bottom: 0px;
+					}
+					.comment-form .field input[type=password] {
+						border-left: [##_var_border-size_##]px solid #ccc;
+					}
+					.container_postbtn .postbtn_like,
+					.container_postbtn .btn_menu_toolbar {
 						border: [##_var_border-size_##]px solid #ccc !important;
 					}
 					.comment-form textarea,
@@ -198,7 +217,7 @@
 				</s_if_var_sidebar-solid-style>
 				<s_if_var_sidebar-solid-style>
 					.sidebar .category, .sidebar .notice, .sidebar .recent, .sidebar .profile-info, 
-					.sidebar .popular, .sidebar .recent-comment, .sidebar .tags,
+					.sidebar .popular, .sidebar .recent-comment, .sidebar .tags, #tistorySnsLayer.layer_post,
 					.sidebar .count, .sidebar .module_plugin {
 						border: [##_var_border-size_##]px solid [##_var_etc-color_##]55;
 					}
@@ -251,7 +270,11 @@
 			</s_if_var_etc-color>
 			
 			<s_if_var_thum-img>
-				.thum:after {background-image:url('[##_var_thum-img_##]');background-size:[##_var_thum-img-size_##];opacity:[##_var_thum-img-opacity_##];}
+				.thum:before, .cover-list ul li figure:before {
+					background-image:url('[##_var_thum-img_##]');
+					background-size:[##_var_thum-img-size_##];
+					opacity:[##_var_thum-img-opacity_##];
+				}
 			</s_if_var_thum-img>
 			<s_if_var_grid-title-lines>
 				.post-item .title {-webkit-line-clamp:[##_var_grid-title-lines_##];}
@@ -1151,7 +1174,7 @@
 						<p>
 							<a href="[##_blog_link_##]">
 								<s_if_var_blog-logo-image>
-									<img src="[##_var_blog-logo-image_##]" alt="[##_title_##]" style="max-height:60px;">
+									<img class="title-image" src="[##_var_blog-logo-image_##]" alt="[##_title_##]" >
 								</s_if_var_blog-logo-image>
 								<s_not_var_blog-logo-image>
 									[##_title_##]
@@ -1292,7 +1315,7 @@
 											<img src="./images/logo.svg" style="width:100%;">
 										</s_not_var_profile-image>
 										<p style="font-size:0.8em;font-weight:bold;text-align:center;margin-top:10px;">[##_var_profile-description_##]</p>
-										<p style="font-size:0.8em;font-weight:bold;color:#555;text-align:center;margin-top:10px;">[##_var_profile-more-details_##]</p>
+										<p style="font-size:0.8em;font-weight:bold;color:#777;text-align:center;margin-top:10px;">[##_var_profile-more-details_##]</p>
 									</div>
 								</div>
 							</s_if_var_profile-info>
@@ -1619,6 +1642,14 @@
 										</div>
 
 										<div class="content-article">
+											<s_if_var_auto-toc-yn>
+												<s_not_var_auto-toc-yn>
+													<div class="book-toc">
+														<p>목차</p>
+														<ul id="toc"></ul>
+													</div>
+												</s_not_var_auto-toc-yn>
+											</s_if_var_auto-toc-yn>
 											<!-- 상단 광고 2개 삽입 start -->
 											<s_if_var_content-google-ads>
 												<div class="top-ads">
@@ -1881,6 +1912,14 @@
 			<!-- 상단 이동 버튼 -->
 			<a class="move-top-btn"></a>
 
+			<!-- 다크모드 버튼 -->
+			<a class="dark-mode-on-btn" onclick="setDarkMode('-')" style="display:none;"></a>
+			<a class="dark-mode-off-btn" onclick="setDarkMode('+')" style="display:none;"></a>
+
+			<!-- 공유 버튼 -->
+			<a class="share-btn"></a>
+			<div id='custom-sns' class='layer_post'></div>
+
 			<!-- 떠다니는 목차 -->
 			<div class="floating-toc"></div>
 
@@ -1931,6 +1970,7 @@
 			<input type='hidden' id='floating-toc-type' value="[##_var_floating-toc-type_##]">
 			<input type='hidden' id='content-middle-yn' value="[##_var_content-middle-yn_##]">
 			<input type='hidden' id='fold-toc-yn' value="[##_var_fold-toc-yn_##]">
+			<input type='hidden' id='ignore-toc-yn' value="[##_var_ignore-toc-yn_##]">
 			<input type='hidden' id='dark-mode' value="[##_var_dark-mode_##]">
 			<input type='hidden' id='default-dark-mode' value="[##_var_default-dark-mode_##]">
 			<input type='hidden' id='lazy-loading' value="[##_var_lazy-loading_##]">
