@@ -1420,7 +1420,7 @@
 									<div class="count">
 										<h2>방문자 통계</h2>
 										<p class="total">[##_count_total_##]</p>
-										<p>오늘 : [##_count_today_##]</p>
+										<p style="font-size:0.9em;font-weight:bold;">오늘 : [##_count_today_##]</p>
 										<p>어제 : [##_count_yesterday_##]</p>
 									</div>
 								</s_sidebar_element>
@@ -1642,14 +1642,10 @@
 										</div>
 
 										<div class="content-article">
-											<s_if_var_auto-toc-yn>
-												<s_not_var_auto-toc-yn>
-													<div class="book-toc">
-														<p>목차</p>
-														<ul id="toc"></ul>
-													</div>
-												</s_not_var_auto-toc-yn>
-											</s_if_var_auto-toc-yn>
+											<div class="book-toc" style="display:none;">
+												<p>목차</p>
+												<ul id="toc"></ul>
+											</div>
 											<!-- 상단 광고 2개 삽입 start -->
 											<s_if_var_content-google-ads>
 												<div class="top-ads">
@@ -1904,7 +1900,7 @@
 						<a href="#" class="page-top">TOP</a>
 						<p class="meta"><s_if_var_footer-text-1>[##_var_footer-text-1_##]</s_if_var_footer-text-1></p>
 						<p class="copyright"><s_if_var_footer-text-2>[##_var_footer-text-2_##]</s_if_var_footer-text-2></p>
-						<p class="maker"><a href="https://sangminem.tistory.com/506" target="_blank">Mynem Skin 2.33</a></p>
+						<p class="maker"><a href="https://sangminem.tistory.com/506" target="_blank">Mynem Skin 2.4</a></p>
 					</div>
 				</footer>
 			</div>
@@ -1959,7 +1955,6 @@
 			<input type='hidden' id='toast-after-like' value="[##_var_toast-after-like-text_##]">
 			<input type='hidden' id='make-bell-yn' value="[##_var_make-bell-yn_##]">
 			<input type='hidden' id='make-bell' value="[##_var_make-bell-text_##]">
-			<input type='hidden' id='auto-toc-yn' value="[##_var_auto-toc-yn_##]">
 			<input type='hidden' id='fold-comment-yn' value="[##_var_fold-comment-yn_##]">
 			<input type='hidden' id='fold-comment-num' value="[##_var_fold-comment-num_##]">
 			<input type='hidden' id='floating-toc-position' value="[##_var_floating-toc-position_##]">
@@ -1970,6 +1965,7 @@
 			<input type='hidden' id='floating-toc-type' value="[##_var_floating-toc-type_##]">
 			<input type='hidden' id='content-middle-yn' value="[##_var_content-middle-yn_##]">
 			<input type='hidden' id='fold-toc-yn' value="[##_var_fold-toc-yn_##]">
+			<input type='hidden' id='auto-toc-yn' value="[##_var_auto-toc-yn_##]">
 			<input type='hidden' id='ignore-toc-yn' value="[##_var_ignore-toc-yn_##]">
 			<input type='hidden' id='dark-mode' value="[##_var_dark-mode_##]">
 			<input type='hidden' id='default-dark-mode' value="[##_var_default-dark-mode_##]">

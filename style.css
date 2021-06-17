@@ -328,7 +328,7 @@ article h2,
 	margin-bottom: 5px;
 	text-overflow: ellipsis;
 	font-size: 0.8125em;
-	line-height: 1.5;
+	line-height: 1.6;
 	display: block;
 	display: -webkit-box;
 	-webkit-line-clamp: 3;
@@ -1306,9 +1306,9 @@ h4, h4[data-ke-size] { font-size:1.2em !important; }
 #tt-body-page p[data-ke-size='size18'],
 p[data-ke-size='size18'] { font-size: 1.12em !important; }
 #tt-body-page p[data-ke-size='size16'],
-p[data-ke-size='size16'] { font-size: 1em !important; }
+p[data-ke-size='size16'] { font-size: 1.08em !important; }
 #tt-body-page p[data-ke-size='size14'],
-p[data-ke-size='size14'] { font-size: 0.87em !important; }
+p[data-ke-size='size14'] { font-size: 0.9em !important; }
 #tt-body-page h2[data-ke-size],
 #tt-body-page h3[data-ke-size],
 #tt-body-page h4[data-ke-size] {
@@ -1353,7 +1353,9 @@ ul[data-ke-list-type='disc'] li,
 #tt-body-page ul[data-ke-list-type='disc'] li {
 	list-style-type: none;
 }
-
+#tt-body-page blockquote {
+	margin: 10px auto 10px;
+}
 
 /* another category */
 article .another_category {
