@@ -6,8 +6,8 @@
 		<meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
 		<title>[##_page_title_##]</title>
 		<!-- <link rel="preconnect" href="https://fonts.googleapis.com"> -->
-		<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;600&display=block" as="font" crossorigin="anonymous">
-		<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bitter:ital,wght@0,400;0,600;1,400;1,600&display=block" as="font" crossorigin="anonymous">
+		<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;600&display=auto" as="font" crossorigin="anonymous">
+		<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bitter:ital,wght@0,400;0,600;1,400;1,600&display=auto" as="font" crossorigin="anonymous">
 		<link rel="preload" href="./style.css" as="style">
 		<link rel="stylesheet" href="./style.css">
 		<style>
@@ -19,7 +19,7 @@
 						url('./images/iropkebatangm-webfont.woff') format('woff');
 					font-weight: normal;
 					font-style: normal;
-					font-display: block;
+					font-display: auto;
 				}
 				@font-face {
 					font-family: 'NanumBarunpen';
@@ -28,7 +28,7 @@
 						url("./images/nanumbarunpenR.woff") format("woff");
 					font-weight: normal;
 					font-style: normal;
-					font-display: block;
+					font-display: auto;
 				}
 				@font-face {
 					font-family: 'NanumBarunpen';
@@ -37,7 +37,7 @@
 						url("./images/nanumbarunpenB.woff") format("woff");
 					font-weight: bold;
 					font-style: normal;
-					font-display: block;
+					font-display: auto;
 				}
 			</s_if_var_custom-font>
 
@@ -324,10 +324,10 @@
 				section .content-wrapper {max-width:[##_var_article-max-width_##]px;}
 				header .inner {max-width:[##_var_article-max-width_##]px;}
 				footer .inner {max-width:[##_var_article-max-width_##]px;}
-				article {width:calc([##_var_article-max-width_##]px - 300px);}
+				article {width:calc([##_var_article-max-width_##]px - 300px - [##_var_border-size_##]px);}
 				.cover-special ul li img {
-					width: calc(([##_var_article-max-width_##]px - 332px) * 0.5);
-					height: calc(([##_var_article-max-width_##]px - 332px) * 0.5);
+					width: calc(([##_var_article-max-width_##]px - 334px - [##_var_border-size_##]px) * 0.5);
+					height: calc(([##_var_article-max-width_##]px - 334px - [##_var_border-size_##]px) * 0.5);
 				}
 				@media (max-width: calc([##_var_article-max-width_##]px + 270px)) {
 						.floating-toc-new {
@@ -347,8 +347,8 @@
 						width: initial !important;
 					}
 					.cover-special ul li img {
-						width: calc((100vw - 48px) * 0.5) !important;
-						height: calc((100vw - 48px) * 0.5) !important;
+						width: calc((100vw - 48px - [##_var_border-size_##]px) * 0.5) !important;
+						height: calc((100vw - 48px - [##_var_border-size_##]px) * 0.5) !important;
 					}
 					.top-button {
 						position: fixed;
@@ -410,7 +410,7 @@
 						position: fixed;
 						top: 0;
 						right: -313px;
-						z-index: 130;
+						z-index: 131;
 						float: none;
 						overflow-y: auto;
 						overflow-x: hidden;
@@ -528,8 +528,8 @@
 						display: none !important;
 					}
 					.cover-special ul li img {
-						width: calc((100vw - 48px) * 0.5) !important;
-						height: calc((100vw - 48px) * 0.5) !important;
+						width: calc((100vw - 48px - [##_var_border-size_##]px) * 0.5) !important;
+						height: calc((100vw - 48px - [##_var_border-size_##]px) * 0.5) !important;
 					}
 					.top-button {
 						position: fixed;
@@ -592,7 +592,7 @@
 						position: fixed;
 						top: 0;
 						right: -313px;
-						z-index: 130;
+						z-index: 131;
 						float: none;
 						overflow-y: auto;
 						overflow-x: hidden;
@@ -828,7 +828,7 @@
 						position: fixed;
 						top: 0;
 						right: -313px;
-						z-index: 130;
+						z-index: 131;
 						float: none;
 						overflow-y: auto;
 						overflow-x: hidden;
@@ -984,8 +984,8 @@
 						display: none !important;
 					}
 					.cover-special ul li img {
-						max-width: calc(([##_var_article-max-width_##]px - 30px) * 0.5);
-						max-height: calc(([##_var_article-max-width_##]px - 30px) * 0.5);
+						max-width: calc(([##_var_article-max-width_##]px - 15px) * 0.5);
+						max-height: calc(([##_var_article-max-width_##]px - 15px) * 0.5);
 						width: calc((100vw - 30px) * 0.5);
 						height: calc((100vw - 30px) * 0.5);
 					}
@@ -1029,6 +1029,7 @@
 					article {
 						float: none !important;
 						width: auto;
+						padding-left: 0px;
 					}
 					.mobile-menu aside {
 						right: 0;

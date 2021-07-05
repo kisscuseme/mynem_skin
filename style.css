@@ -1347,10 +1347,18 @@ figure[data-ke-type='opengraph'] div.og-text {
 		font-size:16px !important;
 	}
 }
-ul[data-ke-list-type='disc'],
-ul[data-ke-list-type='disc'] li,
-#tt-body-page ul[data-ke-list-type='disc'],
-#tt-body-page ul[data-ke-list-type='disc'] li {
+.book-toc ul[data-ke-list-type='disc'],
+.book-toc ul[data-ke-list-type='disc'] li,
+#tt-body-page .book-toc ul[data-ke-list-type='disc'],
+#tt-body-page .book-toc ul[data-ke-list-type='disc'] li,
+.floating-toc ul[data-ke-list-type='disc'],
+.floating-toc ul[data-ke-list-type='disc'] li,
+#tt-body-page .floating-toc ul[data-ke-list-type='disc'],
+#tt-body-page .floating-toc ul[data-ke-list-type='disc'] li,
+.floating-toc-new ul[data-ke-list-type='disc'],
+.floating-toc-new ul[data-ke-list-type='disc'] li,
+#tt-body-page .floating-toc-new ul[data-ke-list-type='disc'],
+#tt-body-page .floating-toc-new ul[data-ke-list-type='disc'] li {
 	list-style-type: none;
 }
 #tt-body-page blockquote {
@@ -2438,7 +2446,7 @@ body.dark-mode footer .inner {
 	position: fixed;
 	top: 0;
 	left: 0;
-	z-index: 105;
+	z-index: 130;
 	width: 100%;
 	height: 100%;
 	background-color: rgba(0,0,0,0.6);
