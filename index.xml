@@ -2,7 +2,7 @@
 <skin>
 	<information>
 		<name>Mynem Skin</name>
-		<version>2.4</version>
+		<version>2.41</version>
 		<description>
 			<![CDATA[ 심플하면서 막강한 기능을 가진 미넴 스킨 입니다.
 			많은 사용자가 원하는 방향으로 발전해 나갈 예정입니다. ]]>
@@ -89,7 +89,15 @@
 			</variable>
 			<variable>
 				<name>default-dark-mode</name>
-				<label><![CDATA[ 기본 다크 모드 ]]></label>
+				<label><![CDATA[ 기본 다크 모드 설정 ]]></label>
+				<description><![CDATA[]]></description>
+				<type>BOOL</type>
+				<option/>
+				<default>false</default>
+			</variable>
+			<variable>
+				<name>dark-mode-floating</name>
+				<label><![CDATA[ 플로팅 다크 모드 버튼 숨기기 ]]></label>
 				<description><![CDATA[]]></description>
 				<type>BOOL</type>
 				<option/>
@@ -120,7 +128,7 @@
 				<description><![CDATA[]]></description>
 				<type>COLOR</type>
 				<option />
-				<default>#6A4A00</default>
+				<default>#FE0081</default>
 			</variable>
 			<variable>
 				<name>blog-menu-color</name>
@@ -128,7 +136,7 @@
 				<description><![CDATA[]]></description>
 				<type>COLOR</type>
 				<option />
-				<default>#6A4A00</default>
+				<default>#000000</default>
 			</variable>
 			<variable>
 				<name>background-color</name>
@@ -136,7 +144,7 @@
 				<description><![CDATA[]]></description>
 				<type>COLOR</type>
 				<option />
-				<default>#FFFAED</default>
+				<default>#FFFAFC</default>
 			</variable>
 			<variable>
 				<name>sidebar-color</name>
@@ -144,7 +152,7 @@
 				<description><![CDATA[]]></description>
 				<type>COLOR</type>
 				<option />
-				<default>#FFFAED</default>
+				<default>#FFFAFC</default>
 			</variable>
 			<variable>
 				<name>sidebar-text-color</name>
@@ -152,7 +160,7 @@
 				<description><![CDATA[]]></description>
 				<type>COLOR</type>
 				<option />
-				<default>#9F6F00</default>
+				<default>#FE0081</default>
 			</variable>
 			<variable>
 				<name>etc-color</name>
@@ -160,7 +168,7 @@
 				<description><![CDATA[]]></description>
 				<type>COLOR</type>
 				<option />
-				<default>#9F6F00</default>
+				<default>#FF48C7</default>
 			</variable>
 		</variablegroup>
 
@@ -248,7 +256,7 @@
 		<variablegroup name="사이드바 설정">
 			<variable>
 				<name>adjust-font-size</name>
-				<label><![CDATA[ 글자 크기 조절 사용 ]]></label>
+				<label><![CDATA[ 글자 크기 조절 ]]></label>
 				<description><![CDATA[]]></description>
 				<type>BOOL</type>
 				<option/>
@@ -256,7 +264,7 @@
 			</variable>
 			<variable>
 				<name>lang-trans</name>
-				<label><![CDATA[ 다국어 번역 사용 ]]></label>
+				<label><![CDATA[ 다국어 번역 ]]></label>
 				<description><![CDATA[]]></description>
 				<type>BOOL</type>
 				<option/>
@@ -264,7 +272,7 @@
 			</variable>
 			<variable>
 				<name>dark-mode</name>
-				<label><![CDATA[ 다크 모드 사용 ]]></label>
+				<label><![CDATA[ 다크 모드 ]]></label>
 				<description><![CDATA[]]></description>
 				<type>BOOL</type>
 				<option/>
@@ -272,7 +280,7 @@
 			</variable>
 			<variable>
 				<name>profile-info</name>
-				<label><![CDATA[ 프로필 사용 ]]></label>
+				<label><![CDATA[ 프로필 ]]></label>
 				<description><![CDATA[]]></description>
 				<type>BOOL</type>
 				<option/>
@@ -320,7 +328,7 @@
 			</variable>
 			<variable>
 				<name>sidebar-left</name>
-				<label><![CDATA[ 사이드바 왼쪽으로 이동 ]]></label>
+				<label><![CDATA[ 사이드바 왼쪽으로 이동 (기본 오른쪽) ]]></label>
 				<description><![CDATA[]]></description>
 				<type>BOOL</type>
 				<option/>
@@ -445,7 +453,7 @@
 				<description><![CDATA[]]></description>
 				<type>STRING</type>
 				<option />
-				<default><![CDATA[ 하트를<br>누르시면<br>블로그가<br>고백합니다 💖 ]]></default>
+				<default><![CDATA[ 하트를<br>누르시면<br>블로그가<br>좋아합니다 💖 ]]></default>
 			</variable>
 		</variablegroup>
 
@@ -495,7 +503,7 @@
 			</variable>
 			<variable>
 				<name>fold-toc-yn</name>
-				<label><![CDATA[ 기본 목차 접기 ]]></label>
+				<label><![CDATA[ 목차 접은 상태로 보이기 ]]></label>
 				<description><![CDATA[]]></description>
 				<type>BOOL</type>
 				<option />
@@ -503,7 +511,7 @@
 			</variable>
 			<variable>
 				<name>ignore-toc-yn</name>
-				<label><![CDATA[ 본문 목차 태그 무시 ]]></label>
+				<label><![CDATA[ 본문에 삽입 된 목차 태그 무시 (자동 목차 사용 시) ]]></label>
 				<description><![CDATA[]]></description>
 				<type>BOOL</type>
 				<option />
@@ -527,7 +535,7 @@
 			</variable>
 			<variable>
 				<name>floating-toc-position</name>
-				<label><![CDATA[ 플로팅 목차 오른쪽 등장 ]]></label>
+				<label><![CDATA[ 플로팅 목차 오른쪽 등장 (기본 왼쪽) ]]></label>
 				<description><![CDATA[]]></description>
 				<type>BOOL</type>
 				<option />
@@ -535,7 +543,7 @@
 			</variable>
 			<variable>
 				<name>ads-toc-position</name>
-				<label><![CDATA[ 목차 광고 같은 위치 ]]></label>
+				<label><![CDATA[ 목차 접힌 위치에 광고 표시 ]]></label>
 				<description><![CDATA[]]></description>
 				<type>BOOL</type>
 				<option />
@@ -703,7 +711,7 @@
 				<description><![CDATA[]]></description>
 				<type>BOOL</type>
 				<option/>
-				<default>true</default>
+				<default>false</default>
 			</variable>
 			<variable>
 				<name>paper-style</name>

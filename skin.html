@@ -1351,7 +1351,7 @@
 													<a href="[##_rctps_rep_link_##]">
 														<span class="thum">
 															<s_rctps_rep_thumbnail>
-																<img src="//i1.daumcdn.net/thumb/S90x60/?fname=[##_rctps_rep_thumbnail_##]" alt="" />
+																<img src="//i1.daumcdn.net/thumb/S70x70/?fname=[##_rctps_rep_thumbnail_##]" alt="" />
 															</s_rctps_rep_thumbnail>
 														</span>
 														<span class="title">[##_rctps_rep_title_##]</span>
@@ -1369,7 +1369,7 @@
 													<a href="[##_rctps_rep_link_##]">
 														<span class="thum">
 															<s_rctps_rep_thumbnail>
-																<img src="//i1.daumcdn.net/thumb/S90x60/?fname=[##_rctps_rep_thumbnail_##]" alt="" />
+																<img src="//i1.daumcdn.net/thumb/S70x70/?fname=[##_rctps_rep_thumbnail_##]" alt="" />
 															</s_rctps_rep_thumbnail>
 														</span>
 														<span class="title">[##_rctps_rep_title_##]</span>
@@ -1906,16 +1906,18 @@
 				</footer>
 			</div>
 			
-			<!-- 상단 이동 버튼 -->
-			<a class="move-top-btn"></a>
+			<div class="floating-button">
+				<!-- 다크모드 버튼 -->
+				<a class="dark-mode-on-btn" onclick="setDarkMode('-')" style="display:none;"></a>
+				<a class="dark-mode-off-btn" onclick="setDarkMode('+')" style="display:none;"></a>
 
-			<!-- 다크모드 버튼 -->
-			<a class="dark-mode-on-btn" onclick="setDarkMode('-')" style="display:none;"></a>
-			<a class="dark-mode-off-btn" onclick="setDarkMode('+')" style="display:none;"></a>
-
-			<!-- 공유 버튼 -->
-			<a class="share-btn"></a>
-			<div id='custom-sns' class='layer_post'></div>
+				<!-- 공유 버튼 -->
+				<a class="share-btn"></a>
+				<div id='custom-sns' class='layer_post'></div>
+				
+				<!-- 상단 이동 버튼 -->
+				<a class="move-top-btn"></a>
+			</div>
 
 			<!-- 떠다니는 목차 -->
 			<div class="floating-toc"></div>
