@@ -39,6 +39,7 @@ Thumbs.db
 *.app
 *.exe
 *.war
+*.bat
 
 # Large media files
 *.mp4
@@ -57,3 +58,6 @@ Thumbs.db
 *.svg
 *.png
 *.jpg
+
+#etc
+*.zip

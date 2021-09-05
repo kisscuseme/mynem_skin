@@ -160,6 +160,10 @@ header p a {
 	padding-right: 5px;
 	vertical-align: middle;
 }
+#tt-body-archive .post-header h1:before {
+	content: "\f073";
+	padding-right: 5px;
+}
 .title-image {
 	max-height: 60px;
 }
@@ -710,6 +714,7 @@ article h2,
 .sidebar .popular, 
 .sidebar .recent-comment,
 .sidebar .tags,
+.sidebar .archives,
 .sidebar .count,
 .sidebar .profile-info,
 .sidebar .module_plugin,
@@ -721,6 +726,7 @@ article h2,
 .sidebar .recent ul li,
 .sidebar .popular ul li,
 .sidebar .recent-comment ul li,
+.sidebar .archives ul li,
 .sidebar .module_plugin div:not(#recommend-ads) {
 	font-size: 0.875em;
 	padding-top: 10px;
@@ -731,6 +737,7 @@ article h2,
 .sidebar .recent ul li:last-child,
 .sidebar .popular ul li:last-child,
 .sidebar .recent-comment ul li:last-child,
+.sidebar .archives ul li:last-child,
 .sidebar .module_plugin div:last-child {
 	padding-bottom: 10px;
 }

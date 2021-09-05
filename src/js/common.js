@@ -989,6 +989,23 @@ function common(){
             }
         }
     });
+
+    var list = $('.archives ul li a');
+    var now = new Date(Date.now());
+    var year = now.getFullYear();
+    var month = (now.getMonth()+1);
+    for(var i=0;i<list.length;i++) {
+        var date = list.eq(i).text().split('/');
+        var gap_year = year - Number(date[0]);
+        var gap_month = gap_year*12 + (month-Number(date[1]));
+        var title = '';
+        if(gap_month == 0) {
+            title = '이번 달 작성 글 모아보기';
+        } else {
+            title = gap_month + '개월 전 작성 글 모아보기';
+        }
+        list.eq(i).text('[' + list.eq(i).text() + '] ' + title);
+    }
 }
 
 function updateTagsAttr() {
@@ -1475,7 +1492,7 @@ var flagForMoveToTheTitle = true;
 var fixedHeaderTimer = 0;
 function fixedHeader() {
     if($('#fixed-header').val()){
-        if(window.scrollY > 0) {
+        if(window.scrollY > 0 && window.scrollHeight > window.innerHeight) {
             $('.content-wrapper').css('margin-top',initHeaderHeight+'px');
             $header.css('position', 'fixed');
             $header.css('top', '0');

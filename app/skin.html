@@ -117,12 +117,12 @@
 				}
 			</s_not_var_sidebar-left>
 			<s_if_var_paper-style>
-				section, footer, .floating-toc, .floating-toc-new {
+				section, footer, header, .floating-toc, .floating-toc-new {
 					background-image: url('./images/paper.jpg');
 				}
 			</s_if_var_paper-style>
 			<s_not_var_paper-style>
-				section, footer, .floating-toc {
+				section, footer, header, .floating-toc {
 					background: #fff;
 				}
 			</s_not_var_paper-style>
@@ -218,11 +218,11 @@
 				<s_if_var_sidebar-solid-style>
 					.sidebar .category, .sidebar .notice, .sidebar .recent, .sidebar .profile-info, 
 					.sidebar .popular, .sidebar .recent-comment, .sidebar .tags, #tistorySnsLayer.layer_post,
-					.sidebar .count, .sidebar .module_plugin {
+					.sidebar .count, .sidebar .module_plugin, .archives {
 						border: [##_var_border-size_##]px solid [##_var_etc-color_##]55;
 					}
 					.sidebar .category h2, .sidebar .notice h2,  .sidebar .recent h2, .sidebar .profile-info h2,
-					.sidebar .popular h2, .sidebar .recent-comment h2, .sidebar .tags h2,
+					.sidebar .popular h2, .sidebar .recent-comment h2, .sidebar .tags h2, .sidebar .archives h2,
 					.sidebar .count h2, .sidebar .module_plugin div:not(.change-font-box, .lang-box, .dark-mode-box) h2,
 					.sidebar .module_plugin #bgm-title, .sidebar .module_plugin #recommend-ads-title {
 						border-bottom: [##_var_border-size_##]px dashed [##_var_etc-color_##]55;
@@ -1151,7 +1151,7 @@
 		</script>
 	</head>
 	<body id="[##_body_id_##]">
-		<script src="./images/preload.js"></script>
+		<script src="./images/preload.min.js"></script>
 		<s_t3>
 			<div id="wrapper">
 				<div class="top-button">
@@ -1351,7 +1351,7 @@
 													<a href="[##_rctps_rep_link_##]">
 														<span class="thum">
 															<s_rctps_rep_thumbnail>
-																<img src="//i1.daumcdn.net/thumb/S70x70/?fname=[##_rctps_rep_thumbnail_##]" alt="" />
+																<img src="//i1.daumcdn.net/thumb/C70x70/?fname=[##_rctps_rep_thumbnail_##]" alt="" />
 															</s_rctps_rep_thumbnail>
 														</span>
 														<span class="title">[##_rctps_rep_title_##]</span>
@@ -1369,7 +1369,7 @@
 													<a href="[##_rctps_rep_link_##]">
 														<span class="thum">
 															<s_rctps_rep_thumbnail>
-																<img src="//i1.daumcdn.net/thumb/S70x70/?fname=[##_rctps_rep_thumbnail_##]" alt="" />
+																<img src="//i1.daumcdn.net/thumb/C70x70/?fname=[##_rctps_rep_thumbnail_##]" alt="" />
 															</s_rctps_rep_thumbnail>
 														</span>
 														<span class="title">[##_rctps_rep_title_##]</span>
@@ -1417,6 +1417,17 @@
 									</div>
 								</s_sidebar_element>
 								<s_sidebar_element>
+									<!-- 글 보관함 -->
+									<div class="archives">
+										<h2>글 보관함</h2>
+										<ul>
+											<s_archive_rep>
+												<li><a href="[##_archive_rep_link_##]">[##_archive_rep_date_##]</a></li>
+											</s_archive_rep>
+										</ul>
+									</div>
+								</s_sidebar_element>
+								<s_sidebar_element>
 									<!-- 전체 방문자 -->
 									<div class="count">
 										<h2>방문자 통계</h2>
@@ -1442,7 +1453,7 @@
 														<s_if_var_grid-thum-yn>
 															<span class="thum">
 																<s_cover_item_thumbnail>
-																	<img src="//i1.daumcdn.net/thumb/S300x300/?fname=[##_cover_item_thumbnail_##]" alt="" loading="lazy">
+																	<img src="//i1.daumcdn.net/thumb/C300x300/?fname=[##_cover_item_thumbnail_##]" alt="" loading="lazy">
 																</s_cover_item_thumbnail>
 															</span>
 														</s_if_var_grid-thum-yn>
@@ -1476,7 +1487,7 @@
 															<s_if_var_list-thum-yn>
 																<figure>
 																	<s_cover_item_thumbnail>
-																		<img src="//i1.daumcdn.net/thumb/S300x300/?fname=[##_cover_item_thumbnail_##]" alt="" loading="lazy">
+																		<img src="//i1.daumcdn.net/thumb/C300x300/?fname=[##_cover_item_thumbnail_##]" alt="" loading="lazy">
 																	</s_cover_item_thumbnail>
 																</figure>
 															</s_if_var_list-thum-yn>
@@ -1606,7 +1617,7 @@
 												<s_if_var_grid-thum-yn>
 													<span class="thum">
 														<s_article_rep_thumbnail>
-															<img src="//i1.daumcdn.net/thumb/S300x300/?fname=[##_article_rep_thumbnail_raw_url_##]" alt="">
+															<img src="//i1.daumcdn.net/thumb/C300x300/?fname=[##_article_rep_thumbnail_raw_url_##]" alt="">
 														</s_article_rep_thumbnail>
 													</span>
 												</s_if_var_grid-thum-yn>
@@ -1901,19 +1912,19 @@
 						<a href="#" class="page-top">TOP</a>
 						<p class="meta"><s_if_var_footer-text-1>[##_var_footer-text-1_##]</s_if_var_footer-text-1></p>
 						<p class="copyright"><s_if_var_footer-text-2>[##_var_footer-text-2_##]</s_if_var_footer-text-2></p>
-						<p class="maker"><a href="https://sangminem.tistory.com/506" target="_blank">Mynem Skin 2.4</a></p>
+						<p class="maker"><a href="https://sangminem.tistory.com/506" target="_blank">Mynem Skin 2.4.1</a></p>
 					</div>
 				</footer>
 			</div>
 			
 			<div class="floating-button">
-				<!-- 다크모드 버튼 -->
-				<a class="dark-mode-on-btn" onclick="setDarkMode('-')" style="display:none;"></a>
-				<a class="dark-mode-off-btn" onclick="setDarkMode('+')" style="display:none;"></a>
-
 				<!-- 공유 버튼 -->
 				<a class="share-btn"></a>
 				<div id='custom-sns' class='layer_post'></div>
+				
+				<!-- 다크모드 버튼 -->
+				<a class="dark-mode-on-btn" onclick="setDarkMode('-')" style="display:none;"></a>
+				<a class="dark-mode-off-btn" onclick="setDarkMode('+')" style="display:none;"></a>
 				
 				<!-- 상단 이동 버튼 -->
 				<a class="move-top-btn"></a>
@@ -1981,7 +1992,7 @@
 			<input type='hidden' id='toc-unfold-yn' value="[##_var_toc-unfold-yn_##]">
 			<input type='hidden' id='ads-toc-position' value="[##_var_ads-toc-position_##]">
 		</s_t3>
-		<script src="./images/common.js"></script>
+		<script src="./images/common.min.js"></script>
 		<script>
 			function googleTranslateElementInit2() {new google.translate.TranslateElement({pageLanguage: 'ko',autoDisplay: false}, 'google_translate_element2');}
 		</script>

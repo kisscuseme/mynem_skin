@@ -20,10 +20,6 @@ function setDarkMode(type) {
     fixedHeader();
 }
 
-(function() {
-    darkMode();
-})();
-
 function checkMainPage() {
     if(window.location.pathname == '/') {
         return true;
@@ -52,3 +48,7 @@ function browserCheck(type){
         }
     }
 }
+
+(function() {
+    darkMode();
+})();
