@@ -1595,15 +1595,17 @@ function foldFloatingToc() {
 
 var previousScrollTop = 0;
 function stickySidebar() {
-    if($('.sidebar')[0].scrollHeight-$('.sidebar')[0].scrollTop > $('#wrapper')[0].scrollHeight-window.scrollY-80) {
-        $('.sidebar').css('height', '');
-    } else {
-        $('.sidebar').css('height', '100vh');
+    if(window.scrollHeight > window.innerHeight + 500) {
+        if($('.sidebar')[0].scrollHeight-$('.sidebar')[0].scrollTop > $('#wrapper')[0].scrollHeight-window.scrollY-80) {
+            $('.sidebar').css('height', '');
+        } else {
+            $('.sidebar').css('height', '100vh');
+        }
+        if($('.sidebar')[0].scrollTop > window.scrollY && previousScrollTop > window.scrollY) {
+            $('.sidebar')[0].scrollTo(0,window.scrollY);
+        }
+        previousScrollTop = window.scrollY;
     }
-    if($('.sidebar')[0].scrollTop > window.scrollY && previousScrollTop > window.scrollY) {
-        $('.sidebar')[0].scrollTo(0,window.scrollY);
-    }
-    previousScrollTop = window.scrollY;
 }
 
 $(document).ready(function() {
