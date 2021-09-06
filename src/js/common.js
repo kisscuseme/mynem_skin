@@ -1059,7 +1059,7 @@ function updateTagsAttr() {
                     }
                 }
                 limitCnt++;
-                if(limitCnt > 100) {
+                if(limitCnt > 200) {
                     break;
                 }
             }
