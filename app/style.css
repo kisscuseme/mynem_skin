@@ -1392,6 +1392,7 @@ article .another_category h4 {
 	overflow:hidden;
 	text-overflow:ellipsis;
 	white-space:nowrap;
+	font-style: normal;
 }
 article .another_category h4:before {
 	content: "관련 글";
@@ -2083,6 +2084,7 @@ article .tags a {
 	overflow: hidden;
 	opacity: 0.0;
 	z-index: 129;
+	max-width: 500px;
 }
 .floating-toc-new:after {
 	content:"";
