@@ -2,7 +2,7 @@
 <skin>
 	<information>
 		<name>Mynem Skin</name>
-		<version>2.4.1</version>
+		<version>2.4.2</version>
 		<description>
 			<![CDATA[ 심플하면서 막강한 기능을 가진 미넴 스킨 입니다.
 			많은 사용자가 원하는 방향으로 발전해 나갈 예정입니다. ]]>
@@ -477,6 +477,14 @@
 		</variablegroup>
 
 		<variablegroup name="목차 설정">
+			<variable>
+				<name>use-floating-toc-yn</name>
+				<label><![CDATA[ 플로팅 목차 사용 여부 ]]></label>
+				<description><![CDATA[]]></description>
+				<type>BOOL</type>
+				<option />
+				<default>true</default>
+			</variable>
 			<variable>
 				<name>auto-toc-yn</name>
 				<label><![CDATA[ 자동 목차 사용 ]]></label>

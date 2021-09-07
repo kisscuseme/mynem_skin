@@ -1569,10 +1569,12 @@ function selectMakeFloatingToc() {
 }
 
 function selectAppendToc() {
-    if($('#floating-toc-type').val() == 'new') {
-        appendTocNew();
-    } else {
-        appendToc();
+    if($('#use-floating-toc-yn').val()) {
+        if($('#floating-toc-type').val() == 'new') {
+            appendTocNew();
+        } else {
+            appendToc();
+        }
     }
 }
 
