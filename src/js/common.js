@@ -936,6 +936,14 @@ function common(){
             if ( !$(".sidebar .profile").length ){
                 $(".sidebar").append('<div class="profile" /><button type="button" class="close">닫기</button>');
                 $profile.find("ul").clone().appendTo(".sidebar .profile");
+
+                var $profileMobile = $(".sidebar .profile");
+                $profileMobile.on("click", ".login", function(){
+                    document.location.href = 'https://www.tistory.com/auth/login?redirectUrl=' + encodeURIComponent(window.TistoryBlog.url);
+                });
+                $profileMobile.on("click", ".logout", function(){
+                    document.location.href = 'https://www.tistory.com/auth/logout?redirectUrl=' + encodeURIComponent(window.TistoryBlog.url);
+                });
             }
             fixedRecommendAds('init');
         }
