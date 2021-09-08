@@ -706,6 +706,14 @@
 
 		<variablegroup name="기타 설정">
 			<variable>
+				<name>use-fixed-ads-yn</name>
+				<label><![CDATA[ 고정 광고 사용 여부 ]]></label>
+				<description><![CDATA[]]></description>
+				<type>BOOL</type>
+				<option/>
+				<default>true</default>
+			</variable>
+			<variable>
 				<name>custom-font-forced</name>
 				<label><![CDATA[ 본문 적용 글꼴 무시 ]]></label>
 				<description><![CDATA[]]></description>

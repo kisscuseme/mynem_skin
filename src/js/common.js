@@ -1150,108 +1150,110 @@ function lazyLoading() {
 }
 
 function fixedRecommendAds(type) {
-    var recommendAds = $('#recommend-ads').parent();
-    var adsenseAd = $('aside .revenue_unit_wrap .adsense');
-    var adfitAd = $('aside .revenue_unit_wrap .adfit');
-    var blankLeftSide = (window.innerWidth - ($('.content-wrapper').width() + 20))/2 - 300;
-    var isHideSidebar = $('#hide-sidebar').val() && blankLeftSide > 0;
-    var tocSelector = 'all';
-    var tocTargetWithoutRecommendAds = recommendAds.length > 0?(adsenseAd.length > 0?adsenseAd:adfitAd.length > 0?adfitAd:null):(adsenseAd.length > 0?(adfitAd.length > 0?adfitAd:null):null);
-    var tocTargetWithRecommendAds = recommendAds.length > 0?recommendAds:(adsenseAd.length > 0?adsenseAd:adfitAd.length > 0?adfitAd:null);
-    var tocTarget = tocSelector == 'all'?tocTargetWithRecommendAds:tocTargetWithoutRecommendAds;
-    var removeStyleFlag = false;
-    var headerHeight = $('#fixed-header').val()?$('header').height()+5:($('#hide-sidebar').val()?(floatingTocPostion?5:60):5);
-    if (type == undefined && (isHideSidebar || (window.innerWidth > 1079 && window.scrollY > $('aside').height() + 150 && window.innerHeight > 650))) {
-        if(recommendAds.length > 0) {
-            if(window.innerHeight > 820) {
-                recommendAds.css('top', 'calc(' + headerHeight + 'px - 85px)');
-                recommendAds.css('transform', 'scale(0.8)');
-            } else if(window.innerHeight > 730) {
-                recommendAds.css('top', 'calc(' + headerHeight + 'px - 130px)');
-                recommendAds.css('transform', 'scale(0.7)');
-            } else if(window.innerHeight > 650) {
-                recommendAds.css('top', 'calc(' + headerHeight + 'px - 180px)');
-                recommendAds.css('transform', 'scale(0.6)');
+    if($('#use-fixed-ads-yn').val()) {
+        var recommendAds = $('#recommend-ads').parent();
+        var adsenseAd = $('aside .revenue_unit_wrap .adsense');
+        var adfitAd = $('aside .revenue_unit_wrap .adfit');
+        var blankLeftSide = (window.innerWidth - ($('.content-wrapper').width() + 20))/2 - 300;
+        var isHideSidebar = $('#hide-sidebar').val() && blankLeftSide > 0;
+        var tocSelector = 'all';
+        var tocTargetWithoutRecommendAds = recommendAds.length > 0?(adsenseAd.length > 0?adsenseAd:adfitAd.length > 0?adfitAd:null):(adsenseAd.length > 0?(adfitAd.length > 0?adfitAd:null):null);
+        var tocTargetWithRecommendAds = recommendAds.length > 0?recommendAds:(adsenseAd.length > 0?adsenseAd:adfitAd.length > 0?adfitAd:null);
+        var tocTarget = tocSelector == 'all'?tocTargetWithRecommendAds:tocTargetWithoutRecommendAds;
+        var removeStyleFlag = false;
+        var headerHeight = $('#fixed-header').val()?$('header').height()+5:($('#hide-sidebar').val()?(floatingTocPostion?5:60):5);
+        if (type == undefined && (isHideSidebar || (window.innerWidth > 1079 && window.scrollY > $('aside').height() + 150 && window.innerHeight > 650))) {
+            if(recommendAds.length > 0) {
+                if(window.innerHeight > 820) {
+                    recommendAds.css('top', 'calc(' + headerHeight + 'px - 85px)');
+                    recommendAds.css('transform', 'scale(0.8)');
+                } else if(window.innerHeight > 730) {
+                    recommendAds.css('top', 'calc(' + headerHeight + 'px - 130px)');
+                    recommendAds.css('transform', 'scale(0.7)');
+                } else if(window.innerHeight > 650) {
+                    recommendAds.css('top', 'calc(' + headerHeight + 'px - 180px)');
+                    recommendAds.css('transform', 'scale(0.6)');
+                }
+            } else if(tocTarget != null) {
+                tocTarget.css('position', 'fixed');
+                tocTarget.css('top', 'calc(' + headerHeight + 'px + 10px)');
             }
-        } else if(tocTarget != null) {
-            tocTarget.css('position', 'fixed');
-            tocTarget.css('top', 'calc(' + headerHeight + 'px + 10px)');
-        }
-        if(tocTarget != null) {
-            if(isHideSidebar) {
-                if(floatingTocPostion) {
-                    tocTarget.css('left', blankLeftSide/2 + 'px');
-                } else {
-                    tocTarget.css('right', blankLeftSide/2 + 'px');
+            if(tocTarget != null) {
+                if(isHideSidebar) {
+                    if(floatingTocPostion) {
+                        tocTarget.css('left', blankLeftSide/2 + 'px');
+                    } else {
+                        tocTarget.css('right', blankLeftSide/2 + 'px');
+                    }
                 }
             }
-        }
-    } else if(type == 'toc') {
-        if(tocTarget != null) {
-            var tocLeft = ((window.innerWidth - ($('.content-wrapper').width() + 20))/2 - tocTarget.parent().outerWidth())/2;
-            if((contentMiddleYn && tocLeft >= 0) || (!contentMiddleYn && window.innerWidth >= 1400)) {
-                if(window.scrollY > $('header').height()
-                  && ((bookToc.length > 0 && $('#toc-title>p>span#toggle').hasClass('close') && (!contentMiddleYn || (contentMiddleYn && adsTocPosition)))
-                  || (contentMiddleYn && !adsTocPosition) || bookToc.length == 0)) {
-                    var tocOffsetTop = bookToc.length > 0?(contentMiddleYn && !adsTocPosition?0:50):0;
-                    var tocOffsetLeft = 0;
-                    if(contentMiddleYn) {
-                        tocOffsetLeft = $('.floating-toc-new')[0].offsetLeft+tocLeft-10;
+        } else if(type == 'toc') {
+            if(tocTarget != null) {
+                var tocLeft = ((window.innerWidth - ($('.content-wrapper').width() + 20))/2 - tocTarget.parent().outerWidth())/2;
+                if((contentMiddleYn && tocLeft >= 0) || (!contentMiddleYn && window.innerWidth >= 1400)) {
+                    if(window.scrollY > $('header').height()
+                      && ((bookToc.length > 0 && $('#toc-title>p>span#toggle').hasClass('close') && (!contentMiddleYn || (contentMiddleYn && adsTocPosition)))
+                      || (contentMiddleYn && !adsTocPosition) || bookToc.length == 0)) {
+                        var tocOffsetTop = bookToc.length > 0?(contentMiddleYn && !adsTocPosition?0:50):0;
+                        var tocOffsetLeft = 0;
+                        if(contentMiddleYn) {
+                            tocOffsetLeft = $('.floating-toc-new')[0].offsetLeft+tocLeft-10;
+                        } else {
+                            tocOffsetLeft = $('.floating-toc-new')[0].offsetLeft+5;
+                        }
+                        if(recommendAds.length > 0) {
+                            var scaleRatio = 0.9;
+                            if(tocTarget.height() > (window.innerHeight-tocOffsetTop-headerHeight)) {
+                                scaleRatio = (window.innerHeight-tocOffsetTop-headerHeight)/tocTarget.height()*0.9;
+                            }
+                            tocTarget.css('position', 'fixed');
+                            tocTarget.css('top', 'calc(' + (tocOffsetTop+headerHeight) + 'px - '+((1-scaleRatio)*450)+'px)');
+                            tocTarget.css('transform', 'scale('+scaleRatio+')');
+                            tocTarget.css('position', 'fixed');
+                            if(adsTocPosition || !contentMiddleYn) {
+                                tocTarget.css('left', tocOffsetLeft + 'px');
+                            } else{
+                                tocTarget.css('right', tocOffsetLeft + 'px');
+                            }
+                        } else {
+                            tocTarget.parent().css('height',tocTarget.parent().height()+'px');
+                            tocTarget.parent().css('background-image','url(//t1.daumcdn.net/tistory_admin/static/revenue/adsense.svg)');
+                            tocTarget.parent().css('background-repeat','no-repeat');
+                            tocTarget.parent().css('background-position','center');
+                            tocTarget.css('position', 'fixed');
+                            tocTarget.css('top', (tocOffsetTop+headerHeight) + 'px');
+                            if(adsTocPosition || !contentMiddleYn) {
+                                tocTarget.css('left', tocOffsetLeft + 'px');
+                            } else{
+                                tocTarget.css('right', tocOffsetLeft + 'px');
+                            }
+                        }
                     } else {
-                        tocOffsetLeft = $('.floating-toc-new')[0].offsetLeft+5;
-                    }
-                    if(recommendAds.length > 0) {
-                        var scaleRatio = 0.9;
-                        if(tocTarget.height() > (window.innerHeight-tocOffsetTop-headerHeight)) {
-                            scaleRatio = (window.innerHeight-tocOffsetTop-headerHeight)/tocTarget.height()*0.9;
-                        }
-                        tocTarget.css('position', 'fixed');
-                        tocTarget.css('top', 'calc(' + (tocOffsetTop+headerHeight) + 'px - '+((1-scaleRatio)*450)+'px)');
-                        tocTarget.css('transform', 'scale('+scaleRatio+')');
-                        tocTarget.css('position', 'fixed');
-                        if(adsTocPosition || !contentMiddleYn) {
-                            tocTarget.css('left', tocOffsetLeft + 'px');
-                        } else{
-                            tocTarget.css('right', tocOffsetLeft + 'px');
-                        }
-                    } else {
-                        tocTarget.parent().css('height',tocTarget.parent().height()+'px');
-                        tocTarget.parent().css('background-image','url(//t1.daumcdn.net/tistory_admin/static/revenue/adsense.svg)');
-                        tocTarget.parent().css('background-repeat','no-repeat');
-                        tocTarget.parent().css('background-position','center');
-                        tocTarget.css('position', 'fixed');
-                        tocTarget.css('top', (tocOffsetTop+headerHeight) + 'px');
-                        if(adsTocPosition || !contentMiddleYn) {
-                            tocTarget.css('left', tocOffsetLeft + 'px');
-                        } else{
-                            tocTarget.css('right', tocOffsetLeft + 'px');
-                        }
+                        removeStyleFlag = true;
                     }
                 } else {
                     removeStyleFlag = true;
                 }
-            } else {
+            }
+        } else if(type == 'unfold') {
+            if(tocTarget != null) {
                 removeStyleFlag = true;
             }
+        } else {
+            if(recommendAds.length > 0) {
+                recommendAds.removeAttr('style');
+            } else if(adsenseAd.length > 0) {
+                adsenseAd.removeAttr('style');
+            } else if(adfitAd.length > 0) {
+                adfitAd.removeAttr('style');    
+            }
         }
-    } else if(type == 'unfold') {
-        if(tocTarget != null) {
-            removeStyleFlag = true;
-        }
-    } else {
-        if(recommendAds.length > 0) {
-            recommendAds.removeAttr('style');
-        } else if(adsenseAd.length > 0) {
-            adsenseAd.removeAttr('style');
-        } else if(adfitAd.length > 0) {
-            adfitAd.removeAttr('style');    
-        }
-    }
-
-    if(removeStyleFlag) {
-        tocTarget.removeAttr('style');
-        if(recommendAds.length == 0) {
-            tocTarget.parent().removeAttr('style');
+    
+        if(removeStyleFlag) {
+            tocTarget.removeAttr('style');
+            if(recommendAds.length == 0) {
+                tocTarget.parent().removeAttr('style');
+            }
         }
     }
 }
