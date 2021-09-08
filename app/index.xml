@@ -2,7 +2,7 @@
 <skin>
 	<information>
 		<name>Mynem Skin</name>
-		<version>2.4.2</version>
+		<version>2.5.0</version>
 		<description>
 			<![CDATA[ 심플하면서 막강한 기능을 가진 미넴 스킨 입니다.
 			많은 사용자가 원하는 방향으로 발전해 나갈 예정입니다. ]]>
@@ -23,7 +23,7 @@
 		<recentComments>7</recentComments>
 		<recentTrackbacks>4</recentTrackbacks>
 		<itemsOnGuestbook>10</itemsOnGuestbook>
-		<tagsInCloud>30</tagsInCloud>
+		<tagsInCloud>50</tagsInCloud>
 		<sortInCloud>3</sortInCloud>
 		<expandComment>1</expandComment>
 		<expandTrackback>1</expandTrackback>
@@ -90,14 +90,6 @@
 			<variable>
 				<name>default-dark-mode</name>
 				<label><![CDATA[ 기본 다크 모드 설정 ]]></label>
-				<description><![CDATA[]]></description>
-				<type>BOOL</type>
-				<option/>
-				<default>false</default>
-			</variable>
-			<variable>
-				<name>dark-mode-floating</name>
-				<label><![CDATA[ 플로팅 다크 모드 버튼 숨기기 ]]></label>
 				<description><![CDATA[]]></description>
 				<type>BOOL</type>
 				<option/>
@@ -309,6 +301,22 @@
 				<type>STRING</type>
 				<option />
 				<default><![CDATA[ ]]></default>
+			</variable>
+			<variable>
+				<name>fold-sidebar</name>
+				<label><![CDATA[ 카테고리 접힌 상태로 유지 ]]></label>
+				<description><![CDATA[]]></description>
+				<type>BOOL</type>
+				<option/>
+				<default>true</default>
+			</variable>
+			<variable>
+				<name>fold-sidebar-speed</name>
+				<label><![CDATA[ 카테고리 펼쳐지는 속도(시간) ]]></label>
+				<description><![CDATA[]]></description>
+				<type>STRING</type>
+				<option />
+				<default><![CDATA[ 600 ]]></default>
 			</variable>
 			<variable>
 				<name>category-header-style-1</name>
@@ -740,6 +748,22 @@
 			<variable>
 				<name>lazy-loading</name>
 				<label><![CDATA[ 이미지 지연로딩 사용 ]]></label>
+				<description><![CDATA[]]></description>
+				<type>BOOL</type>
+				<option/>
+				<default>false</default>
+			</variable>
+			<variable>
+				<name>dark-mode-floating</name>
+				<label><![CDATA[ 플로팅 다크 모드 버튼 숨기기 ]]></label>
+				<description><![CDATA[]]></description>
+				<type>BOOL</type>
+				<option/>
+				<default>false</default>
+			</variable>
+			<variable>
+				<name>forced-font-color</name>
+				<label><![CDATA[ 다크 모드 시 폰트 컬러 강제 변경 (어두운 색상을 이용한 글이 많을 경우) ]]></label>
 				<description><![CDATA[]]></description>
 				<type>BOOL</type>
 				<option/>

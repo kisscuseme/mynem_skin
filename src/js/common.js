@@ -1014,6 +1014,8 @@ function common(){
         }
         list.eq(i).text('[' + list.eq(i).text() + '] ' + title);
     }
+
+    $('.category h2 a').html('카테고리 <span class="c_cnt">' + $('.category .link_tit .c_cnt').text() + '</span>');
 }
 
 function updateTagsAttr() {
@@ -1620,6 +1622,41 @@ function stickySidebar() {
     }
 }
 
+function toggleCategory() {
+    if($('#fold-sidebar').val()) {
+        var sidebarPosition = Number($('.sidebar').css('right').replace('px',''));
+        if(Number.isNaN(sidebarPosition) || sidebarPosition > 0) {
+            var category = $('.category_list > li');
+            for(var i=0;i<category.length;i++) {
+                var subCategory = category.eq(i).find('ul.sub_category_list');
+                if(subCategory.length > 0) {
+                    foldCategory(i);
+                    subCategory.css('display', 'none');
+                }
+            }
+        }
+    }
+}
+
+function foldCategory(index) {
+    var category = $('.category_list > li');
+    var targetSubCategory = category.eq(index).find('ul.sub_category_list');
+    var speed = Number.isNaN(Number($('#fold-sidebar-speed').val()))?600:Number($('#fold-sidebar-speed').val());
+    category.eq(index).hover(function(){
+        if(targetSubCategory.css('display') == 'none') {
+            targetSubCategory.slideDown(speed, 'swing', function() {
+                
+            });
+        }
+    }, function() {
+        if(targetSubCategory.css('display') != 'none') {
+            targetSubCategory.slideUp(speed, 'swing', function() {
+                
+            });
+        }
+    });
+}
+
 $(document).ready(function() {
     makeToc();
     selectMakeFloatingToc();
@@ -1633,6 +1670,7 @@ $(document).ready(function() {
     makeBell();
     toastAfterLike();
     bgmEvents();
+    toggleCategory();
     common();
     
     $(window).on('scroll resize', function() {

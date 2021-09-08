@@ -269,6 +269,12 @@
 				</s_if_var_image-solid-style>
 			</s_if_var_etc-color>
 			
+			<s_if_var_forced-font-color>
+				body.dark-mode .content-article p span {
+					color: #d6d6d6 !important;
+				}
+			</s_if_var_forced-font-color>
+
 			<s_if_var_thum-img>
 				.thum:before, .cover-list ul li figure:before {
 					background-image:url('[##_var_thum-img_##]');
@@ -1912,7 +1918,7 @@
 						<a href="#" class="page-top">TOP</a>
 						<p class="meta"><s_if_var_footer-text-1>[##_var_footer-text-1_##]</s_if_var_footer-text-1></p>
 						<p class="copyright"><s_if_var_footer-text-2>[##_var_footer-text-2_##]</s_if_var_footer-text-2></p>
-						<p class="maker"><a href="https://sangminem.tistory.com/506" target="_blank">Mynem Skin 2.4.2</a></p>
+						<p class="maker"><a href="https://sangminem.tistory.com/506" target="_blank">Mynem Skin 2.5.0</a></p>
 					</div>
 				</footer>
 			</div>
@@ -1923,8 +1929,10 @@
 				<div id='custom-sns' class='layer_post'></div>
 				
 				<!-- 다크모드 버튼 -->
-				<a class="dark-mode-on-btn" onclick="setDarkMode('-')" style="display:none;"></a>
-				<a class="dark-mode-off-btn" onclick="setDarkMode('+')" style="display:none;"></a>
+				<s_not_var_dark-mode-floating>
+					<a class="dark-mode-on-btn" onclick="setDarkMode('-')" style="display:none;"></a>
+					<a class="dark-mode-off-btn" onclick="setDarkMode('+')" style="display:none;"></a>
+				</s_not_var_dark-mode-floating>
 				
 				<!-- 상단 이동 버튼 -->
 				<a class="move-top-btn"></a>
@@ -1993,6 +2001,8 @@
 			<input type='hidden' id='toc-unfold-yn' value="[##_var_toc-unfold-yn_##]">
 			<input type='hidden' id='ads-toc-position' value="[##_var_ads-toc-position_##]">
 			<input type='hidden' id='use-fixed-ads-yn' value="[##_var_use-fixed-ads-yn_##]">
+			<input type='hidden' id='fold-sidebar' value="[##_var_fold-sidebar_##]">
+			<input type='hidden' id='fold-sidebar-speed' value="[##_var_fold-sidebar-speed_##]">
 		</s_t3>
 		<script src="./images/common.min.js"></script>
 		<script>
