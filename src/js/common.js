@@ -1636,7 +1636,6 @@ function toggleCategory() {
                 targetStr.split(",").forEach(function(v){if(v)targetArr.push(trim(v))});
                 if(subCategory.length > 0 && (targetArr.indexOf(String(i+1)) > -1 || targetStr == "")) {
                     foldCategory(i);
-                    subCategory.css('display', 'none');
                 }
             }
         }
@@ -1649,6 +1648,7 @@ function foldCategory(index) {
     var targetSubCategory = category.eq(index).find('ul.sub_category_list');
     var speed = Number.isNaN(Number($('#fold-category-speed').val()))?600:Number($('#fold-category-speed').val());
     categoryLink.eq(index).addClass("fold");
+    targetSubCategory.slideUp(speed, 'swing');
     category.eq(index).hover(function(){
         if(targetSubCategory.css('display') == 'none') {
             targetSubCategory.slideDown(speed, 'swing', function() {
