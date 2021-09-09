@@ -1377,7 +1377,7 @@ function bgmVolume(type) {
         }
         if(!browserCheck('ios')) {
             myBgm.volume = currentVolume = currentVolume>1?1:(currentVolume<0?0:currentVolume);
-            var volumeAsPercent =  Math.ceil(currentVolume*100) - Math.ceil(currentVolume*100)%10;
+            var volumeAsPercent =  Math.ceil(currentVolume*100) - Math.ceil(currentVolume*100)%5;
             showToast('볼륨: ' + volumeAsPercent + '%','bottom');
         } else {
             if(type == '+') {
