@@ -263,8 +263,11 @@
 					}
 				</s_if_var_ads-solid-style>
 				<s_if_var_image-solid-style>
-					#tt-body-page figure img {
+					figure.imageblock, #tt-body-page figure.imageblock {
 						border: [##_var_border-size_##]px solid [##_var_etc-color_##]55;
+					}
+					figure.imageblock span[data-lightbox], #tt-body-page figure.imageblock span[data-lightbox] {
+						display: flex;
 					}
 				</s_if_var_image-solid-style>
 			</s_if_var_etc-color>
