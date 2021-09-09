@@ -2267,8 +2267,7 @@ article .tags a {
 	min-height: 30px;
 	min-width: 25px;
 }
-.postbtn_like .wrap_btn_share,
-.postbtn_like .wrap_btn_etc {
+.postbtn_like .wrap_btn_share {
 	display: none;
 }
 #tistorySnsLayer.layer_post .ico_arrbt {

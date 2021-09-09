@@ -300,11 +300,14 @@
 			</s_if_var_grid-height-fixed>
 			
 			<s_if_var_category-header-style-1>
-				.sidebar .category .category_list .link_item:before {content: "[##_var_category-header-style-1_##]" !important}
+				.sidebar .category .category_list .link_item:before {content: "[##_var_category-header-style-1_##]"}
 			</s_if_var_category-header-style-1>
 			<s_if_var_category-header-style-2>
-				.sidebar .category .sub_category_list .link_sub_item:before {content: "[##_var_category-header-style-2_##]" !important}
+				.sidebar .category .sub_category_list .link_sub_item:before {content: "[##_var_category-header-style-2_##]"}
 			</s_if_var_category-header-style-2>
+			<s_if_var_category-header-style-3>
+				.fold:before {content: "[##_var_category-header-style-3_##]" !important}
+			</s_if_var_category-header-style-3>
 			<s_if_var_toc-header-style-1>
 				#toc > li:before {content: "[##_var_toc-header-style-1_##]" !important}
 				#toc > li a.selected:after {content:"\f00c" !important;font-size:0.6em;margin-left:5px;}
@@ -1918,7 +1921,7 @@
 						<a href="#" class="page-top">TOP</a>
 						<p class="meta"><s_if_var_footer-text-1>[##_var_footer-text-1_##]</s_if_var_footer-text-1></p>
 						<p class="copyright"><s_if_var_footer-text-2>[##_var_footer-text-2_##]</s_if_var_footer-text-2></p>
-						<p class="maker"><a href="https://sangminem.tistory.com/506" target="_blank">Mynem Skin 2.5.0</a></p>
+						<p class="maker"><a href="https://sangminem.tistory.com/506" target="_blank">Mynem Skin 2.5.1</a></p>
 					</div>
 				</footer>
 			</div>
@@ -1982,6 +1985,7 @@
 			<input type='hidden' id='floating-toc-position' value="[##_var_floating-toc-position_##]">
 			<input type='hidden' id='bgm-yn' value="[##_var_bgm-yn_##]">
 			<input type='hidden' id='bgm-autoplay-yn' value="[##_var_bgm-autoplay-yn_##]">
+			<input type='hidden' id='bgm-autoplay-mobile-yn' value="[##_var_bgm-autoplay-mobile-yn_##]">
 			<input type='hidden' id='hide-sidebar' value="[##_var_hide-sidebar_##]">
 			<input type='hidden' id='fixed-header' value="[##_var_fixed-header_##]">
 			<input type='hidden' id='floating-toc-type' value="[##_var_floating-toc-type_##]">
@@ -2001,8 +2005,9 @@
 			<input type='hidden' id='toc-unfold-yn' value="[##_var_toc-unfold-yn_##]">
 			<input type='hidden' id='ads-toc-position' value="[##_var_ads-toc-position_##]">
 			<input type='hidden' id='use-fixed-ads-yn' value="[##_var_use-fixed-ads-yn_##]">
-			<input type='hidden' id='fold-sidebar' value="[##_var_fold-sidebar_##]">
-			<input type='hidden' id='fold-sidebar-speed' value="[##_var_fold-sidebar-speed_##]">
+			<input type='hidden' id='fold-category' value="[##_var_fold-category_##]">
+			<input type='hidden' id='fold-category-speed' value="[##_var_fold-category-speed_##]">
+			<input type='hidden' id='fold-category-target' value="[##_var_fold-category-target_##]">
 		</s_t3>
 		<script src="./images/common.min.js"></script>
 		<script>

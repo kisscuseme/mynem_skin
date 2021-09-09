@@ -1317,9 +1317,11 @@ function bgmMute(type) {
 function getCurrentBgm() {
     if(bgmSource.length > 0) {
         if($('#bgm-autoplay-yn').val()) {
-            if(!window.localStorage.getItem('current-bgm')) {
-                window.localStorage.setItem('current-bgm', 'play');
-                currentVolume = 0.1;
+            if(window.innerWidth > 767 || $('#bgm-autoplay-mobile-yn').val()) {
+                if(!window.localStorage.getItem('current-bgm')) {
+                    window.localStorage.setItem('current-bgm', 'play');
+                    currentVolume = 0.1;
+                }
             }
         }
 
@@ -1369,9 +1371,9 @@ function nextBgm(type) {
 function bgmVolume(type) {
     if(bgmSource.length > 0) {
         if(type == '+') {
-            currentVolume += 0.1;
+            currentVolume += 0.05;
         } else {
-            currentVolume -= 0.1;
+            currentVolume -= 0.05;
         }
         if(!browserCheck('ios')) {
             myBgm.volume = currentVolume = currentVolume>1?1:(currentVolume<0?0:currentVolume);
@@ -1623,13 +1625,16 @@ function stickySidebar() {
 }
 
 function toggleCategory() {
-    if($('#fold-sidebar').val()) {
+    if($('#fold-category').val()) {
         var sidebarPosition = Number($('.sidebar').css('right').replace('px',''));
         if(Number.isNaN(sidebarPosition) || sidebarPosition > 0) {
             var category = $('.category_list > li');
             for(var i=0;i<category.length;i++) {
                 var subCategory = category.eq(i).find('ul.sub_category_list');
-                if(subCategory.length > 0) {
+                var targetArr = [];
+                var targetStr = trim($('#fold-category-target').val());
+                targetStr.split(",").forEach(function(v){if(v)targetArr.push(trim(v))});
+                if(subCategory.length > 0 && (targetArr.indexOf(String(i+1)) > -1 || targetStr == "")) {
                     foldCategory(i);
                     subCategory.css('display', 'none');
                 }
@@ -1640,18 +1645,20 @@ function toggleCategory() {
 
 function foldCategory(index) {
     var category = $('.category_list > li');
+    var categoryLink = $('.category_list > li > a');
     var targetSubCategory = category.eq(index).find('ul.sub_category_list');
-    var speed = Number.isNaN(Number($('#fold-sidebar-speed').val()))?600:Number($('#fold-sidebar-speed').val());
+    var speed = Number.isNaN(Number($('#fold-category-speed').val()))?600:Number($('#fold-category-speed').val());
+    categoryLink.eq(index).addClass("fold");
     category.eq(index).hover(function(){
         if(targetSubCategory.css('display') == 'none') {
             targetSubCategory.slideDown(speed, 'swing', function() {
-                
+                categoryLink.eq(index).removeClass("fold");
             });
         }
     }, function() {
         if(targetSubCategory.css('display') != 'none') {
             targetSubCategory.slideUp(speed, 'swing', function() {
-                
+                categoryLink.eq(index).addClass("fold");                
             });
         }
     });

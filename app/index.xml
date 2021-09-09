@@ -2,7 +2,7 @@
 <skin>
 	<information>
 		<name>Mynem Skin</name>
-		<version>2.5.0</version>
+		<version>2.5.1</version>
 		<description>
 			<![CDATA[ 심플하면서 막강한 기능을 가진 미넴 스킨 입니다.
 			많은 사용자가 원하는 방향으로 발전해 나갈 예정입니다. ]]>
@@ -303,15 +303,23 @@
 				<default><![CDATA[ ]]></default>
 			</variable>
 			<variable>
-				<name>fold-sidebar</name>
+				<name>fold-category</name>
 				<label><![CDATA[ 카테고리 접힌 상태로 유지 ]]></label>
 				<description><![CDATA[]]></description>
 				<type>BOOL</type>
 				<option/>
-				<default>true</default>
+				<default>false</default>
 			</variable>
 			<variable>
-				<name>fold-sidebar-speed</name>
+				<name>fold-category-target</name>
+				<label><![CDATA[ 접을 상위 카테고리 예)2,4 입력 시 2,4번째 상위 카테고리만 접힘, 빈 값 시 전체 접힘 ]]></label>
+				<description><![CDATA[]]></description>
+				<type>STRING</type>
+				<option />
+				<default><![CDATA[ ]]></default>
+			</variable>
+			<variable>
+				<name>fold-category-speed</name>
 				<label><![CDATA[ 카테고리 펼쳐지는 속도(시간) ]]></label>
 				<description><![CDATA[]]></description>
 				<type>STRING</type>
@@ -333,6 +341,14 @@
 				<type>STRING</type>
 				<option />
 				<default><![CDATA[ \f105 ]]></default>
+			</variable>
+			<variable>
+				<name>category-header-style-3</name>
+				<label><![CDATA[ 접힌 카테고리 글머리 ]]></label>
+				<description><![CDATA[]]></description>
+				<type>STRING</type>
+				<option />
+				<default><![CDATA[ \f106 ]]></default>
 			</variable>
 			<variable>
 				<name>sidebar-left</name>
@@ -907,6 +923,14 @@
 			<variable>
 				<name>bgm-autoplay-yn</name>
 				<label><![CDATA[ 자동재생 여부 ]]></label>
+				<description><![CDATA[]]></description>
+				<type>BOOL</type>
+				<option/>
+				<default>false</default>
+			</variable>
+			<variable>
+				<name>bgm-autoplay-mobile-yn</name>
+				<label><![CDATA[ 모바일 자동재생 여부 ]]></label>
 				<description><![CDATA[]]></description>
 				<type>BOOL</type>
 				<option/>
