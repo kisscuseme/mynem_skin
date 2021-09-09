@@ -461,7 +461,7 @@
 				<description><![CDATA[]]></description>
 				<type>STRING</type>
 				<option />
-				<default><![CDATA[ 사랑합니다 💕 ]]></default>
+				<default><![CDATA[ 감사합니다 💕 ]]></default>
 			</variable>
 			<variable>
 				<name>make-bell-yn</name>
@@ -477,7 +477,7 @@
 				<description><![CDATA[]]></description>
 				<type>STRING</type>
 				<option />
-				<default><![CDATA[ 하트를<br>누르시면<br>블로그가<br>좋아합니다 💖 ]]></default>
+				<default><![CDATA[ 도움이<br>되셨다면<br>공감과 구독<br>부탁드려요 💖 ]]></default>
 			</variable>
 		</variablegroup>
 

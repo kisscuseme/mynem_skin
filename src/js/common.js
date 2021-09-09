@@ -992,7 +992,7 @@ function common(){
                     sns.css('left', '');
                     sns.css('top', '');
                     sns.css('right', '10px');
-                    sns.css('bottom', '70px');
+                    sns.css('bottom', '75px');
                 }, 200);
             }
         }
