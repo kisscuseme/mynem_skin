@@ -89,7 +89,15 @@
 			</variable>
 			<variable>
 				<name>default-dark-mode</name>
-				<label><![CDATA[ 기본 다크 모드 설정 ]]></label>
+				<label><![CDATA[ 최초 다크 모드 설정 ]]></label>
+				<description><![CDATA[]]></description>
+				<type>BOOL</type>
+				<option/>
+				<default>false</default>
+			</variable>
+			<variable>
+				<name>forced-dark-mode</name>
+				<label><![CDATA[ 강제 다크 모드 설정 ]]></label>
 				<description><![CDATA[]]></description>
 				<type>BOOL</type>
 				<option/>

@@ -49,15 +49,15 @@ function browserCheck(type){
     }
 }
 
-function changeURL() {
-    if (typeof(history.pushState) == 'function') {
-        var CatagoryURL = location.href;
-        CatagoryURL = CatagoryURL.replace(/\?category=([0-9]+)/ig, '');
-        history.pushState(null, null, CatagoryURL);
-    }
-}
+// function changeURL() {
+//     if (typeof(history.pushState) == 'function') {
+//         var CatagoryURL = location.href;
+//         CatagoryURL = CatagoryURL.replace(/\?category=([0-9]+)/ig, '');
+//         history.pushState(null, null, CatagoryURL);
+//     }
+// }
 
 (function() {
     darkMode();
-    changeURL();
+    // changeURL();
 })();
