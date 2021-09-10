@@ -2201,6 +2201,72 @@ article .tags a {
 	margin-left: 5px;
 }
 
+/* top menu */
+.top-button .menu button:after {
+	font-family: 'Font_Awesome_5_Free';
+}
+
+/* change font size button */
+.font-size-up-btn {
+	float: left;
+	display: flex;
+	position: relative;
+	width: 32px;
+	height: 32px;
+	border-radius: 50%;
+	cursor: pointer;
+	background: #fff;
+}
+.font-size-up-btn:before {
+	content: "";
+	position: absolute;
+	width: 100%;
+	height: 100%;
+	top: 0;
+	left: 0;
+	opacity: 0.1;
+	border-radius: 50%;
+}
+.font-size-up-btn:after {
+	content: "\f00e";
+	position: absolute;
+	top: 20%;
+	left: 7px;
+	visibility: visible;
+	border-radius: 50%;
+	font-family: 'Font_Awesome_5_Free';
+}
+
+.font-size-down-btn {
+	float: left;
+	display: flex;
+	position: relative;
+	width: 32px;
+	height: 32px;
+	border-radius: 50%;
+	cursor: pointer;
+	background: #fff;
+}
+.font-size-down-btn:before {
+	content: "";
+	position: absolute;
+	width: 100%;
+	height: 100%;
+	top: 0;
+	left: 0;
+	opacity: 0.1;
+	border-radius: 50%;
+}
+.font-size-down-btn:after {
+	content: "\f010";
+	position: absolute;
+	top: 20%;
+	left: 7px;
+	visibility: visible;
+	border-radius: 50%;
+	font-family: 'Font_Awesome_5_Free';
+}
+
 /* move top button */
 .move-top-btn {
 	float: left;
@@ -2225,10 +2291,11 @@ article .tags a {
 .move-top-btn:after {
 	content: "\f102";
 	position: absolute;
-	top: 15%;
+	top: 18%;
 	left: 10px;
 	visibility: visible;
 	border-radius: 50%;
+	font-family: 'Font_Awesome_5_Free';
 }
 
 /* share button */
@@ -2262,6 +2329,7 @@ article .tags a {
 	left: 7px;
 	visibility: visible;
 	border-radius: 50%;
+	font-family: 'Font_Awesome_5_Free';
 }
 .container_postbtn .postbtn_like {
 	min-height: 30px;
@@ -2301,18 +2369,20 @@ article .tags a {
 .dark-mode-on-btn:after {
 	content: "\f185";
 	position: absolute;
-	top: 17%;
+	top: 18%;
 	left: 7px;
 	visibility: visible;
 	border-radius: 50%;
+	font-family: 'Font_Awesome_5_Free';
 }
 .dark-mode-off-btn:after {
 	content: "\f186";
 	position: absolute;
-	top: 17%;
+	top: 18%;
 	left: 8px;
 	visibility: visible;
 	border-radius: 50%;
+	font-family: 'Font_Awesome_5_Free';
 }
 
 /* scroll style */
@@ -2397,7 +2467,7 @@ body.dark-mode .move-top-btn, body.dark-mode #tistoryEtcLayer,
 body.dark-mode .sidebar .profile ul, body.dark-mode .top-button .profile ul li a,
 body.dark-mode .comment-list ul li .author-meta .control .link a,
 body.dark-mode #tistorySnsLayer.layer_post, body.dark-mode#tt-body-page .share-btn,
-body.dark-mode .floating-toc-new:after {
+body.dark-mode .floating-toc-new:after, body.dark-mode .font-size-up-btn, body.dark-mode .font-size-down-btn {
 	background: black;
 }
 body.dark-mode .content-title .meta a:before, body.dark-mode .content-title .meta span:not(.author):before {

@@ -778,6 +778,14 @@
 				<default>false</default>
 			</variable>
 			<variable>
+				<name>change-font-size-floating</name>
+				<label><![CDATA[ 글자 크기 변경 버튼 숨기기 ]]></label>
+				<description><![CDATA[]]></description>
+				<type>BOOL</type>
+				<option/>
+				<default>false</default>
+			</variable>
+			<variable>
 				<name>dark-mode-floating</name>
 				<label><![CDATA[ 플로팅 다크 모드 버튼 숨기기 ]]></label>
 				<description><![CDATA[]]></description>

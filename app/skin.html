@@ -80,18 +80,6 @@
 					line-height: 1.9em;
 					margin-left: 4px;
 				}
-				.move-top-btn:after {
-					top: 5%;
-				}
-				#tt-body-page .share-btn:after {
-					top: 5%;
-				}
-				.dark-mode-on-btn:after {
-					top: 5%;
-				}
-				.dark-mode-off-btn:after {
-					top: 5%;
-				}
 			</s_not_var_custom-font>
 			<s_if_var_custom-font-forced>
 				.content-article p span {
@@ -137,7 +125,7 @@
 			<s_if_var_background-color>
 				header:after, section:after, footer:after, .content-title:after, .top-button .menu button:before,
 				.book-toc:after, .floating-toc:after, .top-button .menu button:before, .move-top-btn:before,
-				.mobile-menu aside:after, .toast-wrap:after, .floating-toc-new:after, .share-btn:before, .dark-mode-on-btn:before, .dark-mode-off-btn:before,
+				.mobile-menu aside:after, .toast-wrap:after, .floating-toc-new:after, .share-btn:before, .dark-mode-on-btn:before, .dark-mode-off-btn:before, .font-size-up-btn:before, .font-size-down-btn:before,
 				#toc-body::-webkit-scrollbar-track, ::-webkit-scrollbar-track {background-color:[##_var_background-color_##]}
 
 				.cover-list ul li a, .post-item a, .cover-special ul li {
@@ -165,7 +153,7 @@
 				.content-article .book-toc p, .content-article .book-toc p span#toggle, #toc > li:before, #toc > li > ul > li:before, #toc > li > ul > li > ul > li:before, .cover-list ul li .meta .category,
 				.comments h2 .count, article .another_category th:before, .post-header h1 em, .bgm-btn, .dark-mode-btn-dark, .dark-mode-btn-default,
 				.move-top-btn:after,.top-button .menu button:after, .post-header h1:before, article h2:before, .content-article .copy-title-btn,
-				.share-btn:after,.dark-mode-on-btn:after,.dark-mode-off-btn:after,
+				.share-btn:after,.dark-mode-on-btn:after,.dark-mode-off-btn:after, .font-size-up-btn:after, .font-size-down-btn:after,
 				#toc > li a:after, #toc > li > ul > li a:after, #toc > li > ul > li > ul > li a:after {color:[##_var_etc-color_##]}
 				#toc-title p #toggle, .floating-icon:after,
 				.sidebar .category .category_list .link_item:before, #current-bgm:before, h2 .bgm-btn,
@@ -178,7 +166,8 @@
 				.progress-bar-etc-vertical, .progress-bar-etc-horizontal,
 				.sidebar .close:before, .sidebar .close:after {background-color:[##_var_etc-color_##]}
 				.move-top-btn, .top-button .menu button, .sidebar .close, .top-button .profile button,
-				.share-btn, .dark-mode-on-btn, .dark-mode-off-btn {border: [##_var_border-size_##]px solid [##_var_etc-color_##]55 !important}
+				.share-btn, .dark-mode-on-btn, .dark-mode-off-btn, .font-size-up-btn, .font-size-down-btn
+				{border: [##_var_border-size_##]px solid [##_var_etc-color_##]55 !important}
 				::-webkit-scrollbar-thumb, #toc-body::-webkit-scrollbar-thumb {background-color:[##_var_etc-color_##]55 !important}
 				.search input {border-bottom: [##_var_border-size_##]px solid [##_var_etc-color_##]55;}
 				article .another_category.another_category_color_gray a {
@@ -336,10 +325,10 @@
 				section .content-wrapper {max-width:[##_var_article-max-width_##]px;}
 				header .inner {max-width:[##_var_article-max-width_##]px;}
 				footer .inner {max-width:[##_var_article-max-width_##]px;}
-				article {width:calc([##_var_article-max-width_##]px - 300px - [##_var_border-size_##]px);}
+				article {width:calc([##_var_article-max-width_##]px - 300px<s_if_var_cover-solid-style> - [##_var_border-size_##]px</s_if_var_cover-solid-style>);}
 				.cover-special ul li img {
-					width: calc(([##_var_article-max-width_##]px - 334px - [##_var_border-size_##]px) * 0.5);
-					height: calc(([##_var_article-max-width_##]px - 334px - [##_var_border-size_##]px) * 0.5);
+					width: calc(([##_var_article-max-width_##]px - 334px<s_if_var_cover-solid-style> - [##_var_border-size_##]px</s_if_var_cover-solid-style>) * 0.5);
+					height: calc(([##_var_article-max-width_##]px - 334px<s_if_var_cover-solid-style> - [##_var_border-size_##]px</s_if_var_cover-solid-style>) * 0.5);
 				}
 				@media (max-width: calc([##_var_article-max-width_##]px + 270px)) {
 						.floating-toc-new {
@@ -359,8 +348,8 @@
 						width: initial !important;
 					}
 					.cover-special ul li img {
-						width: calc((100vw - 48px - [##_var_border-size_##]px) * 0.5) !important;
-						height: calc((100vw - 48px - [##_var_border-size_##]px) * 0.5) !important;
+						width: calc((100vw - 48px<s_if_var_cover-solid-style> - [##_var_border-size_##]px</s_if_var_cover-solid-style>) * 0.5) !important;
+						height: calc((100vw - 48px<s_if_var_cover-solid-style> - [##_var_border-size_##]px</s_if_var_cover-solid-style>) * 0.5) !important;
 					}
 					.top-button {
 						position: fixed;
@@ -398,7 +387,6 @@
 						top: 9px;
 						left: 10px;
 						visibility: visible;
-						font-family: 'Font_Awesome_5_Free';
 					}
 					article {
 						float: none !important;
@@ -541,8 +529,8 @@
 						display: none !important;
 					}
 					.cover-special ul li img {
-						width: calc((100vw - 48px - [##_var_border-size_##]px) * 0.5) !important;
-						height: calc((100vw - 48px - [##_var_border-size_##]px) * 0.5) !important;
+						width: calc((100vw - 48px<s_if_var_cover-solid-style> - [##_var_border-size_##]px</s_if_var_cover-solid-style>) * 0.5) !important;
+						height: calc((100vw - 48px<s_if_var_cover-solid-style> - [##_var_border-size_##]px</s_if_var_cover-solid-style>) * 0.5) !important;
 					}
 					.top-button {
 						position: fixed;
@@ -580,7 +568,6 @@
 						top: 9px;
 						left: 10px;
 						visibility: visible;
-						font-family: 'Font_Awesome_5_Free';
 					}
 					article {
 						float: none !important;
@@ -817,7 +804,6 @@
 						top: 9px;
 						left: 10px;
 						visibility: visible;
-						font-family: 'Font_Awesome_5_Free';
 					}
 					article {
 						float: none !important;
@@ -1040,7 +1026,6 @@
 						top: 9px;
 						left: 10px;
 						visibility: visible;
-						font-family: 'Font_Awesome_5_Free';
 					}
 					article {
 						float: none !important;
@@ -1934,15 +1919,21 @@
 			</div>
 			
 			<div class="floating-button">
-				<!-- 공유 버튼 -->
-				<a class="share-btn"></a>
-				<div id='custom-sns' class='layer_post'></div>
-				
+				<!-- 글자 크기 조절 버튼 -->
+				<s_not_var_change-font-size-floating>
+					<a class="font-size-up-btn" onclick="changeFontSize('+')"></a>
+					<a class="font-size-down-btn" onclick="changeFontSize('-')"></a>
+				</s_not_var_change-font-size-floating>
+
 				<!-- 다크모드 버튼 -->
 				<s_not_var_dark-mode-floating>
 					<a class="dark-mode-on-btn" onclick="setDarkMode('-')" style="display:none;"></a>
 					<a class="dark-mode-off-btn" onclick="setDarkMode('+')" style="display:none;"></a>
 				</s_not_var_dark-mode-floating>
+
+				<!-- 공유 버튼 -->
+				<a class="share-btn"></a>
+				<div id='custom-sns' class='layer_post'></div>
 				
 				<!-- 상단 이동 버튼 -->
 				<a class="move-top-btn"></a>
