@@ -2088,6 +2088,7 @@ article .tags a {
 	height: 100%;
 	opacity: 0.9;
 	z-index: -1;
+	background: #fff;
 }
 .floating-toc p,
 .floating-toc-new p {

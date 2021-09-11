@@ -125,7 +125,7 @@
 				<description><![CDATA[]]></description>
 				<type>BOOL</type>
 				<option/>
-				<default>false</default>
+				<default>true</default>
 			</variable>
 			<variable>
 				<name>blog-logo-image</name>
@@ -144,7 +144,7 @@
 				<description><![CDATA[]]></description>
 				<type>COLOR</type>
 				<option />
-				<default>#FE0081</default>
+				<default>#737373</default>
 			</variable>
 			<variable>
 				<name>blog-menu-color</name>
@@ -160,7 +160,7 @@
 				<description><![CDATA[]]></description>
 				<type>COLOR</type>
 				<option />
-				<default>#FFFAFC</default>
+				<default>#E9E9E9</default>
 			</variable>
 			<variable>
 				<name>sidebar-color</name>
@@ -168,7 +168,7 @@
 				<description><![CDATA[]]></description>
 				<type>COLOR</type>
 				<option />
-				<default>#FFFAFC</default>
+				<default>#F5F5F5</default>
 			</variable>
 			<variable>
 				<name>sidebar-text-color</name>
@@ -176,7 +176,7 @@
 				<description><![CDATA[]]></description>
 				<type>COLOR</type>
 				<option />
-				<default>#FE0081</default>
+				<default>#4C4C4C</default>
 			</variable>
 			<variable>
 				<name>etc-color</name>
@@ -184,7 +184,7 @@
 				<description><![CDATA[]]></description>
 				<type>COLOR</type>
 				<option />
-				<default>#FF48C7</default>
+				<default>#737373</default>
 			</variable>
 		</variablegroup>
 
@@ -276,7 +276,7 @@
 				<description><![CDATA[]]></description>
 				<type>BOOL</type>
 				<option/>
-				<default>true</default>
+				<default>false</default>
 			</variable>
 			<variable>
 				<name>lang-trans</name>
@@ -755,7 +755,7 @@
 		<variablegroup name="기타 설정">
 			<variable>
 				<name>use-fixed-ads-yn</name>
-				<label><![CDATA[ 고정 광고 사용 여부 ]]></label>
+				<label><![CDATA[ 플로팅 광고 사용 여부 ]]></label>
 				<description><![CDATA[]]></description>
 				<type>BOOL</type>
 				<option/>
