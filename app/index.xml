@@ -88,6 +88,22 @@
 				<default>Bitter,IropkeBatang,</default>
 			</variable>
 			<variable>
+				<name>html-font-size</name>
+				<label><![CDATA[ 기준 폰트 크기 (기본 18, 단위 px) ]]></label>
+				<description><![CDATA[]]></description>
+				<type>STRING</type>
+				<option />
+				<default>18</default>
+			</variable>
+			<variable>
+				<name>html-line-height</name>
+				<label><![CDATA[ 컨텐츠 최대 너비 (기본 1.5, 1 이상 추천) ]]></label>
+				<description><![CDATA[]]></description>
+				<type>STRING</type>
+				<option />
+				<default>1.5</default>
+			</variable>
+			<variable>
 				<name>default-dark-mode</name>
 				<label><![CDATA[ 최초 다크 모드 설정 ]]></label>
 				<description><![CDATA[]]></description>

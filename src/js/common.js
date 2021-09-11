@@ -1616,7 +1616,7 @@ function foldFloatingToc() {
 
 var previousScrollTop = 0;
 function stickySidebar() {
-    if(window.scrollHeight > window.innerHeight + 500) {
+    if(window.scrollHeight > window.innerHeight + 500 && $('.sidebar div')[0].scrollHeight > window.innerHeight) {
         if($('.sidebar')[0].scrollHeight-$('.sidebar')[0].scrollTop > $('#wrapper')[0].scrollHeight-window.scrollY-80) {
             $('.sidebar').css('height', '');
         } else {
@@ -1626,6 +1626,8 @@ function stickySidebar() {
             $('.sidebar')[0].scrollTo(0,window.scrollY);
         }
         previousScrollTop = window.scrollY;
+    } else {
+        $('.sidebar').css('height', '');
     }
 }
 

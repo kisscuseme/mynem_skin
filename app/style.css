@@ -185,7 +185,6 @@ footer:after {
 }
 footer .inner {
 	margin: 0 auto;
-	text-shadow: 3px 3px 3px #ccc;
 	padding: 10px;
 }
 footer p {
@@ -2193,7 +2192,7 @@ article .tags a {
 .floating-button {
 	position: fixed;
 	right: 10px;
-	bottom: 24px;
+	bottom: 30px;
 	z-index: 201;
 }
 
@@ -2215,7 +2214,6 @@ article .tags a {
 	height: 32px;
 	border-radius: 50%;
 	cursor: pointer;
-	background: #fff;
 }
 .font-size-up-btn:before {
 	content: "";
@@ -2235,6 +2233,7 @@ article .tags a {
 	visibility: visible;
 	border-radius: 50%;
 	font-family: 'Font_Awesome_5_Free';
+	line-height: 1;
 }
 
 .font-size-down-btn {
@@ -2245,7 +2244,6 @@ article .tags a {
 	height: 32px;
 	border-radius: 50%;
 	cursor: pointer;
-	background: #fff;
 }
 .font-size-down-btn:before {
 	content: "";
@@ -2265,6 +2263,7 @@ article .tags a {
 	visibility: visible;
 	border-radius: 50%;
 	font-family: 'Font_Awesome_5_Free';
+	line-height: 1;
 }
 
 /* move top button */
@@ -2276,7 +2275,6 @@ article .tags a {
 	height: 32px;
 	border-radius: 50%;
 	cursor: pointer;
-	background: #fff;
 }
 .move-top-btn:before {
 	content: "";
@@ -2296,6 +2294,7 @@ article .tags a {
 	visibility: visible;
 	border-radius: 50%;
 	font-family: 'Font_Awesome_5_Free';
+	line-height: 1;
 }
 
 /* share button */
@@ -2310,7 +2309,6 @@ article .tags a {
 	height: 32px;
 	border-radius: 50%;
 	cursor: pointer;
-	background: #fff;
 }
 #tt-body-page .share-btn:before {
 	content: "";
@@ -2330,6 +2328,7 @@ article .tags a {
 	visibility: visible;
 	border-radius: 50%;
 	font-family: 'Font_Awesome_5_Free';
+	line-height: 1;
 }
 .container_postbtn .postbtn_like {
 	min-height: 30px;
@@ -2354,7 +2353,6 @@ article .tags a {
 	height: 32px;
 	border-radius: 50%;
 	cursor: pointer;
-	background: #fff;
 }
 .dark-mode-on-btn:before, .dark-mode-off-btn:before {
 	content: "";
@@ -2374,6 +2372,7 @@ article .tags a {
 	visibility: visible;
 	border-radius: 50%;
 	font-family: 'Font_Awesome_5_Free';
+	line-height: 1;
 }
 .dark-mode-off-btn:after {
 	content: "\f186";
@@ -2383,6 +2382,7 @@ article .tags a {
 	visibility: visible;
 	border-radius: 50%;
 	font-family: 'Font_Awesome_5_Free';
+	line-height: 1;
 }
 
 /* scroll style */
@@ -2460,14 +2460,12 @@ article .tags a {
 	margin: auto;
 }
 
-body.dark-mode section,body.dark-mode header,body.dark-mode footer,body.dark-mode textarea,body.dark-mode .comment-form input,
-body.dark-mode .floating-toc,body.dark-mode .floating-toc-new,body.dark-mode .dark-mode-on-btn,
-body.dark-mode .top-button .menu button,body.dark-mode .sidebar .close,.dark-mode .dark-mode-off-btn,
-body.dark-mode .move-top-btn, body.dark-mode #tistoryEtcLayer,
-body.dark-mode .sidebar .profile ul, body.dark-mode .top-button .profile ul li a,
-body.dark-mode .comment-list ul li .author-meta .control .link a,
-body.dark-mode #tistorySnsLayer.layer_post, body.dark-mode#tt-body-page .share-btn,
-body.dark-mode .floating-toc-new:after, body.dark-mode .font-size-up-btn, body.dark-mode .font-size-down-btn {
+body.dark-mode section,body.dark-mode header,body.dark-mode footer,body.dark-mode textarea, body.dark-mode .comment-form input,
+body.dark-mode .floating-toc,body.dark-mode .floating-toc-new, body.dark-mode .sidebar .close,
+body.dark-mode #tistoryEtcLayer, body.dark-mode .sidebar .profile ul, body.dark-mode .top-button .profile ul li a,
+body.dark-mode .comment-list ul li .author-meta .control .link a, body.dark-mode .top-button .menu button,
+body.dark-mode #tistorySnsLayer.layer_post,
+body.dark-mode .floating-toc-new:after {
 	background: black;
 }
 body.dark-mode .content-title .meta a:before, body.dark-mode .content-title .meta span:not(.author):before {
@@ -2487,7 +2485,8 @@ body.dark-mode #tistoryEtcLayer .bundle_post .btn_mark,
 body.dark-mode figure[data-ke-type='opengraph'] div.og-text p.og-title,
 body.dark-mode#tt-body-page figure[data-ke-type='opengraph'] div.og-text p.og-title,
 body.dark-mode .comment-list ul li .author-meta .nickname a,
-body.dark-mode .comment-list ul li .author-meta a {
+body.dark-mode .comment-list ul li .author-meta a,
+body.dark-mode .sidebar .count p, body.dark-mode .sidebar .count .total{
 	color: #d6d6d6;
 }
 body.dark-mode .sidebar h2, body.dark-mode.mobile-menu aside {
@@ -2507,7 +2506,6 @@ body.dark-mode article .another_category h4,
 body.dark-mode #tistorySnsLayer.layer_post .btn_mark {
 	color: #d6d6d6 !important;
 }
-
 body.dark-mode .floating-toc-new, body.dark-mode img:not(.flag), body.dark-mode section .content-wrapper,
 body.dark-mode .post-item a, body.dark-mode .post-item .thum, body.dark-mode .cover-list ul li a,
 body.dark-mode .cover-list ul li figure, body.dark-mode .cover-special ul li,
@@ -2531,10 +2529,6 @@ body.dark-mode .book-toc, body.dark-mode .floating-toc, body.dark-mode .game-con
 body.dark-mode #tistorySnsLayer.layer_post {
 	box-shadow: 0 0 16px -4px #222 !important;
 }
-body.dark-mode footer .inner {
-	text-shadow: 3px 3px 3px #333;
-}
-
 body.dark-mode .like_bubble .inner {
 	color: #ffb355;
 }
