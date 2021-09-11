@@ -761,7 +761,6 @@ article h2,
 	margin: 0 10px 0 0;
 	overflow: hidden;
 	position: relative;
-	box-shadow: 0 0 10px -4px #ddd;
 }
 .sidebar .content-item ul li img:hover {
 	transform: scale(1.05);
