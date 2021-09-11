@@ -75,9 +75,6 @@ button {
 button:hover {
 	cursor: pointer;
 }
-img:not(.flag, .title-image) {
-	box-shadow: 0 0 16px -4px #ddd;
-}
 
 /* header */
 header {
@@ -218,7 +215,6 @@ section:after {
 }
 section .content-wrapper {
 	margin: 0 auto;
-	box-shadow: 0 0 16px -4px #ddd;
 	padding: 10px;
 }
 section .content-wrapper:after {
@@ -282,7 +278,6 @@ article h2,
 .post-item a {
 	display: block;
 	padding: 5px;
-	box-shadow: 0 0 16px -4px #ddd;
 }
 .post-item .thum {
 	position: relative;
@@ -291,7 +286,6 @@ article h2,
 	width: 100%;
 	height: 0;
 	padding-bottom: 100%;
-	box-shadow: 0 0 16px -4px #ddd;
 }
 .thum:before {
 	width: 100%;
@@ -397,7 +391,6 @@ article h2,
 	text-decoration: none;
 	height: 180px;
 	padding: 5px;
-	box-shadow: 0 0 16px -4px #ddd;
 }
 .cover-list ul li figure {
 	float: left;
@@ -407,7 +400,6 @@ article h2,
 	overflow: hidden;
 	width: 180px;
 	height: 180px;
-	box-shadow: 0 0 16px -4px #ddd;
 }
 .cover-list ul li figure:before {
 	width: 100%;
@@ -497,7 +489,6 @@ article h2,
 	text-align: center;
 	padding: 5px;
 	margin-bottom: 5px;
-	box-shadow: 0 0 16px -4px #ddd;
 }
 @keyframes cover-special-ani {
 	25% {
@@ -719,7 +710,6 @@ article h2,
 .sidebar .module_plugin,
 .sidebar .revenue_unit_wrap {
 	margin-bottom: 30px;
-	box-shadow: 0 0 16px -4px #ddd;
 }
 .sidebar .notice ul li,
 .sidebar .recent ul li,
@@ -991,7 +981,6 @@ article h2,
 	width: 100%;
 	box-sizing: border-box;
 	padding: 20px;
-	box-shadow: 0 0 16px -4px #ddd;
 	margin-bottom: 10px;
 }
 .content-title:after {
@@ -1124,7 +1113,6 @@ article h2,
 	color: rgba(34, 85, 51, 0.87);
 	white-space: pre;
 	margin: 10px 0;
-	box-shadow: 0 0 16px -4px #ddd;
 	border-radius: 10px;
 }
 .content-article pre code {
@@ -1317,13 +1305,9 @@ p[data-ke-size='size14'] { font-size: 0.9em !important; }
 #tt-body-page h4[data-ke-size] {
     font-weight: bold !important;
 }
-figure.fileblock a, #tt-body-page figure.fileblock a {
-	box-shadow: 0 0 16px -4px #ddd;
-}
 figure[data-ke-type='opengraph'] a,
 #tt-body-page figure[data-ke-type='opengraph'] a {
 	height: 150px;
-	box-shadow: 0 0 16px -4px #ddd;
 	border: 0;
 }
 figure[data-ke-type='opengraph'] div.og-image {
@@ -1736,7 +1720,6 @@ article .tags a {
 }
 .related-articles-wrap {
 	padding: 5px;
-	box-shadow: 0 0 16px -4px #ddd;
 }
 
 /* progress bar */
@@ -1932,7 +1915,6 @@ article .tags a {
 /* ads */
 .main-ads {
 	padding: 5px;
-	box-shadow: 0 0 16px -4px #ddd;
 }
 .top-ads {
 	display: flex;
@@ -1942,13 +1924,11 @@ article .tags a {
 	margin: auto;
 	overflow: auto;
 	padding: 5px;
-	box-shadow: 0 0 16px -4px #ddd;
 }
 #ad-top-right {
 	margin: auto;
 	overflow: auto;
 	padding: 5px;
-	box-shadow: 0 0 16px -4px #ddd;
 }
 .adsbygoogle.top-left {
 	display: block;
@@ -1966,7 +1946,6 @@ article .tags a {
 	position: relative;
 	padding: 10px 20px 10px 15px;
 	z-index: 1;
-	box-shadow: 0 0 16px -4px #ddd;
 }
 .book-toc:after {
 	content: "";
@@ -2057,7 +2036,6 @@ article .tags a {
 	padding: 10px;
 	z-index: 999;
 	display: none;
-	box-shadow: 0 0 16px -4px #ddd;
 }
 .floating-toc:after {
 	content:"";
@@ -2073,7 +2051,6 @@ article .tags a {
 	position: fixed;
 	top: 10px;
 	padding: 10px;
-	box-shadow: 0 0 16px -4px #ddd;
 	overflow: hidden;
 	opacity: 0.0;
 	z-index: 129;
@@ -2229,7 +2206,7 @@ article .tags a {
 .font-size-up-btn:after {
 	content: "\f00e";
 	position: absolute;
-	top: 20%;
+	top: 24%;
 	left: 7px;
 	visibility: visible;
 	border-radius: 50%;
@@ -2259,7 +2236,7 @@ article .tags a {
 .font-size-down-btn:after {
 	content: "\f010";
 	position: absolute;
-	top: 20%;
+	top: 24%;
 	left: 7px;
 	visibility: visible;
 	border-radius: 50%;
@@ -2290,7 +2267,7 @@ article .tags a {
 .move-top-btn:after {
 	content: "\f102";
 	position: absolute;
-	top: 18%;
+	top: 22%;
 	left: 10px;
 	visibility: visible;
 	border-radius: 50%;
@@ -2324,7 +2301,7 @@ article .tags a {
 #tt-body-page .share-btn:after {
 	content: "\f1e0";
 	position: absolute;
-	top: 20%;
+	top: 22%;
 	left: 7px;
 	visibility: visible;
 	border-radius: 50%;
@@ -2340,9 +2317,6 @@ article .tags a {
 }
 #tistorySnsLayer.layer_post .ico_arrbt {
 	display: none;
-}
-#tistorySnsLayer.layer_post {
-	box-shadow: 0 0 16px -4px #ddd;
 }
 
 /* dark mode button */
@@ -2368,7 +2342,7 @@ article .tags a {
 .dark-mode-on-btn:after {
 	content: "\f185";
 	position: absolute;
-	top: 18%;
+	top: 22%;
 	left: 7px;
 	visibility: visible;
 	border-radius: 50%;
@@ -2378,7 +2352,7 @@ article .tags a {
 .dark-mode-off-btn:after {
 	content: "\f186";
 	position: absolute;
-	top: 18%;
+	top: 22%;
 	left: 8px;
 	visibility: visible;
 	border-radius: 50%;
@@ -2506,29 +2480,6 @@ body.dark-mode .comment-list ul li .author-meta .control .link a,
 body.dark-mode article .another_category h4,
 body.dark-mode #tistorySnsLayer.layer_post .btn_mark {
 	color: #d6d6d6 !important;
-}
-body.dark-mode .floating-toc-new, body.dark-mode img:not(.flag), body.dark-mode section .content-wrapper,
-body.dark-mode .post-item a, body.dark-mode .post-item .thum, body.dark-mode .cover-list ul li a,
-body.dark-mode .cover-list ul li figure, body.dark-mode .cover-special ul li,
-body.dark-mode .sidebar .category,
-body.dark-mode .sidebar .notice, 
-body.dark-mode .sidebar .recent, 
-body.dark-mode .sidebar .profile-info,
-body.dark-mode .sidebar .popular, 
-body.dark-mode .sidebar .recent-comment,
-body.dark-mode .sidebar .tags,
-body.dark-mode .sidebar .count,
-body.dark-mode .sidebar .archives,
-body.dark-mode .sidebar .module_plugin,
-body.dark-mode .sidebar .revenue_unit_wrap,
-body.dark-mode .sidebar .content-item .thum,
-body.dark-mode .content-title, body.dark-mode .content-article pre, body.dark-mode figure.fileblock a,
-body.dark-mode #tt-body-page figure.fileblock a, body.dark-mode figure[data-ke-type='opengraph'] a,
-body.dark-mode #tt-body-page figure[data-ke-type='opengraph'] a, body.dark-mode .related-articles-wrap,
-body.dark-mode .main-ads, body.dark-mode #ad-top-left, body.dark-mode #ad-top-right,
-body.dark-mode .book-toc, body.dark-mode .floating-toc, body.dark-mode .game-container,
-body.dark-mode #tistorySnsLayer.layer_post {
-	box-shadow: 0 0 16px -4px #222 !important;
 }
 body.dark-mode .like_bubble .inner {
 	color: #ffb355;

@@ -77,6 +77,34 @@
 				font-size: 14px !important;
 				bottom: 10px;
 			}
+			<s_if_var_shadow-effect>
+				/* shadow */
+				section .content-wrapper, .post-item a, .post-item .thum, .cover-list ul li a,
+				.cover-list ul li figure, .cover-special ul li, .sidebar .category,
+				.sidebar .notice, .sidebar .recent, .sidebar .popular, .sidebar .recent-comment,
+				.sidebar .tags, .sidebar .archives, .sidebar .count, .sidebar .profile-info,
+				.sidebar .module_plugin, .sidebar .revenue_unit_wrap, .content-title, .content-article pre,
+				figure.fileblock a, #tt-body-page figure.fileblock a,
+				figure[data-ke-type='opengraph'] a, #tt-body-page figure[data-ke-type='opengraph'] a,
+				.related-articles-wrap, .main-ads, #ad-top-left, #ad-top-right,
+				.book-toc, .floating-toc, .floating-toc-new, #tistorySnsLayer.layer_post,
+				img:not(.flag, .title-image) {
+					box-shadow: 0 0 16px -4px #ddd;
+				}
+				
+				body.dark-mode section .content-wrapper, body.dark-mode .post-item a, body.dark-mode .post-item .thum, body.dark-mode .cover-list ul li a,
+				body.dark-mode .cover-list ul li figure, body.dark-mode .cover-special ul li, body.dark-mode .sidebar .category,
+				body.dark-mode .sidebar .notice, body.dark-mode .sidebar .recent, body.dark-mode .sidebar .popular, body.dark-mode .sidebar .recent-comment,
+				body.dark-mode .sidebar .tags, body.dark-mode .sidebar .archives, body.dark-mode .sidebar .count, body.dark-mode .sidebar .profile-info,
+				body.dark-mode .sidebar .module_plugin, body.dark-mode .sidebar .revenue_unit_wrap, body.dark-mode .content-title, body.dark-mode .content-article pre,
+				body.dark-mode figure.fileblock a, body.dark-mode #tt-body-page figure.fileblock a,
+				body.dark-mode figure[data-ke-type='opengraph'] a, body.dark-mode #tt-body-page figure[data-ke-type='opengraph'] a,
+				body.dark-mode .related-articles-wrap, body.dark-mode .main-ads, body.dark-mode #ad-top-left, body.dark-mode #ad-top-right,
+				body.dark-mode .book-toc, body.dark-mode .floating-toc, body.dark-mode .floating-toc-new, body.dark-mode #tistorySnsLayer.layer_post,
+				body.dark-mode img:not(.flag, .title-image) {
+					box-shadow: 0 0 16px -4px #222 !important;
+				}
+			</s_if_var_shadow-effect>
 
 			<s_not_var_custom-font>
 				.like_bubble {
