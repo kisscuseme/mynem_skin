@@ -1130,7 +1130,6 @@ article h2,
 	position: relative;
 	margin-bottom: 10px;
 	padding-left: 22px;
-	font-size: 0.9375em;
 	line-height: 1.5714;
 	color: #666;
 	text-indent: -22px;
@@ -1144,7 +1143,6 @@ article h2,
 	position: relative;
 	margin-bottom: 10px;
 	padding-left: 16px;
-	font-size: 0.9375em;
 	line-height: 1.5714;
 	color: #666;
 	text-indent: -15px;
@@ -1963,7 +1961,6 @@ article .tags a {
 	cursor: pointer;
 }
 #toc * {
-	font-size: 20px;
 	color: #000;
 }
 #toc {
