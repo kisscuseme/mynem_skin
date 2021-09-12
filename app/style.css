@@ -1066,28 +1066,34 @@ article h2,
 }
 .content-article h2 {
 	clear: both;
-	margin: 29px 0 22px;
+	margin: 15px 0 10px 0;
 	font-size: 1.5em;
 	line-height: 1.5;
 	color: #000;
 	font-style: italic;
+	text-align: left;
+	padding: 3px 0 10px 10px;
 }
 .content-article h3 {
 	clear: both;
-	margin: 29px 0 22px;
+	margin: 15px 0 10px;
 	font-size: 1.3125em !important;
 	line-height: 1.5;
 	color: #000;
 	font-style: italic;
+	text-align: left;
+	padding: 3px 0 10px 10px;
 }
 .content-article h4 {
 	clear: both;
-	margin: 29px 0 22px;
+	margin: 15px 0 10px;
 	font-weight: 400;
 	font-size: 1.125em !important;
 	line-height: 1.5;
 	color: #000;
 	font-style: italic;
+	text-align: left;
+	padding: 3px 0 10px 10px;
 }
 .content-article p {
 	margin-bottom: 32px;
@@ -1102,6 +1108,7 @@ article h2,
 }
 .content-article figure {
 	margin-top: 8px !important;
+	margin-bottom: 8px !important;
 }
 .content-article hr {
 	display: block;
@@ -1265,21 +1272,6 @@ article h2,
 .content-article .protected_form .btn {
 	margin-left: 5px;
 	vertical-align: -webkit-baseline-middle;
-}
-.content-article h2 {
-	text-align: left;
-	padding: 3px 0 10px 10px;
-	margin: 30px 0 20px 0;
-}
-.content-article h3 {
-	text-align: left;
-	padding: 3px 0 10px 10px;
-	margin-bottom: 15px;
-}
-.content-article h4 {
-	text-align: left;
-	padding: 3px 0 10px 10px;
-	margin-bottom: 15px;
 }
 .content-article .copy-title-btn {
 	width:25px;
@@ -1989,7 +1981,7 @@ article .tags a {
 	margin-bottom: 0;
 }
 #toc > li > ul > li {
-	font-size: 0.87em;
+	font-size: 0.94em;
 	padding-left: 0;
 	text-indent: 0;
 	list-style-type: none;
@@ -1999,16 +1991,13 @@ article .tags a {
 #toc > li > ul > li:before {
   padding-right: 8px;
 }
-#toc > li > ul > li > a {
-	font-size: 1em;
-}
 #toc > li > ul > li > ul {
 	padding-left: 10px;
 	margin-top: 0;
 	margin-bottom: 0;
 }
 #toc > li > ul > li > ul > li {
-	font-size: 0.87em;
+	font-size: 0.94em;
 	padding-left: 0;
 	text-indent: 0;
 	list-style-type: none;
@@ -2017,9 +2006,6 @@ article .tags a {
 }
 #toc > li > ul > li > ul > li:before {
   padding-right: 10px;
-}
-#toc > li > ul > li > ul > li > a {
-	font-size: 0.875em;
 }
 .floating-toc {
 	position: absolute;
@@ -2079,21 +2065,13 @@ article .tags a {
 }
 .floating-toc #toc-body #toc *,
 .floating-toc-new #toc-body #toc * {
-	font-size: 0.84em;
+	font-size: 0.94em;
 }
 .floating-toc #toc-body #toc,
 .floating-toc-new #toc-body #toc {
 	margin-left: 0;
 	height: max-content;
 	padding-right: 5px;
-}
-.floating-toc #toc-body #toc > li > ul > li > a,
-.floating-toc-new #toc-body #toc > li > ul > li > a {
-	font-size: 0.9em;
-}
-.floating-toc #toc-body #toc > li > ul > li > ul > li > a,
-.floating-toc-new #toc-body #toc > li > ul > li > ul > li > a {
-	font-size: 0.8125em;
 }
 .floating-toc-header-ani {
 	animation: bounce-toc-header 5s linear infinite;
@@ -2636,7 +2614,7 @@ body.dark-mode .like_bubble .inner {
 		margin: 0 5px;
 	}
 	article .another_category th {
-		line-height: 1.2;
+		line-height: 1.15;
 	}
 	article .another_category th:before {
 		padding: 0 5px 0 10px;
@@ -2649,5 +2627,29 @@ body.dark-mode .like_bubble .inner {
 	}
 	.comment-list ul li p {
 		line-height: 1.15rem;
+	}
+	.content-article h2 {
+		margin: 10px 0 5px 0;
+		padding: 3px 0 10px 10px;
+	}
+	.content-article h3 {
+		margin: 10px 0 5px 0;
+		padding: 3px 0 10px 10px;
+	}
+	.content-article h4 {
+		margin: 10px 0 5px 0;
+		padding: 3px 0 10px 10px;
+	}
+	.content-article figure {
+		margin-top: 5px !important;
+		margin-bottom: 5px !important;
+	}
+	#toc * {
+		font-size: 0.94em;
+		line-height: 1.2;
+	}
+	.comment-form textarea {
+		margin-bottom: 10px;
+		line-height: 1rem;
 	}
 }
