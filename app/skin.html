@@ -44,6 +44,8 @@
 			/* font-size, line-height setting */
 			html {
 				font-size: [##_var_html-font-size_##]px !important;
+			}
+			.content-article p {
 				line-height: [##_var_html-line-height_##] !important;
 			}
 
@@ -204,11 +206,15 @@
 				{border: [##_var_border-size_##]px solid [##_var_etc-color_##]55 !important}
 				::-webkit-scrollbar-thumb, #toc-body::-webkit-scrollbar-thumb {background-color:[##_var_etc-color_##]55 !important}
 				.search input {border-bottom: [##_var_border-size_##]px solid [##_var_etc-color_##]55;}
-				article .another_category.another_category_color_gray a {
+				article .another_category.another_category_color_gray a, .comment-list ul li .author-meta .control button:before,
+				.comment-list .tt_more_preview_comments_text {
 					color:[##_var_etc-color_##] !important;
 				}
 				.sidebar .category ul li ul li {
 					border-bottom: [##_var_border-size_##]px dashed [##_var_etc-color_##]55;
+				}
+				.comment-list ul li ul li:after {
+					background: linear-gradient(90deg, [##_var_etc-color_##], transparent 50%);
 				}
 
 				/* solid style */
@@ -224,30 +230,23 @@
 					}
 					.container_postbtn .postbtn_like,
 					.container_postbtn .btn_menu_toolbar {
-						border: [##_var_border-size_##]px solid #ccc !important;
-					}
-					.comment-form textarea,
-					.comment-list .tt_more_preview_comments_text,
-					figure.fileblock, #tt-body-page figure.fileblock {
-						border: [##_var_border-size_##]px solid #ccc;
+						border: [##_var_border-size_##]px solid [##_var_etc-color_##]55 !important;
 					}
 					.comment-list, .comment-list ul li ul li {
-						border-top: [##_var_border-size_##]px dashed #ccc;
+						border-top: [##_var_border-size_##]px dashed [##_var_etc-color_##]55;
 					}
-					.comment-list ul li {
-						border-bottom: [##_var_border-size_##]px dashed #ccc;
-					}
-				</s_if_var_sidebar-solid-style>
-				<s_if_var_sidebar-solid-style>
 					.sidebar .category, .sidebar .notice, .sidebar .recent, .sidebar .profile-info, 
 					.sidebar .popular, .sidebar .recent-comment, .sidebar .tags, #tistorySnsLayer.layer_post,
-					.sidebar .count, .sidebar .module_plugin, .archives {
+					.sidebar .count, .sidebar .module_plugin, .archives, .comment-form textarea,
+					.comment-list .tt_more_preview_comments_text,
+					figure.fileblock, #tt-body-page figure.fileblock {
 						border: [##_var_border-size_##]px solid [##_var_etc-color_##]55;
 					}
 					.sidebar .category h2, .sidebar .notice h2,  .sidebar .recent h2, .sidebar .profile-info h2,
 					.sidebar .popular h2, .sidebar .recent-comment h2, .sidebar .tags h2, .sidebar .archives h2,
 					.sidebar .count h2, .sidebar .module_plugin div:not(.change-font-box, .lang-box, .dark-mode-box) h2,
-					.sidebar .module_plugin #bgm-title, .sidebar .module_plugin #recommend-ads-title {
+					.sidebar .module_plugin #bgm-title, .sidebar .module_plugin #recommend-ads-title,
+					.comment-list ul li {
 						border-bottom: [##_var_border-size_##]px dashed [##_var_etc-color_##]55;
 					}
 					.sidebar .module_plugin .change-font-box h2,

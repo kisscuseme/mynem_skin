@@ -97,11 +97,11 @@
 			</variable>
 			<variable>
 				<name>html-line-height</name>
-				<label><![CDATA[ 컨텐츠 최대 너비 (기본 1.5, 1 이상 추천) ]]></label>
+				<label><![CDATA[ 본문 줄 간격 (기본 1.7, 1 이상 추천) ]]></label>
 				<description><![CDATA[]]></description>
 				<type>STRING</type>
 				<option />
-				<default>1.5</default>
+				<default>1.7</default>
 			</variable>
 			<variable>
 				<name>default-dark-mode</name>

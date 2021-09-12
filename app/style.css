@@ -1439,6 +1439,7 @@ article .tags h2 {
 }
 article .tags a {
 	padding-right: 2px;
+	padding-top: 0px;
 }
 
 /* comment */
@@ -2516,7 +2517,6 @@ body.dark-mode .like_bubble .inner {
 		overflow: hidden;
 		max-width: 120px;
 		max-height: 120px;
-		box-shadow: 0.3em 0.3em 2em -2em #000;
 	}
 	.cover-list ul li figure:before {
 		width: 100%;
@@ -2642,4 +2642,14 @@ body.dark-mode .like_bubble .inner {
 	.floating-toc #toc-body {
 		max-width: 250px;
 	}
+	h1, h1[data-ke-size] { font-size:1.2em !important; }
+	h2, h2[data-ke-size] { font-size:1.12em !important; }
+	h3, h3[data-ke-size] { font-size:1.04em !important;}
+	h4, h4[data-ke-size] { font-size:0.96em !important; }
+	#tt-body-page p[data-ke-size='size18'],
+	p[data-ke-size='size18'] { font-size: 0.9em !important; }
+	#tt-body-page p[data-ke-size='size16'],
+	p[data-ke-size='size16'] { font-size: 0.87em !important; }
+	#tt-body-page p[data-ke-size='size14'],
+	p[data-ke-size='size14'] { font-size: 0.72em !important; }
 }
