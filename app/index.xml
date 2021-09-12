@@ -2,7 +2,7 @@
 <skin>
 	<information>
 		<name>Mynem Skin</name>
-		<version>2.5.1</version>
+		<version>2.5.2</version>
 		<description>
 			<![CDATA[ 심플하면서 막강한 기능을 가진 미넴 스킨 입니다.
 			많은 사용자가 원하는 방향으로 발전해 나갈 예정입니다. ]]>
@@ -952,6 +952,57 @@
 			<variable>
 				<name>related-data-ad-slot</name>
 				<label><![CDATA[ data-ad-slot ]]></label>
+				<description><![CDATA[]]></description>
+				<type>STRING</type>
+				<option />
+				<default><![CDATA[]]></default>
+			</variable>
+		</variablegroup>
+
+		<variablegroup name="메인 인피드 광고 (리스트 커버 이용 시)">
+			<variable>
+				<name>infeed-google-ads</name>
+				<label><![CDATA[ 사용 여부 ]]></label>
+				<description><![CDATA[]]></description>
+				<type>BOOL</type>
+				<option/>
+				<default>false</default>
+			</variable>
+			<variable>
+				<name>infeed-data-ad-client</name>
+				<label><![CDATA[ data-ad-client ]]></label>
+				<description><![CDATA[]]></description>
+				<type>STRING</type>
+				<option />
+				<default><![CDATA[]]></default>
+			</variable>
+			<variable>
+				<name>infeed-data-ad-slot-big</name>
+				<label><![CDATA[ data-ad-slot (큰 화면) ]]></label>
+				<description><![CDATA[]]></description>
+				<type>STRING</type>
+				<option />
+				<default><![CDATA[]]></default>
+			</variable>
+			<variable>
+				<name>infeed-data-ad-layout-key-big</name>
+				<label><![CDATA[ data-ad-layout-key (큰 화면) ]]></label>
+				<description><![CDATA[]]></description>
+				<type>STRING</type>
+				<option />
+				<default><![CDATA[]]></default>
+			</variable>
+			<variable>
+				<name>infeed-data-ad-slot-small</name>
+				<label><![CDATA[ data-ad-slot (작은 화면) ]]></label>
+				<description><![CDATA[]]></description>
+				<type>STRING</type>
+				<option />
+				<default><![CDATA[]]></default>
+			</variable>
+			<variable>
+				<name>infeed-data-ad-layout-key-small</name>
+				<label><![CDATA[ data-ad-layout-key (작은 화면) ]]></label>
 				<description><![CDATA[]]></description>
 				<type>STRING</type>
 				<option />

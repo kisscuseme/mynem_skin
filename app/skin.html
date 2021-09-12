@@ -1629,6 +1629,11 @@
 										<div class="cover-list">
 											<h2 class="header">[##_cover_title_##]</h2>
 											<ul>
+												<s_if_var_infeed-google-ads>
+													<script>
+														var cnt = 0;
+													</script>
+												</s_if_var_infeed-google-ads>
 												<s_cover_item>
 													<li>
 														<a href="[##_cover_item_url_##]">
@@ -1656,6 +1661,22 @@
 															</s_cover_item_article_info>
 														</a>
 													</li>
+													<s_if_var_infeed-google-ads>
+														<script>
+															cnt += 1;
+															var layoutKey = "";
+															var slot = "";
+															if(window.innerWidth > 767) {
+																slot = "[##_var_infeed-data-ad-slot-big_##]";
+																layoutKey = "[##_var_infeed-data-ad-layout-key-big_##]";
+															} else {
+																slot = "[##_var_infeed-data-ad-slot-small_##]";
+																layoutKey = "[##_var_infeed-data-ad-layout-key-small_##]";
+															}
+															if(cnt%2 == 0) document.write('<li><ins class="adsbygoogle" style="display:block" data-ad-format="fluid" data-ad-layout-key="'+layoutKey+'" data-ad-client="[##_var_infeed-data-ad-client_##]" data-ad-slot="'+slot+'"></ins></li>');
+															(adsbygoogle = window.adsbygoogle || []).push({});
+														</script>
+													</s_if_var_infeed-google-ads>
 												</s_cover_item>
 											</ul>
 										</div>
@@ -2061,7 +2082,7 @@
 						<a href="#" class="page-top">TOP</a>
 						<p class="meta"><s_if_var_footer-text-1>[##_var_footer-text-1_##]</s_if_var_footer-text-1></p>
 						<p class="copyright"><s_if_var_footer-text-2>[##_var_footer-text-2_##]</s_if_var_footer-text-2></p>
-						<p class="maker"><a href="https://sangminem.tistory.com/506" target="_blank">Mynem Skin 2.5.1</a></p>
+						<p class="maker"><a href="https://sangminem.tistory.com/506" target="_blank">Mynem Skin 2.5.2</a></p>
 					</div>
 				</footer>
 			</div>

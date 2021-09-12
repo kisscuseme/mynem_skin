@@ -396,7 +396,7 @@ article h2,
 }
 .cover-list ul li figure {
 	float: left;
-	margin-right: 2%;
+	margin-right: 15px;
 	position: relative;
 	display: block;
 	overflow: hidden;
@@ -2485,6 +2485,7 @@ body.dark-mode .like_bubble .inner {
 		overflow: hidden;
 		max-width: 120px;
 		max-height: 120px;
+		margin-right: 5px;
 	}
 	.cover-list ul li figure:before {
 		width: 100%;

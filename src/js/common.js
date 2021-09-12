@@ -1026,7 +1026,7 @@ function common(){
 function updateTagsAttr() {
     //이미지에 alt 태그 부여
     var $titleList = $('.content-title .inner h1, .content-article h2, h3, h4');
-    var titleListLength = $titleList.length - 2;
+    var titleListLength = $titleList.length - 1;
     var $images = $('.content-article').find('img');
     var cnt = 0;
     var limitCnt = 0;
