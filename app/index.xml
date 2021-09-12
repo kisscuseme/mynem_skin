@@ -96,6 +96,14 @@
 				<default>18</default>
 			</variable>
 			<variable>
+				<name>font-size-ratio</name>
+				<label><![CDATA[ 본문 폰트 크기 비율 (0~1 사이, 기본 1) ]]></label>
+				<description><![CDATA[]]></description>
+				<type>STRING</type>
+				<option />
+				<default>1</default>
+			</variable>
+			<variable>
 				<name>html-line-height</name>
 				<label><![CDATA[ 본문 줄 간격 (기본 1.7, 1 이상 추천) ]]></label>
 				<description><![CDATA[]]></description>
@@ -795,7 +803,7 @@
 			</variable>
 			<variable>
 				<name>change-font-size-floating</name>
-				<label><![CDATA[ 글자 크기 변경 버튼 숨기기 ]]></label>
+				<label><![CDATA[ 플로팅 글자 크기 변경 버튼 숨기기 ]]></label>
 				<description><![CDATA[]]></description>
 				<type>BOOL</type>
 				<option/>

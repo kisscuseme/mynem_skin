@@ -183,6 +183,8 @@ footer:after {
 footer .inner {
 	margin: 0 auto;
 	padding: 10px;
+	min-height: 80px;
+	position: relative;
 }
 footer p {
 	margin-bottom: 10px;
@@ -1287,16 +1289,6 @@ article h2,
 }
 
 /* override */
-h1, h1[data-ke-size] { font-size:1.5em !important; }
-h2, h2[data-ke-size] { font-size:1.4em !important; }
-h3, h3[data-ke-size] { font-size:1.3em !important;}
-h4, h4[data-ke-size] { font-size:1.2em !important; }
-#tt-body-page p[data-ke-size='size18'],
-p[data-ke-size='size18'] { font-size: 1.12em !important; }
-#tt-body-page p[data-ke-size='size16'],
-p[data-ke-size='size16'] { font-size: 1.08em !important; }
-#tt-body-page p[data-ke-size='size14'],
-p[data-ke-size='size14'] { font-size: 0.9em !important; }
 #tt-body-page h2[data-ke-size],
 #tt-body-page h3[data-ke-size],
 #tt-body-page h4[data-ke-size] {
@@ -1471,7 +1463,7 @@ article .tags a {
 .comment-list .tt_more_preview_comments_text {
 	display: block;
 	margin: -1px 0 0;
-	padding: 12px 0 11px;
+	padding: 12px 0 12px;
 	border: 1px solid #ccc;
 	text-align: center;
 	font-size: 0.875em;
@@ -1487,6 +1479,7 @@ article .tags a {
 	font-size: 0.8125em;
 	color: #555;
 	min-height: 35px;
+	line-height: 1.5;
 }
 .comment-list ul li .author-meta .date {
 	margin-right: 40px;
@@ -1688,8 +1681,7 @@ article .tags a {
 	height: 36px;
 	text-align: center;
 	font-weight: 400;
-	font-size: 14px !important;
-	line-height: 36px;
+	font-size: 0.77em !important;
 	color: #fff;
 	vertical-align: middle;
 }
@@ -1700,9 +1692,10 @@ article .tags a {
 
 /* maker : armynem */
 .maker {
-	display: grid;
-	width: 100%;
-	margin: 0;
+	position: absolute;
+	right: 5px;
+	bottom: 5px;
+	margin: 0px;
 }
 .maker a {
 	font-size: 0.8125em;
@@ -2086,7 +2079,7 @@ article .tags a {
 }
 .floating-toc #toc-body #toc *,
 .floating-toc-new #toc-body #toc * {
-	font-size: 15px;
+	font-size: 0.84em;
 }
 .floating-toc #toc-body #toc,
 .floating-toc-new #toc-body #toc {
@@ -2639,14 +2632,22 @@ body.dark-mode .like_bubble .inner {
 	.floating-toc #toc-body {
 		max-width: 250px;
 	}
-	h1, h1[data-ke-size] { font-size:1.2em !important; }
-	h2, h2[data-ke-size] { font-size:1.12em !important; }
-	h3, h3[data-ke-size] { font-size:1.04em !important;}
-	h4, h4[data-ke-size] { font-size:0.96em !important; }
-	#tt-body-page p[data-ke-size='size18'],
-	p[data-ke-size='size18'] { font-size: 0.9em !important; }
-	#tt-body-page p[data-ke-size='size16'],
-	p[data-ke-size='size16'] { font-size: 0.87em !important; }
-	#tt-body-page p[data-ke-size='size14'],
-	p[data-ke-size='size14'] { font-size: 0.72em !important; }
+	.pagination a {
+		margin: 0 5px;
+	}
+	article .another_category th {
+		line-height: 1.2;
+	}
+	article .another_category th:before {
+		padding: 0 5px 0 10px;
+	}
+	.content-title {
+		padding: 10px;
+	}
+	.comment-list .tt_more_preview_comments_text {
+		padding: 8px 0 8px;
+	}
+	.comment-list ul li p {
+		line-height: 1.15rem;
+	}
 }
