@@ -1021,6 +1021,12 @@ function common(){
         localStorage.setItem('dark-mode','y');
         $('body').addClass('dark-mode');
     }
+
+    if($('.og-desc').length > 0) {
+        for(var i=0;i<$('.og-desc').length;i++) {
+            $('.og-desc').eq(i).text($('.og-desc').eq(i).text()+'...');
+        }
+    }
 }
 
 function updateTagsAttr() {
