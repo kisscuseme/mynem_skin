@@ -432,7 +432,7 @@ article h2,
 	display: -webkit-box;
 	overflow: hidden;
 	max-width: 95%;
-	margin-top: 17px;
+	margin-top: 15px;
 	margin-bottom: 10px;
 	text-overflow: ellipsis;
 	line-height: 1.4;
@@ -2506,7 +2506,7 @@ body.dark-mode .like_bubble .inner {
 		padding: 3px;
 	}
 	.cover-list ul li .title {
-		margin-top: 8px;
+		margin-top: 7px;
 		margin-bottom: 5px;
 		font-size: 0.875em;
 	}
