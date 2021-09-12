@@ -1726,8 +1726,17 @@ function recommendPost() {
         } else {
             if(currentIndex == 0) { //이전글 가능
                 console.log("이전글: "+anotherCategory.eq(currentIndex+1).find('a').text()); //이전글
-            } else if(anotherCategory.length > 2) { //다음글 가능
+                $('#pre-content div').append(anotherCategory.eq(currentIndex+1).find('a'));
+                $('#pre-content').css('bottom','-100px');
+                $('#pre-content').css('display','block');
+                $('#pre-content').animate({'bottom':'0px'});
+
+            } else if(anotherCategory.length > 1) { //다음글 가능
                 console.log("다음글: "+anotherCategory.eq(currentIndex-1).find('a').text()); //다음글
+                $('#next-content div').append(anotherCategory.eq(currentIndex-1).find('a'));
+                $('#next-content').css('bottom','-100px');
+                $('#next-content').css('display','block');
+                $('#next-content').animate({'bottom':'0px'});
             }
         }
     }
