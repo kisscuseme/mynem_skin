@@ -985,16 +985,16 @@
 				<default><![CDATA[]]></default>
 			</variable>
 			<variable>
-				<name>infeed-data-ad-layout-key-big</name>
-				<label><![CDATA[ data-ad-layout-key (큰 화면) ]]></label>
+				<name>infeed-data-ad-slot-small</name>
+				<label><![CDATA[ data-ad-slot (작은 화면) ]]></label>
 				<description><![CDATA[]]></description>
 				<type>STRING</type>
 				<option />
 				<default><![CDATA[]]></default>
 			</variable>
 			<variable>
-				<name>infeed-data-ad-slot-small</name>
-				<label><![CDATA[ data-ad-slot (작은 화면) ]]></label>
+				<name>infeed-data-ad-layout-key-big</name>
+				<label><![CDATA[ data-ad-layout-key (큰 화면) ]]></label>
 				<description><![CDATA[]]></description>
 				<type>STRING</type>
 				<option />

@@ -1710,6 +1710,29 @@ function replaceLink() {
     }
 }
 
+function recommendPost() {
+    var anotherCategory = $('.another_category tr');
+    var currentIndex = -1;
+    if(anotherCategory.length > 1) {
+        for(var i=0;i<anotherCategory.length;i++) {
+            if(anotherCategory.eq(i).find('a.current').length > 0) {
+                currentIndex = i;
+                break;
+            }
+        }
+        if(currentIndex > 0 && currentIndex < anotherCategory.length-1) { //이전글, 다음글 가능
+            console.log("다음글: "+anotherCategory.eq(currentIndex-1).find('a').text()); //다음글
+            console.log("이전글: "+anotherCategory.eq(currentIndex+1).find('a').text()); //이전글
+        } else {
+            if(currentIndex == 0) { //이전글 가능
+                console.log("이전글: "+anotherCategory.eq(currentIndex+1).find('a').text()); //이전글
+            } else if(anotherCategory.length > 2) { //다음글 가능
+                console.log("다음글: "+anotherCategory.eq(currentIndex-1).find('a').text()); //다음글
+            }
+        }
+    }
+}
+
 $(document).ready(function() {
     makeToc();
     selectMakeFloatingToc();
@@ -1725,6 +1748,7 @@ $(document).ready(function() {
     bgmEvents();
     toggleCategory();
     replaceLink();
+    //recommendPost();
     common();
     
     $(window).on('scroll resize', function() {
