@@ -1981,7 +1981,6 @@ article .tags a {
 	margin-bottom: 0;
 }
 #toc > li > ul > li {
-	font-size: 0.94em;
 	padding-left: 0;
 	text-indent: 0;
 	list-style-type: none;
@@ -1997,7 +1996,6 @@ article .tags a {
 	margin-bottom: 0;
 }
 #toc > li > ul > li > ul > li {
-	font-size: 0.94em;
 	padding-left: 0;
 	text-indent: 0;
 	list-style-type: none;
@@ -2062,10 +2060,6 @@ article .tags a {
 	margin-top: 10px;
 	overflow: auto;
 	max-height: 70vh;
-}
-.floating-toc #toc-body #toc *,
-.floating-toc-new #toc-body #toc * {
-	font-size: 0.94em;
 }
 .floating-toc #toc-body #toc,
 .floating-toc-new #toc-body #toc {
@@ -2645,12 +2639,11 @@ body.dark-mode .like_bubble .inner {
 		margin-top: 5px !important;
 		margin-bottom: 5px !important;
 	}
-	#toc * {
-		font-size: 0.94em;
-		line-height: 1.2;
-	}
 	.comment-form textarea {
 		margin-bottom: 10px;
 		line-height: 1rem;
+	}
+	.content-article ul li {
+		line-height: 1.35;
 	}
 }
