@@ -985,6 +985,14 @@
 				<default>false</default>
 			</variable>
 			<variable>
+				<name>infeed-repeat-cnt</name>
+				<label><![CDATA[ 반복 간격 설정, 예) 2 입력 시 게시물 2개마다 광고 1개 생성 ]]></label>
+				<description><![CDATA[]]></description>
+				<type>STRING</type>
+				<option />
+				<default><![CDATA[2]]></default>
+			</variable>
+			<variable>
 				<name>infeed-data-ad-client</name>
 				<label><![CDATA[ data-ad-client ]]></label>
 				<description><![CDATA[]]></description>

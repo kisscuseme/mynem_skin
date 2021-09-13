@@ -1139,7 +1139,7 @@ article h2,
 	position: relative;
 	margin-bottom: 10px;
 	padding-left: 22px;
-	line-height: 1.5714;
+	line-height: 1.4;
 	color: #666;
 	text-indent: -22px;
 	list-style: inherit;
@@ -1152,7 +1152,7 @@ article h2,
 	position: relative;
 	margin-bottom: 10px;
 	padding-left: 16px;
-	line-height: 1.5714;
+	line-height: 1.4;
 	color: #666;
 	text-indent: -15px;
 	list-style: inherit;
@@ -1928,7 +1928,7 @@ article .tags a {
 .book-toc {
 	position: relative;
 	padding: 10px 20px 10px 15px;
-	margin: 10px;
+	margin: 10px 0 10px 0;
 	z-index: 1;
 }
 .book-toc:after {
@@ -2462,33 +2462,33 @@ body.dark-mode .like_bubble .inner {
 }
 .content-comment {
 	margin: 0 0 5px 0;
-	padding: 10px;
-	width: 290px;
+	padding: 8px;
+	width: 294px;
 	font-weight: bold;
 	font-style: italic;
 	border-radius: 5px;
-	font-size: 0.9em;
+	font-size: 0.8em;
 }
 .content-box {
 	padding: 5px;
-	width: 140px;
+	width: 142px;
 	display: flex;
 	align-items: center;
 	border-radius: 5px;
 	font-weight: bold;
 }
 .content-box .content-arrow:nth-child(1) {
-	padding-right: 10px;
+	padding-right: 5px;
 }
 .content-box .content-arrow:nth-child(2) {
-	padding-left: 10px;
+	padding-left: 5px;
 }
 .content-box:nth-child(1) {
-	margin-right: 10px;
+	margin-right: 5px;
 }
 .pre-content,
 .next-content {
-	font-size: 0.8em;
+	font-size: 0.7em;
 	overflow: hidden;
 	text-overflow: ellipsis;
 	display: block;
@@ -2705,7 +2705,7 @@ body.dark-mode .like_bubble .inner {
 		line-height: 1.15;
 	}
 	.book-toc {
-		margin: 5px;
+		margin: 5px 0 5px 0;
 		padding: 8px 16px 8px 12px;
 	}
 }
