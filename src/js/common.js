@@ -1776,7 +1776,7 @@ function recommendPost() {
                             $('#recommend-contents').css('display','none');
                             recommendPostTimer = 0;
                         });
-                    }, 8000);
+                    }, 10000);
                 }
             }
         } else {
