@@ -1928,6 +1928,7 @@ article .tags a {
 .book-toc {
 	position: relative;
 	padding: 10px 20px 10px 15px;
+	margin: 10px;
 	z-index: 1;
 }
 .book-toc:after {
@@ -1972,11 +1973,11 @@ article .tags a {
 	margin-bottom: 0px;
 }
 #toc > li:before {
-  padding-right: 10px;
+  padding-right: 5px;
 	color: #517135;
 }
 #toc > li > ul {
-	padding-left: 20px;
+	padding-left: 10px;
 	margin-top: 0;
 	margin-bottom: 0;
 }
@@ -1988,7 +1989,7 @@ article .tags a {
 	margin-top: 5px;
 }
 #toc > li > ul > li:before {
-  padding-right: 8px;
+  padding-right: 5px;
 }
 #toc > li > ul > li > ul {
 	padding-left: 10px;
@@ -2003,7 +2004,7 @@ article .tags a {
 	margin-top: 3px;
 }
 #toc > li > ul > li > ul > li:before {
-  padding-right: 10px;
+  padding-right: 5px;
 }
 .floating-toc {
 	position: absolute;
@@ -2397,16 +2398,25 @@ article .tags a {
 	margin: auto;
 }
 
-body.dark-mode section,body.dark-mode header,body.dark-mode footer,body.dark-mode textarea, body.dark-mode .comment-form input,
+body.dark-mode section,body.dark-mode header,body.dark-mode footer, body.dark-mode .comment-form input,
 body.dark-mode .floating-toc,body.dark-mode .floating-toc-new, body.dark-mode .sidebar .close,
 body.dark-mode #tistoryEtcLayer, body.dark-mode .sidebar .profile ul, body.dark-mode .top-button .profile ul li a,
 body.dark-mode .comment-list ul li .author-meta .control .link a, body.dark-mode .top-button .menu button,
-body.dark-mode #tistorySnsLayer.layer_post,
-body.dark-mode .floating-toc-new:after {
-	background: black;
+body.dark-mode #tistorySnsLayer.layer_post {
+	background-color: #000000;
 }
-body.dark-mode .content-title .meta a:before, body.dark-mode .content-title .meta span:not(.author):before {
-	background: rgb(255,255,255,0.6);
+body.dark-mode .sidebar h2, body.dark-mode.mobile-menu aside,
+body.dark-mode textarea {
+	color:#d6d6d6;
+	background-color:#1e1e1e;
+}
+body.dark-mode .floating-toc-new:after,
+body.dark-mode .floating-toc:after {
+	background-color: #1e1e1e;
+}
+body.dark-mode .content-title .meta a:before, body.dark-mode .content-title .meta span:not(.author):before,
+figure.fileblock a::after, #tt-body-page figure.fileblock a::after {
+	background-color: rgb(255,255,255,0.6);
 }
 body.dark-mode h1,body.dark-mode h2,body.dark-mode h3,body.dark-mode h4,body.dark-mode p, body.dark-mode .tags a,
 body.dark-mode .sidebar a, body.dark-mode .maker a,
@@ -2414,8 +2424,7 @@ body.dark-mode span:not(#bgm-status, .bubble_image, .hljs-selector-id, .hljs-sel
 .hljs-number, .hljs-meta, .hljs-string, .hljs-keyword, .hljs-name, .hljs-tag, .hljs-comment, .hljs-attr, .hljs-function,
 .hljs-literal, .hljs-selector-pseudo, .hljs-built_in, .hljs-selector-attr, .hljs-selector-tag, .hljs-title, .hljs-params,
 .category),
-body.dark-mode input,body.dark-mode textarea,
-body.dark-mode #toc *, body.dark-mode #blog-menu ul li a,
+body.dark-mode input, body.dark-mode #toc *, body.dark-mode #blog-menu ul li a,
 body.dark-mode .container_postbtn .btn_post .txt_like,
 body.dark-mode .container_postbtn .btn_menu_toolbar .txt_state,
 body.dark-mode #tistoryEtcLayer .bundle_post .btn_mark,
@@ -2425,10 +2434,6 @@ body.dark-mode .comment-list ul li .author-meta .nickname a,
 body.dark-mode .comment-list ul li .author-meta a,
 body.dark-mode .sidebar .count p, body.dark-mode .sidebar .count .total{
 	color: #d6d6d6;
-}
-body.dark-mode .sidebar h2, body.dark-mode.mobile-menu aside {
-	color:#d6d6d6;
-	background:black;
 }
 body.dark-mode .btn_menu_toolbar, body.dark-mode #wrapper div div.profile button {
 	opacity: 0.5;
@@ -2445,6 +2450,56 @@ body.dark-mode #tistorySnsLayer.layer_post .btn_mark {
 }
 body.dark-mode .like_bubble .inner {
 	color: #ffb355;
+}
+
+/* recommend content */
+.recommend-contents-wrap {
+	position: fixed;
+	z-index: 999;
+}
+.recommend-contents-body {
+	display: flex;
+}
+.content-comment {
+	margin: 0 0 5px 0;
+	padding: 10px;
+	width: 290px;
+	font-weight: bold;
+	font-style: italic;
+	border-radius: 5px;
+	font-size: 0.9em;
+}
+.content-box {
+	padding: 5px;
+	width: 140px;
+	display: flex;
+	align-items: center;
+	border-radius: 5px;
+	font-weight: bold;
+}
+.content-box .content-arrow:nth-child(1) {
+	padding-right: 10px;
+}
+.content-box .content-arrow:nth-child(2) {
+	padding-left: 10px;
+}
+.content-box:nth-child(1) {
+	margin-right: 10px;
+}
+.pre-content,
+.next-content {
+	font-size: 0.8em;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	display: block;
+	display: -webkit-box;
+	-webkit-box-orient: vertical;
+	-webkit-line-clamp: 2;
+	text-align: center;
+	width: inherit;
+}
+.no-post {
+	opacity: 0.5;
 }
 
 /* mobile menu */
@@ -2644,6 +2699,13 @@ body.dark-mode .like_bubble .inner {
 		line-height: 1rem;
 	}
 	.content-article ul li {
-		line-height: 1.35;
+		line-height: 1.25;
+	}
+	#toc-body #toc li {
+		line-height: 1.15;
+	}
+	.book-toc {
+		margin: 5px;
+		padding: 8px 16px 8px 12px;
 	}
 }

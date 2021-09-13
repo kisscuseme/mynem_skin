@@ -44,7 +44,7 @@
 			/* font family */
 			html, button, textarea, input,
 			.container_postbtn .postbtn_like .wrap_btn .btn_post .uoc-icon .txt_like,
-			#tistoryEtcLayer .bundle_post .btn_mark,
+			#tistoryEtcLayer .bundle_post .btn_mark, #tt-body-page div[data-ke-type='moreLess'] .btn-toggle-moreless,
 			.container_postbtn button em {
 				font-family: <s_if_var_custom-font>[##_var_custom-font_##]</s_if_var_custom-font>"Noto Sans DemiLight",AppleSDGothicNeo,"Malgun Gothic","맑은 고딕","돋움",dotum,sans-serif,'Font_Awesome_5_Free' !important;
 			}
@@ -86,8 +86,34 @@
 			article .another_category.another_category_color_gray a.current,
 			.comment-list ul li .author-meta .control button:before,
 			.comment-list .tt_more_preview_comments_text,
-			.pagination, #blog-menu, article .another_category th:before {
+			.pagination, #blog-menu, article .another_category th:before,
+			#tt-body-page blockquote, .content-article > div > ol, .content-article > div > ul,
+			#tt-body-page div[data-ke-type='moreLess'] .btn-toggle-moreless,
+			.book-toc > p {
 				font-size: calc(1em * [##_var_font-size-ratio_##]) !important;
+			}
+			#toc > li > a {
+				font-size: calc(1em * [##_var_font-size-ratio_##]) !important;
+			}
+			#toc > li > ul > li > a {
+				font-size: calc(0.95em * [##_var_font-size-ratio_##]) !important;
+			}
+			#toc > li > ul > li > ul > li > a {
+				font-size: calc(0.91em * [##_var_font-size-ratio_##]) !important;
+			}
+			#toc-body #toc > li > a {
+				font-size: calc(0.91em * [##_var_font-size-ratio_##]) !important;
+			}
+			#toc-body #toc > li > ul > li > a {
+				font-size: calc(0.87em * [##_var_font-size-ratio_##]) !important;
+			}
+			#toc-body #toc > li > ul > li > ul > li > a {
+				font-size: calc(0.84em * [##_var_font-size-ratio_##]) !important;
+			}
+			
+			#tt-body-page blockquote[data-ke-style='style1'] {
+				padding-top: calc(29px * [##_var_font-size-ratio_##]) !important;
+				background-size: calc(23px * [##_var_font-size-ratio_##]) !important;
 			}
 			h1, h1[data-ke-size] { font-size:calc(1.5em * [##_var_font-size-ratio_##]) !important; }
 			h2, h2[data-ke-size] { font-size:calc(1.4em * [##_var_font-size-ratio_##]) !important; }
@@ -101,12 +127,6 @@
 			p[data-ke-size='size14'] { font-size: calc(0.9em * [##_var_font-size-ratio_##]) !important; }
 			figure[data-ke-type='opengraph'] div.og-text p.og-title, #tt-body-page figure[data-ke-type='opengraph'] div.og-text p.og-title {
 				font-size: calc(1.22em * [##_var_font-size-ratio_##]) !important;
-			}
-			#toc li {
-				font-size: calc(0.48em + 0.5em * [##_var_font-size-ratio_##]) !important;
-			}
-			#toc-body #toc li {
-				font-size: calc(0.41em + 0.5em * [##_var_font-size-ratio_##]) !important;
 			}
 			.comment-list ul li p {
 				font-size: calc(0.9em * [##_var_font-size-ratio_##]) !important;
@@ -152,8 +172,33 @@
 				article .another_category.another_category_color_gray a.current,
 				.comment-list ul li .author-meta .control button:before,
 				.comment-list .tt_more_preview_comments_text,
-				.pagination, #blog-menu, article .another_category th:before {
+				.pagination, #blog-menu, article .another_category th:before,
+				#tt-body-page blockquote, .content-article > div > ol, .content-article > div > ul,
+				#tt-body-page div[data-ke-type='moreLess'] .btn-toggle-moreless,
+				.book-toc > p {
 					font-size: calc(0.8em * [##_var_font-size-ratio_##]) !important;
+				}
+				#toc > li > a {
+					font-size: calc(1em * 0.8 * [##_var_font-size-ratio_##]) !important;
+				}
+				#toc > li > ul > li > a {
+					font-size: calc(0.95em * 0.8 * [##_var_font-size-ratio_##]) !important;
+				}
+				#toc > li > ul > li > ul > li > a {
+					font-size: calc(0.91em * 0.8 * [##_var_font-size-ratio_##]) !important;
+				}
+				#toc-body #toc > li > a {
+					font-size: calc(0.91em * 0.8 * [##_var_font-size-ratio_##]) !important;
+				}
+				#toc-body #toc > li > ul > li > a {
+					font-size: calc(0.87em * 0.8 * [##_var_font-size-ratio_##]) !important;
+				}
+				#toc-body #toc > li > ul > li > ul > li > a {
+					font-size: calc(0.84em * 0.8 * [##_var_font-size-ratio_##]) !important;
+				}
+				#tt-body-page blockquote[data-ke-style='style1'] {
+					padding-top: calc(29px * 0.8 * [##_var_font-size-ratio_##]) !important;
+					background-size: calc(23px * 0.8 * [##_var_font-size-ratio_##]) !important;
 				}
 				h1, h1[data-ke-size] { font-size:calc(1.5em * 0.8 * [##_var_font-size-ratio_##]) !important; }
 				h2, h2[data-ke-size] { font-size:calc(1.4em * 0.8 * [##_var_font-size-ratio_##]) !important; }
@@ -167,12 +212,6 @@
 				p[data-ke-size='size14'] { font-size: calc(0.9em * 0.8 * [##_var_font-size-ratio_##]) !important; }
 				figure[data-ke-type='opengraph'] div.og-text p.og-title, #tt-body-page figure[data-ke-type='opengraph'] div.og-text p.og-title {
 					font-size: calc(1.22em * 0.8 * [##_var_font-size-ratio_##]) !important;
-				}
-				#toc li {
-					font-size: calc(0.48em + 0.5em * 0.9 * [##_var_font-size-ratio_##]) !important;
-				}
-				#toc-body #toc li {
-					font-size: calc(0.41em + 0.5em * 0.9 * [##_var_font-size-ratio_##]) !important;
 				}
 				.comment-list ul li p {
 					font-size: calc(0.9em * 0.8 * [##_var_font-size-ratio_##]) !important;
@@ -337,7 +376,7 @@
 				::-webkit-scrollbar-thumb, #toc-body::-webkit-scrollbar-thumb {background-color:[##_var_etc-color_##]55 !important}
 				.search input {border-bottom: [##_var_border-size_##]px solid [##_var_etc-color_##]55;}
 				article .another_category.another_category_color_gray a, .comment-list ul li .author-meta .control button:before,
-				.comment-list .tt_more_preview_comments_text {
+				.comment-list .tt_more_preview_comments_text, .content-box .content-arrow {
 					color:[##_var_etc-color_##] !important;
 				}
 				.sidebar .category ul li ul li {
@@ -345,6 +384,12 @@
 				}
 				.comment-list ul li ul li:after {
 					background: linear-gradient(90deg, [##_var_etc-color_##]55, transparent 50%);
+				}
+				.content-box {
+					background-color: [##_var_etc-color_##]44;
+				}
+				.content-comment {
+					background-color: [##_var_etc-color_##]11;
 				}
 
 				/* solid style */
@@ -425,8 +470,10 @@
 			</s_if_var_etc-color>
 			
 			<s_if_var_forced-font-color>
-				body.dark-mode .content-article p span {
+				body.dark-mode .content-article p span,
+				body.dark-mode .content-article li {
 					color: #d6d6d6 !important;
+					background-color: transparent !important;
 				}
 			</s_if_var_forced-font-color>
 
@@ -2139,6 +2186,25 @@
 
 			<!-- 1픽셀 이미지 -->
 			<img id="blank-img" src="./images/blank.png" style="display:none;">
+
+			<!-- 이전/다음 글 박스 -->
+			<s_if_var_recommend-contents>
+				<div id="recommend-contents" class="recommend-contents-wrap" style="display:none;">
+					<div class="content-comment">
+						[##_var_content-comment_##]
+					</div>
+					<div class="recommend-contents-body">
+						<div class="content-box">
+							<div class="content-arrow">&#xf0d9;</div>
+							<div id="pre-content" class="pre-content"></div>
+						</div>
+						<div class="content-box">
+							<div id="next-content" class="next-content"></div>
+							<div class="content-arrow">&#xf0da;</div>
+						</div>
+					</div>
+				</div>
+			</s_if_var_recommend-contents>
 
 			<!-- 설정 값 -->
 			<input type='hidden' id='bgm-src-1' value="[##_var_bgm-src-1_##]">

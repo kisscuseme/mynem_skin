@@ -1710,36 +1710,78 @@ function replaceLink() {
     }
 }
 
-function recommendPost() {
-    var anotherCategory = $('.another_category tr');
-    var currentIndex = -1;
-    if(anotherCategory.length > 1) {
-        for(var i=0;i<anotherCategory.length;i++) {
-            if(anotherCategory.eq(i).find('a.current').length > 0) {
-                currentIndex = i;
-                break;
-            }
-        }
-        if(currentIndex > 0 && currentIndex < anotherCategory.length-1) { //이전글, 다음글 가능
-            console.log("다음글: "+anotherCategory.eq(currentIndex-1).find('a').text()); //다음글
-            console.log("이전글: "+anotherCategory.eq(currentIndex+1).find('a').text()); //이전글
-        } else {
-            if(currentIndex == 0) { //이전글 가능
-                console.log("이전글: "+anotherCategory.eq(currentIndex+1).find('a').text()); //이전글
-                $('#pre-content div').append(anotherCategory.eq(currentIndex+1).find('a'));
-                $('#pre-content').css('bottom','-100px');
-                $('#pre-content').css('display','block');
-                $('#pre-content').animate({'bottom':'0px'});
-
-            } else if(anotherCategory.length > 1) { //다음글 가능
-                console.log("다음글: "+anotherCategory.eq(currentIndex-1).find('a').text()); //다음글
-                $('#next-content div').append(anotherCategory.eq(currentIndex-1).find('a'));
-                $('#next-content').css('bottom','-100px');
-                $('#next-content').css('display','block');
-                $('#next-content').animate({'bottom':'0px'});
-            }
-        }
+var prePostFlag = true;
+var nextPostFlag = true;
+function makeRecommendBlock(type, currentIndex) {
+    if(prePostFlag && type == 'pre') {
+        prePostFlag = false;
+        $('#pre-content').append($('.another_category tr').eq(currentIndex+1).find('a').clone());
+        $('#next-content').append('<a href="#" class="no-post">다음 글 없음</a>');
+        $('.content-box .content-arrow').eq(1).addClass('no-post');
+    } else if(nextPostFlag && type == 'next') {
+        nextPostFlag = false;
+        $('#next-content').append($('.another_category tr').eq(currentIndex-1).find('a').clone());
+        $('#pre-content').append('<a href="#" class="no-post">이전 글 없음</a>');
+        $('.content-box .content-arrow').eq(0).addClass('no-post');
+    } else if(prePostFlag && nextPostFlag && type == 'both') {
+        prePostFlag = false;
+        nextPostFlag = false;
+        $('#pre-content').append($('.another_category tr').eq(currentIndex+1).find('a').clone());
+        $('#next-content').append($('.another_category tr').eq(currentIndex-1).find('a').clone());
     }
+}
+
+var recommendPostFlag = true;
+var recommendPostTimer = 0;
+var preRecommendPosition = -1;
+function recommendPost() {
+    var position = window.scrollY/($('.another_category').offset().top-window.innerHeight);
+    if(position > 1 && window.scrollY-$('.another_category').offset().top < 0 && preRecommendPosition < window.scrollY) {
+        if(recommendPostFlag) {
+            recommendPostFlag = false;
+            var anotherCategory = $('.another_category tr');
+            var currentIndex = -1;
+            if(anotherCategory.length > 1) {
+                for(var i=0;i<anotherCategory.length;i++) {
+                    if(anotherCategory.eq(i).find('a.current').length > 0) {
+                        currentIndex = i;
+                        break;
+                    }
+                }
+                if(currentIndex > 0 && currentIndex < anotherCategory.length-1) { //이전글, 다음글 가능
+                    makeRecommendBlock('both', currentIndex); 
+                } else {
+                    if(currentIndex == 0) { //이전글 가능
+                        makeRecommendBlock('pre', currentIndex); 
+                    } else if(anotherCategory.length > 1) { //다음글 가능
+                        makeRecommendBlock('next', currentIndex);
+                    }
+                }
+            }
+
+            if((!prePostFlag || !nextPostFlag) && recommendPostTimer == 0) {
+                var rightMargin = 0;
+                if(window.innerWidth > 767) {
+                    rightMargin = 10;
+                } else {
+                    rightMargin = (window.innerWidth - 310) / 2;
+                }
+                $('#recommend-contents').css('bottom','-100px');
+                $('#recommend-contents').css('right', rightMargin+'px');
+                $('#recommend-contents').css('display','block');
+                recommendPostTimer = $('#recommend-contents').animate({'bottom':'80px'}, 1000, 'swing', function() {});
+                recommendPostTimer = setTimeout(function() {
+                    $('#recommend-contents').animate({'bottom':'-100px'}, 1000, 'swing', function() {
+                        $('#recommend-contents').css('display','none');
+                        recommendPostTimer = 0;
+                    });
+                }, 8000);
+            }
+        }
+    } else {
+        recommendPostFlag = true;
+    }
+    preRecommendPosition = window.scrollY;
 }
 
 $(document).ready(function() {
@@ -1757,7 +1799,6 @@ $(document).ready(function() {
     bgmEvents();
     toggleCategory();
     replaceLink();
-    //recommendPost();
     common();
     
     $(window).on('scroll resize', function() {
@@ -1769,5 +1810,6 @@ $(document).ready(function() {
         detectTop();
         stickySidebar();
         foldFloatingToc();
+        recommendPost();
     });
 });
