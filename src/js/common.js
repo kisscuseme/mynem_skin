@@ -1735,53 +1735,55 @@ var recommendPostFlag = true;
 var recommendPostTimer = 0;
 var preRecommendPosition = -1;
 function recommendPost() {
-    var position = window.scrollY/($('.another_category').offset().top-window.innerHeight);
-    if(position > 1 && window.scrollY-$('.another_category').offset().top < 0 && preRecommendPosition < window.scrollY) {
-        if(recommendPostFlag) {
-            recommendPostFlag = false;
-            var anotherCategory = $('.another_category tr');
-            var currentIndex = -1;
-            if(anotherCategory.length > 1) {
-                for(var i=0;i<anotherCategory.length;i++) {
-                    if(anotherCategory.eq(i).find('a.current').length > 0) {
-                        currentIndex = i;
-                        break;
+    if($('.another_category').length > 0) {
+        var position = window.scrollY/($('.another_category').offset().top-window.innerHeight);
+        if(position > 1 && window.scrollY-$('.another_category').offset().top < 0 && preRecommendPosition < window.scrollY) {
+            if(recommendPostFlag) {
+                recommendPostFlag = false;
+                var anotherCategory = $('.another_category tr');
+                var currentIndex = -1;
+                if(anotherCategory.length > 1) {
+                    for(var i=0;i<anotherCategory.length;i++) {
+                        if(anotherCategory.eq(i).find('a.current').length > 0) {
+                            currentIndex = i;
+                            break;
+                        }
+                    }
+                    if(currentIndex > 0 && currentIndex < anotherCategory.length-1) { //이전글, 다음글 가능
+                        makeRecommendBlock('both', currentIndex); 
+                    } else {
+                        if(currentIndex == 0) { //이전글 가능
+                            makeRecommendBlock('pre', currentIndex); 
+                        } else if(anotherCategory.length > 1) { //다음글 가능
+                            makeRecommendBlock('next', currentIndex);
+                        }
                     }
                 }
-                if(currentIndex > 0 && currentIndex < anotherCategory.length-1) { //이전글, 다음글 가능
-                    makeRecommendBlock('both', currentIndex); 
-                } else {
-                    if(currentIndex == 0) { //이전글 가능
-                        makeRecommendBlock('pre', currentIndex); 
-                    } else if(anotherCategory.length > 1) { //다음글 가능
-                        makeRecommendBlock('next', currentIndex);
+    
+                if((!prePostFlag || !nextPostFlag) && recommendPostTimer == 0) {
+                    var rightMargin = 0;
+                    if(window.innerWidth > 767) {
+                        rightMargin = 10;
+                    } else {
+                        rightMargin = (window.innerWidth - 310) / 2;
                     }
+                    $('#recommend-contents').css('bottom','-100px');
+                    $('#recommend-contents').css('right', rightMargin+'px');
+                    $('#recommend-contents').css('display','block');
+                    recommendPostTimer = $('#recommend-contents').animate({'bottom':'75px'}, 1000, 'swing', function() {});
+                    recommendPostTimer = setTimeout(function() {
+                        $('#recommend-contents').animate({'bottom':'-100px'}, 1000, 'swing', function() {
+                            $('#recommend-contents').css('display','none');
+                            recommendPostTimer = 0;
+                        });
+                    }, 8000);
                 }
             }
-
-            if((!prePostFlag || !nextPostFlag) && recommendPostTimer == 0) {
-                var rightMargin = 0;
-                if(window.innerWidth > 767) {
-                    rightMargin = 10;
-                } else {
-                    rightMargin = (window.innerWidth - 310) / 2;
-                }
-                $('#recommend-contents').css('bottom','-100px');
-                $('#recommend-contents').css('right', rightMargin+'px');
-                $('#recommend-contents').css('display','block');
-                recommendPostTimer = $('#recommend-contents').animate({'bottom':'80px'}, 1000, 'swing', function() {});
-                recommendPostTimer = setTimeout(function() {
-                    $('#recommend-contents').animate({'bottom':'-100px'}, 1000, 'swing', function() {
-                        $('#recommend-contents').css('display','none');
-                        recommendPostTimer = 0;
-                    });
-                }, 8000);
-            }
+        } else {
+            recommendPostFlag = true;
         }
-    } else {
-        recommendPostFlag = true;
+        preRecommendPosition = window.scrollY;
     }
-    preRecommendPosition = window.scrollY;
 }
 
 $(document).ready(function() {
