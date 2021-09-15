@@ -2,7 +2,7 @@
 <skin>
 	<information>
 		<name>Mynem Skin</name>
-		<version>2.5.2</version>
+		<version>2.5.3</version>
 		<description>
 			<![CDATA[ 심플하면서 막강한 기능을 가진 미넴 스킨 입니다.
 			많은 사용자가 원하는 방향으로 발전해 나갈 예정입니다. ]]>
@@ -110,6 +110,14 @@
 				<type>STRING</type>
 				<option />
 				<default>1.7</default>
+			</variable>
+			<variable>
+				<name>mobile-font-ratio</name>
+				<label><![CDATA[ 모바일 글자 크기 비율 ]]></label>
+				<description><![CDATA[]]></description>
+				<type>STRING</type>
+				<option />
+				<default>0.9</default>
 			</variable>
 			<variable>
 				<name>default-dark-mode</name>
@@ -708,7 +716,7 @@
 				<description><![CDATA[]]></description>
 				<type>BOOL</type>
 				<option />
-				<default>true</default>
+				<default>false</default>
 			</variable>
 			<variable>
 				<name>title-solid-style</name>
@@ -975,7 +983,7 @@
 			</variable>
 		</variablegroup>
 
-		<variablegroup name="메인 인피드 광고 (리스트 커버 이용 시)">
+		<variablegroup name="리스트 커버 인피드 광고">
 			<variable>
 				<name>infeed-google-ads</name>
 				<label><![CDATA[ 사용 여부 ]]></label>
@@ -1002,7 +1010,7 @@
 			</variable>
 			<variable>
 				<name>infeed-data-ad-slot-big</name>
-				<label><![CDATA[ data-ad-slot (큰 화면) ]]></label>
+				<label><![CDATA[ data-ad-slot - 리스트 커버(대) ]]></label>
 				<description><![CDATA[]]></description>
 				<type>STRING</type>
 				<option />
@@ -1010,7 +1018,7 @@
 			</variable>
 			<variable>
 				<name>infeed-data-ad-slot-small</name>
-				<label><![CDATA[ data-ad-slot (작은 화면) ]]></label>
+				<label><![CDATA[ data-ad-slot - 리스트 커버(소) ]]></label>
 				<description><![CDATA[]]></description>
 				<type>STRING</type>
 				<option />
@@ -1018,7 +1026,7 @@
 			</variable>
 			<variable>
 				<name>infeed-data-ad-layout-key-big</name>
-				<label><![CDATA[ data-ad-layout-key (큰 화면) ]]></label>
+				<label><![CDATA[ data-ad-layout-key - 리스트 커버(대) ]]></label>
 				<description><![CDATA[]]></description>
 				<type>STRING</type>
 				<option />
@@ -1026,7 +1034,50 @@
 			</variable>
 			<variable>
 				<name>infeed-data-ad-layout-key-small</name>
-				<label><![CDATA[ data-ad-layout-key (작은 화면) ]]></label>
+				<label><![CDATA[ data-ad-layout-key - 리스트 커버(소) ]]></label>
+				<description><![CDATA[]]></description>
+				<type>STRING</type>
+				<option />
+				<default><![CDATA[]]></default>
+			</variable>
+		</variablegroup>
+
+		<variablegroup name="사이드바 인피드 광고">
+			<variable>
+				<name>infeed-google-ads-side</name>
+				<label><![CDATA[ 사용 여부 ]]></label>
+				<description><![CDATA[]]></description>
+				<type>BOOL</type>
+				<option/>
+				<default>false</default>
+			</variable>
+			<variable>
+				<name>infeed-repeat-cnt-side</name>
+				<label><![CDATA[ 반복 간격 설정, 예) 2 입력 시 게시물 2개마다 광고 1개 생성 ]]></label>
+				<description><![CDATA[]]></description>
+				<type>STRING</type>
+				<option />
+				<default><![CDATA[3]]></default>
+			</variable>
+			<variable>
+				<name>infeed-data-ad-client-side</name>
+				<label><![CDATA[ data-ad-client ]]></label>
+				<description><![CDATA[]]></description>
+				<type>STRING</type>
+				<option />
+				<default><![CDATA[]]></default>
+			</variable>
+			<variable>
+				<name>infeed-data-ad-slot-side</name>
+				<label><![CDATA[ data-ad-slot ]]></label>
+				<description><![CDATA[]]></description>
+				<type>STRING</type>
+				<option />
+				<default><![CDATA[]]></default>
+			</variable>
+			<variable>
+				<name>infeed-data-ad-layout-key-side</name>
+				<label><![CDATA[ data-ad-layout-key ]]></label>
 				<description><![CDATA[]]></description>
 				<type>STRING</type>
 				<option />
@@ -1214,6 +1265,89 @@
 			<variable>
 				<name>bgm-src-10</name>
 				<label><![CDATA[ URL 10 ]]></label>
+				<description><![CDATA[]]></description>
+				<type>STRING</type>
+				<option />
+				<default><![CDATA[ ]]></default>
+			</variable>
+		</variablegroup>
+
+		<variablegroup name="여분 필드">
+			<variable>
+				<name>attribute-1</name>
+				<label><![CDATA[ 필드 1 ]]></label>
+				<description><![CDATA[]]></description>
+				<type>STRING</type>
+				<option />
+				<default><![CDATA[ ]]></default>
+			</variable>
+			<variable>
+				<name>attribute-2</name>
+				<label><![CDATA[ 필드 2 ]]></label>
+				<description><![CDATA[]]></description>
+				<type>STRING</type>
+				<option />
+				<default><![CDATA[ ]]></default>
+			</variable>
+			<variable>
+				<name>attribute-3</name>
+				<label><![CDATA[ 필드 3 ]]></label>
+				<description><![CDATA[]]></description>
+				<type>STRING</type>
+				<option />
+				<default><![CDATA[ ]]></default>
+			</variable>
+			<variable>
+				<name>attribute-4</name>
+				<label><![CDATA[ 필드 4 ]]></label>
+				<description><![CDATA[]]></description>
+				<type>STRING</type>
+				<option />
+				<default><![CDATA[ ]]></default>
+			</variable>
+			<variable>
+				<name>attribute-5</name>
+				<label><![CDATA[ 필드 5 ]]></label>
+				<description><![CDATA[]]></description>
+				<type>STRING</type>
+				<option />
+				<default><![CDATA[ ]]></default>
+			</variable>
+			<variable>
+				<name>attribute-6</name>
+				<label><![CDATA[ 필드 6 ]]></label>
+				<description><![CDATA[]]></description>
+				<type>STRING</type>
+				<option />
+				<default><![CDATA[ ]]></default>
+			</variable>
+			<variable>
+				<name>attribute-7</name>
+				<label><![CDATA[ 필드 7 ]]></label>
+				<description><![CDATA[]]></description>
+				<type>STRING</type>
+				<option />
+				<default><![CDATA[ ]]></default>
+			</variable>
+			<variable>
+				<name>attribute-8</name>
+				<label><![CDATA[ 필드 8 ]]></label>
+				<description><![CDATA[]]></description>
+				<type>STRING</type>
+				<option />
+				<default><![CDATA[ ]]></default>
+			</variable>
+			<variable>
+				<name>attribute-9</name>
+				<label><![CDATA[ 필드 9 ]]></label>
+				<description><![CDATA[]]></description>
+				<type>STRING</type>
+				<option />
+				<default><![CDATA[ ]]></default>
+			</variable>
+			<variable>
+				<name>attribute-10</name>
+				<label><![CDATA[ 필드 10 ]]></label>
 				<description><![CDATA[]]></description>
 				<type>STRING</type>
 				<option />

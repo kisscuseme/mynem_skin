@@ -1762,17 +1762,17 @@ function recommendPost() {
     
                 if((!prePostFlag || !nextPostFlag) && recommendPostTimer == 0) {
                     var rightMargin = 0;
-                    if(window.innerWidth > 767) {
+                    if(window.innerWidth > 310) {
                         rightMargin = 10;
                     } else {
                         rightMargin = (window.innerWidth - 310) / 2;
                     }
-                    $('#recommend-contents').css('bottom','-100px');
-                    $('#recommend-contents').css('right', rightMargin+'px');
+                    $('#recommend-contents').css('bottom','75px');
+                    $('#recommend-contents').css('right', '-350px');
                     $('#recommend-contents').css('display','block');
-                    recommendPostTimer = $('#recommend-contents').animate({'bottom':'75px'}, 1000, 'swing', function() {});
+                    recommendPostTimer = $('#recommend-contents').animate({'right':rightMargin+'px'}, 1000, 'swing', function() {});
                     recommendPostTimer = setTimeout(function() {
-                        $('#recommend-contents').animate({'bottom':'-100px'}, 1000, 'swing', function() {
+                        $('#recommend-contents').animate({'bottom':'-100px'}, 600, 'swing', function() {
                             $('#recommend-contents').css('display','none');
                             recommendPostTimer = 0;
                         });

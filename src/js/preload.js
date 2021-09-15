@@ -9,13 +9,13 @@ function setDarkMode(type) {
     if(type == '+') {
         $('body').addClass('dark-mode');
         localStorage.setItem('dark-mode','y');
-        $('.dark-mode-on-btn').css('display','block');
+        $('.dark-mode-on-btn').css('display','flex');
         $('.dark-mode-off-btn').css('display','none');
     } else {
         $('body').removeClass('dark-mode');
         localStorage.setItem('dark-mode','n');
         $('.dark-mode-on-btn').css('display','none');
-        $('.dark-mode-off-btn').css('display','block');
+        $('.dark-mode-off-btn').css('display','flex');
     }
     fixedHeader();
 }

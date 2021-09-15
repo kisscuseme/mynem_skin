@@ -85,7 +85,7 @@
 			article .another_category.another_category_color_gray a,
 			article .another_category.another_category_color_gray a.current,
 			.comment-list ul li .author-meta .control button:before,
-			.comment-list .tt_more_preview_comments_text,
+			.comment-list .tt_more_preview_comments_text, .comment-list ul li .reply,
 			.pagination, #blog-menu, article .another_category th:before,
 			#tt-body-page blockquote, .content-article > div > ol, .content-article > div > ul,
 			#tt-body-page div[data-ke-type='moreLess'] .btn-toggle-moreless,
@@ -171,80 +171,80 @@
 				article .another_category.another_category_color_gray a,
 				article .another_category.another_category_color_gray a.current,
 				.comment-list ul li .author-meta .control button:before,
-				.comment-list .tt_more_preview_comments_text,
+				.comment-list .tt_more_preview_comments_text, .comment-list ul li .reply,
 				.pagination, #blog-menu, article .another_category th:before,
 				#tt-body-page blockquote, .content-article > div > ol, .content-article > div > ul,
 				#tt-body-page div[data-ke-type='moreLess'] .btn-toggle-moreless,
 				.book-toc > p {
-					font-size: calc(0.8em * [##_var_font-size-ratio_##]) !important;
+					font-size: calc(1em * [##_var_mobile-font-ratio_##] * [##_var_font-size-ratio_##]) !important;
 				}
 				#toc > li > a {
-					font-size: calc(1em * 0.8 * [##_var_font-size-ratio_##]) !important;
+					font-size: calc(1em * [##_var_mobile-font-ratio_##] * [##_var_font-size-ratio_##]) !important;
 				}
 				#toc > li > ul > li > a {
-					font-size: calc(0.95em * 0.8 * [##_var_font-size-ratio_##]) !important;
+					font-size: calc(0.95em * [##_var_mobile-font-ratio_##] * [##_var_font-size-ratio_##]) !important;
 				}
 				#toc > li > ul > li > ul > li > a {
-					font-size: calc(0.91em * 0.8 * [##_var_font-size-ratio_##]) !important;
+					font-size: calc(0.91em * [##_var_mobile-font-ratio_##] * [##_var_font-size-ratio_##]) !important;
 				}
 				#toc-body #toc > li > a {
-					font-size: calc(0.91em * 0.8 * [##_var_font-size-ratio_##]) !important;
+					font-size: calc(0.91em * [##_var_mobile-font-ratio_##] * [##_var_font-size-ratio_##]) !important;
 				}
 				#toc-body #toc > li > ul > li > a {
-					font-size: calc(0.87em * 0.8 * [##_var_font-size-ratio_##]) !important;
+					font-size: calc(0.87em * [##_var_mobile-font-ratio_##] * [##_var_font-size-ratio_##]) !important;
 				}
 				#toc-body #toc > li > ul > li > ul > li > a {
-					font-size: calc(0.84em * 0.8 * [##_var_font-size-ratio_##]) !important;
+					font-size: calc(0.84em * [##_var_mobile-font-ratio_##] * [##_var_font-size-ratio_##]) !important;
 				}
 				#tt-body-page blockquote[data-ke-style='style1'] {
-					padding-top: calc(29px * 0.8 * [##_var_font-size-ratio_##]) !important;
-					background-size: calc(23px * 0.8 * [##_var_font-size-ratio_##]) !important;
+					padding-top: calc(29px * [##_var_mobile-font-ratio_##] * [##_var_font-size-ratio_##]) !important;
+					background-size: calc(23px * [##_var_mobile-font-ratio_##] * [##_var_font-size-ratio_##]) !important;
 				}
-				h1, h1[data-ke-size] { font-size:calc(1.5em * 0.8 * [##_var_font-size-ratio_##]) !important; }
-				h2, h2[data-ke-size] { font-size:calc(1.4em * 0.8 * [##_var_font-size-ratio_##]) !important; }
-				h3, h3[data-ke-size] { font-size:calc(1.3em * 0.8 * [##_var_font-size-ratio_##]) !important;}
-				h4, h4[data-ke-size] { font-size:calc(1.2em * 0.8 * [##_var_font-size-ratio_##]) !important; }
+				h1, h1[data-ke-size] { font-size:calc(1.5em * [##_var_mobile-font-ratio_##] * [##_var_font-size-ratio_##]) !important; }
+				h2, h2[data-ke-size] { font-size:calc(1.4em * [##_var_mobile-font-ratio_##] * [##_var_font-size-ratio_##]) !important; }
+				h3, h3[data-ke-size] { font-size:calc(1.3em * [##_var_mobile-font-ratio_##] * [##_var_font-size-ratio_##]) !important;}
+				h4, h4[data-ke-size] { font-size:calc(1.2em * [##_var_mobile-font-ratio_##] * [##_var_font-size-ratio_##]) !important; }
 				#tt-body-page p[data-ke-size='size18'],
-				p[data-ke-size='size18'] { font-size: calc(1.12em * 0.8 * [##_var_font-size-ratio_##]) !important; }
+				p[data-ke-size='size18'] { font-size: calc(1.12em * [##_var_mobile-font-ratio_##] * [##_var_font-size-ratio_##]) !important; }
 				#tt-body-page p[data-ke-size='size16'],
-				p[data-ke-size='size16'] { font-size: calc(1.08em * 0.8 * [##_var_font-size-ratio_##]) !important; }
+				p[data-ke-size='size16'] { font-size: calc(1.08em * [##_var_mobile-font-ratio_##] * [##_var_font-size-ratio_##]) !important; }
 				#tt-body-page p[data-ke-size='size14'],
-				p[data-ke-size='size14'] { font-size: calc(0.9em * 0.8 * [##_var_font-size-ratio_##]) !important; }
+				p[data-ke-size='size14'] { font-size: calc(0.9em * [##_var_mobile-font-ratio_##] * [##_var_font-size-ratio_##]) !important; }
 				figure[data-ke-type='opengraph'] div.og-text p.og-title, #tt-body-page figure[data-ke-type='opengraph'] div.og-text p.og-title {
-					font-size: calc(1.22em * 0.8 * [##_var_font-size-ratio_##]) !important;
+					font-size: calc(1.22em * [##_var_mobile-font-ratio_##] * [##_var_font-size-ratio_##]) !important;
 				}
 				.comment-list ul li p {
-					font-size: calc(0.9em * 0.8 * [##_var_font-size-ratio_##]) !important;
+					font-size: calc(0.9em * [##_var_mobile-font-ratio_##] * [##_var_font-size-ratio_##]) !important;
 				}
 				.content-article pre code {
-					font-size: calc(0.85em * 0.8 * [##_var_font-size-ratio_##]) !important;
+					font-size: calc(0.85em * [##_var_mobile-font-ratio_##] * [##_var_font-size-ratio_##]) !important;
 				}
 				figure[data-ke-type='opengraph'] div.og-text p.og-desc, #tt-body-page figure[data-ke-type='opengraph'] div.og-text p.og-desc {
-					font-size: calc(0.83em * 0.8 * [##_var_font-size-ratio_##]) !important;
+					font-size: calc(0.83em * [##_var_mobile-font-ratio_##] * [##_var_font-size-ratio_##]) !important;
 				}
 				figure[data-ke-type='opengraph'] div.og-text p.og-host, #tt-body-page figure[data-ke-type='opengraph'] div.og-text p.og-host {
-					font-size: calc(0.77em * 0.8 * [##_var_font-size-ratio_##]) !important;
+					font-size: calc(0.77em * [##_var_mobile-font-ratio_##] * [##_var_font-size-ratio_##]) !important;
 				}
 				article .tags a, .comment-list ul li .author-meta {
-					font-size: calc(0.8125em * 0.8 * [##_var_font-size-ratio_##]) !important;
+					font-size: calc(0.8125em * [##_var_mobile-font-ratio_##] * [##_var_font-size-ratio_##]) !important;
 				}
 				.comment-form textarea, footer p, .content-title .category,
 				.content-title .meta {
-					font-size: calc(0.875em * 0.8 * [##_var_font-size-ratio_##]) !important;
+					font-size: calc(0.875em * [##_var_mobile-font-ratio_##] * [##_var_font-size-ratio_##]) !important;
 				}
 				footer .copyright {
-					font-size: calc(0.8em * 0.8 * [##_var_font-size-ratio_##]) !important;
+					font-size: calc(0.8em * [##_var_mobile-font-ratio_##] * [##_var_font-size-ratio_##]) !important;
 				}
 				.comment-form .submit button {
-					font-size: calc(0.77em * 0.8 * [##_var_font-size-ratio_##]) !important;
-					width: calc(100px * 0.8 * [##_var_font-size-ratio_##]);
-					height: calc(36px * 0.8 * [##_var_font-size-ratio_##]);
+					font-size: calc(0.77em * [##_var_mobile-font-ratio_##] * [##_var_font-size-ratio_##]) !important;
+					width: calc(100px * [##_var_mobile-font-ratio_##] * [##_var_font-size-ratio_##]);
+					height: calc(36px * [##_var_mobile-font-ratio_##] * [##_var_font-size-ratio_##]);
 				}
 				.content-title .title-box {
-					height: calc(99px * 0.8 * [##_var_font-size-ratio_##]) !important;
+					height: calc(99px * [##_var_mobile-font-ratio_##] * [##_var_font-size-ratio_##]) !important;
 				}
 				#blog-menu {
-					padding-top: calc(30px + 40px / 0.8 / [##_var_font-size-ratio_##]);
+					padding-top: calc(30px + 40px / [##_var_mobile-font-ratio_##] / [##_var_font-size-ratio_##]);
 				}
 			}
 
@@ -282,7 +282,7 @@
 					margin-bottom: 10px !important;
 				}
 				.like_bubble .inner {
-					line-height: 1.9em;
+					margin-top: 14px;
 					margin-left: 4px;
 				}
 			</s_not_var_custom-font>
@@ -386,10 +386,14 @@
 					background: linear-gradient(90deg, [##_var_etc-color_##]55, transparent 50%);
 				}
 				.content-box {
-					background-color: [##_var_etc-color_##]44;
+					background-color: [##_var_sidebar-color_##]99;
+					color: [##_var_sidebar-text-color_##];
+				}
+				.content-box a {
+					color: [##_var_sidebar-text-color_##];
 				}
 				.content-comment {
-					background-color: [##_var_etc-color_##]11;
+					background-color: [##_var_etc-color_##]33;
 				}
 
 				/* solid style */
@@ -450,7 +454,7 @@
 					}
 				</s_if_var_opengraph-solid-style>
 				<s_if_var_cover-solid-style>
-					.cover-list ul li a, .post-item a, .cover-special ul li {
+					.cover-list ul li, .post-item a, .cover-special ul li {
 						border: [##_var_border-size_##]px solid [##_var_etc-color_##]55;
 					}
 				</s_if_var_cover-solid-style>
@@ -574,12 +578,14 @@
 						margin-left: 14px;
 					}
 					.top-button .menu button {
-						display: block;
+						display: flex;
 						overflow: hidden;
 						width: 32px;
 						height: 32px;
 						border-radius: 50%;
 						background-color: #fff;
+						align-items: center;
+						justify-content: center;
 					}
 					.top-button .menu button:before {
 						content: "";
@@ -594,8 +600,6 @@
 					.top-button .menu button:after {
 						content: "\f0c9";
 						position: absolute;
-						top: 9px;
-						left: 10px;
 						visibility: visible;
 					}
 					article {
@@ -755,12 +759,14 @@
 						margin-left: 14px;
 					}
 					.top-button .menu button {
-						display: block;
+						display: flex;
 						overflow: hidden;
 						width: 32px;
 						height: 32px;
 						border-radius: 50%;
 						background-color: #fff;
+						align-items: center;
+						justify-content: center;
 					}
 					.top-button .menu button:before {
 						content: "";
@@ -775,8 +781,6 @@
 					.top-button .menu button:after {
 						content: "\f0c9";
 						position: absolute;
-						top: 9px;
-						left: 10px;
 						visibility: visible;
 					}
 					article {
@@ -991,12 +995,14 @@
 						margin-left: 14px;
 					}
 					.top-button .menu button {
-						display: block;
+						display: flex;
 						overflow: hidden;
 						width: 32px;
 						height: 32px;
 						border-radius: 50%;
 						background-color: #fff;
+						align-items: center;
+						justify-content: center;
 					}
 					.top-button .menu button:before {
 						content: "";
@@ -1011,8 +1017,6 @@
 					.top-button .menu button:after {
 						content: "\f0c9";
 						position: absolute;
-						top: 9px;
-						left: 10px;
 						visibility: visible;
 					}
 					article {
@@ -1213,12 +1217,14 @@
 						margin-left: 14px;
 					}
 					.top-button .menu button {
-						display: block;
+						display: flex;
 						overflow: hidden;
 						width: 32px;
 						height: 32px;
 						border-radius: 50%;
 						background-color: #fff;
+						align-items: center;
+						justify-content: center;
 					}
 					.top-button .menu button:before {
 						content: "";
@@ -1233,8 +1239,6 @@
 					.top-button .menu button:after {
 						content: "\f0c9";
 						position: absolute;
-						top: 9px;
-						left: 10px;
 						visibility: visible;
 					}
 					article {
@@ -1558,7 +1562,21 @@
 										<div class="recent content-item">
 											<h2>최근 글</h2>
 											<ul>
+												<s_if_var_infeed-google-ads-side>
+													<script>
+														var recentCnt = 0;
+													</script>
+												</s_if_var_infeed-google-ads-side>
 												<s_rctps_rep>
+													<s_if_var_infeed-google-ads-side>
+														<script>
+															if(recentCnt != 0 && recentCnt%[##_var_infeed-repeat-cnt-side_##] == 0) {
+																document.write('<li><ins class="adsbygoogle" style="display:block" data-ad-format="fluid" data-ad-layout-key="[##_var_infeed-data-ad-layout-key-side_##]" data-ad-client="[##_var_infeed-data-ad-client-side_##]" data-ad-slot="[##_var_infeed-data-ad-slot-side_##]"></ins></li>');
+																(adsbygoogle = window.adsbygoogle || []).push({});
+															}
+															recentCnt += 1;
+														</script>
+													</s_if_var_infeed-google-ads-side>
 													<li>
 														<a href="[##_rctps_rep_link_##]">
 															<span class="thum">
@@ -1576,7 +1594,21 @@
 										<div class="popular content-item">
 											<h2>인기 글</h2>
 											<ul>
+												<s_if_var_infeed-google-ads-side>
+													<script>
+														var popularCnt = 0;
+													</script>
+												</s_if_var_infeed-google-ads-side>
 												<s_rctps_popular_rep>
+													<s_if_var_infeed-google-ads-side>
+														<script>
+															if(popularCnt != 0 && popularCnt%[##_var_infeed-repeat-cnt-side_##] == 0) {
+																document.write('<li><ins class="adsbygoogle" style="display:block" data-ad-format="fluid" data-ad-layout-key="[##_var_infeed-data-ad-layout-key-side_##]" data-ad-client="[##_var_infeed-data-ad-client-side_##]" data-ad-slot="[##_var_infeed-data-ad-slot-side_##]"></ins></li>');
+																(adsbygoogle = window.adsbygoogle || []).push({});
+															}
+															popularCnt += 1;
+														</script>
+													</s_if_var_infeed-google-ads-side>
 													<li>
 														<a href="[##_rctps_rep_link_##]">
 															<span class="thum">
@@ -1700,6 +1732,24 @@
 													</script>
 												</s_if_var_infeed-google-ads>
 												<s_cover_item>
+													<s_if_var_infeed-google-ads>
+														<script>
+															var layoutKey = "";
+															var slot = "";
+															if(window.innerWidth > 767) {
+																slot = "[##_var_infeed-data-ad-slot-big_##]";
+																layoutKey = "[##_var_infeed-data-ad-layout-key-big_##]";
+															} else {
+																slot = "[##_var_infeed-data-ad-slot-small_##]";
+																layoutKey = "[##_var_infeed-data-ad-layout-key-small_##]";
+															}
+															if(cnt != 0 && cnt%[##_var_infeed-repeat-cnt_##] == 0) {
+																document.write('<li><ins class="adsbygoogle" style="display:block" data-ad-format="fluid" data-ad-layout-key="'+layoutKey+'" data-ad-client="[##_var_infeed-data-ad-client_##]" data-ad-slot="'+slot+'"></ins></li>');
+																(adsbygoogle = window.adsbygoogle || []).push({});			
+															}
+															cnt += 1;
+														</script>
+													</s_if_var_infeed-google-ads>
 													<li>
 														<a href="[##_cover_item_url_##]">
 															<s_if_var_list-thum-yn>
@@ -1726,22 +1776,6 @@
 															</s_cover_item_article_info>
 														</a>
 													</li>
-													<s_if_var_infeed-google-ads>
-														<script>
-															cnt += 1;
-															var layoutKey = "";
-															var slot = "";
-															if(window.innerWidth > 767) {
-																slot = "[##_var_infeed-data-ad-slot-big_##]";
-																layoutKey = "[##_var_infeed-data-ad-layout-key-big_##]";
-															} else {
-																slot = "[##_var_infeed-data-ad-slot-small_##]";
-																layoutKey = "[##_var_infeed-data-ad-layout-key-small_##]";
-															}
-															if(cnt%[##_var_infeed-repeat-cnt_##] == 0) document.write('<li><ins class="adsbygoogle" style="display:block" data-ad-format="fluid" data-ad-layout-key="'+layoutKey+'" data-ad-client="[##_var_infeed-data-ad-client_##]" data-ad-slot="'+slot+'"></ins></li>');
-															(adsbygoogle = window.adsbygoogle || []).push({});
-														</script>
-													</s_if_var_infeed-google-ads>
 												</s_cover_item>
 											</ul>
 										</div>
@@ -2147,7 +2181,7 @@
 						<a href="#" class="page-top">TOP</a>
 						<p class="meta"><s_if_var_footer-text-1>[##_var_footer-text-1_##]</s_if_var_footer-text-1></p>
 						<p class="copyright"><s_if_var_footer-text-2>[##_var_footer-text-2_##]</s_if_var_footer-text-2></p>
-						<p class="maker"><a href="https://sangminem.tistory.com/506" target="_blank">Mynem Skin 2.5.2</a></p>
+						<p class="maker"><a href="https://sangminem.tistory.com/506" target="_blank">Mynem Skin 2.5.3</a></p>
 					</div>
 				</footer>
 			</div>
@@ -2272,6 +2306,7 @@
 			/* ]]> */
 		</script>
 		<script src="./images/jquery.toc.min.js"></script>
+		<script src="./images/custom.js"></script>
 		<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
 	</body>
 </html>

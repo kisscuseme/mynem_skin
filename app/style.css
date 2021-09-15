@@ -386,7 +386,6 @@ article h2,
 }
 .cover-list ul li {
 	margin-bottom: 15px;
-	height: 192px;
 }
 .cover-list ul li a {
 	display: block;
@@ -2141,11 +2140,6 @@ article .tags a {
 	margin-left: 5px;
 }
 
-/* top menu */
-.top-button .menu button:after {
-	font-family: 'Font_Awesome_5_Free';
-}
-
 /* change font size button */
 .font-size-up-btn {
 	float: left;
@@ -2155,6 +2149,8 @@ article .tags a {
 	height: 32px;
 	border-radius: 50%;
 	cursor: pointer;
+	justify-content: center;
+    align-items: center;
 }
 .font-size-up-btn:before {
 	content: "";
@@ -2169,11 +2165,8 @@ article .tags a {
 .font-size-up-btn:after {
 	content: "\f00e";
 	position: absolute;
-	top: 24%;
-	left: 7px;
 	visibility: visible;
 	border-radius: 50%;
-	font-family: 'Font_Awesome_5_Free';
 	line-height: 1;
 }
 
@@ -2185,6 +2178,8 @@ article .tags a {
 	height: 32px;
 	border-radius: 50%;
 	cursor: pointer;
+	justify-content: center;
+    align-items: center;
 }
 .font-size-down-btn:before {
 	content: "";
@@ -2199,11 +2194,8 @@ article .tags a {
 .font-size-down-btn:after {
 	content: "\f010";
 	position: absolute;
-	top: 24%;
-	left: 7px;
 	visibility: visible;
 	border-radius: 50%;
-	font-family: 'Font_Awesome_5_Free';
 	line-height: 1;
 }
 
@@ -2216,6 +2208,8 @@ article .tags a {
 	height: 32px;
 	border-radius: 50%;
 	cursor: pointer;
+	justify-content: center;
+    align-items: center;
 }
 .move-top-btn:before {
 	content: "";
@@ -2230,11 +2224,8 @@ article .tags a {
 .move-top-btn:after {
 	content: "\f102";
 	position: absolute;
-	top: 22%;
-	left: 10px;
 	visibility: visible;
 	border-radius: 50%;
-	font-family: 'Font_Awesome_5_Free';
 	line-height: 1;
 }
 
@@ -2250,6 +2241,8 @@ article .tags a {
 	height: 32px;
 	border-radius: 50%;
 	cursor: pointer;
+	justify-content: center;
+    align-items: center;
 }
 #tt-body-page .share-btn:before {
 	content: "";
@@ -2264,11 +2257,8 @@ article .tags a {
 #tt-body-page .share-btn:after {
 	content: "\f1e0";
 	position: absolute;
-	top: 22%;
-	left: 7px;
 	visibility: visible;
 	border-radius: 50%;
-	font-family: 'Font_Awesome_5_Free';
 	line-height: 1;
 }
 .container_postbtn .postbtn_like {
@@ -2291,6 +2281,8 @@ article .tags a {
 	height: 32px;
 	border-radius: 50%;
 	cursor: pointer;
+	justify-content: center;
+    align-items: center;
 }
 .dark-mode-on-btn:before, .dark-mode-off-btn:before {
 	content: "";
@@ -2305,21 +2297,15 @@ article .tags a {
 .dark-mode-on-btn:after {
 	content: "\f185";
 	position: absolute;
-	top: 22%;
-	left: 7px;
 	visibility: visible;
 	border-radius: 50%;
-	font-family: 'Font_Awesome_5_Free';
 	line-height: 1;
 }
 .dark-mode-off-btn:after {
 	content: "\f186";
 	position: absolute;
-	top: 22%;
-	left: 8px;
 	visibility: visible;
 	border-radius: 50%;
-	font-family: 'Font_Awesome_5_Free';
 	line-height: 1;
 }
 
