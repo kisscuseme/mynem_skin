@@ -840,18 +840,20 @@ function removeDimmed(){
 }
 
 function doGTranslateCustom(param) {
-    if(param == 'ko|ko' && localStorage.getItem('translate') == 'y') {
-        localStorage.setItem('translate', 'n');
-    } else {
-        localStorage.setItem('translate', 'y');
-    }
-    doGTranslate(param);
-    setTimeout(function(){
-        if(window.innerWidth < 1080) {
-            $('button.close').focus();
-            $('button.close').click();
+    if(!(param == 'ko|ko' && (localStorage.getItem('translate') == null || localStorage.getItem('translate') == 'n'))) {
+        if(param == 'ko|ko' && localStorage.getItem('translate') == 'y') {
+            localStorage.setItem('translate', 'n');
+        } else {
+            localStorage.setItem('translate', 'y');
         }
-    }, 500);
+        doGTranslate(param);
+        setTimeout(function(){
+            if(window.innerWidth < 1080) {
+                $('button.close').focus();
+                $('button.close').click();
+            }
+        }, 500);
+    }
 }
 
 function makeBell() {
@@ -992,7 +994,7 @@ function common(){
                     sns.css('left', '');
                     sns.css('top', '');
                     sns.css('right', '10px');
-                    sns.css('bottom', '75px');
+                    sns.css('bottom', addHeightByAnchorAds()>0?addHeightByAnchorAds()+55:75+'px');
                 }, 200);
             }
         }
@@ -1177,13 +1179,14 @@ function fixedRecommendAds(type) {
         var headerHeight = $('#fixed-header').val()?$('header').height()+5:($('#hide-sidebar').val()?(floatingTocPostion?5:60):5);
         if (type == undefined && (isHideSidebar || (window.innerWidth > 1079 && window.scrollY > $('aside').height() + 150 && window.innerHeight > 650))) {
             if(recommendAds.length > 0) {
-                if(window.innerHeight > 820) {
+                var adjustInnerHeight = window.innerHeight - addHeightByAnchorAds();
+                if(adjustInnerHeight > 820) {
                     recommendAds.css('top', 'calc(' + headerHeight + 'px - 85px)');
                     recommendAds.css('transform', 'scale(0.8)');
-                } else if(window.innerHeight > 730) {
+                } else if(adjustInnerHeight > 730) {
                     recommendAds.css('top', 'calc(' + headerHeight + 'px - 130px)');
                     recommendAds.css('transform', 'scale(0.7)');
-                } else if(window.innerHeight > 650) {
+                } else if(adjustInnerHeight > 650) {
                     recommendAds.css('top', 'calc(' + headerHeight + 'px - 180px)');
                     recommendAds.css('transform', 'scale(0.6)');
                 }
@@ -1216,8 +1219,9 @@ function fixedRecommendAds(type) {
                         }
                         if(recommendAds.length > 0) {
                             var scaleRatio = 0.9;
-                            if(tocTarget.height() > (window.innerHeight-tocOffsetTop-headerHeight)) {
-                                scaleRatio = (window.innerHeight-tocOffsetTop-headerHeight)/tocTarget.height()*0.9;
+                            var adjustInnerHeight = window.innerHeight - addHeightByAnchorAds();
+                            if(tocTarget.height() > (adjustInnerHeight-tocOffsetTop-headerHeight)) {
+                                scaleRatio = (adjustInnerHeight-tocOffsetTop-headerHeight)/tocTarget.height()*0.9;
                             }
                             tocTarget.css('position', 'fixed');
                             tocTarget.css('top', 'calc(' + (tocOffsetTop+headerHeight) + 'px - '+((1-scaleRatio)*450)+'px)');
