@@ -1796,8 +1796,7 @@ function recommendPost() {
                         rightMargin = (window.innerWidth - 310) / 2;
                     }
 
-                    var bottomMargin = addHeightByAnchorAds('bottom')>0?addHeightByAnchorAds('bottom')+55:75;
-                    $('#recommend-contents').css('bottom', bottomMargin+'px');
+                    $('#recommend-contents').css('bottom', (addHeightByAnchorAds('bottom')+75)+'px');
                     $('#recommend-contents').css('right', '-350px');
                     $('#recommend-contents').css('display','block');
                     recommendPostTimer = $('#recommend-contents').animate({'right':rightMargin+'px'}, 1000, 'swing', function() {});
@@ -1839,13 +1838,8 @@ function addHeightByAnchorAds(type) {
 }
 
 function commonForScroll() {
-    if(addHeightByAnchorAds('bottom') != 0) {
-        $('.floating-button').css('bottom', addHeightByAnchorAds('bottom')+10+'px');
-        $('#wrapper').css('padding-bottom',addHeightByAnchorAds('bottom')+'px');
-    } else {
-        $('.floating-button').css('bottom', '30px');
-        $('#wrapper').css('padding-bottom','0px');
-    }
+    $('.floating-button').css('bottom', addHeightByAnchorAds('bottom')+30+'px');
+    $('#wrapper').css('padding-bottom',addHeightByAnchorAds('bottom')+'px');
     
 }
 
