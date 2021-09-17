@@ -1403,8 +1403,8 @@ article .another_category th span {
 .tags a {
 	display: inline-block;
 	padding: 10px 10px 0 10px;
-	font-size: 0.8125em;
-	line-height: 1.25rem;
+	font-size: 0.765625em;
+	line-height: 1.1rem;
 }
 .tags a:before {
 	content: "#";
@@ -2421,7 +2421,7 @@ body.dark-mode .container_postbtn .btn_menu_toolbar .txt_state, body.dark-mode .
 body.dark-mode #tistoryEtcLayer .bundle_post .btn_mark, body.dark-mode .content-box a,
 body.dark-mode figure[data-ke-type='opengraph'] div.og-text p.og-title,
 body.dark-mode#tt-body-page figure[data-ke-type='opengraph'] div.og-text p.og-title,
-body.dark-mode .comment-list ul li .author-meta .nickname a,
+body.dark-mode .comment-list ul li .author-meta .nickname a, body.dark-mode header p a,
 body.dark-mode .comment-list ul li .author-meta a, body.dark-mode .content-comment,
 body.dark-mode .sidebar .count p, body.dark-mode .sidebar .count .total {
 	color: #d6d6d6;
