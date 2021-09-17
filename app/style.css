@@ -1068,41 +1068,30 @@ article h2,
 /* content article */
 .content-article h1 {
 	clear: both;
-	margin: 29px 0 22px;
-	font-size: 1.6875em;
-	line-height: 1.5;
-	color: #000;
+	margin: 15px 0 10px;
+	font-size: 1.5em;
 }
 .content-article h2 {
 	clear: both;
-	margin: 15px 0 10px 0;
-	font-size: 1.5em;
-	line-height: 1.5;
-	color: #000;
+	margin: 15px 0 10px;
 	font-style: italic;
 	text-align: left;
-	padding: 3px 0 10px 10px;
+	padding: 3px 0 5px 8px;
 }
 .content-article h3 {
 	clear: both;
 	margin: 15px 0 10px;
-	font-size: 1.3125em !important;
-	line-height: 1.5;
-	color: #000;
 	font-style: italic;
 	text-align: left;
-	padding: 3px 0 10px 10px;
+	padding: 3px 0 5px 6px;
 }
 .content-article h4 {
 	clear: both;
 	margin: 15px 0 10px;
 	font-weight: 400;
-	font-size: 1.125em !important;
-	line-height: 1.5;
-	color: #000;
 	font-style: italic;
 	text-align: left;
-	padding: 3px 0 10px 10px;
+	padding: 3px 0 5px 5px;
 }
 .content-article p {
 	margin-bottom: 32px;
