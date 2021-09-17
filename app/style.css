@@ -2417,7 +2417,7 @@ body.dark-mode #tistoryEtcLayer .bundle_post .btn_mark,
 body.dark-mode figure[data-ke-type='opengraph'] div.og-text p.og-title,
 body.dark-mode#tt-body-page figure[data-ke-type='opengraph'] div.og-text p.og-title,
 body.dark-mode .comment-list ul li .author-meta .nickname a,
-body.dark-mode .comment-list ul li .author-meta a,
+body.dark-mode .comment-list ul li .author-meta a, body.dark-mode .content-comment,
 body.dark-mode .sidebar .count p, body.dark-mode .sidebar .count .total{
 	color: #d6d6d6;
 }

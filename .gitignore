@@ -62,3 +62,7 @@ Thumbs.db
 #etc
 *.zip
 custom
+
+#min file
+common.min.js
+preload.min.js
