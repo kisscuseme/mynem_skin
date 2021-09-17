@@ -287,38 +287,6 @@
 
 		<variablegroup name="사이드바 설정">
 			<variable>
-				<name>adjust-font-size</name>
-				<label><![CDATA[ 글자 크기 조절 ]]></label>
-				<description><![CDATA[]]></description>
-				<type>BOOL</type>
-				<option/>
-				<default>false</default>
-			</variable>
-			<variable>
-				<name>lang-trans</name>
-				<label><![CDATA[ 다국어 번역 ]]></label>
-				<description><![CDATA[]]></description>
-				<type>BOOL</type>
-				<option/>
-				<default>true</default>
-			</variable>
-			<variable>
-				<name>dark-mode</name>
-				<label><![CDATA[ 다크 모드 ]]></label>
-				<description><![CDATA[]]></description>
-				<type>BOOL</type>
-				<option/>
-				<default>false</default>
-			</variable>
-			<variable>
-				<name>profile-info</name>
-				<label><![CDATA[ 프로필 ]]></label>
-				<description><![CDATA[]]></description>
-				<type>BOOL</type>
-				<option/>
-				<default>false</default>
-			</variable>
-			<variable>
 				<name>profile-image</name>
 				<label><![CDATA[ 프로필 이미지 ]]></label>
 				<description><![CDATA[]]></description>
@@ -857,6 +825,33 @@
 				<option />
 				<default><![CDATA[ 잠깐만요! 이 글도 한 번 보고 가세요 🧡 ]]></default>
 			</variable>
+			<variable>
+				<name>adsense-refresh</name>
+				<label><![CDATA[ 구글 광고 리프레시 (사이드바 광고만 해당) ]]></label>
+				<description><![CDATA[]]></description>
+				<type>BOOL</type>
+				<option />
+				<default>false</default>
+			</variable>
+		</variablegroup>
+
+		<variablegroup name="사이드바 구글 일치하는 광고 (사용 여부는 사이드바에서 설정)">
+			<variable>
+				<name>sidebar-data-ad-client</name>
+				<label><![CDATA[ data-ad-client ]]></label>
+				<description><![CDATA[]]></description>
+				<type>STRING</type>
+				<option />
+				<default><![CDATA[]]></default>
+			</variable>
+			<variable>
+				<name>sidebar-data-ad-slot</name>
+				<label><![CDATA[ data-ad-slot ]]></label>
+				<description><![CDATA[]]></description>
+				<type>STRING</type>
+				<option />
+				<default><![CDATA[]]></default>
+			</variable>
 		</variablegroup>
 
 		<variablegroup name="본문 상단 구글 광고 2개">
@@ -926,33 +921,6 @@
 				<type>STRING</type>
 				<option />
 				<default><![CDATA[추천 글]]></default>
-			</variable>
-		</variablegroup>
-
-		<variablegroup name="사이드바 구글 일치하는 광고">
-			<variable>
-				<name>sidebar-google-ads</name>
-				<label><![CDATA[ 사용 여부 ]]></label>
-				<description><![CDATA[]]></description>
-				<type>BOOL</type>
-				<option/>
-				<default>false</default>
-			</variable>
-			<variable>
-				<name>sidebar-data-ad-client</name>
-				<label><![CDATA[ data-ad-client ]]></label>
-				<description><![CDATA[]]></description>
-				<type>STRING</type>
-				<option />
-				<default><![CDATA[]]></default>
-			</variable>
-			<variable>
-				<name>sidebar-data-ad-slot</name>
-				<label><![CDATA[ data-ad-slot ]]></label>
-				<description><![CDATA[]]></description>
-				<type>STRING</type>
-				<option />
-				<default><![CDATA[]]></default>
 			</variable>
 		</variablegroup>
 
@@ -1085,15 +1053,162 @@
 			</variable>
 		</variablegroup>
 
-		<variablegroup name="배경음악 설정">
+		<variablegroup name="고정 추천 글 설정 (사용 여부는 사이드바에서 설정)">
 			<variable>
-				<name>bgm-yn</name>
-				<label><![CDATA[ 사용 여부 ]]></label>
+				<name>best-post-h2</name>
+				<label><![CDATA[ 고정 추천 글 타이틀 ]]></label>
 				<description><![CDATA[]]></description>
-				<type>BOOL</type>
-				<option/>
-				<default>false</default>
+				<type>STRING</type>
+				<option />
+				<default><![CDATA[꼭 보고 가세요!]]></default>
 			</variable>
+			<variable>
+				<name>best-post-title-1</name>
+				<label><![CDATA[ 타이틀 1 ]]></label>
+				<description><![CDATA[]]></description>
+				<type>STRING</type>
+				<option />
+				<default><![CDATA[ ]]></default>
+			</variable>
+			<variable>
+				<name>best-post-src-1</name>
+				<label><![CDATA[ URL 1 ]]></label>
+				<description><![CDATA[]]></description>
+				<type>STRING</type>
+				<option />
+				<default><![CDATA[ ]]></default>
+			</variable>
+			<variable>
+				<name>best-post-title-2</name>
+				<label><![CDATA[ 타이틀 2 ]]></label>
+				<description><![CDATA[]]></description>
+				<type>STRING</type>
+				<option />
+				<default><![CDATA[ ]]></default>
+			</variable>
+			<variable>
+				<name>best-post-src-2</name>
+				<label><![CDATA[ URL 2 ]]></label>
+				<description><![CDATA[]]></description>
+				<type>STRING</type>
+				<option />
+				<default><![CDATA[ ]]></default>
+			</variable>
+			<variable>
+				<name>best-post-title-3</name>
+				<label><![CDATA[ 타이틀 3 ]]></label>
+				<description><![CDATA[]]></description>
+				<type>STRING</type>
+				<option />
+				<default><![CDATA[ ]]></default>
+			</variable>
+			<variable>
+				<name>best-post-src-3</name>
+				<label><![CDATA[ URL 3 ]]></label>
+				<description><![CDATA[]]></description>
+				<type>STRING</type>
+				<option />
+				<default><![CDATA[ ]]></default>
+			</variable>
+			<variable>
+				<name>best-post-title-4</name>
+				<label><![CDATA[ 타이틀 4 ]]></label>
+				<description><![CDATA[]]></description>
+				<type>STRING</type>
+				<option />
+				<default><![CDATA[ ]]></default>
+			</variable>
+			<variable>
+				<name>best-post-src-4</name>
+				<label><![CDATA[ URL 4 ]]></label>
+				<description><![CDATA[]]></description>
+				<type>STRING</type>
+				<option />
+				<default><![CDATA[ ]]></default>
+			</variable>
+			<variable>
+				<name>best-post-title-5</name>
+				<label><![CDATA[ 타이틀 5 ]]></label>
+				<description><![CDATA[]]></description>
+				<type>STRING</type>
+				<option />
+				<default><![CDATA[ ]]></default>
+			</variable>
+			<variable>
+				<name>best-post-src-5</name>
+				<label><![CDATA[ URL 5 ]]></label>
+				<description><![CDATA[]]></description>
+				<type>STRING</type>
+				<option />
+				<default><![CDATA[ ]]></default>
+			</variable>
+			<variable>
+				<name>best-post-title-6</name>
+				<label><![CDATA[ 타이틀 6 ]]></label>
+				<description><![CDATA[]]></description>
+				<type>STRING</type>
+				<option />
+				<default><![CDATA[ ]]></default>
+			</variable>
+			<variable>
+				<name>best-post-src-6</name>
+				<label><![CDATA[ URL 6 ]]></label>
+				<description><![CDATA[]]></description>
+				<type>STRING</type>
+				<option />
+				<default><![CDATA[ ]]></default>
+			</variable>
+			<variable>
+				<name>best-post-title-7</name>
+				<label><![CDATA[ 타이틀 7 ]]></label>
+				<description><![CDATA[]]></description>
+				<type>STRING</type>
+				<option />
+				<default><![CDATA[ ]]></default>
+			</variable>
+			<variable>
+				<name>best-post-src-7</name>
+				<label><![CDATA[ URL 7 ]]></label>
+				<description><![CDATA[]]></description>
+				<type>STRING</type>
+				<option />
+				<default><![CDATA[ ]]></default>
+			</variable>
+			<variable>
+				<name>best-post-title-8</name>
+				<label><![CDATA[ 타이틀 8 ]]></label>
+				<description><![CDATA[]]></description>
+				<type>STRING</type>
+				<option />
+				<default><![CDATA[ ]]></default>
+			</variable>
+			<variable>
+				<name>best-post-src-8</name>
+				<label><![CDATA[ URL 8 ]]></label>
+				<description><![CDATA[]]></description>
+				<type>STRING</type>
+				<option />
+				<default><![CDATA[ ]]></default>
+			</variable>
+			<variable>
+				<name>best-post-title-9</name>
+				<label><![CDATA[ 타이틀 9 ]]></label>
+				<description><![CDATA[]]></description>
+				<type>STRING</type>
+				<option />
+				<default><![CDATA[ ]]></default>
+			</variable>
+			<variable>
+				<name>best-post-src-9</name>
+				<label><![CDATA[ URL 9 ]]></label>
+				<description><![CDATA[]]></description>
+				<type>STRING</type>
+				<option />
+				<default><![CDATA[ ]]></default>
+			</variable>
+		</variablegroup>
+
+		<variablegroup name="배경음악 설정 (사용 여부는 사이드바에서 설정)">
 			<variable>
 				<name>bgm-autoplay-yn</name>
 				<label><![CDATA[ 자동재생 여부 ]]></label>

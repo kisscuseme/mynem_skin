@@ -255,7 +255,7 @@
 				.sidebar .notice, .sidebar .recent, .sidebar .popular, .sidebar .recent-comment,
 				.sidebar .tags, .sidebar .archives, .sidebar .count, .sidebar .profile-info,
 				.sidebar .module_plugin, .sidebar .revenue_unit_wrap, .content-title, .content-article pre,
-				figure.fileblock a, #tt-body-page figure.fileblock a,
+				figure.fileblock a, #tt-body-page figure.fileblock a, .sidebar .best-post,
 				figure[data-ke-type='opengraph'] a, #tt-body-page figure[data-ke-type='opengraph'] a,
 				.related-articles-wrap, .main-ads, #ad-top-left, #ad-top-right,
 				.book-toc, .floating-toc, .floating-toc-new, #tistorySnsLayer.layer_post,
@@ -268,7 +268,7 @@
 				body.dark-mode .sidebar .notice, body.dark-mode .sidebar .recent, body.dark-mode .sidebar .popular, body.dark-mode .sidebar .recent-comment,
 				body.dark-mode .sidebar .tags, body.dark-mode .sidebar .archives, body.dark-mode .sidebar .count, body.dark-mode .sidebar .profile-info,
 				body.dark-mode .sidebar .module_plugin, body.dark-mode .sidebar .revenue_unit_wrap, body.dark-mode .content-title, body.dark-mode .content-article pre,
-				body.dark-mode figure.fileblock a, body.dark-mode #tt-body-page figure.fileblock a,
+				body.dark-mode figure.fileblock a, body.dark-mode #tt-body-page figure.fileblock a, body.dark-mode .sidebar .best-post,
 				body.dark-mode figure[data-ke-type='opengraph'] a, body.dark-mode #tt-body-page figure[data-ke-type='opengraph'] a,
 				body.dark-mode .related-articles-wrap, body.dark-mode .main-ads, body.dark-mode #ad-top-left, body.dark-mode #ad-top-right,
 				body.dark-mode .book-toc, body.dark-mode .floating-toc, body.dark-mode .floating-toc-new, body.dark-mode #tistorySnsLayer.layer_post,
@@ -423,14 +423,14 @@
 					.sidebar .category, .sidebar .notice, .sidebar .recent, .sidebar .profile-info, 
 					.sidebar .popular, .sidebar .recent-comment, .sidebar .tags, #tistorySnsLayer.layer_post,
 					.sidebar .count, .sidebar .module_plugin, .archives, .comment-form textarea,
-					.comment-list .tt_more_preview_comments_text,
+					.comment-list .tt_more_preview_comments_text, .sidebar .best-post,
 					figure.fileblock, #tt-body-page figure.fileblock {
 						border: [##_var_border-size_##]px solid [##_var_etc-color_##]55;
 					}
 					.sidebar .category h2, .sidebar .notice h2,  .sidebar .recent h2, .sidebar .profile-info h2,
 					.sidebar .popular h2, .sidebar .recent-comment h2, .sidebar .tags h2, .sidebar .archives h2,
 					.sidebar .count h2, .sidebar .module_plugin div:not(.change-font-box, .lang-box, .dark-mode-box) h2,
-					.sidebar .module_plugin #bgm-title, .sidebar .module_plugin #recommend-ads-title,
+					.sidebar .module_plugin #bgm-title, .sidebar .module_plugin #recommend-ads-title, .sidebar .best-post h2,
 					.comment-list ul li {
 						border-bottom: [##_var_border-size_##]px dashed [##_var_etc-color_##]55;
 					}
@@ -1421,128 +1421,183 @@
 							<div>
 								<!-- 여백 만들기 -->
 								<div id="aside-top-blank" style="display:none;width:100%;"></div>
-								<!-- 검색바 -->
-								<div class="search">
-									<s_search>
-										<input type="text" name="[##_search_name_##]" value="[##_search_text_##]" placeholder="검색 내용을 입력하세요." onkeypress="if (event.keyCode == 13) { [##_search_onclick_submit_##] }">
-										<button type="submit" onclick="[##_search_onclick_submit_##]">검색</button>
-									</s_search>
-								</div>
-								<!-- 번역 서비스 -->
-								<s_if_var_lang-trans>
-									<div class="module module_plugin">
-										<div class="lang-box">
-											<h2>다국어 번역</h2>
-											<!-- GTranslate: https://gtranslate.io/ -->
-											<a href="#" onclick="doGTranslateCustom('ko|ko');return false;" title="한국어" class="gflag nturl">
-												<img class="flag" src="./images/ko.png" height="24" width="24" alt="한국어" loading="lazy" />
-											</a>
-											<s_if_var_en-yn>
-												<a href="#" onclick="doGTranslateCustom('ko|en');return false;" title="영어" class="gflag nturl">
-													<img class="flag" src="./images/en.png" height="24" width="24" alt="영어" loading="lazy" />
-												</a>
-											</s_if_var_en-yn>
-											<s_if_var_cn-yn>
-												<a href="#" onclick="doGTranslateCustom('ko|zh-CN');return false;" title="중국어 간체" class="gflag nturl">
-													<img class="flag" src="./images/zh-CN.png" height="24" width="24" alt="중국어 간체" loading="lazy" />
-												</a>
-											</s_if_var_cn-yn>
-											<s_if_var_tw-yn>
-												<a href="#" onclick="doGTranslateCustom('ko|zh-TW');return false;" title="중국어 번체" class="gflag nturl">
-													<img class="flag" src="./images/zh-TW.png" height="24" width="24" alt="중국어 번체" loading="lazy" />
-												</a>
-											</s_if_var_tw-yn>
-											<s_if_var_ja-yn>
-												<a href="#" onclick="doGTranslateCustom('ko|ja');return false;" title="일본어" class="gflag nturl">
-													<img class="flag" src="./images/ja.png" height="24" width="24" alt="일본어" loading="lazy" />
-												</a>
-											</s_if_var_ja-yn>
-											<s_if_var_es-yn>
-												<a href="#" onclick="doGTranslateCustom('ko|es');return false;" title="스페인어" class="gflag nturl">
-													<img class="flag" src="./images/es.png" height="24" width="24" alt="스페인어" loading="lazy" />
-												</a>
-											</s_if_var_es-yn>
-											<style>
-												<!--
-												a.gflag {text-decoration:none !important;margin:auto;}
-												a.gflag:hover {text-decoration:none !important;}
-												#goog-gt-tt {display:none !important;}
-												.goog-te-banner-frame {display:none !important;}
-												.goog-te-menu-value:hover {text-decoration:none !important;}
-												body {top:0 !important;}
-												#google_translate_element2 {display:none!important;}
-												-->
-											</style>
-											<div id="google_translate_element2"></div>
-										</div>
-									</div>
-								</s_if_var_lang-trans>
-								<!-- 다크 모드 -->
-								<s_if_var_dark-mode>
-									<div class="module module_plugin">
-										<div class="dark-mode-box">
-											<h2>다크 모드</h2>
-											<button class="dark-mode-btn-dark" onclick="setDarkMode('+')" >&#xf186;</button> <!-- moon -->
-											<button class="dark-mode-btn-default" onclick="setDarkMode('-')">&#xf185;</button> <!-- sun -->
-										</div>
-									</div>
-								</s_if_var_dark-mode>
-								<!-- 글자크기 -->
-								<s_if_var_adjust-font-size>
-									<div class="module module_plugin">
-										<div class="change-font-box">
-												<h2>글자 크기</h2>
-												<button class="change-font-btn" onclick="changeFontSize('+')" >&#xf00e;</button> <!-- size up -->
-												<button class="change-font-btn" onclick="changeFontSize('-')">&#xf010;</button> <!-- size down -->
-												<button class="change-font-btn" onclick="changeFontSize('')">&#xf3e5;</button> <!-- default -->
-										</div>
-									</div>
-								</s_if_var_adjust-font-size>
-								<!-- 배경음악 -->
-								<s_if_var_bgm-yn>
-									<div class="module module_plugin">
-										<h2 id="bgm-title">
-											<span id="current-bgm">플레이 버튼을 눌러 주세요</span>
-											<button class="bgm-btn" onclick="bgmMute()" style="margin:auto;" id='bgm-mute'>
-												&#xf6a9; <!-- mute btn -->
-											</button>	
-										</h2>
-										<div class="bgm-box">
-											<button class="bgm-btn" onclick="nextBgm('-')" style="margin:auto;">
-												&#xf048; <!-- prev btn -->
-											</button>
-											<button class="bgm-btn" onclick="toggleBgm()" id='bgm-switch' style="margin:auto;">
-												<span id="bgm-status">&#xf04b;</span> <!-- play btn -->
-											</button>
-											<button class="bgm-btn" onclick="nextBgm('+')" style="margin:auto;">
-												&#xf051; <!-- next btn -->
-											</button>
-											<button class="bgm-btn" onclick="bgmVolume('+')" style="margin:auto;">
-												&#xf028; <!-- volume up btn -->
-											</button>
-											<button class="bgm-btn" onclick="bgmVolume('-')" style="margin:auto;">
-												&#xf027; <!-- volume down btn -->
-											</button>
-										</div>
-									</div>
-								</s_if_var_bgm-yn>
-								<!-- 프로필 -->
-								<s_if_var_profile-info>
-									<div class="profile-info">
-										<h2>프로필</h2>
-										<div style="padding:10px;">
-											<s_if_var_profile-image>
-												<img src="[##_var_profile-image_##]" alt="[##_title_##]" style="width:100%;">
-											</s_if_var_profile-image>
-											<s_not_var_profile-image>
-												<img src="./images/logo.svg" style="width:100%;">
-											</s_not_var_profile-image>
-											<p style="font-size:0.8em;font-weight:bold;text-align:center;margin-top:10px;">[##_var_profile-description_##]</p>
-											<p style="font-size:0.8em;font-weight:bold;color:#777;text-align:center;margin-top:10px;">[##_var_profile-more-details_##]</p>
-										</div>
-									</div>
-								</s_if_var_profile-info>
 								<s_sidebar>
+									<s_sidebar_element>
+										<!-- 검색바 -->
+										<div class="search">
+											<s_search>
+												<input type="text" name="[##_search_name_##]" value="[##_search_text_##]" placeholder="검색 내용을 입력하세요." onkeypress="if (event.keyCode == 13) { [##_search_onclick_submit_##] }">
+												<button type="submit" onclick="[##_search_onclick_submit_##]">검색</button>
+											</s_search>
+										</div>
+									</s_sidebar_element>
+									<s_sidebar_element>
+										<!-- 번역 서비스 -->
+										<div class="module module_plugin">
+											<div class="lang-box">
+												<h2>다국어 번역</h2>
+												<!-- GTranslate: https://gtranslate.io/ -->
+												<a href="#" onclick="doGTranslateCustom('ko|ko');return false;" title="한국어" class="gflag nturl">
+													<img class="flag" src="./images/ko.png" height="24" width="24" alt="한국어" loading="lazy" />
+												</a>
+												<s_if_var_en-yn>
+													<a href="#" onclick="doGTranslateCustom('ko|en');return false;" title="영어" class="gflag nturl">
+														<img class="flag" src="./images/en.png" height="24" width="24" alt="영어" loading="lazy" />
+													</a>
+												</s_if_var_en-yn>
+												<s_if_var_cn-yn>
+													<a href="#" onclick="doGTranslateCustom('ko|zh-CN');return false;" title="중국어 간체" class="gflag nturl">
+														<img class="flag" src="./images/zh-CN.png" height="24" width="24" alt="중국어 간체" loading="lazy" />
+													</a>
+												</s_if_var_cn-yn>
+												<s_if_var_tw-yn>
+													<a href="#" onclick="doGTranslateCustom('ko|zh-TW');return false;" title="중국어 번체" class="gflag nturl">
+														<img class="flag" src="./images/zh-TW.png" height="24" width="24" alt="중국어 번체" loading="lazy" />
+													</a>
+												</s_if_var_tw-yn>
+												<s_if_var_ja-yn>
+													<a href="#" onclick="doGTranslateCustom('ko|ja');return false;" title="일본어" class="gflag nturl">
+														<img class="flag" src="./images/ja.png" height="24" width="24" alt="일본어" loading="lazy" />
+													</a>
+												</s_if_var_ja-yn>
+												<s_if_var_es-yn>
+													<a href="#" onclick="doGTranslateCustom('ko|es');return false;" title="스페인어" class="gflag nturl">
+														<img class="flag" src="./images/es.png" height="24" width="24" alt="스페인어" loading="lazy" />
+													</a>
+												</s_if_var_es-yn>
+												<style>
+													<!--
+													a.gflag {text-decoration:none !important;margin:auto;}
+													a.gflag:hover {text-decoration:none !important;}
+													#goog-gt-tt {display:none !important;}
+													.goog-te-banner-frame {display:none !important;}
+													.goog-te-menu-value:hover {text-decoration:none !important;}
+													body {top:0 !important;}
+													#google_translate_element2 {display:none!important;}
+													-->
+												</style>
+												<div id="google_translate_element2"></div>
+											</div>
+										</div>
+									</s_sidebar_element>
+									<s_sidebar_element>
+										<!-- 다크 모드 -->
+										<div class="module module_plugin">
+											<div class="dark-mode-box">
+												<h2>다크 모드</h2>
+												<button class="dark-mode-btn-dark" onclick="setDarkMode('+')" >&#xf186;</button> <!-- moon -->
+												<button class="dark-mode-btn-default" onclick="setDarkMode('-')">&#xf185;</button> <!-- sun -->
+											</div>
+										</div>
+									</s_sidebar_element>
+									<s_sidebar_element>
+										<!-- 글자크기 -->
+										<div class="module module_plugin">
+											<div class="change-font-box">
+													<h2>글자 크기</h2>
+													<button class="change-font-btn" onclick="changeFontSize('+')" >&#xf00e;</button> <!-- size up -->
+													<button class="change-font-btn" onclick="changeFontSize('-')">&#xf010;</button> <!-- size down -->
+													<button class="change-font-btn" onclick="changeFontSize('')">&#xf3e5;</button> <!-- default -->
+											</div>
+										</div>
+									</s_sidebar_element>
+									<s_sidebar_element>
+										<!-- 배경음악 -->
+										<div class="module module_plugin">
+											<h2 id="bgm-title">
+												<span id="current-bgm">플레이 버튼을 눌러 주세요</span>
+												<button class="bgm-btn" onclick="bgmMute()" style="margin:auto;" id='bgm-mute'>
+													&#xf6a9; <!-- mute btn -->
+												</button>	
+											</h2>
+											<div class="bgm-box">
+												<button class="bgm-btn" onclick="nextBgm('-')" style="margin:auto;">
+													&#xf048; <!-- prev btn -->
+												</button>
+												<button class="bgm-btn" onclick="toggleBgm()" id='bgm-switch' style="margin:auto;">
+													<span id="bgm-status">&#xf04b;</span> <!-- play btn -->
+												</button>
+												<button class="bgm-btn" onclick="nextBgm('+')" style="margin:auto;">
+													&#xf051; <!-- next btn -->
+												</button>
+												<button class="bgm-btn" onclick="bgmVolume('+')" style="margin:auto;">
+													&#xf028; <!-- volume up btn -->
+												</button>
+												<button class="bgm-btn" onclick="bgmVolume('-')" style="margin:auto;">
+													&#xf027; <!-- volume down btn -->
+												</button>
+											</div>
+										</div>
+									</s_sidebar_element>
+									<s_sidebar_element>
+										<!-- 고정 추천 글 -->
+										<div class="best-post">
+											<h2>[##_var_best-post-h2_##]</h2>
+											<ul>
+												<s_if_var_best-post-title-1>
+													<s_if_var_best-post-src-1>
+														<li><a href="[##_var_best-post-src-1_##]">[##_var_best-post-title-1_##]</a></li>
+													</s_if_var_best-post-src-1>
+												</s_if_var_best-post-title-1>
+												<s_if_var_best-post-title-2>
+													<s_if_var_best-post-src-2>
+														<li><a href="[##_var_best-post-src-2_##]">[##_var_best-post-title-2_##]</a></li>
+													</s_if_var_best-post-src-2>
+												</s_if_var_best-post-title-2>
+												<s_if_var_best-post-title-3>
+													<s_if_var_best-post-src-3>
+														<li><a href="[##_var_best-post-src-3_##]">[##_var_best-post-title-3_##]</a></li>
+													</s_if_var_best-post-src-3>
+												</s_if_var_best-post-title-3>
+												<s_if_var_best-post-title-4>
+													<s_if_var_best-post-src-4>
+														<li><a href="[##_var_best-post-src-4_##]">[##_var_best-post-title-4_##]</a></li>
+													</s_if_var_best-post-src-4>
+												</s_if_var_best-post-title-4>
+												<s_if_var_best-post-title-5>
+													<s_if_var_best-post-src-5>
+														<li><a href="[##_var_best-post-src-5_##]">[##_var_best-post-title-5_##]</a></li>
+													</s_if_var_best-post-src-5>
+												</s_if_var_best-post-title-5>
+												<s_if_var_best-post-title-6>
+													<s_if_var_best-post-src-6>
+														<li><a href="[##_var_best-post-src-6_##]">[##_var_best-post-title-6_##]</a></li>
+													</s_if_var_best-post-src-6>
+												</s_if_var_best-post-title-6>
+												<s_if_var_best-post-title-7>
+													<s_if_var_best-post-src-7>
+														<li><a href="[##_var_best-post-src-7_##]">[##_var_best-post-title-7_##]</a></li>
+													</s_if_var_best-post-src-7>
+												</s_if_var_best-post-title-7>
+												<s_if_var_best-post-title-8>
+													<s_if_var_best-post-src-8>
+														<li><a href="[##_var_best-post-src-8_##]">[##_var_best-post-title-8_##]</a></li>
+													</s_if_var_best-post-src-8>
+												</s_if_var_best-post-title-8>
+												<s_if_var_best-post-title-9>
+													<s_if_var_best-post-src-9>
+														<li><a href="[##_var_best-post-src-9_##]">[##_var_best-post-title-9_##]</a></li>
+													</s_if_var_best-post-src-9>
+												</s_if_var_best-post-title-9>
+											</ul>
+										</div>
+									</s_sidebar_element>
+									<s_sidebar_element>
+										<!-- 프로필 -->
+										<div class="profile-info">
+											<h2>프로필</h2>
+											<div style="padding:10px;">
+												<s_if_var_profile-image>
+													<img src="[##_var_profile-image_##]" alt="[##_title_##]" style="width:100%;">
+												</s_if_var_profile-image>
+												<s_not_var_profile-image>
+													<img src="./images/logo.svg" style="width:100%;">
+												</s_not_var_profile-image>
+												<p style="font-size:0.8em;font-weight:bold;text-align:center;margin-top:10px;">[##_var_profile-description_##]</p>
+												<p style="font-size:0.8em;font-weight:bold;color:#777;text-align:center;margin-top:10px;">[##_var_profile-more-details_##]</p>
+											</div>
+										</div>
+									</s_sidebar_element>
 									<s_sidebar_element>
 										<!-- 카테고리 -->
 										<div class="category">
@@ -1630,22 +1685,23 @@
 											</ul>
 										</div>
 									</s_sidebar_element>
-								</s_sidebar>
-								<s_if_var_sidebar-google-ads>
-									<div class="module module_plugin">
-										<h2 id="recommend-ads-title">추천 글</h2>
-										<div id="recommend-ads" class="revenue_unit_item adsense">
-											<ins class="adsbygoogle"
-													style="display:inline-block;width:calc([##_var_article-max-width_##]px * 27.777777777777778 / 100 - 20px);height:880px;"
-													data-ad-client="[##_var_sidebar-data-ad-client_##]"
-													data-ad-slot="[##_var_sidebar-data-ad-slot_##]"></ins>
-											<script>
-												(adsbygoogle = window.adsbygoogle || []).push({});
-											</script>
+									<s_sidebar_element>
+										<!-- 일치하는 광고 -->
+										<div class="module module_plugin">
+											<h2 id="recommend-ads-title">추천 글</h2>
+											<div id="recommend-ads" class="revenue_unit_item adsense">
+												<ins class="adsbygoogle"
+														style="display:inline-block;width:calc([##_var_article-max-width_##]px * 27.777777777777778 / 100 - 20px);height:880px;"
+														data-ad-client="[##_var_sidebar-data-ad-client_##]"
+														data-ad-slot="[##_var_sidebar-data-ad-slot_##]"></ins>
+												<script>
+													if($('#recommend-ads ins[data-ad-client]').attr('data-ad-client')) {
+														(adsbygoogle = window.adsbygoogle || []).push({});
+													}
+												</script>
+											</div>
 										</div>
-									</div>
-								</s_if_var_sidebar-google-ads>
-								<s_sidebar>
+									</s_sidebar_element>
 									<s_sidebar_element>
 										<!-- 최근댓글 -->
 										<div class="recent-comment">
@@ -1766,9 +1822,7 @@
 																</figure>
 															</s_if_var_list-thum-yn>
 															<span class="title">[##_cover_item_title_##]</span>
-															<s_if_var_list-excerpt-yn>
-																<span class="excerpt">[##_cover_item_summary_##]</span>
-															</s_if_var_list-excerpt-yn>
+															<span class="excerpt">[##_cover_item_summary_##]</span>
 															<s_cover_item_article_info>
 																<s_if_var_list-meta-yn>
 																	<span class="meta">
@@ -2274,7 +2328,6 @@
 			<input type='hidden' id='fold-comment-yn' value="[##_var_fold-comment-yn_##]">
 			<input type='hidden' id='fold-comment-num' value="[##_var_fold-comment-num_##]">
 			<input type='hidden' id='floating-toc-position' value="[##_var_floating-toc-position_##]">
-			<input type='hidden' id='bgm-yn' value="[##_var_bgm-yn_##]">
 			<input type='hidden' id='bgm-autoplay-yn' value="[##_var_bgm-autoplay-yn_##]">
 			<input type='hidden' id='bgm-autoplay-mobile-yn' value="[##_var_bgm-autoplay-mobile-yn_##]">
 			<input type='hidden' id='hide-sidebar' value="[##_var_hide-sidebar_##]">
@@ -2300,6 +2353,7 @@
 			<input type='hidden' id='fold-category' value="[##_var_fold-category_##]">
 			<input type='hidden' id='fold-category-speed' value="[##_var_fold-category-speed_##]">
 			<input type='hidden' id='fold-category-target' value="[##_var_fold-category-target_##]">
+			<input type='hidden' id='adsense-refresh' value="[##_var_adsense-refresh_##]">
 		</s_t3>
 		<script src="./images/common.min.js"></script>
 		<script>

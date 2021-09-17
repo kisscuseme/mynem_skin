@@ -76,6 +76,11 @@ button:hover {
 	cursor: pointer;
 }
 
+/* bug fix */
+.module.module_plugin a {
+	display: flex;
+}
+
 /* header */
 header {
 	position: relative;
@@ -709,7 +714,8 @@ article h2,
 .sidebar .count,
 .sidebar .profile-info,
 .sidebar .module_plugin,
-.sidebar .revenue_unit_wrap {
+.sidebar .revenue_unit_wrap,
+.sidebar .best-post {
 	margin-bottom: 30px;
 }
 .sidebar .notice ul li,
@@ -717,7 +723,8 @@ article h2,
 .sidebar .popular ul li,
 .sidebar .recent-comment ul li,
 .sidebar .archives ul li,
-.sidebar .module_plugin div:not(#recommend-ads) {
+.sidebar .module_plugin div:not(#recommend-ads),
+.sidebar .best-post ul li {
 	font-size: 0.875em;
 	padding-top: 10px;
 	padding-left: 10px;
@@ -728,10 +735,12 @@ article h2,
 .sidebar .popular ul li:last-child,
 .sidebar .recent-comment ul li:last-child,
 .sidebar .archives ul li:last-child,
-.sidebar .module_plugin div:last-child {
+.sidebar .module_plugin div:last-child,
+.sidebar .best-post ul li:last-child {
 	padding-bottom: 10px;
 }
-.sidebar .notice ul li a {
+.sidebar .notice ul li a,
+.sidebar .best-post ul li a {
 	font-size: 0.875em;
 }
 .sidebar .recent-comment ul li a {
@@ -2389,7 +2398,7 @@ body.dark-mode .floating-toc,body.dark-mode .floating-toc-new, body.dark-mode .s
 body.dark-mode #tistoryEtcLayer, body.dark-mode .sidebar .profile ul, body.dark-mode .top-button .profile ul li a,
 body.dark-mode .comment-list ul li .author-meta .control .link a, body.dark-mode .top-button .menu button,
 body.dark-mode #tistorySnsLayer.layer_post {
-	background-color: #000000;
+	background: #000000;
 }
 body.dark-mode .sidebar h2, body.dark-mode.mobile-menu aside,
 body.dark-mode textarea {
