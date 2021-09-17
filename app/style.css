@@ -740,7 +740,8 @@ article h2,
 	padding-bottom: 10px;
 }
 .sidebar .notice ul li a,
-.sidebar .best-post ul li a {
+.sidebar .best-post ul li a,
+.sidebar .archives ul li a {
 	font-size: 0.875em;
 }
 .sidebar .recent-comment ul li a {
@@ -2406,7 +2407,8 @@ body.dark-mode textarea {
 	background-color:#1e1e1e;
 }
 body.dark-mode .floating-toc-new:after,
-body.dark-mode .floating-toc:after {
+body.dark-mode .floating-toc:after,
+body.dark-mode .content-box {
 	background-color: #1e1e1e;
 }
 body.dark-mode .content-title .meta a:before, body.dark-mode .content-title .meta span:not(.author):before,
@@ -2420,8 +2422,8 @@ body.dark-mode span:not(#bgm-status, .bubble_image, .hljs-selector-id, .hljs-sel
 .hljs-literal, .hljs-selector-pseudo, .hljs-built_in, .hljs-selector-attr, .hljs-selector-tag, .hljs-title, .hljs-params, .category),
 body.dark-mode input, body.dark-mode #toc *, body.dark-mode #blog-menu ul li a,
 body.dark-mode .container_postbtn .btn_post .txt_like,
-body.dark-mode .container_postbtn .btn_menu_toolbar .txt_state,
-body.dark-mode #tistoryEtcLayer .bundle_post .btn_mark,
+body.dark-mode .container_postbtn .btn_menu_toolbar .txt_state, body.dark-mode .content-box,
+body.dark-mode #tistoryEtcLayer .bundle_post .btn_mark, body.dark-mode .content-box a,
 body.dark-mode figure[data-ke-type='opengraph'] div.og-text p.og-title,
 body.dark-mode#tt-body-page figure[data-ke-type='opengraph'] div.og-text p.og-title,
 body.dark-mode .comment-list ul li .author-meta .nickname a,
