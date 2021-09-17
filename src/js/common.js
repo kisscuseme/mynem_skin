@@ -948,6 +948,7 @@ function common(){
                     document.location.href = 'https://www.tistory.com/auth/logout?redirectUrl=' + encodeURIComponent(window.TistoryBlog.url);
                 });
             }
+            $('.sidebar .close').css('top', (addHeightByAnchorAds('top')+10)+'px');
             fixedRecommendAds('init');
         }
     });
@@ -1532,6 +1533,8 @@ function fixedHeader() {
             $header.css('left', '0');
             $header.css('z-index', '119');
             $topButton.css('position','fixed');
+            $topButton.css('top', (addHeightByAnchorAds('top')+(window.innerWidth>767?15:10))+'px');
+            $('.sidebar').css('padding-top', (addHeightByAnchorAds('top')+50)+'px');
             $('#blog-menu').css('display','none');
             $header.css('height', ($headerTitle.height()+20)+'px');
             if(localStorage.getItem('dark-mode') != 'y') {
@@ -1574,6 +1577,8 @@ function fixedHeader() {
                 $header.css('left', '');
                 $header.css('z-index', '');
                 $topButton.css('position','');
+                $topButton.css('top', '');
+                $('.sidebar').css('padding-top', '');
                 if($headerTitleImage.length > 0) {
                     $headerTitle.html("");
                     $headerTitle.append($headerTitleImage);
