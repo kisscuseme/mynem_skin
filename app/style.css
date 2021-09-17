@@ -2414,11 +2414,10 @@ figure.fileblock a::after, #tt-body-page figure.fileblock a::after {
 	background-color: rgb(255,255,255,0.6);
 }
 body.dark-mode h1,body.dark-mode h2,body.dark-mode h3,body.dark-mode h4,body.dark-mode p, body.dark-mode .tags a,
-body.dark-mode .sidebar a, body.dark-mode .maker a,
+body.dark-mode .sidebar a, body.dark-mode .maker a, body.dark-mode .auto-link,
 body.dark-mode span:not(#bgm-status, .bubble_image, .hljs-selector-id, .hljs-selector-class, .hljs-attribute,
 .hljs-number, .hljs-meta, .hljs-string, .hljs-keyword, .hljs-name, .hljs-tag, .hljs-comment, .hljs-attr, .hljs-function,
-.hljs-literal, .hljs-selector-pseudo, .hljs-built_in, .hljs-selector-attr, .hljs-selector-tag, .hljs-title, .hljs-params,
-.category),
+.hljs-literal, .hljs-selector-pseudo, .hljs-built_in, .hljs-selector-attr, .hljs-selector-tag, .hljs-title, .hljs-params, .category),
 body.dark-mode input, body.dark-mode #toc *, body.dark-mode #blog-menu ul li a,
 body.dark-mode .container_postbtn .btn_post .txt_like,
 body.dark-mode .container_postbtn .btn_menu_toolbar .txt_state,
@@ -2427,7 +2426,7 @@ body.dark-mode figure[data-ke-type='opengraph'] div.og-text p.og-title,
 body.dark-mode#tt-body-page figure[data-ke-type='opengraph'] div.og-text p.og-title,
 body.dark-mode .comment-list ul li .author-meta .nickname a,
 body.dark-mode .comment-list ul li .author-meta a, body.dark-mode .content-comment,
-body.dark-mode .sidebar .count p, body.dark-mode .sidebar .count .total{
+body.dark-mode .sidebar .count p, body.dark-mode .sidebar .count .total {
 	color: #d6d6d6;
 }
 body.dark-mode .btn_menu_toolbar, body.dark-mode #wrapper div div.profile button {
