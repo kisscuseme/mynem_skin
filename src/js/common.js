@@ -948,6 +948,7 @@ function common(){
                     document.location.href = 'https://www.tistory.com/auth/logout?redirectUrl=' + encodeURIComponent(window.TistoryBlog.url);
                 });
             }
+            $('.sidebar').css('padding-top', (addHeightByAnchorAds('top')+50)+'px');
             $('.sidebar .close').css('top', (addHeightByAnchorAds('top')+10)+'px');
             fixedRecommendAds('init');
         }
@@ -1169,8 +1170,12 @@ function lazyLoading() {
 function fixedRecommendAds(type) {
     if($('#use-fixed-ads-yn').val()) {
         var recommendAds = $('#recommend-ads').parent();
-        var adsenseAd = $('aside .revenue_unit_wrap .adsense');
-        var adfitAd = $('aside .revenue_unit_wrap .adfit');
+        var adsenseAd = $('aside .revenue_unit_wrap .adsense').parent();
+        var adfitAd = $('aside .revenue_unit_wrap .adfit').parent();
+        // if($('#attribute-1').val() == 'adsense') {
+        //     recommendAds = "";
+        //     adfitAd = "";
+        // }
         var blankLeftSide = (window.innerWidth - ($('.content-wrapper').width() + 20))/2 - 300;
         var isHideSidebar = $('#hide-sidebar').val() && blankLeftSide > 0;
         var tocSelector = 'all';
@@ -1227,21 +1232,18 @@ function fixedRecommendAds(type) {
                                 scaleRatio = (adjustInnerHeight-tocOffsetTop-headerHeight)/tocTarget.height()*0.9;
                             }
                             tocTarget.css('position', 'fixed');
-                            tocTarget.css('top', 'calc(' + (tocOffsetTop+headerHeight+addHeightByAnchorAds('top')) + 'px - '+((1-scaleRatio)*450)+'px)');
+                            var fixTopPosition = $('#recommend-ads').height()*(1-scaleRatio)/2;
+                            tocTarget.css('top', 'calc(' + (tocOffsetTop+headerHeight+addHeightByAnchorAds('top')) + 'px - '+fixTopPosition+'px)');
                             tocTarget.css('transform', 'scale('+scaleRatio+')');
-                            tocTarget.css('position', 'fixed');
                             if(adsTocPosition || !contentMiddleYn) {
                                 tocTarget.css('left', tocOffsetLeft + 'px');
                             } else{
                                 tocTarget.css('right', tocOffsetLeft + 'px');
                             }
                         } else {
-                            tocTarget.parent().css('height',tocTarget.parent().height()+'px');
-                            tocTarget.parent().css('background-image','url(//t1.daumcdn.net/tistory_admin/static/revenue/adsense.svg)');
-                            tocTarget.parent().css('background-repeat','no-repeat');
-                            tocTarget.parent().css('background-position','center');
                             tocTarget.css('position', 'fixed');
-                            tocTarget.css('top', (tocOffsetTop+headerHeight+addHeightByAnchorAds('top')) + 'px');
+                            tocTarget.css('top', (tocOffsetTop+headerHeight+addHeightByAnchorAds('top')-15) + 'px');
+                            tocTarget.css('height', '600px');
                             if(adsTocPosition || !contentMiddleYn) {
                                 tocTarget.css('left', tocOffsetLeft + 'px');
                             } else{
@@ -1259,7 +1261,7 @@ function fixedRecommendAds(type) {
             if(tocTarget != null) {
                 removeStyleFlag = true;
             }
-        } else {
+        } else if(type == 'init') {
             if(recommendAds.length > 0) {
                 recommendAds.removeAttr('style');
             } else if(adsenseAd.length > 0) {
@@ -1524,17 +1526,16 @@ var flagForMoveToTheTitle = true;
 var fixedHeaderTimer = 0;
 function fixedHeader() {
     if($('#fixed-header').val()){
+        var bodyPaddingTop = Number($('body').css('padding-top').replace('px',''));
+        var anchorAdsHeight = window.scrollY>bodyPaddingTop?addHeightByAnchorAds('top'):bodyPaddingTop;
         if(window.scrollY > 0 && window.scrollHeight > window.innerHeight) {
-            var bodyPaddingTop = Number($('body').css('padding-top').replace('px',''));
-            var anchorAdsHeight = window.scrollY>bodyPaddingTop?addHeightByAnchorAds('top'):bodyPaddingTop;
             $('.content-wrapper').css('margin-top',initHeaderHeight+'px');
             $header.css('position', 'fixed');
             $header.css('top', anchorAdsHeight+'px');
             $header.css('left', '0');
             $header.css('z-index', '119');
             $topButton.css('position','fixed');
-            $topButton.css('top', (addHeightByAnchorAds('top')+(window.innerWidth>767?15:10))+'px');
-            $('.sidebar').css('padding-top', (addHeightByAnchorAds('top')+50)+'px');
+            $topButton.css('top', (anchorAdsHeight+10)+'px');
             $('#blog-menu').css('display','none');
             $header.css('height', ($headerTitle.height()+20)+'px');
             if(localStorage.getItem('dark-mode') != 'y') {
@@ -1576,9 +1577,7 @@ function fixedHeader() {
                 $header.css('top', '');
                 $header.css('left', '');
                 $header.css('z-index', '');
-                $topButton.css('position','');
-                $topButton.css('top', '');
-                $('.sidebar').css('padding-top', '');
+                $topButton.css('top', (anchorAdsHeight+10)+'px');
                 if($headerTitleImage.length > 0) {
                     $headerTitle.html("");
                     $headerTitle.append($headerTitleImage);
@@ -1586,7 +1585,6 @@ function fixedHeader() {
                     $headerTitle.html(headerTitleText);
                 }
             }, 200);
-            
         }
 
         if($('.floating-toc').height() > 0) {
