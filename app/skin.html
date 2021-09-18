@@ -499,12 +499,12 @@
 				</s_if_var_blog-menu-color-d>
 
 				<s_if_var_background-color-d>
-					header:after, section:after, footer:after, .content-title:after, .top-button .menu button:before,
-					.book-toc:after, .floating-toc:after, .top-button .menu button:before, .move-top-btn:before,
-					.mobile-menu aside:after, .toast-wrap:after, .share-btn:before, .dark-mode-on-btn:before, .dark-mode-off-btn:before, .font-size-up-btn:before, .font-size-down-btn:before
+					body.dark-mode header:after, body.dark-mode section:after, body.dark-mode footer:after, body.dark-mode .content-title:after, body.dark-mode .top-button .menu button:before,
+					body.dark-mode .book-toc:after, body.dark-mode .floating-toc:after, body.dark-mode .top-button .menu button:before, body.dark-mode .move-top-btn:before,
+					body.dark-mode .mobile-menu aside:after, body.dark-mode .toast-wrap:after, body.dark-mode .share-btn:before, body.dark-mode .dark-mode-on-btn:before, body.dark-mode .dark-mode-off-btn:before, body.dark-mode .font-size-up-btn:before, body.dark-mode .font-size-down-btn:before
 					{background-color:[##_var_background-color-d_##]}
 
-					.cover-list ul li a, .post-item a, .cover-special ul li {
+					body.dark-mode .cover-list ul li a, body.dark-mode .post-item a, body.dark-mode .cover-special ul li {
 						background: [##_var_background-color-d_##]1A;
 					}
 				</s_if_var_background-color-d>
@@ -1759,8 +1759,8 @@
 												<s_not_var_profile-image>
 													<img src="./images/logo.svg" style="width:100%;">
 												</s_not_var_profile-image>
-												<p style="font-size:0.8em;font-weight:bold;text-align:center;margin-top:10px;">[##_var_profile-description_##]</p>
-												<p style="font-size:0.8em;font-weight:bold;color:#777;text-align:center;margin-top:10px;">[##_var_profile-more-details_##]</p>
+												<p class="profile-desc">[##_var_profile-description_##]</p>
+												<p class="profile-details">[##_var_profile-more-details_##]</p>
 											</div>
 										</div>
 									</s_sidebar_element>

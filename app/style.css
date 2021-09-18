@@ -681,18 +681,22 @@ article h2,
 	padding: 0 0 10px 10px;
 	padding-top: 10px;
 }
-.sidebar .category ul li ul li ul li {
+.sidebar .category ul li ul li ul li,
+body.dark-mode .sidebar .category ul li ul li ul li {
 	border-bottom: none;
 	padding-top: 0px;
 }
-.sidebar .category ul li ul li:first-child {
+.sidebar .category ul li ul li:first-child,
+body.dark-mode .sidebar .category ul li ul li:first-child {
 	padding-top: 0px;
 }
-.sidebar .category ul li ul li:last-child {
+.sidebar .category ul li ul li:last-child,
+body.dark-mode .sidebar .category ul li ul li:last-child {
 	padding-bottom: 0;
 	border-bottom: none;
 }
-.sidebar .category ul li ul li ul li:last-child {
+.sidebar .category ul li ul li ul li:last-child,
+body.dark-mode .sidebar .category ul li ul li ul li:last-child {
 	padding-bottom: 0;
 }
 .sidebar .category .sub_category_list {
@@ -2423,7 +2427,8 @@ body.dark-mode figure[data-ke-type='opengraph'] div.og-text p.og-title,
 body.dark-mode#tt-body-page figure[data-ke-type='opengraph'] div.og-text p.og-title,
 body.dark-mode .comment-list ul li .author-meta .nickname a, body.dark-mode header p a,
 body.dark-mode .comment-list ul li .author-meta a, body.dark-mode .content-comment,
-body.dark-mode .sidebar .count p, body.dark-mode .sidebar .count .total {
+body.dark-mode .sidebar .count p, body.dark-mode .sidebar .count .total,
+body.dark-mode .profile-details {
 	color: #d6d6d6;
 }
 body.dark-mode .btn_menu_toolbar, body.dark-mode #wrapper div div.profile button {
@@ -2441,6 +2446,22 @@ body.dark-mode #tistorySnsLayer.layer_post .btn_mark {
 }
 body.dark-mode .like_bubble .inner {
 	color: #ffb355;
+}
+
+/* profile */
+.profile-desc {
+	font-size:0.8em;
+	font-weight:bold;
+	text-align:center;
+	margin-top:10px;
+}
+
+.profile-details {
+	font-size:0.8em;
+	font-weight:bold;
+	color:#777;
+	text-align:center;
+	margin-top:10px;
 }
 
 /* recommend content */

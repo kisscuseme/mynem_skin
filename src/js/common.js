@@ -1170,8 +1170,10 @@ function lazyLoading() {
 function fixedRecommendAds(type) {
     if($('#use-fixed-ads-yn').val()) {
         var tocTarget = null;
+        var isRecommendAds = false;
         if($('#fixed-ads-type').val() == 'matched') {
             tocTarget = $('#recommend-ads').parent();
+            isRecommendAds = true;
         } else if($('#fixed-ads-type').val() == 'adsense') {
             tocTarget = $('aside .revenue_unit_wrap .adsense').parent();
         } else if($('#fixed-ads-type').val() == 'adfit') {
@@ -1193,7 +1195,7 @@ function fixedRecommendAds(type) {
                         } else {
                             tocOffsetLeft = $('.floating-toc-new')[0].offsetLeft+5;
                         }
-                        if(recommendAds.length > 0) {
+                        if(isRecommendAds) {
                             var scaleRatio = 0.9;
                             var anchorAdsHeight = addHeightByAnchorAds('top') + addHeightByAnchorAds('bottom');
                             var adjustInnerHeight = window.innerHeight - anchorAdsHeight;
@@ -1231,20 +1233,13 @@ function fixedRecommendAds(type) {
                 removeStyleFlag = true;
             }
         } else if(type == 'init') {
-            if(recommendAds.length > 0) {
-                recommendAds.removeAttr('style');
-            } else if(adsenseAd.length > 0) {
-                adsenseAd.removeAttr('style');
-            } else if(adfitAd.length > 0) {
-                adfitAd.removeAttr('style');    
+            if(tocTarget.length > 0) {
+                tocTarget.removeAttr('style');
             }
         }
     
         if(removeStyleFlag) {
-            tocTarget.removeAttr('style');
-            if(recommendAds.length == 0) {
-                tocTarget.parent().removeAttr('style');
-            }
+            tocTarget.parent().removeAttr('style');
         }
     }
 }
