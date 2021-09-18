@@ -153,7 +153,7 @@
 			</variable>
 		</variablegroup>
 
-		<variablegroup name="색상 설정">
+		<variablegroup name="기본 모드 색상 설정">
 			<variable>
 				<name>blog-title-color</name>
 				<label><![CDATA[ 블로그 이름 ]]></label>
@@ -196,6 +196,65 @@
 			</variable>
 			<variable>
 				<name>etc-color</name>
+				<label><![CDATA[ 그 외 요소 색 ]]></label>
+				<description><![CDATA[]]></description>
+				<type>COLOR</type>
+				<option />
+				<default>#737373</default>
+			</variable>
+		</variablegroup>
+
+		<variablegroup name="다크 모드 색상 설정">
+			<variable>
+				<name>use-dark-mode-color</name>
+				<label><![CDATA[ 사용 여부 ]]></label>
+				<description><![CDATA[]]></description>
+				<type>BOOL</type>
+				<option/>
+				<default>true</default>
+			</variable>
+			<variable>
+				<name>blog-title-color-d</name>
+				<label><![CDATA[ 블로그 이름 ]]></label>
+				<description><![CDATA[]]></description>
+				<type>COLOR</type>
+				<option />
+				<default>#737373</default>
+			</variable>
+			<variable>
+				<name>blog-menu-color-d</name>
+				<label><![CDATA[ 블로그 메뉴 ]]></label>
+				<description><![CDATA[]]></description>
+				<type>COLOR</type>
+				<option />
+				<default>#000000</default>
+			</variable>
+			<variable>
+				<name>background-color-d</name>
+				<label><![CDATA[ 배경 색 (투명도 0.1) ]]></label>
+				<description><![CDATA[]]></description>
+				<type>COLOR</type>
+				<option />
+				<default>#E9E9E9</default>
+			</variable>
+			<variable>
+				<name>sidebar-color-d</name>
+				<label><![CDATA[ 사이드바 타이틀 배경색 ]]></label>
+				<description><![CDATA[]]></description>
+				<type>COLOR</type>
+				<option />
+				<default>#F5F5F5</default>
+			</variable>
+			<variable>
+				<name>sidebar-text-color-d</name>
+				<label><![CDATA[ 사이드바 타이틀 글자색 ]]></label>
+				<description><![CDATA[]]></description>
+				<type>COLOR</type>
+				<option />
+				<default>#4C4C4C</default>
+			</variable>
+			<variable>
+				<name>etc-color-d</name>
 				<label><![CDATA[ 그 외 요소 색 ]]></label>
 				<description><![CDATA[]]></description>
 				<type>COLOR</type>
@@ -744,6 +803,22 @@
 				<type>BOOL</type>
 				<option/>
 				<default>true</default>
+			</variable>
+			<variable>
+				<name>fixed-ads-type</name>
+				<label><![CDATA[ 플로팅 광고 종류 ]]></label>
+				<description><![CDATA[]]></description>
+				<type>SELECT</type>
+				<option><![CDATA[[{"name":"matched","label":"사이드바 일치하는 광고","value":"matched"}, {"name":"adsense","label":"사이드바 기본 애드센스","value":"adsense"}, {"name":"adfit","label":"사이드바 기본 애드핏","value":"adfit"}]]]></option>
+				<default>matched</default>
+			</variable>
+			<variable>
+				<name>matched-ads-height</name>
+				<label><![CDATA[ 사이드바 일치하는 광고 높이(height) ]]></label>
+				<description><![CDATA[]]></description>
+				<type>STRING</type>
+				<option />
+				<default>900</default>
 			</variable>
 			<variable>
 				<name>custom-font-forced</name>

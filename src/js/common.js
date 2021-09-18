@@ -633,7 +633,7 @@ function showToast(msg, slot) {
         toast.css('top', '');
         toast.css('bottom', 'calc(-13px + ' + addHeightByAnchorAds('bottom') + 'px)');
     } else {
-        toast.css('top', 'calc(50% - ' + (addHeightByAnchorAds('bottom')+addHeightByAnchorAds('top')) + 'px)');
+        toast.css('top', 'calc(50% - ' + (addHeightByAnchorAds('bottom')+addHeightByAnchorAds('top'))/2 + 'px)');
         toast.css('bottom', '');
     }
 
@@ -1169,48 +1169,17 @@ function lazyLoading() {
 
 function fixedRecommendAds(type) {
     if($('#use-fixed-ads-yn').val()) {
-        var recommendAds = $('#recommend-ads').parent();
-        var adsenseAd = $('aside .revenue_unit_wrap .adsense').parent();
-        var adfitAd = $('aside .revenue_unit_wrap .adfit').parent();
-        // if($('#attribute-1').val() == 'adsense') {
-        //     recommendAds = "";
-        //     adfitAd = "";
-        // }
-        var blankLeftSide = (window.innerWidth - ($('.content-wrapper').width() + 20))/2 - 300;
-        var isHideSidebar = $('#hide-sidebar').val() && blankLeftSide > 0;
-        var tocSelector = 'all';
-        var tocTargetWithoutRecommendAds = recommendAds.length > 0?(adsenseAd.length > 0?adsenseAd:adfitAd.length > 0?adfitAd:null):(adsenseAd.length > 0?(adfitAd.length > 0?adfitAd:null):null);
-        var tocTargetWithRecommendAds = recommendAds.length > 0?recommendAds:(adsenseAd.length > 0?adsenseAd:adfitAd.length > 0?adfitAd:null);
-        var tocTarget = tocSelector == 'all'?tocTargetWithRecommendAds:tocTargetWithoutRecommendAds;
+        var tocTarget = null;
+        if($('#fixed-ads-type').val() == 'matched') {
+            tocTarget = $('#recommend-ads').parent();
+        } else if($('#fixed-ads-type').val() == 'adsense') {
+            tocTarget = $('aside .revenue_unit_wrap .adsense').parent();
+        } else if($('#fixed-ads-type').val() == 'adfit') {
+            tocTarget = $('aside .revenue_unit_wrap .adfit').parent();
+        }
         var removeStyleFlag = false;
         var headerHeight = $('#fixed-header').val()?$('header').height()+5:($('#hide-sidebar').val()?(floatingTocPostion?5:60):5);
-        if (type == undefined && (isHideSidebar || (window.innerWidth > 1079 && window.scrollY > $('aside').height() + 150 && window.innerHeight > 650))) {
-            if(recommendAds.length > 0) {
-                var adjustInnerHeight = window.innerHeight - addHeightByAnchorAds('bottom') - addHeightByAnchorAds('top');
-                if(adjustInnerHeight > 820) {
-                    recommendAds.css('top', 'calc(' + headerHeight + 'px - 85px)');
-                    recommendAds.css('transform', 'scale(0.8)');
-                } else if(adjustInnerHeight > 730) {
-                    recommendAds.css('top', 'calc(' + headerHeight + 'px - 130px)');
-                    recommendAds.css('transform', 'scale(0.7)');
-                } else if(adjustInnerHeight > 650) {
-                    recommendAds.css('top', 'calc(' + headerHeight + 'px - 180px)');
-                    recommendAds.css('transform', 'scale(0.6)');
-                }
-            } else if(tocTarget != null) {
-                tocTarget.css('position', 'fixed');
-                tocTarget.css('top', 'calc(' + headerHeight + 'px + 10px)');
-            }
-            if(tocTarget != null) {
-                if(isHideSidebar) {
-                    if(floatingTocPostion) {
-                        tocTarget.css('left', blankLeftSide/2 + 'px');
-                    } else {
-                        tocTarget.css('right', blankLeftSide/2 + 'px');
-                    }
-                }
-            }
-        } else if(type == 'toc') {
+        if(type == 'toc') {
             if(tocTarget != null) {
                 var tocLeft = ((window.innerWidth - ($('.content-wrapper').width() + 20))/2 - tocTarget.parent().outerWidth())/2;
                 if((contentMiddleYn && tocLeft >= 0) || (!contentMiddleYn && window.innerWidth >= 1400)) {

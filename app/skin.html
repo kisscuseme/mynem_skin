@@ -283,6 +283,15 @@
 				}
 			</s_not_var_shadow-effect>
 
+			<s_if_var_matched-ads-height>
+				.sidebar #recommend-ads.revenue_unit_item.adsense {
+					height:  [##_var_matched-ads-height_##]px;
+				}
+				.sidebar #recommend-ads > ins {
+					height: calc([##_var_matched-ads-height_##]px - 20px) !important;
+				}
+			</s_if_var_matched-ads-height>
+
 			<s_not_var_custom-font>
 				.like_bubble {
 					margin-bottom: 10px !important;
@@ -405,13 +414,13 @@
 				/* solid style */
 				<s_if_var_sidebar-solid-style>
 					.comment-form .field {
-						border-top: [##_var_border-size_##]px solid #ccc;
-						border-left: [##_var_border-size_##]px solid #ccc;
-						border-right: [##_var_border-size_##]px solid #ccc;
+						border-top: [##_var_border-size_##]px solid [##_var_etc-color_##];
+						border-left: [##_var_border-size_##]px solid [##_var_etc-color_##];
+						border-right: [##_var_border-size_##]px solid [##_var_etc-color_##];
 						border-bottom: 0px;
 					}
 					.comment-form .field input[type=password] {
-						border-left: [##_var_border-size_##]px solid #ccc;
+						border-left: [##_var_border-size_##]px solid [##_var_etc-color_##];
 					}
 					.container_postbtn .postbtn_like,
 					.container_postbtn .btn_menu_toolbar {
@@ -479,9 +488,166 @@
 				</s_if_var_image-solid-style>
 			</s_if_var_etc-color>
 			
+			/* custom dark mode color */
+			<s_if_var_use-dark-mode-color>
+				<s_if_var_blog-title-color-d>
+					body.dark-mode header p a {color:[##_var_blog-title-color-d_##]}
+				</s_if_var_blog-title-color-d>
+
+				<s_if_var_blog-menu-color-d>
+					body.dark-mode #blog-menu ul li a {color:[##_var_blog-menu-color-d_##]}
+				</s_if_var_blog-menu-color-d>
+
+				<s_if_var_background-color-d>
+					header:after, section:after, footer:after, .content-title:after, .top-button .menu button:before,
+					.book-toc:after, .floating-toc:after, .top-button .menu button:before, .move-top-btn:before,
+					.mobile-menu aside:after, .toast-wrap:after, .share-btn:before, .dark-mode-on-btn:before, .dark-mode-off-btn:before, .font-size-up-btn:before, .font-size-down-btn:before
+					{background-color:[##_var_background-color-d_##]}
+
+					.cover-list ul li a, .post-item a, .cover-special ul li {
+						background: [##_var_background-color-d_##]1A;
+					}
+				</s_if_var_background-color-d>
+			
+				<s_if_var_sidebar-color-d>
+					body.dark-mode .sidebar h2 {background-color:[##_var_sidebar-color-d_##] !important}
+				</s_if_var_sidebar-color-d>
+
+				<s_if_var_sidebar-text-color-d>
+					body.dark-mode .sidebar h2, body.dark-mode .sidebar h2 a {color:[##_var_sidebar-text-color-d_##] !important}
+				</s_if_var_sidebar-text-color-d>
+			
+				<s_if_var_etc-color-d>
+					body.dark-mode .sidebar .category .c_cnt,
+					body.dark-mode article .another_category th a,
+					body.dark-mode .pagination .next:before,
+					body.dark-mode .pagination .prev:before, body.dark-mode .content-title .meta a,
+					body.dark-mode .content-article h2 button, body.dark-mode .content-title .category, body.dark-mode .content-title .meta,
+					body.dark-mode .content-article h3 button, body.dark-mode #tt-body-search .post-header h1 span:before,
+					body.dark-mode .content-article h4 button, body.dark-mode .tags a:before, body.dark-mode #tt-body-tag .post-header h1 span:before, body.dark-mode .cover-special ul li .category,
+					body.dark-mode .more-reply, #toc-title p, body.dark-mode .search button:before, body.dark-mode .content-article a, body.dark-mode .toast, body.dark-mode .change-font-btn, body.dark-mode .post-item .meta .category,
+					body.dark-mode .content-article .book-toc p, body.dark-mode .content-article .book-toc p span#toggle, body.dark-mode #toc > li:before, body.dark-mode #toc > li > ul > li:before, body.dark-mode #toc > li > ul > li > ul > li:before, body.dark-mode .cover-list ul li .meta .category,
+					body.dark-mode .comments h2 .count, body.dark-mode article .another_category th:before, body.dark-mode .post-header h1 em, body.dark-mode .bgm-btn, body.dark-mode .dark-mode-btn-dark, body.dark-mode .dark-mode-btn-default,
+					body.dark-mode .move-top-btn:after, body.dark-mode .top-button .menu button:after, body.dark-mode .post-header h1:before, body.dark-mode article h2:before, body.dark-mode .content-article .copy-title-btn,
+					body.dark-mode .share-btn:after, body.dark-mode .dark-mode-on-btn:after, body.dark-mode .dark-mode-off-btn:after, body.dark-mode .font-size-up-btn:after, body.dark-mode .font-size-down-btn:after,
+					body.dark-mode #toc > li a:after, body.dark-mode #toc > li > ul > li a:after, body.dark-mode #toc > li > ul > li > ul > li a:after {color:[##_var_etc-color-d_##]}
+					body.dark-mode #toc-title p #toggle, body.dark-mode .floating-icon:after,
+					body.dark-mode .sidebar .category .category_list .link_item:before, body.dark-mode #current-bgm:before, body.dark-mode h2 .bgm-btn,
+					body.dark-mode .sidebar .category .sub_category_list .link_sub_item:before {color:[##_var_etc-color-d_##] !important;opacity:0.7;}
+					body.dark-mode .content-article h2 {border-left: [##_var_etc-color-d_##]ff 16px solid !important;border-bottom: 4px solid [##_var_etc-color-d_##]ff !important;}
+					body.dark-mode .content-article h3 {border-left: [##_var_etc-color-d_##]cc 12px solid !important;border-bottom: 3px solid [##_var_etc-color-d_##]cc !important;}
+					body.dark-mode .content-article h4 {border-left: [##_var_etc-color-d_##]88 8px solid !important;border-bottom: 2px solid [##_var_etc-color-d_##]88 !important;}
+					body.dark-mode .comment-form .submit button,
+					body.dark-mode .progress-bar-vertical, body.dark-mode .progress-bar-horizontal,
+					body.dark-mode .progress-bar-etc-vertical, body.dark-mode .progress-bar-etc-horizontal,
+					body.dark-mode .sidebar .close:before, body.dark-mode .sidebar .close:after {background-color:[##_var_etc-color-d_##]}
+					body.dark-mode .move-top-btn, body.dark-mode .top-button .menu button, body.dark-mode .sidebar .close, body.dark-mode .top-button .profile button,
+					body.dark-mode .share-btn, body.dark-mode .dark-mode-on-btn, body.dark-mode .dark-mode-off-btn, body.dark-mode .font-size-up-btn, body.dark-mode .font-size-down-btn
+					{border: [##_var_border-size_##]px solid [##_var_etc-color-d_##]55 !important}
+					body.dark-mode .search input {border-bottom: [##_var_border-size_##]px solid [##_var_etc-color-d_##]55;}
+					body.dark-mode article .another_category.another_category_color_gray a, body.dark-mode .comment-list ul li .author-meta .control button:before,
+					body.dark-mode .comment-list .tt_more_preview_comments_text, body.dark-mode .content-box .content-arrow {
+						color:[##_var_etc-color-d_##] !important;
+					}
+					body.dark-mode .sidebar .category ul li ul li {
+						border-bottom: [##_var_border-size_##]px dashed [##_var_etc-color-d_##]55;
+					}
+					body.dark-mode .comment-list ul li ul li:after {
+						background: linear-gradient(90deg, [##_var_etc-color_##]55, transparent 50%);
+					}
+					body.dark-mode .content-box {
+						background-color: [##_var_sidebar-color-d_##]99;
+						color: [##_var_sidebar-text-color-d_##];
+					}
+					body.dark-mode .content-box a {
+						color: [##_var_sidebar-text-color-d_##];
+					}
+					body.dark-mode .content-comment {
+						background-color: [##_var_etc-color-d_##]33;
+					}
+
+					/* solid style */
+					<s_if_var_sidebar-solid-style>
+						body.dark-mode .comment-form .field {
+							border-top: [##_var_border-size_##]px solid [##_var_etc-color-d_##];
+							border-left: [##_var_border-size_##]px solid [##_var_etc-color-d_##];
+							border-right: [##_var_border-size_##]px solid [##_var_etc-color-d_##];
+							border-bottom: 0px;
+						}
+						body.dark-mode .comment-form .field input[type=password] {
+							border-left: [##_var_border-size_##]px solid [##_var_etc-color-d_##];
+						}
+						body.dark-mode .container_postbtn .postbtn_like,
+						body.dark-mode .container_postbtn .btn_menu_toolbar {
+							border: [##_var_border-size_##]px solid [##_var_etc-color-d_##]55 !important;
+						}
+						body.dark-mode .comment-list, body.dark-mode .comment-list ul li ul li {
+							border-top: [##_var_border-size_##]px dashed [##_var_etc-color-d_##]55;
+						}
+						body.dark-mode .sidebar .category, body.dark-mode .sidebar .notice, body.dark-mode .sidebar .recent, body.dark-mode .sidebar .profile-info, 
+						body.dark-mode .sidebar .popular, body.dark-mode .sidebar .recent-comment, body.dark-mode .sidebar .tags, body.dark-mode #tistorySnsLayer.layer_post,
+						body.dark-mode .sidebar .count, body.dark-mode .sidebar .module_plugin, body.dark-mode .archives, body.dark-mode .comment-form textarea,
+						body.dark-mode .comment-list .tt_more_preview_comments_text, body.dark-mode .sidebar .best-post,
+						body.dark-mode figure.fileblock, body.dark-mode #tt-body-page figure.fileblock {
+							border: [##_var_border-size_##]px solid [##_var_etc-color-d_##]55;
+						}
+						body.dark-mode .sidebar .category h2, body.dark-mode .sidebar .notice h2,  body.dark-mode .sidebar .recent h2, body.dark-mode .sidebar .profile-info h2,
+						body.dark-mode .sidebar .popular h2, body.dark-mode .sidebar .recent-comment h2, body.dark-mode .sidebar .tags h2, body.dark-mode .sidebar .archives h2,
+						body.dark-mode .sidebar .count h2, body.dark-mode .sidebar .module_plugin div:not(.change-font-box, .lang-box, .dark-mode-box) h2,
+						body.dark-mode .sidebar .module_plugin #bgm-title, body.dark-mode .sidebar .module_plugin #recommend-ads-title, body.dark-mode .sidebar .best-post h2,
+						body.dark-mode .comment-list ul li {
+							border-bottom: [##_var_border-size_##]px dashed [##_var_etc-color-d_##]55;
+						}
+						body.dark-mode .sidebar .module_plugin .change-font-box h2,
+						body.dark-mode .sidebar .module_plugin .lang-box h2, body.dark-mode .dark-mode-box h2 {
+							border-right: [##_var_border-size_##]px dashed [##_var_etc-color-d_##]55;
+						}
+					</s_if_var_sidebar-solid-style>
+					<s_if_var_content-solid-style>
+						body.dark-mode section .content-wrapper {
+							border: [##_var_border-size_##]px solid [##_var_etc-color-d_##]55;
+						}
+					</s_if_var_content-solid-style>
+					<s_if_var_title-solid-style>
+						body.dark-mode .content-title {
+							border: [##_var_border-size_##]px solid [##_var_etc-color-d_##]55;
+						}
+					</s_if_var_title-solid-style>
+					<s_if_var_toc-solid-style>
+						body.dark-mode .floating-toc, body.dark-mode .floating-toc-new, body.dark-mode .book-toc {
+							border: [##_var_border-size_##]px solid [##_var_etc-color-d_##]55;
+						}
+					</s_if_var_toc-solid-style>
+					<s_if_var_opengraph-solid-style>
+						body.dark-mode figure[data-ke-type='opengraph'], body.dark-mode #tt-body-page figure[data-ke-type='opengraph'] {
+							border: [##_var_border-size_##]px solid [##_var_etc-color-d_##]55 !important;
+						}
+					</s_if_var_opengraph-solid-style>
+					<s_if_var_cover-solid-style>
+						body.dark-mode .cover-list ul li, body.dark-mode .post-item a, body.dark-mode .cover-special ul li {
+							border: [##_var_border-size_##]px solid [##_var_etc-color-d_##]55;
+						}
+					</s_if_var_cover-solid-style>
+					<s_if_var_ads-solid-style>
+						body.dark-mode .main-ads, body.dark-mode #ad-top-left, body.dark-mode #ad-top-right {
+							border: [##_var_border-size_##]px solid [##_var_etc-color-d_##]55;
+						}
+					</s_if_var_ads-solid-style>
+					<s_if_var_image-solid-style>
+						body.dark-mode figure.imageblock, body.dark-mode #tt-body-page figure.imageblock {
+							border: [##_var_border-size_##]px solid [##_var_etc-color-d_##]55 !important;
+						}
+						body.dark-mode figure.imageblock span[data-lightbox], body.dark-mode #tt-body-page figure.imageblock span[data-lightbox] {
+							display: flex;
+						}
+					</s_if_var_image-solid-style>
+				</s_if_var_etc-color-d>
+			</s_if_var_use-dark-mode-color>
+			
 			<s_if_var_forced-font-color>
 				body.dark-mode .content-article p span:not(#toggle),
-				body.dark-mode .content-article li {
+				body.dark-mode .content-article li,
+				body.dark-mode blockquote[data-ke-style='style3'], body.dark-mode #tt-body-page blockquote[data-ke-style='style3'] {
 					color: #d6d6d6 !important;
 					background-color: transparent !important;
 				}
@@ -2354,6 +2520,7 @@
 			<input type='hidden' id='fold-category-speed' value="[##_var_fold-category-speed_##]">
 			<input type='hidden' id='fold-category-target' value="[##_var_fold-category-target_##]">
 			<input type='hidden' id='adsense-refresh' value="[##_var_adsense-refresh_##]">
+			<input type='hidden' id='fixed-ads-type' value="[##_var_fixed-ads-type_##]">			
 		</s_t3>
 		<script src="./images/common.min.js"></script>
 		<script>
