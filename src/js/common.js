@@ -627,13 +627,13 @@ function showToast(msg, slot) {
     var toast = $('#toast');
 
     if(slot == 'top') {
-        toast.css('top', '33px');
+        toast.css('top', 'calc(33px + ' + addHeightByAnchorAds('top') + 'px)');
         toast.css('bottom', '');
     } else if(slot == 'bottom') {
         toast.css('top', '');
-        toast.css('bottom', '-13px');
+        toast.css('bottom', 'calc(-13px + ' + addHeightByAnchorAds('bottom') + 'px)');
     } else {
-        toast.css('top', '50%');
+        toast.css('top', 'calc(50% + ' + (addHeightByAnchorAds('bottom')+addHeightByAnchorAds('top')) + 'px)');
         toast.css('bottom', '');
     }
 
