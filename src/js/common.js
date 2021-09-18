@@ -633,7 +633,7 @@ function showToast(msg, slot) {
         toast.css('top', '');
         toast.css('bottom', 'calc(-13px + ' + addHeightByAnchorAds('bottom') + 'px)');
     } else {
-        toast.css('top', 'calc(50% + ' + (addHeightByAnchorAds('bottom')+addHeightByAnchorAds('top')) + 'px)');
+        toast.css('top', 'calc(50% - ' + (addHeightByAnchorAds('bottom')+addHeightByAnchorAds('top')) + 'px)');
         toast.css('bottom', '');
     }
 
