@@ -1239,7 +1239,7 @@ function fixedRecommendAds(type) {
         }
     
         if(removeStyleFlag) {
-            tocTarget.parent().removeAttr('style');
+            tocTarget.removeAttr('style');
         }
     }
 }

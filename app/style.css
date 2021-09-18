@@ -2341,7 +2341,7 @@ article .tags a {
 
 /* space fix */
 .revenue_unit_wrap {
-	overflow: auto;
+	overflow: hidden;
 }
 .gcse-searchbox {
 	height: 31px;

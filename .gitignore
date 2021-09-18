@@ -64,5 +64,5 @@ Thumbs.db
 custom
 
 #min file
-common.min.js
-preload.min.js
+app/images/preload.min.js
+app/images/common.min.js
