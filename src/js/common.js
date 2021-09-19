@@ -770,7 +770,7 @@ function common(){
                     sns.css('left', '');
                     sns.css('top', '');
                     sns.css('right', '10px');
-                    sns.css('bottom', addHeightByAnchorAds('bottom')>0?addHeightByAnchorAds('bottom')+35:55+'px');
+                    sns.css('bottom', (addHeightByAnchorAds('bottom')+60)+'px');
                 }, 200);
             }
         }
@@ -965,7 +965,7 @@ function fixedRecommendAds(type) {
         var headerHeight = $('#fixed-header').val()?$('header').height()+5:($('#hide-sidebar').val()?(floatingTocPostion?5:60):5);
         if(type == 'toc') {
             if(tocTarget != null) {
-                var checkAdsWidth = (window.innerWidth - $('.content-wrapper').width())/2 > tocTarget.parent().outerWidth();
+                var checkAdsWidth = (window.innerWidth - $('.content-wrapper').width())/2 > tocTarget.outerWidth();
                 if((contentMiddleYn && checkAdsWidth) || (!contentMiddleYn && window.innerWidth >= 1400)) {
                     if(window.scrollY > $('header').height()
                       && ((bookToc.length > 0 && $('#toc-title>p>span#toggle').hasClass('close') && (!contentMiddleYn || (contentMiddleYn && adsTocPosition)))
@@ -973,10 +973,10 @@ function fixedRecommendAds(type) {
                         var tocOffsetTop = bookToc.length > 0?(contentMiddleYn && !adsTocPosition?0:50):0;
                         var tocOffsetSide = 0;
                         if(contentMiddleYn) {
-                            if(floatingTocPostion) {
-                                tocOffsetSide = (window.innerWidth - $('.content-wrapper').width())/2*1.5 + $('.content-wrapper').width() - tocTarget.parent().outerWidth()/2 + 8;
-                            } else {
-                                tocOffsetSide = (window.innerWidth - $('.content-wrapper').width())/4 - tocTarget.parent().outerWidth()/2 - 19;
+                            if(floatingTocPostion) { //광고 오른쪽
+                                tocOffsetSide = (window.innerWidth - $('.content-wrapper').width())/2*1.5 + $('.content-wrapper').width() - tocTarget.outerWidth()/2 + 8;
+                            } else { //광고 왼쪽
+                                tocOffsetSide = (window.innerWidth - $('.content-wrapper').width())/4 - tocTarget.outerWidth()/2 - 19;
                             }
                         } else {
                             tocOffsetSide = $('.floating-toc-new')[0].offsetLeft+5;
@@ -1530,7 +1530,7 @@ function recommendPost() {
                         rightMargin = (window.innerWidth - 310) / 2;
                     }
 
-                    $('#recommend-contents').css('bottom', (addHeightByAnchorAds('bottom')+55)+'px');
+                    $('#recommend-contents').css('bottom', (addHeightByAnchorAds('bottom')+60)+'px');
                     $('#recommend-contents').css('right', '-350px');
                     $('#recommend-contents').css('display','block');
                     recommendPostTimer = $('#recommend-contents').animate({'right':rightMargin+'px'}, 1000, 'swing', function() {});
@@ -1572,7 +1572,7 @@ function addHeightByAnchorAds(type) {
 }
 
 function commonForScroll() {
-    $('.floating-button').css('bottom', addHeightByAnchorAds('bottom')+10+'px');
+    $('.floating-button').css('bottom', addHeightByAnchorAds('bottom')+15+'px');
     $('#wrapper').css('padding-bottom',addHeightByAnchorAds('bottom')+'px');
     
 }
