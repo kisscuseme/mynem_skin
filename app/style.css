@@ -392,7 +392,6 @@ article h2,
 }
 .cover-list ul li {
 	margin-bottom: 10px;
-	padding-top: 10px;
 }
 .cover-list ul li:last-child {
 	padding-bottom: 10px;
@@ -2008,7 +2007,7 @@ article .tags a {
 }
 #toc > li:before {
   padding-right: 5px;
-	color: #517135;
+	font-size: 0.8em;
 }
 #toc > li > ul {
 	padding-left: 10px;
@@ -2024,6 +2023,7 @@ article .tags a {
 }
 #toc > li > ul > li:before {
   padding-right: 5px;
+	font-size: 0.8em;
 }
 #toc > li > ul > li > ul {
 	padding-left: 10px;
@@ -2039,6 +2039,7 @@ article .tags a {
 }
 #toc > li > ul > li > ul > li:before {
   padding-right: 5px;
+	font-size: 0.8em;
 }
 .floating-toc-new {
 	position: fixed;
