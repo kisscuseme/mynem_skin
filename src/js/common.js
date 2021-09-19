@@ -225,17 +225,17 @@ function appendTocNew() {
                     var sideValue = 0;
                     if(contentMiddleYn) {
                         if(floatingTocPostion) { //오른쪽
-                            sideValue = (window.innerWidth - $('.content-wrapper').width())/4 - floatingTocNew.outerWidth()/2 - 17;
+                            sideValue = (window.innerWidth - $('.content-wrapper').width())/4 - floatingTocNew.outerWidth()/2 - 28;
                             floatingTocNew.css('left', '');
                             floatingTocNew.css('right', sideValue);
                         } else { //왼쪽
-                            sideValue = ((window.innerWidth - $('.content-wrapper').width())/2 - floatingTocNew.outerWidth())/2 - 17;
+                            sideValue = ((window.innerWidth - $('.content-wrapper').width())/2 - floatingTocNew.outerWidth())/2 - 28;
                             floatingTocNew.css('right', '');
                             floatingTocNew.css('left', sideValue);
                             
                         }
                     } else {
-                        sideValue = ((window.innerWidth - $('.content-wrapper').width()) - floatingTocNew.outerWidth())/2 - 25;
+                        sideValue = ((window.innerWidth - $('.content-wrapper').width()) - floatingTocNew.outerWidth())/2 - 52;
                         floatingTocNew.css('left', '');
                         floatingTocNew.css('right', sideValue);
                     }
@@ -770,7 +770,7 @@ function common(){
                     sns.css('left', '');
                     sns.css('top', '');
                     sns.css('right', '10px');
-                    sns.css('bottom', addHeightByAnchorAds('bottom')>0?addHeightByAnchorAds('bottom')+55:75+'px');
+                    sns.css('bottom', addHeightByAnchorAds('bottom')>0?addHeightByAnchorAds('bottom')+35:55+'px');
                 }, 200);
             }
         }
@@ -974,9 +974,9 @@ function fixedRecommendAds(type) {
                         var tocOffsetSide = 0;
                         if(contentMiddleYn) {
                             if(floatingTocPostion) {
-                                tocOffsetSide = (window.innerWidth - $('.content-wrapper').width())/2*1.5 + $('.content-wrapper').width() - tocTarget.parent().outerWidth()/2;
+                                tocOffsetSide = (window.innerWidth - $('.content-wrapper').width())/2*1.5 + $('.content-wrapper').width() - tocTarget.parent().outerWidth()/2 + 8;
                             } else {
-                                tocOffsetSide = (window.innerWidth - $('.content-wrapper').width())/4 - tocTarget.parent().outerWidth()/2;
+                                tocOffsetSide = (window.innerWidth - $('.content-wrapper').width())/4 - tocTarget.parent().outerWidth()/2 - 19;
                             }
                         } else {
                             tocOffsetSide = $('.floating-toc-new')[0].offsetLeft+5;
@@ -1530,7 +1530,7 @@ function recommendPost() {
                         rightMargin = (window.innerWidth - 310) / 2;
                     }
 
-                    $('#recommend-contents').css('bottom', (addHeightByAnchorAds('bottom')+75)+'px');
+                    $('#recommend-contents').css('bottom', (addHeightByAnchorAds('bottom')+55)+'px');
                     $('#recommend-contents').css('right', '-350px');
                     $('#recommend-contents').css('display','block');
                     recommendPostTimer = $('#recommend-contents').animate({'right':rightMargin+'px'}, 1000, 'swing', function() {});
@@ -1572,7 +1572,7 @@ function addHeightByAnchorAds(type) {
 }
 
 function commonForScroll() {
-    $('.floating-button').css('bottom', addHeightByAnchorAds('bottom')+30+'px');
+    $('.floating-button').css('bottom', addHeightByAnchorAds('bottom')+10+'px');
     $('#wrapper').css('padding-bottom',addHeightByAnchorAds('bottom')+'px');
     
 }

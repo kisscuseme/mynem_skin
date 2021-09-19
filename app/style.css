@@ -190,6 +190,7 @@ footer .inner {
 	padding: 10px;
 	min-height: 80px;
 	position: relative;
+	text-align: center;
 }
 footer p {
 	margin-bottom: 10px;
@@ -222,7 +223,7 @@ section:after {
 }
 section .content-wrapper {
 	margin: 0 auto;
-	padding: 10px;
+	padding: 30px;
 }
 section .content-wrapper:after {
 	content: "";
@@ -390,11 +391,11 @@ article h2,
 	margin-bottom: 30px;
 }
 .cover-list ul li {
-	margin-top: 15px;
-	padding-bottom: 15px;
+	margin-bottom: 10px;
+	padding-top: 10px;
 }
 .cover-list ul li:last-child {
-	border: none;
+	padding-bottom: 10px;
 }
 .cover-list ul li a {
 	display: block;
@@ -659,6 +660,9 @@ article h2,
 .sidebar div:not(#aside-top-blank) {
 	min-height: 30px;
 }
+.sidebar div:last-child {
+	margin-bottom: 0px;
+}
 .sidebar h2 {
 	font-weight: bold;
 	font-size: 0.875em !important;
@@ -758,6 +762,13 @@ body.dark-mode .sidebar .category ul li ul li ul li:last-child {
 	white-space: nowrap;
 	text-overflow: ellipsis;
 	font-size: 0.875em;
+}
+.sidebar .recent-comment ul li a:before,
+.sidebar .archives ul li a:before,
+.sidebar .notice ul li a:before, 
+.sidebar .best-post ul li a:before {
+	content: "\f105";
+	padding-right: 3px;
 }
 .sidebar .count h2 {
 	margin-bottom: 10px;
@@ -1087,6 +1098,9 @@ animation-play-state: paused;
 	width: auto;
 	height: auto;
 	background-color: transparent;
+}
+.content-title.notice {
+	margin-bottom: 20px;
 }
 
 /* content article */
@@ -1703,8 +1717,8 @@ article .tags a {
 /* maker : armynem */
 .maker {
 	position: absolute;
-	right: 5px;
-	bottom: 5px;
+	left: 10px;
+	bottom: 10px;
 	margin: 0px;
 }
 .maker a {
@@ -2128,7 +2142,7 @@ article .tags a {
 .floating-button {
 	position: fixed;
 	right: 10px;
-	bottom: 30px;
+	bottom: 10px;
 	z-index: 201;
 }
 
@@ -2400,7 +2414,7 @@ body.dark-mode textarea, body.dark-mode .top-button .profile ul li a {
 }
 body.dark-mode .floating-toc-new:after,
 body.dark-mode .content-box {
-	background-color: #1e1e1e;
+	background: #1e1e1e;
 }
 body.dark-mode .content-title .meta a:before, body.dark-mode .content-title .meta span:not(.author):before,
 figure.fileblock a::after, #tt-body-page figure.fileblock a::after {

@@ -407,7 +407,8 @@
 				.move-top-btn:after,.top-button .menu button:after, .post-header h1:before, article h2:before, .content-article .copy-title-btn,
 				.share-btn:after,.dark-mode-on-btn:after,.dark-mode-off-btn:after, .font-size-up-btn:after, .font-size-down-btn:after,
 				#toc > li a:after, #toc > li > ul > li a:after, #toc > li > ul > li > ul > li a:after {color:[##_var_etc-color_##]}
-				#toc-title p #toggle, .floating-icon:after,
+				#toc-title p #toggle, .floating-icon:after, .sidebar .recent-comment ul li a:before, .sidebar .archives ul li a:before,
+				.sidebar .notice ul li a:before, .sidebar .best-post ul li a:before,
 				.sidebar .category .category_list .link_item:before, .bgm-header, h2 .bgm-btn,
 				.sidebar .category .sub_category_list .link_sub_item:before {color:[##_var_etc-color_##] !important;opacity:0.7;}
 				.content-article h2 {border-left: [##_var_etc-color_##]ff 16px solid !important;border-bottom: 4px solid [##_var_etc-color_##]ff !important;}
@@ -420,7 +421,8 @@
 				.move-top-btn, .top-button .menu button, .sidebar .close, .top-button .profile button,
 				.share-btn, .dark-mode-on-btn, .dark-mode-off-btn, .font-size-up-btn, .font-size-down-btn
 				{border: [##_var_border-size_##]px solid [##_var_etc-color_##]55 !important}
-				.cover-list ul li {border-bottom: [##_var_border-size_##]px solid [##_var_etc-color_##]55}
+				.cover-list ul li {border-top: [##_var_border-size_##]px solid [##_var_etc-color_##]55}
+				.cover-list ul li:last-child {border-bottom: [##_var_border-size_##]px solid [##_var_etc-color_##]55}
 				::-webkit-scrollbar-thumb, #toc-body::-webkit-scrollbar-thumb {background-color:[##_var_etc-color_##]55 !important}
 				.search input {border-bottom: [##_var_border-size_##]px solid [##_var_etc-color_##]55;}
 				article .another_category.another_category_color_gray a, .comment-list ul li .author-meta .control button:before,
@@ -564,7 +566,8 @@
 					body.dark-mode .move-top-btn:after, body.dark-mode .top-button .menu button:after, body.dark-mode .post-header h1:before, body.dark-mode article h2:before, body.dark-mode .content-article .copy-title-btn,
 					body.dark-mode .share-btn:after, body.dark-mode .dark-mode-on-btn:after, body.dark-mode .dark-mode-off-btn:after, body.dark-mode .font-size-up-btn:after, body.dark-mode .font-size-down-btn:after,
 					body.dark-mode #toc > li a:after, body.dark-mode #toc > li > ul > li a:after, body.dark-mode #toc > li > ul > li > ul > li a:after {color:[##_var_etc-color-d_##]}
-					body.dark-mode #toc-title p #toggle, body.dark-mode .floating-icon:after,
+					body.dark-mode #toc-title p #toggle, body.dark-mode .floating-icon:after, body.dark-mode .sidebar .recent-comment ul li a:before, body.dark-mode .sidebar .archives ul li a:before,
+					body.dark-mode .sidebar .notice ul li a:before, body.dark-mode .sidebar .best-post ul li a:before,
 					body.dark-mode .sidebar .category .category_list .link_item:before, body.dark-mode .bgm-header, body.dark-mode h2 .bgm-btn,
 					body.dark-mode .sidebar .category .sub_category_list .link_sub_item:before {color:[##_var_etc-color-d_##] !important;opacity:0.7;}
 					body.dark-mode .content-article h2 {border-left: [##_var_etc-color-d_##]ff 16px solid !important;border-bottom: 4px solid [##_var_etc-color-d_##]ff !important;}
@@ -577,6 +580,8 @@
 					body.dark-mode .move-top-btn, body.dark-mode .top-button .menu button, body.dark-mode .sidebar .close, body.dark-mode .top-button .profile button,
 					body.dark-mode .share-btn, body.dark-mode .dark-mode-on-btn, body.dark-mode .dark-mode-off-btn, body.dark-mode .font-size-up-btn, body.dark-mode .font-size-down-btn
 					{border: [##_var_border-size_##]px solid [##_var_etc-color-d_##]55 !important}
+					body.dark-mode .cover-list ul li {border-top: [##_var_border-size_##]px solid [##_var_etc-color-d_##]55}
+					body.dark-mode .cover-list ul li:last-child {border-bottom: [##_var_border-size_##]px solid [##_var_etc-color-d_##]55}
 					body.dark-mode .search input {border-bottom: [##_var_border-size_##]px solid [##_var_etc-color-d_##]55;}
 					body.dark-mode article .another_category.another_category_color_gray a, body.dark-mode .comment-list ul li .author-meta .control button:before,
 					body.dark-mode .comment-list .tt_more_preview_comments_text, body.dark-mode .content-box .content-arrow {
@@ -741,8 +746,8 @@
 			</s_not_var_toc-width-scroll>
 			<s_if_var_content-middle-yn>
 				section .content-wrapper {max-width:[##_var_article-max-width_##]px;}
-				header .inner {max-width:[##_var_article-max-width_##]px;}
-				footer .inner {max-width:[##_var_article-max-width_##]px;}
+				header .inner {max-width:calc([##_var_article-max-width_##]px + 40px);}
+				footer .inner {max-width:calc([##_var_article-max-width_##]px + 40px);}
 				article {width:calc([##_var_article-max-width_##]px - 300px<s_if_var_cover-solid-style> - [##_var_border-size_##]px</s_if_var_cover-solid-style>);}
 				.cover-special ul li img {
 					width: calc(([##_var_article-max-width_##]px - 334px<s_if_var_cover-solid-style> - [##_var_border-size_##]px</s_if_var_cover-solid-style>) * 0.5);
@@ -1135,7 +1140,7 @@
 					}
 				}
 				.floating-toc-new {
-					width: calc((100vw - [##_var_article-max-width_##]px - 110px) / 2);
+					width: calc((100vw - [##_var_article-max-width_##]px - 140px) / 2);
 				}
 				<s_if_var_floating-toc-position>
 					.floating-toc-new {
@@ -1154,15 +1159,15 @@
 			</s_if_var_content-middle-yn>
 			<s_not_var_content-middle-yn>
 				article {
-					width: calc(100vw - 330px - 335px);
+					width: calc(100vw - 330px - 395px);
 				}
 				section .content-wrapper {
-					margin-left: 1px;
+					margin-left: 10px;
 					margin-right: 330px;
 				}
 				header .inner, footer .inner {
-					margin-left: 1px;
-					margin-right: 1px;
+					margin-left: 10px;
+					margin-right: 330px;
 				}
 				.floating-toc-new {
 					float: right;
@@ -2093,7 +2098,7 @@
 							<s_notice_rep>
 								<div class="content-title notice">
 									<div class="inner">
-										<h1><a href="[##_notice_rep_link_##]">[##_notice_rep_title_##]</a></h1>
+										<h1>[##_notice_rep_title_##]</h1>
 										<span class="meta">
 											<span class="date">[##_notice_rep_simple_date_##]</span>
 										</span>
