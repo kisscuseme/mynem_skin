@@ -813,14 +813,6 @@
 				<default>matched</default>
 			</variable>
 			<variable>
-				<name>matched-ads-height</name>
-				<label><![CDATA[ 사이드바 일치하는 광고 높이(height) ]]></label>
-				<description><![CDATA[]]></description>
-				<type>STRING</type>
-				<option />
-				<default>900</default>
-			</variable>
-			<variable>
 				<name>custom-font-forced</name>
 				<label><![CDATA[ 본문 적용 글꼴 무시 ]]></label>
 				<description><![CDATA[]]></description>
@@ -926,6 +918,14 @@
 				<type>STRING</type>
 				<option />
 				<default><![CDATA[]]></default>
+			</variable>
+			<variable>
+				<name>matched-ads-height</name>
+				<label><![CDATA[ height (기본: 900) ]]></label>
+				<description><![CDATA[]]></description>
+				<type>STRING</type>
+				<option />
+				<default>900</default>
 			</variable>
 		</variablegroup>
 
@@ -1087,8 +1087,16 @@
 
 		<variablegroup name="사이드바 인피드 광고">
 			<variable>
-				<name>infeed-google-ads-side</name>
-				<label><![CDATA[ 사용 여부 ]]></label>
+				<name>infeed-google-ads-side-r</name>
+				<label><![CDATA[ 최근 글 사용 여부 ]]></label>
+				<description><![CDATA[]]></description>
+				<type>BOOL</type>
+				<option/>
+				<default>false</default>
+			</variable>
+			<variable>
+				<name>infeed-google-ads-side-p</name>
+				<label><![CDATA[ 인기 글 사용 여부 ]]></label>
 				<description><![CDATA[]]></description>
 				<type>BOOL</type>
 				<option/>
@@ -1339,6 +1347,14 @@
 				<type>BOOL</type>
 				<option/>
 				<default>false</default>
+			</variable>
+			<variable>
+				<name>init-bgm-volume</name>
+				<label><![CDATA[ 최초 볼륨 (기본 0.05) ]]></label>
+				<description><![CDATA[]]></description>
+				<type>STRING</type>
+				<option />
+				<default><![CDATA[ 0.05 ]]></default>
 			</variable>
 			<variable>
 				<name>bgm-title-1</name>

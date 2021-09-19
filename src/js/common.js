@@ -1266,7 +1266,7 @@ var bgmSource = [];
 var saveIndex = window.localStorage.getItem('current-bgm-index');
 if(isNaN(Number(saveIndex))) saveIndex = '0';
 var currentIndex = saveIndex?Number(saveIndex):Math.floor(Math.random()*bgmSource.length);
-var currentVolume = Number(window.localStorage.getItem('current-bgm-volume'))||0.1;
+var currentVolume = Number(window.localStorage.getItem('current-bgm-volume'))||Number($('#init-bgm-volume').val());
 var bgmPlaying = false;
 var nextPlay = false;
 var myBgm = null;
@@ -1300,7 +1300,7 @@ function getCurrentBgm() {
             if(window.innerWidth > 767 || $('#bgm-autoplay-mobile-yn').val()) {
                 if(!window.localStorage.getItem('current-bgm')) {
                     window.localStorage.setItem('current-bgm', 'play');
-                    currentVolume = 0.1;
+                    currentVolume = Number($('#init-bgm-volume').val());
                 }
             }
         }

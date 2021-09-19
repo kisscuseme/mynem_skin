@@ -1822,17 +1822,17 @@
 										</s_rct_notice>
 									</s_sidebar_element>
 									<s_sidebar_element>
-										<!-- 최근글/인기글 -->
+										<!-- 최근 글 -->
 										<div class="recent content-item">
 											<h2>최근 글</h2>
 											<ul>
-												<s_if_var_infeed-google-ads-side>
+												<s_if_var_infeed-google-ads-side-r>
 													<script>
 														var recentCnt = 0;
 													</script>
-												</s_if_var_infeed-google-ads-side>
+												</s_if_var_infeed-google-ads-side-r>
 												<s_rctps_rep>
-													<s_if_var_infeed-google-ads-side>
+													<s_if_var_infeed-google-ads-side-r>
 														<script>
 															if(recentCnt != 0 && recentCnt%[##_var_infeed-repeat-cnt-side_##] == 0) {
 																document.write('<li><ins class="adsbygoogle" style="display:block" data-ad-format="fluid" data-ad-layout-key="[##_var_infeed-data-ad-layout-key-side_##]" data-ad-client="[##_var_infeed-data-ad-client-side_##]" data-ad-slot="[##_var_infeed-data-ad-slot-side_##]"></ins></li>');
@@ -1840,7 +1840,7 @@
 															}
 															recentCnt += 1;
 														</script>
-													</s_if_var_infeed-google-ads-side>
+													</s_if_var_infeed-google-ads-side-r>
 													<li>
 														<a href="[##_rctps_rep_link_##]">
 															<span class="thum">
@@ -1855,16 +1855,19 @@
 												</s_rctps_rep>
 											</ul>
 										</div>
+									</s_sidebar_element>
+									<s_sidebar_element>
+										<!-- 인기 글 -->
 										<div class="popular content-item">
 											<h2>인기 글</h2>
 											<ul>
-												<s_if_var_infeed-google-ads-side>
+												<s_if_var_infeed-google-ads-side-p>
 													<script>
 														var popularCnt = 0;
 													</script>
-												</s_if_var_infeed-google-ads-side>
+												</s_if_var_infeed-google-ads-side-p>
 												<s_rctps_popular_rep>
-													<s_if_var_infeed-google-ads-side>
+													<s_if_var_infeed-google-ads-side-p>
 														<script>
 															if(popularCnt != 0 && popularCnt%[##_var_infeed-repeat-cnt-side_##] == 0) {
 																document.write('<li><ins class="adsbygoogle" style="display:block" data-ad-format="fluid" data-ad-layout-key="[##_var_infeed-data-ad-layout-key-side_##]" data-ad-client="[##_var_infeed-data-ad-client-side_##]" data-ad-slot="[##_var_infeed-data-ad-slot-side_##]"></ins></li>');
@@ -1872,7 +1875,7 @@
 															}
 															popularCnt += 1;
 														</script>
-													</s_if_var_infeed-google-ads-side>
+													</s_if_var_infeed-google-ads-side-p>
 													<li>
 														<a href="[##_rctps_rep_link_##]">
 															<span class="thum">
@@ -2533,6 +2536,7 @@
 			<input type='hidden' id='floating-toc-position' value="[##_var_floating-toc-position_##]">
 			<input type='hidden' id='bgm-autoplay-yn' value="[##_var_bgm-autoplay-yn_##]">
 			<input type='hidden' id='bgm-autoplay-mobile-yn' value="[##_var_bgm-autoplay-mobile-yn_##]">
+			<input type='hidden' id='init-bgm-volume' value="[##_var_init-bgm-volume_##]">
 			<input type='hidden' id='hide-sidebar' value="[##_var_hide-sidebar_##]">
 			<input type='hidden' id='fixed-header' value="[##_var_fixed-header_##]">
 			<input type='hidden' id='floating-toc-type' value="[##_var_floating-toc-type_##]">
@@ -2557,7 +2561,7 @@
 			<input type='hidden' id='fold-category-speed' value="[##_var_fold-category-speed_##]">
 			<input type='hidden' id='fold-category-target' value="[##_var_fold-category-target_##]">
 			<input type='hidden' id='adsense-refresh' value="[##_var_adsense-refresh_##]">
-			<input type='hidden' id='fixed-ads-type' value="[##_var_fixed-ads-type_##]">			
+			<input type='hidden' id='fixed-ads-type' value="[##_var_fixed-ads-type_##]">
 		</s_t3>
 		<script src="./images/common.min.js"></script>
 		<script>
