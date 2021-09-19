@@ -1032,6 +1032,13 @@ function common(){
             $('.og-desc').eq(i).text($('.og-desc').eq(i).text()+'...');
         }
     }
+
+    var sidebarInsParent = $('.sidebar ins').parent();
+    for(var i=0;i<sidebarInsParent.length;i++) {
+        if(sidebarInsParent.eq(i).prop('className') == 'module module_plugin') {
+            sidebarInsParent.eq(i).css('border', 'none');
+        }
+    }
 }
 
 function updateTagsAttr() {
