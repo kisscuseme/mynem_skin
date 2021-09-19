@@ -1337,10 +1337,6 @@ figure[data-ke-type='opengraph'] div.og-text {
 .book-toc ul[data-ke-list-type='disc'] li,
 #tt-body-page .book-toc ul[data-ke-list-type='disc'],
 #tt-body-page .book-toc ul[data-ke-list-type='disc'] li,
-.floating-toc ul[data-ke-list-type='disc'],
-.floating-toc ul[data-ke-list-type='disc'] li,
-#tt-body-page .floating-toc ul[data-ke-list-type='disc'],
-#tt-body-page .floating-toc ul[data-ke-list-type='disc'] li,
 .floating-toc-new ul[data-ke-list-type='disc'],
 .floating-toc-new ul[data-ke-list-type='disc'] li,
 #tt-body-page .floating-toc-new ul[data-ke-list-type='disc'],
@@ -2026,22 +2022,6 @@ article .tags a {
 #toc > li > ul > li > ul > li:before {
   padding-right: 5px;
 }
-.floating-toc {
-	position: absolute;
-	padding: 10px;
-	z-index: 999;
-	display: none;
-}
-.floating-toc:after {
-	content:"";
-	position: absolute;
-	top: 0;
-	left: 0;
-	width: 100%;
-	height: 100%;
-	opacity: 0.1;
-	z-index: -1;
-}
 .floating-toc-new {
 	position: fixed;
 	top: 10px;
@@ -2060,9 +2040,7 @@ article .tags a {
 	height: 100%;
 	opacity: 0.9;
 	z-index: -1;
-	background: #fff;
 }
-.floating-toc p,
 .floating-toc-new p {
 	font-weight: bold;
 	font-size: 0.9em !important;
@@ -2071,18 +2049,11 @@ article .tags a {
 .floating-toc-new #toc {
 	overflow: visible;
 }
-.floating-toc #toc-body {
-	margin-top: 10px;
-	overflow: auto;
-	max-width: 250px;
-	max-height: 500px;
-}
 .floating-toc-new #toc-body {
 	margin-top: 10px;
 	overflow: auto;
 	max-height: 60vh;
 }
-.floating-toc #toc-body #toc,
 .floating-toc-new #toc-body #toc {
 	margin-left: 0;
 	height: max-content;
@@ -2124,7 +2095,7 @@ article .tags a {
   content: "\f03a";
 	font-size: 0.8125;
 }
-.book-toc, .floating-toc, .floating-toc-new {
+.book-toc, .floating-toc-new {
 	-webkit-touch-callout: none;
 	-webkit-user-select: none;
 	-khtml-user-select: none;
@@ -2406,7 +2377,7 @@ article .tags a {
 }
 
 body.dark-mode section,body.dark-mode header,body.dark-mode footer, body.dark-mode .comment-form input,
-body.dark-mode .floating-toc,body.dark-mode .floating-toc-new, body.dark-mode .sidebar .close,
+body.dark-mode .floating-toc-new, body.dark-mode .sidebar .close,
 body.dark-mode .sidebar .profile ul, body.dark-mode .comment-list ul li .author-meta .control .link a, body.dark-mode .top-button .menu button {
 	background: #000000;
 }
@@ -2424,7 +2395,6 @@ body.dark-mode textarea, body.dark-mode .top-button .profile ul li a {
 	background-color:#1e1e1e;
 }
 body.dark-mode .floating-toc-new:after,
-body.dark-mode .floating-toc:after,
 body.dark-mode .content-box {
 	background-color: #1e1e1e;
 }
@@ -2687,9 +2657,6 @@ body.dark-mode .like_bubble .inner {
 	.top-button {
 		top: 10px;
 		right: 10px;
-	}
-	.floating-toc #toc-body {
-		max-width: 250px;
 	}
 	.pagination a {
 		margin: 0 5px;

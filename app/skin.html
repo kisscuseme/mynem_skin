@@ -258,7 +258,7 @@
 				figure.fileblock a, #tt-body-page figure.fileblock a, .sidebar .best-post,
 				figure[data-ke-type='opengraph'] a, #tt-body-page figure[data-ke-type='opengraph'] a,
 				.related-articles-wrap, .main-ads, #ad-top-left, #ad-top-right,
-				.book-toc, .floating-toc, .floating-toc-new, #tistorySnsLayer.layer_post,
+				.book-toc, .floating-toc-new, #tistorySnsLayer.layer_post,
 				img:not(.flag, .title-image), .sidebar .content-item .thum, .content-box, .content-comment {
 					box-shadow: 0 0 16px -4px #ddd;
 				}
@@ -271,7 +271,7 @@
 				body.dark-mode figure.fileblock a, body.dark-mode #tt-body-page figure.fileblock a, body.dark-mode .sidebar .best-post,
 				body.dark-mode figure[data-ke-type='opengraph'] a, body.dark-mode #tt-body-page figure[data-ke-type='opengraph'] a,
 				body.dark-mode .related-articles-wrap, body.dark-mode .main-ads, body.dark-mode #ad-top-left, body.dark-mode #ad-top-right,
-				body.dark-mode .book-toc, body.dark-mode .floating-toc, body.dark-mode .floating-toc-new, body.dark-mode #tistorySnsLayer.layer_post,
+				body.dark-mode .book-toc, body.dark-mode .floating-toc-new, body.dark-mode #tistorySnsLayer.layer_post,
 				body.dark-mode img:not(.flag, .title-image), body.dark-mode .sidebar .content-item .thum, body.dark-mode .content-box, body.dark-mode .content-comment {
 					box-shadow: 0 0 16px -4px #222 !important;
 				}
@@ -357,12 +357,12 @@
 				}
 			</s_not_var_sidebar-left>
 			<s_if_var_paper-style>
-				section, footer, header, .floating-toc, .floating-toc-new {
+				section, footer, header, .floating-toc-new:after {
 					background-image: url('./images/paper.jpg');
 				}
 			</s_if_var_paper-style>
 			<s_not_var_paper-style>
-				section, footer, header, .floating-toc {
+				section, footer, header, .floating-toc-new:after {
 					background: #fff;
 				}
 			</s_not_var_paper-style>
@@ -376,7 +376,7 @@
 
 			<s_if_var_background-color>
 				header:after, section:after, footer:after, .content-title:after, .top-button .menu button:before,
-				.book-toc:after, .floating-toc:after, .top-button .menu button:before, .move-top-btn:before,
+				.book-toc:after, .top-button .menu button:before, .move-top-btn:before, .floating-toc-new,
 				.mobile-menu aside:after, .toast-wrap:after, .share-btn:before, .dark-mode-on-btn:before, .dark-mode-off-btn:before, .font-size-up-btn:before, .font-size-down-btn:before,
 				#toc-body::-webkit-scrollbar-track, ::-webkit-scrollbar-track {background-color:[##_var_background-color_##]}
 
@@ -491,7 +491,7 @@
 					}
 				</s_if_var_title-solid-style>
 				<s_if_var_toc-solid-style>
-					.floating-toc, .floating-toc-new, .book-toc {
+					.floating-toc-new, .book-toc {
 						border: [##_var_border-size_##]px solid [##_var_etc-color_##]55;
 					}
 				</s_if_var_toc-solid-style>
@@ -532,11 +532,11 @@
 
 				<s_if_var_background-color-d>
 					body.dark-mode header:after, body.dark-mode section:after, body.dark-mode footer:after, body.dark-mode .content-title:after, body.dark-mode .top-button .menu button:before,
-					body.dark-mode .book-toc:after, body.dark-mode .floating-toc:after, body.dark-mode .top-button .menu button:before, body.dark-mode .move-top-btn:before,
+					body.dark-mode .book-toc:after, body.dark-mode .top-button .menu button:before, body.dark-mode .move-top-btn:before,
 					body.dark-mode .mobile-menu aside:after, body.dark-mode .toast-wrap:after, body.dark-mode .share-btn:before, body.dark-mode .dark-mode-on-btn:before, body.dark-mode .dark-mode-off-btn:before, body.dark-mode .font-size-up-btn:before, body.dark-mode .font-size-down-btn:before
 					{background-color:[##_var_background-color-d_##]}
 
-					body.dark-mode .cover-list ul li a, body.dark-mode .post-item a, body.dark-mode .cover-special ul li {
+					body.dark-mode .cover-list ul li a, body.dark-mode .post-item a, body.dark-mode .cover-special ul li, body.dark-mode .floating-toc-new {
 						background: [##_var_background-color-d_##]1A;
 					}
 				</s_if_var_background-color-d>
@@ -646,7 +646,7 @@
 						}
 					</s_if_var_title-solid-style>
 					<s_if_var_toc-solid-style>
-						body.dark-mode .floating-toc, body.dark-mode .floating-toc-new, body.dark-mode .book-toc {
+						body.dark-mode .floating-toc-new, body.dark-mode .book-toc {
 							border: [##_var_border-size_##]px solid [##_var_etc-color-d_##]55;
 						}
 					</s_if_var_toc-solid-style>
@@ -734,7 +734,6 @@
 				.book-toc {width:fit-content}
 			</s_not_var_width-toc-yn>
 			<s_not_var_toc-width-scroll>
-				.floating-toc #toc-body #toc,
 				.floating-toc-new #toc-body #toc {
 					width: max-content;
 				}
