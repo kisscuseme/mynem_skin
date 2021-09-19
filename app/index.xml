@@ -617,16 +617,8 @@
 				<default>false</default>
 			</variable>
 			<variable>
-				<name>floating-toc-type</name>
-				<label><![CDATA[ 플로팅 목차 스타일 ]]></label>
-				<description><![CDATA[]]></description>
-				<type>SELECT</type>
-				<option><![CDATA[[{"name":"floating-toc-old","label":"구 버전","value":"old"}, {"name":"floating-toc-new","label":"신 버전","value":"new"}]]]></option>
-				<default>new</default>
-			</variable>
-			<variable>
 				<name>toc-unfold-yn</name>
-				<label><![CDATA[ 신 버전 목차 펼치기 ]]></label>
+				<label><![CDATA[ 목차 펼치기 ]]></label>
 				<description><![CDATA[]]></description>
 				<type>BOOL</type>
 				<option />

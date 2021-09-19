@@ -216,11 +216,29 @@ function appendTocNew() {
         var headerHeight = $('#fixed-header').val()?$('header').height():0;
         if((contentMiddleYn && (window.innerWidth-$('.content-wrapper').outerWidth())/2 > 250)
           ||(!contentMiddleYn && window.innerWidth > 1413)) {
-            if(window.scrollY > bookToc.outerHeight() + bookToc.offset().top - headerHeight -addHeightByAnchorAds('top')) {
+            if(window.scrollY > bookToc.outerHeight() + bookToc.offset().top - headerHeight - addHeightByAnchorAds('top')) {
                 if(!animating) {
                     animating = true;
                     mobileAnimating = false;
                     initFloatingTocNew();
+
+                    var sideValue = 0;
+                    if(contentMiddleYn) {
+                        if(floatingTocPostion) { //오른쪽
+                            sideValue = (window.innerWidth - $('.content-wrapper').width())/4 - floatingTocNew.outerWidth()/2 - 12;
+                            floatingTocNew.css('left', '');
+                            floatingTocNew.css('right', sideValue);
+                        } else { //왼쪽
+                            sideValue = ((window.innerWidth - $('.content-wrapper').width())/2 - floatingTocNew.outerWidth())/2 - 12;
+                            floatingTocNew.css('right', '');
+                            floatingTocNew.css('left', sideValue);
+                            
+                        }
+                    } else {
+                        sideValue = ((window.innerWidth - $('.content-wrapper').width()) - floatingTocNew.outerWidth())/2 - 20;
+                        floatingTocNew.css('left', '');
+                        floatingTocNew.css('right', sideValue);
+                    }
                     
                     if(tocUnfoldYn && contentMiddleYn) {
                         $('#toc-body').css('display','');
@@ -300,251 +318,6 @@ function appendTocNew() {
         if(floatingTocNew.height() > floatingTocNew.find('#toc-title').height()) {
             checkContentPosition();
         }
-    }
-}
-
-var safeFlag = true;
-function appendToc() {
-    var bookToc = $('.book-toc');
-    var floatingToc = $('.floating-toc');
-
-    // 목차 클릭
-    var clickFlag = true;
-    function clickTitle(type) {
-        if(clickFlag) {
-            clickFlag = false;
-            if (floatingToc.hasClass('noclick')) {
-                floatingToc.removeClass('noclick');
-            } else {
-                if(dragTimerId !== 0) {
-                    clearTimeout(dragTimerId);
-                    dragTimerId = 0;
-                }
-                floatingToc.css('transition', '');
-                var title = $('#toc-title>p>span#toggle');
-                if(title.hasClass('open')) {
-                    $('#toc-title').css('padding', '10px 0 0 0');
-                    floatingToc.css('padding', '0 10px 0');
-                    floatingToc.css('border-radius', '0');
-                    floatingToc.css('opacity', '0.9');
-                    floatingToc.removeClass('floating-toc-header-ani');
-                }
-
-                setTimeout(function(){
-                    $('#toc-body').slideToggle(300, 'linear', function() {
-                        if(title.hasClass('close')) {
-                            floatingToc.css('transition', '');
-                            title.text("펼치기");
-                            title.removeClass('close');
-                            title.addClass('open');
-                            floatingToc.css('padding', '0');
-                            $('#toc-title').css('padding', '10px');
-                            floatingToc.css('border-radius', '10px');
-                            floatingToc.css('opacity', '0.7');
-                            floatingToc.addClass('floating-toc-header-ani');
-                            //목차 아이콘으로 표시
-                            if(window.innerWidth < 768) {
-                                tocTitle.find('p').css('display','none');
-                                tocTitle.find('.floating-icon').css('display','block');
-                            }
-                        } else {
-                            if(type === 'init') {
-                                var floatingTocInnerWidth = floatingToc.innerWidth();
-                                var windowWidth = $(window).innerWidth();
-                                if(floatingToc.innerHeight() > $(window).innerHeight() || floatingTocInnerWidth > windowWidth) {
-                                    floatingToc.css('display', 'none');
-                                } else {
-                                    if(floatingTocPostion) {
-                                        floatingToc.css('left','');
-                                        floatingToc.css('right','0');
-                                    }
-                                    floatingToc.css('opacity', '0.0');
-                                    setTimeout(function() {
-                                        if($('.content-wrapper').offset().left - 20 > floatingTocInnerWidth) {
-                                            if(floatingTocPostion) {
-                                                floatingToc.css('left', '');
-                                                floatingToc.css('right', ($('.content-wrapper').offset().left - floatingTocInnerWidth - 20) + "px");
-                                            } else {
-                                                floatingToc.css('left', ($('.content-wrapper').offset().left - floatingTocInnerWidth - 20) + "px");
-                                            }
-                                            floatingToc.css('opacity', '0.9');
-                                            floatingToc.css('transition', "0.7s linear");
-                                            setTimeout(function() {
-                                                floatingToc.css('transition', "");
-                                            }, 800);
-                                        } else {
-                                            if($('.menu').css('display') == 'none') {
-                                                floatingToc.css('right', "20px");
-                                                floatingToc.css('left', "");
-                                            } else {
-                                                floatingToc.css('left', "20px");
-                                                floatingToc.css('right', "");
-                                            }
-                                        }
-                                    }, 500);
-                                    smoothScroll();
-                                }
-                            }
-                            title.text("접기");
-                            title.removeClass('open');
-                            title.addClass('close');
-                            //목차 아이콘으로 표시
-                            if(window.innerWidth < 768) {
-                                tocTitle.find('p').css('display','block');
-                                tocTitle.find('.floating-icon').css('display','none');
-                            }
-                        }
-                    });
-                },200);
-            }
-            setTimeout(function(){
-                clickFlag = true;
-            }, 500);
-        }
-    }
-
-    function checkPosition() {
-        var titleList = $('.content-article').find('h2,h3,h4');
-        var scrollY = window.scrollY + 50 + ($('#fixed-header').val()?($('header').length>0?$('header').height()+5:0):0);
-        if(titleList.length > 1) {
-            for(var i=0; i < titleList.length; i++) {
-                var tocList = $('.floating-toc #toc').find('a');
-                if(i < titleList.length-1) {
-                    if(titleList.eq(i).offset().top < scrollY && titleList.eq(i+1).offset().top > scrollY) {
-                        tocList.removeAttr('class');
-                        tocList.parent().removeAttr('class');
-                        tocList.eq(i).addClass('floating-toc-title-ani');
-                        tocList.eq(i).addClass('selected');
-                        break;
-                    }
-                } else {
-                    if(titleList.eq(i).offset().top < scrollY) {
-                        tocList.removeAttr('class');
-                        tocList.parent().removeAttr('class');
-                        tocList.eq(i).addClass('floating-toc-title-ani');
-                        tocList.eq(i).addClass('selected');
-                        break;
-                    }
-                }
-            }
-        }
-    }
-
-    function checkValidation() {
-        if(floatingToc.css('bottom').substr(0,1) == '-') {
-            floatingToc.css('bottom','10px');
-            floatingToc.css('top','');
-        }
-        if(floatingToc.css('right').substr(0,1) == '-') {
-            floatingToc.css('right','10px');
-            floatingToc.css('left','');
-        }
-        if(floatingToc.css('top').substr(0,1) == '-') {
-            floatingToc.css('top','10px');
-        }
-
-        if(floatingToc.css('left').substr(0,1) == '-') {
-            floatingToc.css('left','10px');
-        }
-        if(floatingToc.attr('style').indexOf('bottom:') > 0 && floatingToc.attr('style').indexOf('top:') > 0) {
-            floatingToc.css('top','');
-        }
-        if(floatingToc.attr('style').indexOf('left:') > 0 && floatingToc.attr('style').indexOf('right:') > 0) {
-            floatingToc.css('left','');
-        }
-    }
-
-    function restoreBookToc() {
-        floatingToc.find('.selected').removeAttr('class');
-        bookToc.append(floatingToc.find('#toc'));
-        bookToc.removeAttr('style');
-        floatingToc.find('div').remove();
-        floatingToc.removeAttr('style');
-        floatingToc.css('display','none');
-        $('#toc').find('a').removeClass('floating-toc-title-ani');
-    }
-
-    if(bookToc.length > 0 && window.scrollY > bookToc.offset().top + bookToc.innerHeight()) {
-        if(floatingToc.height() === 0 && $('#toc-title').length === 0 && safeFlag) {
-            safeFlag = false;
-            floatingToc.css('display','block');
-            var tocTitle = $('<div id="toc-title"><div class="floating-icon"></div><p>목차 <span id="toggle" class="open" style="color:#517135;">펼치기</span></p></div>');
-            //목차 아이콘으로 표시
-            if(window.innerWidth < 768) {
-                tocTitle.find('p').css('display','none');
-            } else {
-                tocTitle.find('.floating-icon').css('display','none');
-            }
-            floatingToc.append(tocTitle);
-            var tocBody = $('<div id="toc-body" style="display:none;"></div>').append(bookToc.find('#toc').clone());
-            floatingToc.append(tocBody);
-            floatingToc.find('#toc').css('display','');
-            floatingToc.css('padding', '0');
-            $('#toc-title').css('padding', '10px');
-            var dragTimerId = 0;
-            $.getScript("https://code.jquery.com/ui/1.12.1/jquery-ui.min.js", function() {
-                $.getScript("https://cdnjs.cloudflare.com/ajax/libs/jqueryui-touch-punch/0.2.3/jquery.ui.touch-punch.min.js", function() {
-                    floatingToc.draggable({
-                        handle: "#toc-title",
-                        start: function(event, ui) {
-                            floatingToc.css('right', '');
-                            floatingToc.css('bottom', '');
-                            var self = this;
-                            dragTimerId = setTimeout(function(){
-                                var $self = $(self);
-                                $self.addClass('noclick');
-                            }, 250);
-                        },
-                        stop: function(event, ui) {
-                            checkValidation();
-                        }
-                    });
-                });
-            });
-
-            floatingToc.css('position', "fixed");
-            floatingToc.css('top', "15px");
-
-            $('#toc-title').off('click').on('click', function(){
-                clickTitle();
-            });
-
-            $('#toc-title').off('touchend').on('touchend', function(event){
-                clickTitle();
-            });
-
-            //목차 항목 클릭
-            $('#toc-body').find('a').off('click').on('click', function(event){
-                checkPosition();
-            });
-            $('#toc-body').find('a').off('touchstart').on('touchstart', function(event){
-                floatingToc.draggable('disable');
-            });
-            $('#toc-body').find('a').off('touchend').on('touchend', function(event){
-                setTimeout(function(){
-                    floatingToc.draggable('enable');
-                }, 200);
-                checkPosition();
-            });
-
-            floatingToc.css('visibility', 'hidden');
-            clickTitle('init');
-            setTimeout(function(){
-                if($('.content-wrapper').offset().left < $('.floating-toc').width() + 50) {
-                    clickFlag = true;
-                    clickTitle();
-                }
-            }, 500);
-            setTimeout(function(){
-                floatingToc.css('visibility', '');
-                safeFlag = true;
-            }, 1100);			
-        } else {
-            checkPosition();
-            checkValidation();
-        }
-    } else {
-        restoreBookToc();
     }
 }
 
@@ -1038,6 +811,9 @@ function common(){
         if(sidebarInsParent.eq(i).prop('className') == 'module module_plugin') {
             sidebarInsParent.eq(i).css('border', 'none');
         }
+        if(sidebarInsParent.eq(i).css('background-image').indexOf('adsense.svg') > -1) {
+            sidebarInsParent.eq(i).css('background-image','none');
+        }
     }
 }
 
@@ -1189,15 +965,19 @@ function fixedRecommendAds(type) {
         var headerHeight = $('#fixed-header').val()?$('header').height()+5:($('#hide-sidebar').val()?(floatingTocPostion?5:60):5);
         if(type == 'toc') {
             if(tocTarget != null) {
-                var tocLeft = ((window.innerWidth - ($('.content-wrapper').width() + 20))/2 - tocTarget.parent().outerWidth())/2;
-                if((contentMiddleYn && tocLeft >= 0) || (!contentMiddleYn && window.innerWidth >= 1400)) {
+                var checkAdsWidth = (window.innerWidth - $('.content-wrapper').width())/2 > tocTarget.parent().outerWidth();
+                if((contentMiddleYn && checkAdsWidth) || (!contentMiddleYn && window.innerWidth >= 1400)) {
                     if(window.scrollY > $('header').height()
                       && ((bookToc.length > 0 && $('#toc-title>p>span#toggle').hasClass('close') && (!contentMiddleYn || (contentMiddleYn && adsTocPosition)))
                       || (contentMiddleYn && !adsTocPosition) || bookToc.length == 0)) {
                         var tocOffsetTop = bookToc.length > 0?(contentMiddleYn && !adsTocPosition?0:50):0;
                         var tocOffsetSide = 0;
                         if(contentMiddleYn) {
-                            tocOffsetSide = $('.floating-toc-new')[0].offsetLeft+tocLeft-10;
+                            if(floatingTocPostion) {
+                                tocOffsetSide = (window.innerWidth - $('.content-wrapper').width())/2*1.5 + $('.content-wrapper').width() - tocTarget.parent().outerWidth()/2;
+                            } else {
+                                tocOffsetSide = (window.innerWidth - $('.content-wrapper').width())/4 - tocTarget.parent().outerWidth()/2;
+                            }
                         } else {
                             tocOffsetSide = $('.floating-toc-new')[0].offsetLeft+5;
                         }
@@ -1561,18 +1341,12 @@ function fixedHeader() {
 }
 
 function selectMakeFloatingToc() {
-    if($('#floating-toc-type').val() == 'new') {
-        makeFloatingToc();
-    }
+    makeFloatingToc();
 }
 
 function selectAppendToc() {
     if($('#use-floating-toc-yn').val()) {
-        if($('#floating-toc-type').val() == 'new') {
-            appendTocNew();
-        } else {
-            appendToc();
-        }
+        appendTocNew();
     }
 }
 
