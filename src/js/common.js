@@ -1438,6 +1438,7 @@ function bgmEvents() {
             bgmMute('+');
             if(!currentBgm.hasClass('bgm-playing')) {
                 currentBgm.addClass('bgm-playing');
+                $('.bgm-header').addClass('bgm-playing');
             }
             $('#bgm-status').html('&#xf04c;'); //pause icon
         };
@@ -1446,6 +1447,7 @@ function bgmEvents() {
             bgmPlaying = false;
             if(currentBgm.hasClass('bgm-playing')) {
                 currentBgm.removeClass('bgm-playing');
+                $('.bgm-header').removeClass('bgm-playing');
             }
             $('#bgm-status').html('&#xf04b;'); //play icon
         };
