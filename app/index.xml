@@ -219,7 +219,7 @@
 				<description><![CDATA[]]></description>
 				<type>COLOR</type>
 				<option />
-				<default>#737373</default>
+				<default>#FEDFD3</default>
 			</variable>
 			<variable>
 				<name>blog-menu-color-d</name>
@@ -227,7 +227,7 @@
 				<description><![CDATA[]]></description>
 				<type>COLOR</type>
 				<option />
-				<default>#000000</default>
+				<default>#F9D8D8</default>
 			</variable>
 			<variable>
 				<name>background-color-d</name>
@@ -235,7 +235,7 @@
 				<description><![CDATA[]]></description>
 				<type>COLOR</type>
 				<option />
-				<default>#E9E9E9</default>
+				<default>#F9D8D8</default>
 			</variable>
 			<variable>
 				<name>sidebar-color-d</name>
@@ -243,7 +243,7 @@
 				<description><![CDATA[]]></description>
 				<type>COLOR</type>
 				<option />
-				<default>#F5F5F5</default>
+				<default>#111111</default>
 			</variable>
 			<variable>
 				<name>sidebar-text-color-d</name>
@@ -251,7 +251,7 @@
 				<description><![CDATA[]]></description>
 				<type>COLOR</type>
 				<option />
-				<default>#4C4C4C</default>
+				<default>#FFBE9B</default>
 			</variable>
 			<variable>
 				<name>etc-color-d</name>
@@ -259,7 +259,7 @@
 				<description><![CDATA[]]></description>
 				<type>COLOR</type>
 				<option />
-				<default>#737373</default>
+				<default>#FF935B</default>
 			</variable>
 		</variablegroup>
 

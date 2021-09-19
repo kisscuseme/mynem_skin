@@ -225,17 +225,17 @@ function appendTocNew() {
                     var sideValue = 0;
                     if(contentMiddleYn) {
                         if(floatingTocPostion) { //오른쪽
-                            sideValue = (window.innerWidth - $('.content-wrapper').width())/4 - floatingTocNew.outerWidth()/2 - 12;
+                            sideValue = (window.innerWidth - $('.content-wrapper').width())/4 - floatingTocNew.outerWidth()/2 - 17;
                             floatingTocNew.css('left', '');
                             floatingTocNew.css('right', sideValue);
                         } else { //왼쪽
-                            sideValue = ((window.innerWidth - $('.content-wrapper').width())/2 - floatingTocNew.outerWidth())/2 - 12;
+                            sideValue = ((window.innerWidth - $('.content-wrapper').width())/2 - floatingTocNew.outerWidth())/2 - 17;
                             floatingTocNew.css('right', '');
                             floatingTocNew.css('left', sideValue);
                             
                         }
                     } else {
-                        sideValue = ((window.innerWidth - $('.content-wrapper').width()) - floatingTocNew.outerWidth())/2 - 20;
+                        sideValue = ((window.innerWidth - $('.content-wrapper').width()) - floatingTocNew.outerWidth())/2 - 25;
                         floatingTocNew.css('left', '');
                         floatingTocNew.css('right', sideValue);
                     }
