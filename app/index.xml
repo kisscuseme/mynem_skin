@@ -2,7 +2,7 @@
 <skin>
 	<information>
 		<name>Mynem Skin</name>
-		<version>2.5.6</version>
+		<version>2.5.7</version>
 		<description>
 			<![CDATA[ 심플하면서 막강한 기능을 가진 미넴 스킨 입니다.
 			많은 사용자가 원하는 방향으로 발전해 나갈 예정입니다. ]]>
@@ -1154,6 +1154,14 @@
 				<default><![CDATA[ ]]></default>
 			</variable>
 			<variable>
+				<name>best-post-hl1</name>
+				<label><![CDATA[ 추천 글 1 강조 ]]></label>
+				<description><![CDATA[]]></description>
+				<type>BOOL</type>
+				<option/>
+				<default>false</default>
+			</variable>
+			<variable>
 				<name>best-post-title-2</name>
 				<label><![CDATA[ 타이틀 2 ]]></label>
 				<description><![CDATA[]]></description>
@@ -1168,6 +1176,14 @@
 				<type>STRING</type>
 				<option />
 				<default><![CDATA[ ]]></default>
+			</variable>
+			<variable>
+				<name>best-post-hl2</name>
+				<label><![CDATA[ 추천 글 2 강조 ]]></label>
+				<description><![CDATA[]]></description>
+				<type>BOOL</type>
+				<option/>
+				<default>false</default>
 			</variable>
 			<variable>
 				<name>best-post-title-3</name>
@@ -1186,6 +1202,14 @@
 				<default><![CDATA[ ]]></default>
 			</variable>
 			<variable>
+				<name>best-post-hl3</name>
+				<label><![CDATA[ 추천 글 3 강조 ]]></label>
+				<description><![CDATA[]]></description>
+				<type>BOOL</type>
+				<option/>
+				<default>false</default>
+			</variable>
+			<variable>
 				<name>best-post-title-4</name>
 				<label><![CDATA[ 타이틀 4 ]]></label>
 				<description><![CDATA[]]></description>
@@ -1202,6 +1226,14 @@
 				<default><![CDATA[ ]]></default>
 			</variable>
 			<variable>
+				<name>best-post-hl4</name>
+				<label><![CDATA[ 추천 글 4 강조 ]]></label>
+				<description><![CDATA[]]></description>
+				<type>BOOL</type>
+				<option/>
+				<default>false</default>
+			</variable>
+			<variable>
 				<name>best-post-title-5</name>
 				<label><![CDATA[ 타이틀 5 ]]></label>
 				<description><![CDATA[]]></description>
@@ -1216,6 +1248,14 @@
 				<type>STRING</type>
 				<option />
 				<default><![CDATA[ ]]></default>
+			</variable>
+			<variable>
+				<name>best-post-hl5</name>
+				<label><![CDATA[ 추천 글 5 강조 ]]></label>
+				<description><![CDATA[]]></description>
+				<type>BOOL</type>
+				<option/>
+				<default>false</default>
 			</variable>
 			<variable>
 				<name>best-post-title-6</name>

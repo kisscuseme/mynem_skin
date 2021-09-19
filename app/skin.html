@@ -248,8 +248,8 @@
 				}
 			}
 
+			/* shadow effect */
 			<s_if_var_shadow-effect>
-				/* shadow */
 				section .content-wrapper, .post-item a, .post-item .thum, .cover-list ul li a,
 				.cover-list ul li figure, .cover-special ul li, .sidebar .category,
 				.sidebar .notice, .sidebar .recent, .sidebar .popular, .sidebar .recent-comment,
@@ -283,6 +283,38 @@
 				}
 			</s_not_var_shadow-effect>
 
+			/* etc settings */
+			<s_if_var_best-post-hl1>
+			.sidebar .best-post ul li:nth-child(1) {
+				font-size: 0.94em;
+				font-weight: bold;
+			}
+			</s_if_var_best-post-hl1>
+			<s_if_var_best-post-hl2>
+			.sidebar .best-post ul li:nth-child(2) {
+				font-size: 0.94em;
+				font-weight: bold;
+			}
+			</s_if_var_best-post-hl2>
+			<s_if_var_best-post-hl3>
+			.sidebar .best-post ul li:nth-child(3) {
+				font-size: 0.94em;
+				font-weight: bold;
+			}
+			</s_if_var_best-post-hl3>
+			<s_if_var_best-post-hl4>
+			.sidebar .best-post ul li:nth-child(4) {
+				font-size: 0.94em;
+				font-weight: bold;
+			}
+			</s_if_var_best-post-hl4>
+			<s_if_var_best-post-hl5>
+			.sidebar .best-post ul li:nth-child(5) {
+				font-size: 0.94em;
+				font-weight: bold;
+			}
+			</s_if_var_best-post-hl5>
+			
 			<s_if_var_matched-ads-height>
 				.sidebar #recommend-ads.revenue_unit_item.adsense {
 					height:  [##_var_matched-ads-height_##]px;
@@ -376,7 +408,7 @@
 				.share-btn:after,.dark-mode-on-btn:after,.dark-mode-off-btn:after, .font-size-up-btn:after, .font-size-down-btn:after,
 				#toc > li a:after, #toc > li > ul > li a:after, #toc > li > ul > li > ul > li a:after {color:[##_var_etc-color_##]}
 				#toc-title p #toggle, .floating-icon:after,
-				.sidebar .category .category_list .link_item:before, #current-bgm:before, h2 .bgm-btn,
+				.sidebar .category .category_list .link_item:before, .bgm-header, h2 .bgm-btn,
 				.sidebar .category .sub_category_list .link_sub_item:before {color:[##_var_etc-color_##] !important;opacity:0.7;}
 				.content-article h2 {border-left: [##_var_etc-color_##]ff 16px solid !important;border-bottom: 4px solid [##_var_etc-color_##]ff !important;}
 				.content-article h3 {border-left: [##_var_etc-color_##]cc 12px solid !important;border-bottom: 3px solid [##_var_etc-color_##]cc !important;}
@@ -532,7 +564,7 @@
 					body.dark-mode .share-btn:after, body.dark-mode .dark-mode-on-btn:after, body.dark-mode .dark-mode-off-btn:after, body.dark-mode .font-size-up-btn:after, body.dark-mode .font-size-down-btn:after,
 					body.dark-mode #toc > li a:after, body.dark-mode #toc > li > ul > li a:after, body.dark-mode #toc > li > ul > li > ul > li a:after {color:[##_var_etc-color-d_##]}
 					body.dark-mode #toc-title p #toggle, body.dark-mode .floating-icon:after,
-					body.dark-mode .sidebar .category .category_list .link_item:before, body.dark-mode #current-bgm:before, body.dark-mode h2 .bgm-btn,
+					body.dark-mode .sidebar .category .category_list .link_item:before, body.dark-mode .bgm-header, body.dark-mode h2 .bgm-btn,
 					body.dark-mode .sidebar .category .sub_category_list .link_sub_item:before {color:[##_var_etc-color-d_##] !important;opacity:0.7;}
 					body.dark-mode .content-article h2 {border-left: [##_var_etc-color-d_##]ff 16px solid !important;border-bottom: 4px solid [##_var_etc-color-d_##]ff !important;}
 					body.dark-mode .content-article h3 {border-left: [##_var_etc-color-d_##]cc 12px solid !important;border-bottom: 3px solid [##_var_etc-color-d_##]cc !important;}
@@ -1671,10 +1703,15 @@
 										<!-- 배경음악 -->
 										<div class="module module_plugin">
 											<h2 id="bgm-title">
-												<span id="current-bgm">플레이 버튼을 눌러 주세요</span>
+												<span class="bgm-header">&#xe077;</span>
+												<span class="bgm-title-wrap">
+													<span class="bgm-title-box">
+														<span id="current-bgm">플레이 버튼을 눌러 주세요</span>
+													</span>
+												</span>
 												<button class="bgm-btn" onclick="bgmMute()" style="margin:auto;" id='bgm-mute'>
 													&#xf6a9; <!-- mute btn -->
-												</button>	
+												</button>
 											</h2>
 											<div class="bgm-box">
 												<button class="bgm-btn" onclick="nextBgm('-')" style="margin:auto;">
@@ -2407,7 +2444,7 @@
 						<a href="#" class="page-top">TOP</a>
 						<p class="meta"><s_if_var_footer-text-1>[##_var_footer-text-1_##]</s_if_var_footer-text-1></p>
 						<p class="copyright"><s_if_var_footer-text-2>[##_var_footer-text-2_##]</s_if_var_footer-text-2></p>
-						<p class="maker"><a href="https://sangminem.tistory.com/506" target="_blank">Mynem Skin 2.5.6</a></p>
+						<p class="maker"><a href="https://sangminem.tistory.com/506" target="_blank">Mynem Skin 2.5.7</a></p>
 					</div>
 				</footer>
 			</div>

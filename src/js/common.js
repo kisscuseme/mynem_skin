@@ -1177,13 +1177,12 @@ function lazyLoading() {
 function fixedRecommendAds(type) {
     if($('#use-fixed-ads-yn').val()) {
         var tocTarget = null;
-        var isRecommendAds = false;
-        if($('#fixed-ads-type').val() == 'matched') {
+        var fixedAdsType = $('#fixed-ads-type').val();
+        if(fixedAdsType == 'matched') {
             tocTarget = $('#recommend-ads').parent();
-            isRecommendAds = true;
-        } else if($('#fixed-ads-type').val() == 'adsense') {
+        } else if(fixedAdsType == 'adsense') {
             tocTarget = $('aside .revenue_unit_wrap .adsense').parent();
-        } else if($('#fixed-ads-type').val() == 'adfit') {
+        } else if(fixedAdsType == 'adfit') {
             tocTarget = $('aside .revenue_unit_wrap .adfit').parent();
         }
         var removeStyleFlag = false;
@@ -1196,37 +1195,27 @@ function fixedRecommendAds(type) {
                       && ((bookToc.length > 0 && $('#toc-title>p>span#toggle').hasClass('close') && (!contentMiddleYn || (contentMiddleYn && adsTocPosition)))
                       || (contentMiddleYn && !adsTocPosition) || bookToc.length == 0)) {
                         var tocOffsetTop = bookToc.length > 0?(contentMiddleYn && !adsTocPosition?0:50):0;
-                        var tocOffsetLeft = 0;
+                        var tocOffsetSide = 0;
                         if(contentMiddleYn) {
-                            tocOffsetLeft = $('.floating-toc-new')[0].offsetLeft+tocLeft-10;
+                            tocOffsetSide = $('.floating-toc-new')[0].offsetLeft+tocLeft-10;
                         } else {
-                            tocOffsetLeft = $('.floating-toc-new')[0].offsetLeft+5;
+                            tocOffsetSide = $('.floating-toc-new')[0].offsetLeft+5;
                         }
-                        if(isRecommendAds) {
-                            var scaleRatio = 0.9;
-                            var anchorAdsHeight = addHeightByAnchorAds('top') + addHeightByAnchorAds('bottom');
-                            var adjustInnerHeight = window.innerHeight - anchorAdsHeight;
-                            if(tocTarget.height() > (adjustInnerHeight-tocOffsetTop-headerHeight)) {
-                                scaleRatio = (adjustInnerHeight-tocOffsetTop-headerHeight)/tocTarget.height()*0.9;
-                            }
-                            tocTarget.css('position', 'fixed');
-                            var fixTopPosition = $('#recommend-ads').height()*(1-scaleRatio)/2;
-                            tocTarget.css('top', 'calc(' + (tocOffsetTop+headerHeight+addHeightByAnchorAds('top')) + 'px - '+fixTopPosition+'px)');
-                            tocTarget.css('transform', 'scale('+scaleRatio+')');
-                            if(adsTocPosition || !contentMiddleYn) {
-                                tocTarget.css('left', tocOffsetLeft + 'px');
-                            } else{
-                                tocTarget.css('right', tocOffsetLeft + 'px');
-                            }
-                        } else {
-                            tocTarget.css('position', 'fixed');
-                            tocTarget.css('top', (tocOffsetTop+headerHeight+addHeightByAnchorAds('top')-15) + 'px');
-                            tocTarget.css('height', '600px');
-                            if(adsTocPosition || !contentMiddleYn) {
-                                tocTarget.css('left', tocOffsetLeft + 'px');
-                            } else{
-                                tocTarget.css('right', tocOffsetLeft + 'px');
-                            }
+                        var scaleRatio = 0.9;
+                        var anchorAdsHeight = addHeightByAnchorAds('top') + addHeightByAnchorAds('bottom');
+                        var adjustInnerHeight = window.innerHeight - anchorAdsHeight;
+                        if(tocTarget.height() > (adjustInnerHeight-tocOffsetTop-headerHeight)) {
+                            scaleRatio = (adjustInnerHeight-tocOffsetTop-headerHeight)/tocTarget.height()*0.9;
+                        }
+                        tocTarget.css('position', 'fixed');
+                        var adjustTop = fixedAdsType=='matched'?5:-15;
+                        var fixTopPosition = tocTarget.height()*(1-scaleRatio)/2 - adjustTop;
+                        tocTarget.css('top', 'calc(' + (tocOffsetTop+headerHeight+addHeightByAnchorAds('top')) + 'px - ' + fixTopPosition + 'px)');
+                        tocTarget.css('transform', 'scale('+scaleRatio+')');
+                        if(adsTocPosition || !contentMiddleYn) {
+                            tocTarget.css('left', tocOffsetSide + 'px');
+                        } else{
+                            tocTarget.css('right', tocOffsetSide + 'px');
                         }
                     } else {
                         removeStyleFlag = true;
