@@ -1270,6 +1270,7 @@ function fixedHeader() {
     if($('#fixed-header').val()){
         var bodyPaddingTop = Number($('body').css('padding-top').replace('px',''));
         var anchorAdsHeight = window.scrollY>bodyPaddingTop?addHeightByAnchorAds('top'):bodyPaddingTop;
+        var sidebarOffsetTop = window.scrollY>$('.sidebar').offset().top-$headerTitle.height()?addHeightByAnchorAds('top'):0;
         if(window.scrollY > 0 && window.scrollHeight > window.innerHeight) {
             $('.content-wrapper').css('margin-top',initHeaderHeight+'px');
             $header.css('position', 'fixed');
@@ -1299,7 +1300,7 @@ function fixedHeader() {
                 $headerTitle.attr('href', '/');
             }
             $('.progress-bar-horizontal').css('top', ($headerTitle.height()+20+anchorAdsHeight)+'px');
-            $('#aside-top-blank').css('height', ($headerTitle.height()+30)+'px');
+            $('#aside-top-blank').css('height', ($headerTitle.height()+30+sidebarOffsetTop)+'px');
             $('#aside-top-blank').slideDown(300,'linear');
         } else if(window.scrollY == 0) {
             if(fixedHeaderTimer != 0) {
