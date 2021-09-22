@@ -84,7 +84,7 @@
 				<label><![CDATA[ 글꼴 선택 ]]></label>
 				<description><![CDATA[]]></description>
 				<type>SELECT</type>
-				<option><![CDATA[[{"name":"font-default","label":"기본","value":""}, {"name":"font-iropke","label":"이롭게바탕체","value":"Bitter,IropkeBatang,"}, {"name":"font-lexisaebom","label":"렉시새봄","value":"LexiSaebomR,"}, {"name":"font-nanumsquare","label":"나눔스퀘어","value":"NanumSquare,"}]]]></option>
+				<option><![CDATA[[{"name":"font-default","label":"기본","value":""}, {"name":"font-iropke","label":"이롭게바탕체","value":"Bitter,IropkeBatang,"}, {"name":"font-lexisaebom","label":"렉시새봄","value":"Bitter,LexiSaebomR,"}, {"name":"font-nanumsquare","label":"나눔스퀘어","value":"NanumSquare,"}]]]></option>
 				<default>Bitter,IropkeBatang,</default>
 			</variable>
 			<variable>
@@ -345,6 +345,22 @@
 		</variablegroup>
 
 		<variablegroup name="사이드바 설정">
+			<variable>
+				<name>profile-title-show</name>
+				<label><![CDATA[ 프로필 타이틀 보이기 ]]></label>
+				<description><![CDATA[]]></description>
+				<type>BOOL</type>
+				<option/>
+				<default>false</default>
+			</variable>
+			<variable>
+				<name>profile-title</name>
+				<label><![CDATA[ 프로필 타이틀 ]]></label>
+				<description><![CDATA[]]></description>
+				<type>STRING</type>
+				<option />
+				<default><![CDATA[ 프로필 ]]></default>
+			</variable>
 			<variable>
 				<name>profile-image</name>
 				<label><![CDATA[ 프로필 이미지 ]]></label>
