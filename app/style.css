@@ -188,7 +188,7 @@ footer:after {
 footer .inner {
 	margin: 0 auto;
 	padding: 10px;
-	min-height: 80px;
+	min-height: 105px;
 	position: relative;
 	text-align: center;
 }
@@ -233,7 +233,6 @@ section .content-wrapper:after {
 	visibility: hidden;
 }
 article {
-	padding: 0 0 30px;
 	box-sizing: border-box;
 }
 article>.inner {
@@ -390,11 +389,11 @@ article h2,
 .cover-list ul {
 	margin-bottom: 30px;
 }
+.cover-list ul:last-child {
+	margin-bottom: 0px;
+}
 .cover-list ul li {
 	margin-bottom: 10px;
-}
-.cover-list ul li:last-child {
-	padding-bottom: 10px;
 }
 .cover-list ul li a {
 	display: block;
@@ -1717,7 +1716,7 @@ article .tags a {
 .maker {
 	position: absolute;
 	left: 10px;
-	bottom: 10px;
+	bottom: 20px;
 	margin: 0px;
 }
 .maker a {
@@ -2143,7 +2142,7 @@ article .tags a {
 .floating-button {
 	position: fixed;
 	right: 10px;
-	bottom: 10px;
+	bottom: 15px;
 	z-index: 201;
 }
 
