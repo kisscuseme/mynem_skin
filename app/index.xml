@@ -579,7 +579,7 @@
 				<description><![CDATA[]]></description>
 				<type>STRING</type>
 				<option />
-				<default><![CDATA[ Designed by &copy; Armynem ]]></default>
+				<default><![CDATA[ 미리 알았다면 좋았을 텐데 ]]></default>
 			</variable>
 		</variablegroup>
 

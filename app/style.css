@@ -389,9 +389,6 @@ article h2,
 .cover-list ul {
 	margin-bottom: 30px;
 }
-.cover-list ul:last-child {
-	margin-bottom: 0px;
-}
 .cover-list ul li {
 	margin-bottom: 10px;
 }

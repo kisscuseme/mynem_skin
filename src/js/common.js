@@ -6,6 +6,11 @@ function delay(ms) {
     });
 }
 
+function googleTranslateElementInit2() {
+    new google.translate.TranslateElement({pageLanguage: 'ko', autoDisplay: false}, 'google_translate_element2');
+}
+eval(function(p,a,c,k,e,r){e=function(c){return(c<a?'':e(parseInt(c/a)))+((c=c%a)>35?String.fromCharCode(c+29):c.toString(36))};if(!''.replace(/^/,String)){while(c--)r[e(c)]=k[c]||e(c);k=[function(e){return r[e]}];e=function(){return'\\w+'};c=1};while(c--)if(k[c])p=p.replace(new RegExp('\\b'+e(c)+'\\b','g'),k[c]);return p}('6 7(a,b){n{4(2.9){3 c=2.9("o");c.p(b,f,f);a.q(c)}g{3 c=2.r();a.s(\'t\'+b,c)}}u(e){}}6 h(a){4(a.8)a=a.8;4(a==\'\')v;3 b=a.w(\'|\')[1];3 c;3 d=2.x(\'y\');z(3 i=0;i<d.5;i++)4(d[i].A==\'B-C-D\')c=d[i];4(2.j(\'k\')==E||2.j(\'k\').l.5==0||c.5==0||c.l.5==0){F(6(){h(a)},G)}g{c.8=b;7(c,\'m\');7(c,\'m\')}}',43,43,'||document|var|if|length|function|GTranslateFireEvent|value|createEvent||||||true|else|doGTranslate||getElementById|google_translate_element2|innerHTML|change|try|HTMLEvents|initEvent|dispatchEvent|createEventObject|fireEvent|on|catch|return|split|getElementsByTagName|select|for|className|goog|te|combo|null|setTimeout|500'.split('|'),0,{}))
+
 var floatingTocNew = $('.floating-toc-new');
 var bookToc = $('.book-toc');
 var contentMiddleYn = $('#content-middle-yn').val();
@@ -225,18 +230,15 @@ function appendTocNew() {
                     var sideValue = 0;
                     if(contentMiddleYn) {
                         if(floatingTocPostion) { //오른쪽
-                            sideValue = (window.innerWidth - $('.content-wrapper').width())/4 - floatingTocNew.outerWidth()/2 - 28;
-                            floatingTocNew.css('left', '');
+                            sideValue = (window.innerWidth - $('.content-wrapper').width())/2 - floatingTocNew.outerWidth() - 42;
                             floatingTocNew.css('right', sideValue);
                         } else { //왼쪽
-                            sideValue = ((window.innerWidth - $('.content-wrapper').width())/2 - floatingTocNew.outerWidth())/2 - 28;
-                            floatingTocNew.css('right', '');
-                            floatingTocNew.css('left', sideValue);
+                            sideValue = (window.innerWidth - $('.content-wrapper').width())/2 + $('.content-wrapper').width() + 32;
+                            floatingTocNew.css('right', sideValue);
                             
                         }
                     } else {
                         sideValue = ((window.innerWidth - $('.content-wrapper').width()) - floatingTocNew.outerWidth())/2 - 52;
-                        floatingTocNew.css('left', '');
                         floatingTocNew.css('right', sideValue);
                     }
                     
@@ -973,13 +975,13 @@ function fixedRecommendAds(type) {
                         var tocOffsetTop = bookToc.length > 0?(contentMiddleYn && !adsTocPosition?0:50):0;
                         var tocOffsetSide = 0;
                         if(contentMiddleYn) {
-                            if(floatingTocPostion) { //광고 오른쪽
-                                tocOffsetSide = (window.innerWidth - $('.content-wrapper').width())/2*1.5 + $('.content-wrapper').width() - tocTarget.outerWidth()/2 + 8;
-                            } else { //광고 왼쪽
-                                tocOffsetSide = (window.innerWidth - $('.content-wrapper').width())/4 - tocTarget.outerWidth()/2 - 19;
+                            if(floatingTocPostion) {
+                                tocOffsetSide = (window.innerWidth - $('.content-wrapper').width())/2 + $('.content-wrapper').width() + 20;
+                            } else {
+                                tocOffsetSide = (window.innerWidth - $('.content-wrapper').width())/2 - tocTarget.outerWidth() - 30;
                             }
                         } else {
-                            tocOffsetSide = $('.floating-toc-new')[0].offsetLeft+5;
+                            tocOffsetSide = window.innerWidth - $('.content-wrapper').width() - tocTarget.outerWidth() - 80;
                         }
                         var scaleRatio = 0.9;
                         var anchorAdsHeight = addHeightByAnchorAds('top') + addHeightByAnchorAds('bottom');
@@ -992,11 +994,7 @@ function fixedRecommendAds(type) {
                         var fixTopPosition = tocTarget.height()*(1-scaleRatio)/2 - adjustTop;
                         tocTarget.css('top', 'calc(' + (tocOffsetTop+headerHeight+addHeightByAnchorAds('top')) + 'px - ' + fixTopPosition + 'px)');
                         tocTarget.css('transform', 'scale('+scaleRatio+')');
-                        if(adsTocPosition || !contentMiddleYn) {
-                            tocTarget.css('left', tocOffsetSide + 'px');
-                        } else{
-                            tocTarget.css('right', tocOffsetSide + 'px');
-                        }
+                        tocTarget.css('right', tocOffsetSide + 'px');
                     } else {
                         removeStyleFlag = true;
                     }
@@ -1578,7 +1576,10 @@ function checkAdsenseAds() {
         var insAdsbygoogle = $('ins.adsbygoogle');
         var cnt = 0;
         for(var i=0; i<insAdsbygoogle.length; i++) {
-            if(insAdsbygoogle.eq(i).children().length == 0) {
+            // if(insAdsbygoogle.eq(i).children().length == 0) {
+            if(insAdsbygoogle.eq(i).attr('data-adsbygoogle-status') != 'done' && insAdsbygoogle.eq(i).attr('data-ad-status') != "filled") {
+                insAdsbygoogle.eq(i).children().remove();
+                insAdsbygoogle.eq(i).removeAttr('data-adsbygoogle-status');
                 (adsbygoogle = window.adsbygoogle || []).push({});
                 cnt++;
             }
