@@ -1871,6 +1871,7 @@ article .tags a {
   width: 152px;
   height: 190px;
 	margin: auto !important;
+	display: flex;
 }
 .like_bubble span{
 	color: #ffbc26;
@@ -1887,14 +1888,16 @@ article .tags a {
 	position: absolute;
 	z-index: -1;
 	width: 152px;
-	height: 190px;
-	padding: 30px 0;
 	margin-left: 3px;
-	font-size: 0.9em;
-	line-height: 1.5em;
+	line-height: 1.4em;
 	color: #ce7b16;
+	font-size: 0.94em;
 	font-weight: bold;
 	animation: rotate 5s linear infinite;
+	display: flex;
+	justify-content: center;
+  align-items: center;
+	margin-top: 38px;
 }
 @keyframes blinker-rotate {
 	25% {
@@ -1925,6 +1928,7 @@ article .tags a {
 }
 .bubble_image:before {
 	content: "\f0f3";
+	font-family: "Font_Awesome_5_Free";
 }
 
 /* ads */

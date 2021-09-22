@@ -1572,6 +1572,21 @@ function addHeightByAnchorAds(type) {
     }
 }
 
+checkAdsenseAdsFlag = true;
+function checkAdsenseAds() {
+    if(checkAdsenseAdsFlag) {
+        var insAdsbygoogle = $('ins.adsbygoogle');
+        var cnt = 0;
+        for(var i=0; i<insAdsbygoogle.length; i++) {
+            if(insAdsbygoogle.eq(i).children().length == 0) {
+                (adsbygoogle = window.adsbygoogle || []).push({});
+                cnt++;
+            }
+        }
+        if(cnt == 0) checkAdsenseAdsFlag = false;
+    }
+}
+
 function commonForScroll() {
     $('.floating-button').css('bottom', addHeightByAnchorAds('bottom')+15+'px');
     $('#wrapper').css('padding-bottom',addHeightByAnchorAds('bottom')+'px');
@@ -1623,6 +1638,7 @@ $(document).ready(function() {
     toggleCategory();
     replaceLink();
     refreshAds('init');
+    checkAdsenseAds();
     common();
     
     $(window).on('scroll resize', function() {
@@ -1635,6 +1651,7 @@ $(document).ready(function() {
         stickySidebar();
         foldFloatingToc();
         recommendPost();
+        checkAdsenseAds();
         commonForScroll();
     });
 });
