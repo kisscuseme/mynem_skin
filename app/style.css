@@ -1846,6 +1846,7 @@ article .tags a {
 	z-index: 999;
 	background: #fff;
 	border-radius: 10px;
+	width: fit-content;
 }
 .toast-wrap:after {
 	content: "";
