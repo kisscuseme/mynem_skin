@@ -450,7 +450,7 @@ function commonProgressBar() {
 
 function progressBarVertical() {
     $pbv.css('height',((contentsCurrentPosition>1?1:contentsCurrentPosition)*100)+'%');
-    $pbv.css('left',($('.content-wrapper').offset().left)+'px');
+    $pbv.css('left',($('.content-wrapper').offset().left+Number($('#border-size').val()))+'px');
     $pbv.css('opacity',0.8-(0.5*(contentsCurrentPosition>1?1:contentsCurrentPosition)));
 }
 
@@ -461,7 +461,7 @@ function progressBarHorizontal() {
 
 function progressBarEtcVertical() {
     $pbev.css('height',(likeButtonPosition>0?etcCurrentPosition*100:0)+'%');
-    $pbev.css('left',($('.content-wrapper').outerWidth()+$('.content-wrapper').offset().left)+'px');
+    $pbev.css('left',($('.content-wrapper').outerWidth()+$('.content-wrapper').offset().left-5-Number($('#border-size').val()))+'px');
     $pbev.css('opacity',0.8-(0.5*etcCurrentPosition));
 }
 
@@ -975,10 +975,10 @@ function fixedRecommendAds(type) {
                         var tocOffsetTop = bookToc.length > 0?(contentMiddleYn && !adsTocPosition?0:50):0;
                         var tocOffsetSide = 0;
                         if(contentMiddleYn) {
-                            if(floatingTocPostion) {
-                                tocOffsetSide = (window.innerWidth - $('.content-wrapper').width())/2 + $('.content-wrapper').width() + 17;
+                            if((adsTocPosition && floatingTocPostion) || (!adsTocPosition && !floatingTocPostion)) {
+                                tocOffsetSide = (window.innerWidth - $('.content-wrapper').width())/2 - tocTarget.outerWidth() - 28;
                             } else {
-                                tocOffsetSide = (window.innerWidth - $('.content-wrapper').width())/2 - tocTarget.outerWidth() - 33;
+                                tocOffsetSide = (window.innerWidth - $('.content-wrapper').width())/2 + $('.content-wrapper').width() + 18;
                             }
                         } else {
                             tocOffsetSide = window.innerWidth - $('.content-wrapper').width() - tocTarget.outerWidth() - 80;
