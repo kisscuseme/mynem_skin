@@ -818,7 +818,7 @@
 				<description><![CDATA[]]></description>
 				<type>SELECT</type>
 				<option><![CDATA[[{"name":"matched","label":"사이드바 일치하는 광고","value":"matched"}, {"name":"adsense","label":"사이드바 기본 애드센스","value":"adsense"}, {"name":"adfit","label":"사이드바 기본 애드핏","value":"adfit"}]]]></option>
-				<default>matched</default>
+				<default>adsense</default>
 			</variable>
 			<variable>
 				<name>custom-font-forced</name>

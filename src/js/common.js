@@ -976,9 +976,9 @@ function fixedRecommendAds(type) {
                         var tocOffsetSide = 0;
                         if(contentMiddleYn) {
                             if(floatingTocPostion) {
-                                tocOffsetSide = (window.innerWidth - $('.content-wrapper').width())/2 + $('.content-wrapper').width() + 20;
+                                tocOffsetSide = (window.innerWidth - $('.content-wrapper').width())/2 + $('.content-wrapper').width() + 17;
                             } else {
-                                tocOffsetSide = (window.innerWidth - $('.content-wrapper').width())/2 - tocTarget.outerWidth() - 30;
+                                tocOffsetSide = (window.innerWidth - $('.content-wrapper').width())/2 - tocTarget.outerWidth() - 33;
                             }
                         } else {
                             tocOffsetSide = window.innerWidth - $('.content-wrapper').width() - tocTarget.outerWidth() - 80;
@@ -1574,17 +1574,20 @@ checkAdsenseAdsFlag = true;
 function checkAdsenseAds() {
     if(checkAdsenseAdsFlag) {
         var insAdsbygoogle = $('ins.adsbygoogle');
-        var cnt = 0;
-        for(var i=0; i<insAdsbygoogle.length; i++) {
-            // if(insAdsbygoogle.eq(i).children().length == 0) {
-            if(insAdsbygoogle.eq(i).attr('data-adsbygoogle-status') != 'done' && insAdsbygoogle.eq(i).attr('data-ad-status') != "filled") {
-                insAdsbygoogle.eq(i).children().remove();
-                insAdsbygoogle.eq(i).removeAttr('data-adsbygoogle-status');
-                (adsbygoogle = window.adsbygoogle || []).push({});
-                cnt++;
+        if(insAdsbygoogle.length > 0) {
+            var cnt = 0;
+            for(var i=0; i<insAdsbygoogle.length; i++) {
+                if( insAdsbygoogle.eq(i).attr('data-ad-client') != ''
+                  && insAdsbygoogle.eq(i).attr('data-adsbygoogle-status') != 'done'
+                  && insAdsbygoogle.eq(i).attr('data-ad-status') != "filled") {
+                    insAdsbygoogle.eq(i).children().remove();
+                    insAdsbygoogle.eq(i).removeAttr('data-adsbygoogle-status');
+                    (adsbygoogle = window.adsbygoogle || []).push({});
+                    cnt++;
+                }
             }
+            if(cnt == 0) checkAdsenseAdsFlag = false;
         }
-        if(cnt == 0) checkAdsenseAdsFlag = false;
     }
 }
 
