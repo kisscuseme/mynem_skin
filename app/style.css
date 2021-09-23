@@ -928,6 +928,7 @@ body.dark-mode .sidebar .category ul li ul li ul li:last-child {
 .bgm-title-box {
 	overflow: hidden;
 	position: relative;
+	width: 100%;
 }
 #bgm-mute {
 	vertical-align: middle;

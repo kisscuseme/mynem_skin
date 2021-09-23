@@ -1614,7 +1614,7 @@ function checkAdsenseAds() {
                         insAdsbygoogle.eq(i).removeAttr('data-ad-status');
                         (adsbygoogle = window.adsbygoogle || []).push({});
                         cnt++;
-                        if(checkAdsenseAdsCnt > 10) insAdsbygoogle.eq(i).remove();
+                        if(checkAdsenseAdsCnt > 5) insAdsbygoogle.eq(i).remove();
                     }
                 }
                 if(cnt == 0) checkAdsenseAdsFlag = false;
