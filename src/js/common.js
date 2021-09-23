@@ -1620,7 +1620,7 @@ function checkAdsenseAds() {
                 if(cnt == 0) checkAdsenseAdsFlag = false;
                 checkAdsenseAdsCnt++;
             }
-        }, 200);
+        }, 500);
     }
 }
 
