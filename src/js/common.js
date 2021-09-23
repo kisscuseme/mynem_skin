@@ -396,8 +396,10 @@ function smoothScroll() {
 }
 
 var msgTimer = 0;
-function showToast(msg, slot) {
+function showToast(msg, slot, time) {
     clearToast();
+
+    if(!time) time = 1000;
 
     var toast = $('#toast');
 
@@ -417,7 +419,7 @@ function showToast(msg, slot) {
         toast.fadeIn(500, function() {
             msgTimer = setTimeout(function() {
                 toast.fadeOut(500);
-            }, 1000);
+            }, time);
         });
     }, 200);
 }
@@ -1589,24 +1591,36 @@ function addHeightByAnchorAds(type) {
     }
 }
 
-checkAdsenseAdsFlag = true;
+var checkAdsenseAdsFlag = true;
+var checkAdsenseAdsTimer = 0;
+var checkAdsenseAdsCnt = 0;
 function checkAdsenseAds() {
     if(checkAdsenseAdsFlag) {
-        var insAdsbygoogle = $('ins.adsbygoogle');
-        if(insAdsbygoogle.length > 0) {
-            var cnt = 0;
-            for(var i=0; i<insAdsbygoogle.length; i++) {
-                if( insAdsbygoogle.eq(i).attr('data-ad-client') != ''
-                  && insAdsbygoogle.eq(i).attr('data-adsbygoogle-status') != 'done'
-                  && insAdsbygoogle.eq(i).attr('data-ad-status') != "filled") {
-                    insAdsbygoogle.eq(i).children().remove();
-                    insAdsbygoogle.eq(i).removeAttr('data-adsbygoogle-status');
-                    (adsbygoogle = window.adsbygoogle || []).push({});
-                    cnt++;
-                }
-            }
-            if(cnt == 0) checkAdsenseAdsFlag = false;
+        if(checkAdsenseAdsTimer != 0) {
+            clearTimeout(checkAdsenseAdsTimer);
+            checkAdsenseAdsTimer = 0;
         }
+        checkAdsenseAdsTimer = setTimeout(function() {
+            var insAdsbygoogle = $('ins.adsbygoogle');
+            if(insAdsbygoogle.length > 0) {
+                var cnt = 0;
+                for(var i=0; i<insAdsbygoogle.length; i++) {
+                    if( insAdsbygoogle.eq(i).attr('data-ad-client') != ''
+                      && (insAdsbygoogle.eq(i).attr('data-adsbygoogle-status') != 'done'
+                      || insAdsbygoogle.eq(i).attr('data-ad-status') != "filled")) {
+                        insAdsbygoogle.eq(i).children().remove();
+                        insAdsbygoogle.eq(i).css('display', 'block');
+                        insAdsbygoogle.eq(i).removeAttr('data-adsbygoogle-status');
+                        insAdsbygoogle.eq(i).removeAttr('data-ad-status');
+                        (adsbygoogle = window.adsbygoogle || []).push({});
+                        cnt++;
+                        if(checkAdsenseAdsCnt > 10) insAdsbygoogle.eq(i).remove();
+                    }
+                }
+                if(cnt == 0) checkAdsenseAdsFlag = false;
+                checkAdsenseAdsCnt++;
+            }
+        }, 200);
     }
 }
 
@@ -1645,7 +1659,14 @@ function refreshAds(type) {
     }
 }
 
+function isChromium() {
+    if(!window.chrome) {
+        showToast("미넴 스킨은 크로미움 기반 브라우저에서 최적화 되었습니다.",'top',5000);
+    }
+}
+
 $(document).ready(function() {
+    isChromium();
     makeToc();
     selectMakeFloatingToc();
     commentControl();
