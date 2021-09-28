@@ -376,7 +376,7 @@ function smoothScroll() {
         if(moveFlag) {
             var distance = Math.abs(windowTop - offsetTop - headerHeight);
             var calcSpeed = 300*(distance/2000);
-            var speed = calcSpeed<300?300:(calcSpeed>3000?3000:calcSpeed);
+            var speed = calcSpeed<500?500:(calcSpeed>3000?3000:calcSpeed);
             $('html, body').animate({
                 scrollTop: offsetTop - headerHeight
             }, speed, 'swing');
