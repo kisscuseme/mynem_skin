@@ -655,9 +655,6 @@ article h2,
 .sidebar div:not(#aside-top-blank) {
 	min-height: 30px;
 }
-.sidebar div:last-child {
-	margin-bottom: 0px;
-}
 .sidebar h2 {
 	font-weight: bold;
 	font-size: 0.875em !important;
@@ -1334,6 +1331,10 @@ figure[data-ke-type='opengraph'] div.og-text {
 	padding: 15px 15px 0;
 }
 @media (max-width: 600px) {
+	figure[data-ke-type='opengraph'] div.og-text,
+	#tt-body-page figure[data-ke-type='opengraph'] div.og-text {
+		padding-top: 10px;
+	}
 	figure[data-ke-type='opengraph'] a,
 	#tt-body-page figure[data-ke-type='opengraph'] a {
 		height: 90px;
@@ -1344,7 +1345,11 @@ figure[data-ke-type='opengraph'] div.og-text {
 	}
 	figure[data-ke-type='opengraph'] div.og-text p.og-title,
 	#tt-body-page figure[data-ke-type='opengraph'] div.og-text p.og-title {
-		font-size:16px !important;
+		white-space: normal;
+		-webkit-line-clamp: 2;
+		display: -webkit-box;
+		-webkit-box-orient: vertical;
+		line-height: 1.5 !important;
 	}
 }
 .book-toc ul[data-ke-list-type='disc'],

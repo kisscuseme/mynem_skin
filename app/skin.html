@@ -63,12 +63,6 @@
 				font-size: 22px !important;
 				max-width: 100%;
 			}
-			@media (max-width: 600px) {
-				figure[data-ke-type='opengraph'] div.og-text p.og-title,
-				#tt-body-page figure[data-ke-type='opengraph'] div.og-text p.og-title {
-					font-size:16px !important;
-				}
-			}
 			figure[data-ke-type='opengraph'] div.og-text p.og-desc,
 			#tt-body-page figure[data-ke-type='opengraph'] div.og-text p.og-desc {
 				font-family: <s_if_var_custom-font>[##_var_custom-font_##]</s_if_var_custom-font>"Noto Sans DemiLight",AppleSDGothicNeo,"Malgun Gothic","맑은 고딕","돋움",dotum,sans-serif,'Font_Awesome_5_Free' !important;
@@ -256,7 +250,12 @@
 					padding-top: calc(30px + 40px / [##_var_mobile-font-ratio_##] / [##_var_font-size-ratio_##]);
 				}
 			}
-
+			@media (max-width: 600px) {
+				p[data-ke-size='size14'] { font-size: calc(0.9em * [##_var_mobile-font-ratio_##] * [##_var_font-size-ratio_##]) !important; }
+				figure[data-ke-type='opengraph'] div.og-text p.og-title, #tt-body-page figure[data-ke-type='opengraph'] div.og-text p.og-title {
+					font-size: calc(1.0em * [##_var_mobile-font-ratio_##] * [##_var_font-size-ratio_##]) !important;
+				}
+			}
 			/* shadow effect */
 			<s_if_var_shadow-effect>
 				section .content-wrapper, .post-item a, .post-item .thum, .cover-list ul li a,
@@ -1806,9 +1805,11 @@
 												</s_if_var_infeed-google-ads-side-r>
 												<s_rctps_rep>
 													<s_if_var_infeed-google-ads-side-r>
+														<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
 														<script>
 															if(recentCnt != 0 && recentCnt%[##_var_infeed-repeat-cnt-side_##] == 0) {
 																document.write('<li><ins class="adsbygoogle" style="display:block" data-ad-format="fluid" data-ad-layout-key="[##_var_infeed-data-ad-layout-key-side_##]" data-ad-client="[##_var_infeed-data-ad-client-side_##]" data-ad-slot="[##_var_infeed-data-ad-slot-side_##]"></ins></li>');
+																(adsbygoogle = window.adsbygoogle || []).push({});
 															}
 															recentCnt += 1;
 														</script>
@@ -1840,9 +1841,11 @@
 												</s_if_var_infeed-google-ads-side-p>
 												<s_rctps_popular_rep>
 													<s_if_var_infeed-google-ads-side-p>
+														<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
 														<script>
 															if(popularCnt != 0 && popularCnt%[##_var_infeed-repeat-cnt-side_##] == 0) {
 																document.write('<li><ins class="adsbygoogle" style="display:block" data-ad-format="fluid" data-ad-layout-key="[##_var_infeed-data-ad-layout-key-side_##]" data-ad-client="[##_var_infeed-data-ad-client-side_##]" data-ad-slot="[##_var_infeed-data-ad-slot-side_##]"></ins></li>');
+																(adsbygoogle = window.adsbygoogle || []).push({});
 															}
 															popularCnt += 1;
 														</script>
@@ -1867,11 +1870,15 @@
 										<div class="module module_plugin">
 											<h2 id="recommend-ads-title">추천 글</h2>
 											<div id="recommend-ads" class="revenue_unit_item adsense">
+												<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
 												<ins class="adsbygoogle"
 														style="display:inline-block;"
 														data-ad-client="[##_var_sidebar-data-ad-client_##]"
 														data-ad-slot="[##_var_sidebar-data-ad-slot_##]"></ins>
 											</div>
+											<script>
+												(adsbygoogle = window.adsbygoogle || []).push({});
+											</script>
 										</div>
 									</s_sidebar_element>
 									<s_sidebar_element>
@@ -1967,6 +1974,7 @@
 												</s_if_var_infeed-google-ads>
 												<s_cover_item>
 													<s_if_var_infeed-google-ads>
+														<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
 														<script>
 															var layoutKey = "";
 															var slot = "";
@@ -1979,6 +1987,7 @@
 															}
 															if(cnt != 0 && cnt%[##_var_infeed-repeat-cnt_##] == 0) {
 																document.write('<li><ins class="adsbygoogle" style="display:block" data-ad-format="fluid" data-ad-layout-key="'+layoutKey+'" data-ad-client="[##_var_infeed-data-ad-client_##]" data-ad-slot="'+slot+'"></ins></li>');
+																(adsbygoogle = window.adsbygoogle || []).push({});
 															}
 															cnt += 1;
 														</script>
@@ -2164,23 +2173,32 @@
 											<s_if_var_content-google-ads>
 												<div class="top-ads">
 													<div id="ad-top-left" class="revenue_unit_item adsense">
+														<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
 														<ins class="adsbygoogle top-left"
 																 data-ad-client="[##_var_content-data-ad-client_##]"
 																 data-ad-slot="[##_var_content-data-ad-slot-1_##]"
 																 data-ad-format="rectangle"
-																 data-full-width-responsive="true"></ins>
+																 data-full-width-responsive="true"
+																 style="width:336px;"></ins>
 														<script>
 															if($(window).width() < 710) {
 																$('#ad-top-left').remove();
+															} else {
+																(adsbygoogle = window.adsbygoogle || []).push({});
 															}
 														</script>
 													</div>
 													<div id="ad-top-right" class="revenue_unit_item adsense">
+														<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
 														<ins class="adsbygoogle top-right"
 																 data-ad-client="[##_var_content-data-ad-client_##]"
 																 data-ad-slot="[##_var_content-data-ad-slot-2_##]"
 																 data-ad-format="rectangle"
-																 data-full-width-responsive="true"></ins>
+																 data-full-width-responsive="true"
+																 style="width:336px;"></ins>
+														<script>
+															(adsbygoogle = window.adsbygoogle || []).push({});
+														</script>
 													</div>
 												</div>
 											</s_if_var_content-google-ads>
@@ -2199,12 +2217,16 @@
 											<div class="related-articles">
 												<h2>추천 글</h2>
 												<div class="related-articles-wrap">
+													<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
 													<ins class="adsbygoogle"
 															 style="display:block"
 															 data-ad-format="autorelaxed"
 															 data-ad-client="[##_var_related-data-ad-client_##]"
 															 data-ad-slot="[##_var_related-data-ad-slot_##]"></ins>
 												</div>
+												<script>
+													(adsbygoogle = window.adsbygoogle || []).push({});
+												</script>
 											</div>
 											<div style="margin-top:30px;"></div>
 										</s_if_var_related-google-ads>
@@ -2376,6 +2398,7 @@
 							<s_if_var_main-google-ads>
 								<s_if_var_main-ad-title><h2>[##_var_main-ad-title_##]</h2></s_if_var_main-ad-title>
 								<div class="main-ads">
+									<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
 									<ins class="adsbygoogle"
 										 style="display:block"
 										 data-ad-format="autorelaxed"
@@ -2388,6 +2411,8 @@
 												mainAds.prev().remove();
 											}
 											mainAds.remove();
+										} else {
+											(adsbygoogle = window.adsbygoogle || []).push({});
 										}
 									</script>
 								</div>
@@ -2404,7 +2429,7 @@
 						<a href="#" class="page-top">TOP</a>
 						<p class="meta"><s_if_var_footer-text-1>[##_var_footer-text-1_##]</s_if_var_footer-text-1></p>
 						<p class="copyright"><s_if_var_footer-text-2>[##_var_footer-text-2_##]</s_if_var_footer-text-2></p>
-						<p class="maker"><a href="https://sangminem.tistory.com/506" target="_blank"><font color="#ff7a00"><b>Mynem Skin 2.5.7</b> © Armynem</font></a></p>
+						<p class="maker"><a href="https://sangminem.tistory.com/506" target="_blank"><font color="#ff7a00"><b>Mynem Skin 2.5.8</b> © Armynem</font></a></p>
 					</div>
 				</footer>
 			</div>
@@ -2519,6 +2544,7 @@
 			<input type='hidden' id='adsense-refresh' value="[##_var_adsense-refresh_##]">
 			<input type='hidden' id='fixed-ads-type' value="[##_var_fixed-ads-type_##]">
 			<input type='hidden' id='border-size' value="[##_var_border-size_##]">
+			<input type='hidden' id='make-clipboard-link' value="[##_var_make-clipboard-link_##]">
 		</s_t3>
 		<script src="./images/common.min.js"></script>
 		<script src="./images/jquery.toc.min.js"></script>
