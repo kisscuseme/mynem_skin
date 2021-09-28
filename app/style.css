@@ -1950,7 +1950,7 @@ article .tags a {
 }
 #ad-top-right {
 	margin: auto;
-	overflow: auto;
+	overflow: hidden;
 	padding: 5px;
 }
 .adsbygoogle.top-left {

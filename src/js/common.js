@@ -376,7 +376,7 @@ function smoothScroll() {
         if(moveFlag) {
             var distance = Math.abs(windowTop - offsetTop - headerHeight);
             var calcSpeed = 300*(distance/2000);
-            var speed = calcSpeed<300?300:(calcSpeed>1500?1500:calcSpeed);
+            var speed = calcSpeed<300?300:(calcSpeed>3000?3000:calcSpeed);
             $('html, body').animate({
                 scrollTop: offsetTop - headerHeight
             }, speed, 'swing');
@@ -1593,47 +1593,6 @@ function addHeightByAnchorAds(type) {
     }
 }
 
-var checkAdsenseAdsFlag = true;
-var checkAdsenseAdsTimer = 0;
-var checkAdsenseAdsCnt = 0;
-function checkAdsenseAds() {
-    if(checkAdsenseAdsFlag) {
-        if(checkAdsenseAdsTimer != 0) {
-            clearTimeout(checkAdsenseAdsTimer);
-            checkAdsenseAdsTimer = 0;
-        }
-        checkAdsenseAdsTimer = setTimeout(function() {
-            var insAdsbygoogle = $('ins.adsbygoogle');
-            if(insAdsbygoogle.length > 0) {
-                var cnt = 0;
-                for(var i=0; i<insAdsbygoogle.length; i++) {
-                     if( !insAdsbygoogle.eq(i).attr('data-ad-client')
-                      && insAdsbygoogle.eq(i).attr('data-adsbygoogle-status') == "done"
-                      && insAdsbygoogle.eq(i).attr('data-ad-status') != "filled") {
-                        if(insAdsbygoogle.eq(i).attr('style').indexOf('width: 0px;') != -1) {
-                            var css = insAdsbygoogle.eq(i).attr('style').replace('width: 0px;', '').replace('height: 0px;', '').trim();
-                            insAdsbygoogle.eq(i).attr('class', 'adsbygoogle');
-                            insAdsbygoogle.eq(i).attr('style', css);
-                        }
-                        insAdsbygoogle.eq(i).children().remove();
-                        insAdsbygoogle.eq(i).css('display', 'block');
-                        insAdsbygoogle.eq(i).removeAttr('data-adsbygoogle-status');
-                        insAdsbygoogle.eq(i).removeAttr('data-ad-status');
-                        
-                        (adsbygoogle = window.adsbygoogle || []).push({});
-                        cnt++;
-                    }
-                }
-                if(cnt == 0 || checkAdsenseAdsCnt > 5) {
-                    checkAdsenseAdsFlag = false;
-                }
-                checkAdsenseAdsCnt++;
-            }
-            checkAdsenseAdsTimer = 0;
-        }, 500);
-    }
-}
-
 function commonForScroll() {
     $('.floating-button').css('bottom', addHeightByAnchorAds('bottom')+15+'px');
     $('#wrapper').css('padding-bottom',addHeightByAnchorAds('bottom')+'px');
@@ -1711,7 +1670,6 @@ $(document).ready(function() {
         stickySidebar();
         foldFloatingToc();
         recommendPost();
-        checkAdsenseAds();
         commonForScroll();
     });
 });
