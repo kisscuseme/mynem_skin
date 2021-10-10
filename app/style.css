@@ -1849,7 +1849,8 @@ article .tags a {
 	z-index: 999;
 	background: #fff;
 	border-radius: 10px;
-	width: fit-content;
+	width: max-content;
+	max-width: 80vw;
 }
 .toast-wrap:after {
 	content: "";
@@ -1959,6 +1960,30 @@ article .tags a {
 	height: 280px;
 }
 .adsbygoogle.top-right {
+	display: block;
+	width: 336px;
+	height: 280px;
+}
+.bottom-ads {
+	display: flex;
+	margin: 20px 0 20px;
+}
+#ad-bottom-left {
+	margin: auto;
+	overflow: auto;
+	padding: 5px;
+}
+#ad-bottom-right {
+	margin: auto;
+	overflow: hidden;
+	padding: 5px;
+}
+.adsbygoogle.bottom-left {
+	display: block;
+	width: 336px;
+	height: 280px;
+}
+.adsbygoogle.bottom-right {
 	display: block;
 	width: 336px;
 	height: 280px;
@@ -2443,7 +2468,7 @@ body.dark-mode#tt-body-page figure[data-ke-type='opengraph'] div.og-text p.og-ti
 body.dark-mode .comment-list ul li .author-meta .nickname a, body.dark-mode header p a,
 body.dark-mode .comment-list ul li .author-meta a, body.dark-mode .content-comment,
 body.dark-mode .sidebar .count p, body.dark-mode .sidebar .count .total,
-body.dark-mode .profile-details {
+body.dark-mode .profile-details, body.dark-mode figure figcaption {
 	color: #d6d6d6;
 }
 body.dark-mode .btn_menu_toolbar, body.dark-mode #wrapper div div.profile button {

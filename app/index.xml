@@ -2,7 +2,7 @@
 <skin>
 	<information>
 		<name>Mynem Skin</name>
-		<version>2.5.8</version>
+		<version>2.5.9</version>
 		<description>
 			<![CDATA[ 심플하면서 막강한 기능을 가진 미넴 스킨 입니다.
 			많은 사용자가 원하는 방향으로 발전해 나갈 예정입니다. ]]>
@@ -916,6 +916,38 @@
 				<option />
 				<default>true</default>
 			</variable>
+			<variable>
+				<name>alert-chromium</name>
+				<label><![CDATA[ 크로미움 기반 브라우저 아닐 시에 안내 팝업 ]]></label>
+				<description><![CDATA[]]></description>
+				<type>BOOL</type>
+				<option />
+				<default>false</default>
+			</variable>
+			<variable>
+				<name>alert-chromium-text</name>
+				<label><![CDATA[ 크로미움 기반 브라우저 아닐 시에 안내 팝업 문구 ]]></label>
+				<description><![CDATA[]]></description>
+				<type>STRING</type>
+				<option />
+				<default><![CDATA[ 미넴 스킨은 크로미움 기반 브라우저에서 최적화 되었습니다. ]]></default>
+			</variable>
+			<variable>
+				<name>loading-screen</name>
+				<label><![CDATA[ 블로그 로딩 화면 사용 여부 ]]></label>
+				<description><![CDATA[]]></description>
+				<type>BOOL</type>
+				<option />
+				<default>true</default>
+			</variable>
+			<variable>
+				<name>loading-screen-img</name>
+				<label><![CDATA[ 로딩 이미지 업로드 ]]></label>
+				<description><![CDATA[]]></description>
+				<type>IMAGE</type>
+				<option />
+				<default></default>
+			</variable>
 		</variablegroup>
 
 		<variablegroup name="사이드바 구글 일치하는 광고 (사용 여부는 사이드바에서 설정)">
@@ -972,6 +1004,41 @@
 			</variable>
 			<variable>
 				<name>content-data-ad-slot-2</name>
+				<label><![CDATA[ data-ad-slot (두번째) ]]></label>
+				<description><![CDATA[]]></description>
+				<type>STRING</type>
+				<option />
+				<default><![CDATA[]]></default>
+			</variable>
+		</variablegroup>
+
+		<variablegroup name="본문 하단 구글 광고 2개">
+			<variable>
+				<name>content-bottom-google-ads</name>
+				<label><![CDATA[ 사용 여부 ]]></label>
+				<description><![CDATA[]]></description>
+				<type>BOOL</type>
+				<option/>
+				<default>false</default>
+			</variable>
+			<variable>
+				<name>content-bottom-data-ad-client</name>
+				<label><![CDATA[ data-ad-client (공통) ]]></label>
+				<description><![CDATA[]]></description>
+				<type>STRING</type>
+				<option />
+				<default><![CDATA[]]></default>
+			</variable>
+			<variable>
+				<name>content-bottom-data-ad-slot-1</name>
+				<label><![CDATA[ data-ad-slot (첫번째) ]]></label>
+				<description><![CDATA[]]></description>
+				<type>STRING</type>
+				<option />
+				<default><![CDATA[]]></default>
+			</variable>
+			<variable>
+				<name>content-bottom-data-ad-slot-2</name>
 				<label><![CDATA[ data-ad-slot (두번째) ]]></label>
 				<description><![CDATA[]]></description>
 				<type>STRING</type>

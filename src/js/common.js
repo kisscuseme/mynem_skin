@@ -1267,30 +1267,16 @@ var initHeaderHeight = $('header').outerHeight();
 var $topButton = $('.top-button');
 var $contentTitle = $('article .inner .content-title');
 var flagForMoveToTheTitle = true;
-var fixedHeaderTimer = 0;
 var fixedHeaderTopTimer = 0;
-var fixedHeaderTopFlag = true;
 function fixedHeader() {
     if($('#fixed-header').val()){
-        if(fixedHeaderTopFlag) {
-            run();
-        } else {
-            if(fixedHeaderTimer != 0) {
-                clearTimeout(fixedHeaderTimer);
-                fixedHeaderTimer = 0;
-            }
-    
-            fixedHeaderTimer = setTimeout(function() {
-                run();
-            },200);
-        }
+        run();
 
         function run() {
             var bodyPaddingTop = Number($('body').css('padding-top').replace('px',''));
             var anchorAdsHeight = window.scrollY>bodyPaddingTop?addHeightByAnchorAds('top'):bodyPaddingTop;
             var sidebarOffsetTop = window.scrollY>$('.sidebar').offset().top-$headerTitle.height()?addHeightByAnchorAds('top'):0;
             if(window.scrollY > 0 && window.scrollHeight > window.innerHeight) {
-                fixedHeaderTopFlag = false;
                 $('.content-wrapper').css('margin-top',initHeaderHeight+'px');
                 $header.css('position', 'fixed');
                 $header.css('top', anchorAdsHeight+'px');
@@ -1330,7 +1316,6 @@ function fixedHeader() {
                 $('#blog-menu').fadeIn(500,'linear');
                 fixedHeaderTopTimer = 0;
                 fixedHeaderTopTimer = setTimeout(function() {
-                    fixedHeaderTopFlag = true;
                     $('.content-wrapper').css('margin-top','');
                     $header.css('height', '');
                     $header.css('background', '');
@@ -1581,7 +1566,7 @@ function addHeightByAnchorAds(type) {
                 return 0;
             }
         } else if(type == 'top') {
-            if($('.adsbygoogle[data-anchor-status]').offset().top == window.scrollY) {
+            if(Math.round($('.adsbygoogle[data-anchor-status]').offset().top) == Math.round(window.scrollY)) {
                 return $('.adsbygoogle[data-anchor-status]').height();
             } else {
                 return 0;
@@ -1636,8 +1621,10 @@ function refreshAds(type) {
 }
 
 function isChromium() {
-    if(!window.chrome) {
-        showToast("미넴 스킨은 크로미움 기반 브라우저에서 최적화 되었습니다.",'top',5000);
+    if($('#alert-chromium').val()){
+        if(!window.chrome) {
+            showToast($('#alert-chromium-text').val(),'top',5000);
+        }
     }
 }
 
