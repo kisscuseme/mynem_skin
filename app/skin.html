@@ -22,28 +22,10 @@
 					font-display: auto;
 				}
 				@font-face {
-					font-family: 'NanumSquare';
-					src: local(NanumSquare),
-						url("./images/NanumSquareR.woff2") format("woff2"),
-						url("./images/NanumSquareR.woff") format("woff");
-					font-weight: normal;
-					font-style: normal;
-					font-display: auto;
-				}
-				@font-face {
-					font-family: 'NanumSquare';
-					src: local(NanumSquare),
-						url("./images/NanumSquareB.woff2") format("woff2"),
-						url("./images/NanumSquareB.woff") format("woff");
-					font-weight: bold;
-					font-style: normal;
-					font-display: auto;
-				}
-				@font-face {
-					font-family: 'LexiSaebomR';
-					src: local(LexiSaebomR),
-						url("./images/LexiSaebomR.woff2") format("woff2"),
-						url('./images/LexiSaebomR.woff') format('woff');
+					font-family: 'RIDIBatang';
+					src: local(RIDIBatang),
+						url("./images/RIDIBatang.woff2") format("woff2"),
+						url('./images/RIDIBatang.woff') format('woff');
 					font-weight: normal;
 					font-style: normal;
 					font-display: auto;
@@ -62,6 +44,7 @@
 				font-family: <s_if_var_custom-font>[##_var_custom-font_##]</s_if_var_custom-font>"Noto Sans DemiLight",AppleSDGothicNeo,"Malgun Gothic","맑은 고딕","돋움",dotum,sans-serif,'Font_Awesome_5_Free' !important;
 				font-size: 22px !important;
 				max-width: 100%;
+				margin-bottom: 5px !important
 			}
 			figure[data-ke-type='opengraph'] div.og-text p.og-desc,
 			#tt-body-page figure[data-ke-type='opengraph'] div.og-text p.og-desc {
@@ -215,6 +198,7 @@
 				p[data-ke-size='size14'] { font-size: calc(0.9em * [##_var_mobile-font-ratio_##] * [##_var_font-size-ratio_##]) !important; }
 				figure[data-ke-type='opengraph'] div.og-text p.og-title, #tt-body-page figure[data-ke-type='opengraph'] div.og-text p.og-title {
 					font-size: calc(1.22em * [##_var_mobile-font-ratio_##] * [##_var_font-size-ratio_##]) !important;
+					margin-bottom: 10px !important;
 				}
 				.comment-list ul li p {
 					font-size: calc(0.9em * [##_var_mobile-font-ratio_##] * [##_var_font-size-ratio_##]) !important;
@@ -267,21 +251,23 @@
 				figure[data-ke-type='opengraph'] a, #tt-body-page figure[data-ke-type='opengraph'] a,
 				.related-articles-wrap, .main-ads, #ad-top-left, #ad-top-right, #ad-bottom-left, #ad-bottom-right,
 				.book-toc, .floating-toc-new, #tistorySnsLayer.layer_post, #toast,
-				img:not(.flag, .title-image), .sidebar .content-item .thum, .content-box, .content-comment {
+				img:not(.flag, .title-image, .loading-image), .sidebar .content-item .thum, .content-box, .content-comment,
+				article > .inner > ul li a, article > .inner > ul li figure {
 					box-shadow: 0 0 16px -4px #ddd;
 				}
 				
 				body.dark-mode section .content-wrapper, body.dark-mode .post-item a, body.dark-mode .post-item .thum, body.dark-mode .cover-list ul li a,
 				body.dark-mode .cover-list ul li figure, body.dark-mode .cover-special ul li, body.dark-mode .sidebar .category,
+				body.dark-mode article > .inner > ul li a, body.dark-mode article > .inner > ul li figure,
 				body.dark-mode .sidebar .notice, body.dark-mode .sidebar .recent, body.dark-mode .sidebar .popular, body.dark-mode .sidebar .recent-comment,
 				body.dark-mode .sidebar .tags, body.dark-mode .sidebar .archives, body.dark-mode .sidebar .count, body.dark-mode .sidebar .profile-info,
 				body.dark-mode .sidebar .module_plugin, body.dark-mode .sidebar .revenue_unit_wrap, body.dark-mode .content-title, body.dark-mode .content-article pre,
 				body.dark-mode figure.fileblock a, body.dark-mode #tt-body-page figure.fileblock a, body.dark-mode .sidebar .best-post,
 				body.dark-mode figure[data-ke-type='opengraph'] a, body.dark-mode #tt-body-page figure[data-ke-type='opengraph'] a,
 				body.dark-mode .related-articles-wrap, body.dark-mode .main-ads, body.dark-mode #ad-top-left, body.dark-mode #ad-top-right,
-				body.dark-mode #ad-bottom-left, body.dark-mode #ad-bottom-right,
+				body.dark-mode #ad-bottom-left, body.dark-mode #ad-bottom-right, body.dark-mode article > .inner > ul li a, body.dark-mode article > .inner > ul li figure
 				body.dark-mode .book-toc, body.dark-mode .floating-toc-new, body.dark-mode #tistorySnsLayer.layer_post, body.dark-mode #toast,
-				body.dark-mode img:not(.flag, .title-image), body.dark-mode .sidebar .content-item .thum, body.dark-mode .content-box, body.dark-mode .content-comment {
+				body.dark-mode img:not(.flag, .title-image, .loading-image), body.dark-mode .sidebar .content-item .thum, body.dark-mode .content-box, body.dark-mode .content-comment {
 					box-shadow: 0 0 16px -4px #222 !important;
 				}
 			</s_if_var_shadow-effect>
@@ -374,13 +360,16 @@
 
 			<s_if_var_background-color>
 				header:after, section:after, footer:after, .content-title:after, .top-button .menu button:before,
-				.book-toc:after, .top-button .menu button:before, .move-top-btn:before, .floating-toc-new,
+				.book-toc:after, .top-button .menu button:before, .move-top-btn:before, .move-comment-btn:before, .floating-toc-new,
 				.mobile-menu aside:after, .toast-wrap:after, .share-btn:before, .dark-mode-on-btn:before, .dark-mode-off-btn:before, .font-size-up-btn:before, .font-size-down-btn:before,
 				#toc-body::-webkit-scrollbar-track, ::-webkit-scrollbar-track {background-color:[##_var_background-color_##]}
 
 				.cover-list ul li a, .post-item a, .cover-special ul li,
-				.comment-list ul li .author-meta .control .link a {
+				article > .inner > ul li a {
 					background: [##_var_background-color_##]1A;
+				}
+				.comment-list ul li .author-meta .control .link a {
+					background: [##_var_background-color_##]DD;
 				}
 			</s_if_var_background-color>
 			
@@ -401,9 +390,9 @@
 				.content-article h3 button, #tt-body-search .post-header h1 span:before,
 				.content-article h4 button, .tags a:before, #tt-body-tag .post-header h1 span:before, .cover-special ul li .category,
 				.more-reply, #toc-title p, .search button:before, .content-article a, .toast, .change-font-btn, .post-item .meta .category,
-				.content-article .book-toc p, .content-article .book-toc p span#toggle, .cover-list ul li .meta .category,
+				.content-article .book-toc p, .content-article .book-toc p span#toggle, .cover-list ul li .meta .category, article > .inner > ul li .meta .category,
 				.comments h2 .count, article .another_category th:before, .post-header h1 em, .bgm-btn, .dark-mode-btn-dark, .dark-mode-btn-default,
-				.move-top-btn:after,.top-button .menu button:after, .post-header h1:before, article h2:before, .content-article .copy-title-btn,
+				.move-top-btn:after, .move-comment-btn:after, .top-button .menu button:after, .post-header h1:before, article h2:before, .content-article .copy-title-btn,
 				.share-btn:after,.dark-mode-on-btn:after,.dark-mode-off-btn:after, .font-size-up-btn:after, .font-size-down-btn:after,
 				#toc > li a:after, #toc > li > ul > li a:after, #toc > li > ul > li > ul > li a:after {color:[##_var_etc-color_##]}
 				#toc-title p #toggle, .floating-icon:after, .sidebar .recent-comment ul li a:before, .sidebar .archives ul li a:before,
@@ -411,14 +400,14 @@
 				.sidebar .category .category_list .link_item:before, .bgm-header, h2 .bgm-btn,
 				.sidebar .category .sub_category_list .link_sub_item:before,
 				#toc > li:before, #toc > li > ul > li:before, #toc > li > ul > li > ul > li:before {color:[##_var_etc-color_##] !important;opacity:0.7;}
-				.content-article h2 {border-left: [##_var_etc-color_##]ff 16px solid !important;border-bottom: 4px solid [##_var_etc-color_##]ff !important;}
-				.content-article h3 {border-left: [##_var_etc-color_##]cc 12px solid !important;border-bottom: 3px solid [##_var_etc-color_##]cc !important;}
-				.content-article h4 {border-left: [##_var_etc-color_##]88 8px solid !important;border-bottom: 2px solid [##_var_etc-color_##]88 !important;}
+				.content-article h2 {border-left: [##_var_etc-color_##]ff 12px solid !important;border-bottom: 0px solid [##_var_etc-color_##]ff !important;}
+				.content-article h3 {border-left: [##_var_etc-color_##]cc 10px solid !important;border-bottom: 0px solid [##_var_etc-color_##]cc !important;}
+				.content-article h4 {border-left: [##_var_etc-color_##]88 8px solid !important;border-bottom: 0px solid [##_var_etc-color_##]88 !important;}
 				.comment-form .submit button,
 				.progress-bar-vertical, .progress-bar-horizontal,
 				.progress-bar-etc-vertical, .progress-bar-etc-horizontal,
 				.sidebar .close:before, .sidebar .close:after {background-color:[##_var_etc-color_##]}
-				.move-top-btn, .top-button .menu button, .sidebar .close, .top-button .profile button,
+				.move-top-btn, .move-comment-btn, .top-button .menu button, .sidebar .close, .top-button .profile button,
 				.share-btn, .dark-mode-on-btn, .dark-mode-off-btn, .font-size-up-btn, .font-size-down-btn
 				{border: [##_var_border-size_##]px solid [##_var_etc-color_##]55 !important}
 				.comment-list ul li .author-meta .control .link a {border: 1px solid [##_var_etc-color_##]55}
@@ -470,16 +459,8 @@
 					figure.fileblock, #tt-body-page figure.fileblock {
 						border: [##_var_border-size_##]px solid [##_var_etc-color_##]55;
 					}
-					.sidebar .category h2, .sidebar .notice h2,  .sidebar .recent h2, .sidebar .profile-info h2,
-					.sidebar .popular h2, .sidebar .recent-comment h2, .sidebar .tags h2, .sidebar .archives h2,
-					.sidebar .count h2, .sidebar .module_plugin div:not(.change-font-box, .lang-box, .dark-mode-box) h2,
-					.sidebar .module_plugin #bgm-title, .sidebar .module_plugin #recommend-ads-title, .sidebar .best-post h2,
-					.comment-list ul li {
-						border-bottom: [##_var_border-size_##]px dashed [##_var_etc-color_##]55;
-					}
-					.sidebar .module_plugin .change-font-box h2,
-					.sidebar .module_plugin .lang-box h2, .dark-mode-box h2 {
-						border-right: [##_var_border-size_##]px dashed [##_var_etc-color_##]55;
+					#___gcse_1 {
+						border: [##_var_border-size_##]px solid [##_var_etc-color_##]55;
 					}
 				</s_if_var_sidebar-solid-style>
 				<s_if_var_content-solid-style>
@@ -503,7 +484,7 @@
 					}
 				</s_if_var_opengraph-solid-style>
 				<s_if_var_cover-solid-style>
-					.cover-list ul li, .post-item a, .cover-special ul li {
+					.cover-list ul li, .post-item a, .cover-special ul li, article > .inner > ul li {
 						border: [##_var_border-size_##]px solid [##_var_etc-color_##]55;
 					}
 				</s_if_var_cover-solid-style>
@@ -535,11 +516,12 @@
 
 				<s_if_var_background-color-d>
 					body.dark-mode header:after, body.dark-mode section:after, body.dark-mode footer:after, body.dark-mode .content-title:after, body.dark-mode .top-button .menu button:before,
-					body.dark-mode .book-toc:after, body.dark-mode .top-button .menu button:before, body.dark-mode .move-top-btn:before,
+					body.dark-mode .book-toc:after, body.dark-mode .top-button .menu button:before, body.dark-mode .move-top-btn:before, .move-comment-btn:before,
 					body.dark-mode .mobile-menu aside:after, body.dark-mode .toast-wrap:after, body.dark-mode .share-btn:before, body.dark-mode .dark-mode-on-btn:before, body.dark-mode .dark-mode-off-btn:before, body.dark-mode .font-size-up-btn:before, body.dark-mode .font-size-down-btn:before
 					{background-color:[##_var_background-color-d_##]}
 
-					body.dark-mode .cover-list ul li a, body.dark-mode .post-item a, body.dark-mode .cover-special ul li, body.dark-mode .floating-toc-new {
+					body.dark-mode .cover-list ul li a, body.dark-mode .post-item a, body.dark-mode .cover-special ul li, body.dark-mode .floating-toc-new,
+					body.dark-mode article > .inner > ul li a {
 						background: [##_var_background-color-d_##]1A;
 					}
 				</s_if_var_background-color-d>
@@ -561,9 +543,9 @@
 					body.dark-mode .content-article h3 button, body.dark-mode #tt-body-search .post-header h1 span:before,
 					body.dark-mode .content-article h4 button, body.dark-mode .tags a:before, body.dark-mode #tt-body-tag .post-header h1 span:before, body.dark-mode .cover-special ul li .category,
 					body.dark-mode .more-reply, body.dark-mode #toc-title p, body.dark-mode .search button:before, body.dark-mode .content-article a, body.dark-mode .toast, body.dark-mode .change-font-btn, body.dark-mode .post-item .meta .category,
-					body.dark-mode .content-article .book-toc p, body.dark-mode .content-article .book-toc p span#toggle, body.dark-mode #toc > li:before, body.dark-mode #toc > li > ul > li:before, body.dark-mode #toc > li > ul > li > ul > li:before, body.dark-mode .cover-list ul li .meta .category,
+					body.dark-mode .content-article .book-toc p, body.dark-mode .content-article .book-toc p span#toggle, body.dark-mode #toc > li:before, body.dark-mode #toc > li > ul > li:before, body.dark-mode #toc > li > ul > li > ul > li:before, body.dark-mode .cover-list ul li .meta .category, body.dark-mode article > .inner > ul li .meta .category,
 					body.dark-mode .comments h2 .count, body.dark-mode article .another_category th:before, body.dark-mode .post-header h1 em, body.dark-mode .bgm-btn, body.dark-mode .dark-mode-btn-dark, body.dark-mode .dark-mode-btn-default,
-					body.dark-mode .move-top-btn:after, body.dark-mode .top-button .menu button:after, body.dark-mode .post-header h1:before, body.dark-mode article h2:before, body.dark-mode .content-article .copy-title-btn,
+					body.dark-mode .move-top-btn:after, body.dark-mode .move-comment-btn:after, body.dark-mode .top-button .menu button:after, body.dark-mode .post-header h1:before, body.dark-mode article h2:before, body.dark-mode .content-article .copy-title-btn,
 					body.dark-mode .share-btn:after, body.dark-mode .dark-mode-on-btn:after, body.dark-mode .dark-mode-off-btn:after, body.dark-mode .font-size-up-btn:after, body.dark-mode .font-size-down-btn:after,
 					body.dark-mode #toc > li a:after, body.dark-mode #toc > li > ul > li a:after, body.dark-mode #toc > li > ul > li > ul > li a:after {color:[##_var_etc-color-d_##]}
 					body.dark-mode #toc-title p #toggle, body.dark-mode .floating-icon:after, body.dark-mode .sidebar .recent-comment ul li a:before, body.dark-mode .sidebar .archives ul li a:before,
@@ -571,14 +553,14 @@
 					body.dark-mode .sidebar .category .category_list .link_item:before, body.dark-mode .bgm-header, body.dark-mode h2 .bgm-btn,
 					body.dark-mode .sidebar .category .sub_category_list .link_sub_item:before,
 					body.dark-mode #toc > li:before, body.dark-mode #toc > li > ul > li:before, body.dark-mode #toc > li > ul > li > ul > li:before {color:[##_var_etc-color-d_##] !important;opacity:0.7;}
-					body.dark-mode .content-article h2 {border-left: [##_var_etc-color-d_##]ff 16px solid !important;border-bottom: 4px solid [##_var_etc-color-d_##]ff !important;}
-					body.dark-mode .content-article h3 {border-left: [##_var_etc-color-d_##]cc 12px solid !important;border-bottom: 3px solid [##_var_etc-color-d_##]cc !important;}
-					body.dark-mode .content-article h4 {border-left: [##_var_etc-color-d_##]88 8px solid !important;border-bottom: 2px solid [##_var_etc-color-d_##]88 !important;}
+					body.dark-mode .content-article h2 {border-left: [##_var_etc-color-d_##]ff 12px solid !important;border-bottom: 0px solid [##_var_etc-color-d_##]ff !important;}
+					body.dark-mode .content-article h3 {border-left: [##_var_etc-color-d_##]cc 10px solid !important;border-bottom: 0px solid [##_var_etc-color-d_##]cc !important;}
+					body.dark-mode .content-article h4 {border-left: [##_var_etc-color-d_##]88 8px solid !important;border-bottom: 0px solid [##_var_etc-color-d_##]88 !important;}
 					body.dark-mode .comment-form .submit button,
 					body.dark-mode .progress-bar-vertical, body.dark-mode .progress-bar-horizontal,
 					body.dark-mode .progress-bar-etc-vertical, body.dark-mode .progress-bar-etc-horizontal,
 					body.dark-mode .sidebar .close:before, body.dark-mode .sidebar .close:after {background-color:[##_var_etc-color-d_##]}
-					body.dark-mode .move-top-btn, body.dark-mode .top-button .menu button, body.dark-mode .sidebar .close, body.dark-mode .top-button .profile button,
+					body.dark-mode .move-top-btn, body.dark-mode .move-comment-btn, body.dark-mode .top-button .menu button, body.dark-mode .sidebar .close, body.dark-mode .top-button .profile button,
 					body.dark-mode .share-btn, body.dark-mode .dark-mode-on-btn, body.dark-mode .dark-mode-off-btn, body.dark-mode .font-size-up-btn, body.dark-mode .font-size-down-btn
 					{border: [##_var_border-size_##]px solid [##_var_etc-color-d_##]55 !important}
 					body.dark-mode .search input {border-bottom: [##_var_border-size_##]px solid [##_var_etc-color-d_##]55;}
@@ -628,17 +610,6 @@
 						body.dark-mode figure.fileblock, body.dark-mode #tt-body-page figure.fileblock {
 							border: [##_var_border-size_##]px solid [##_var_etc-color-d_##]55;
 						}
-						body.dark-mode .sidebar .category h2, body.dark-mode .sidebar .notice h2,  body.dark-mode .sidebar .recent h2, body.dark-mode .sidebar .profile-info h2,
-						body.dark-mode .sidebar .popular h2, body.dark-mode .sidebar .recent-comment h2, body.dark-mode .sidebar .tags h2, body.dark-mode .sidebar .archives h2,
-						body.dark-mode .sidebar .count h2, body.dark-mode .sidebar .module_plugin div:not(.change-font-box, .lang-box, .dark-mode-box) h2,
-						body.dark-mode .sidebar .module_plugin #bgm-title, body.dark-mode .sidebar .module_plugin #recommend-ads-title, body.dark-mode .sidebar .best-post h2,
-						body.dark-mode .comment-list ul li {
-							border-bottom: [##_var_border-size_##]px dashed [##_var_etc-color-d_##]55;
-						}
-						body.dark-mode .sidebar .module_plugin .change-font-box h2,
-						body.dark-mode .sidebar .module_plugin .lang-box h2, body.dark-mode .dark-mode-box h2 {
-							border-right: [##_var_border-size_##]px dashed [##_var_etc-color-d_##]55;
-						}
 					</s_if_var_sidebar-solid-style>
 					<s_if_var_content-solid-style>
 						body.dark-mode section .content-wrapper {
@@ -661,7 +632,7 @@
 						}
 					</s_if_var_opengraph-solid-style>
 					<s_if_var_cover-solid-style>
-						body.dark-mode .cover-list ul li, body.dark-mode .post-item a, body.dark-mode .cover-special ul li {
+						body.dark-mode .cover-list ul li, body.dark-mode .post-item a, body.dark-mode .cover-special ul li, body.dark-mode article > .inner > ul li {
 							border: [##_var_border-size_##]px solid [##_var_etc-color-d_##]55;
 						}
 					</s_if_var_cover-solid-style>
@@ -682,14 +653,15 @@
 			<s_if_var_forced-font-color>
 				body.dark-mode .content-article p span:not(#toggle),
 				body.dark-mode .content-article li,
-				body.dark-mode blockquote[data-ke-style='style3'], body.dark-mode #tt-body-page blockquote[data-ke-style='style3'] {
+				body.dark-mode blockquote[data-ke-style='style3'], body.dark-mode #tt-body-page blockquote[data-ke-style='style3'],
+				body.dark-mode table, body.dark-mode table span {
 					color: #d6d6d6 !important;
 					background-color: transparent !important;
 				}
 			</s_if_var_forced-font-color>
 
 			<s_if_var_thum-img>
-				.thum:before, .cover-list ul li figure:before {
+				.thum:before, .cover-list ul li figure:before, article > .inner > ul li figure:before {
 					background-image:url('[##_var_thum-img_##]');
 					background-size:[##_var_thum-img-size_##];
 					opacity:[##_var_thum-img-opacity_##];
@@ -750,7 +722,7 @@
 					width: calc(([##_var_article-max-width_##]px - 356px<s_if_var_content-solid-style> - [##_var_border-size_##]px</s_if_var_content-solid-style>) * 0.5);
 					height: calc(([##_var_article-max-width_##]px - 356px<s_if_var_content-solid-style> - [##_var_border-size_##]px</s_if_var_content-solid-style>) * 0.5);
 				}
-				@media (max-width: calc([##_var_article-max-width_##]px + 42px)) {
+				@media (max-width: calc([##_var_article-max-width_##]px + 42px)) {					
 					#aside-top-blank {
 						display: none !important;
 					}
@@ -1348,12 +1320,12 @@
 			</s_not_var_content-middle-yn>
 			<s_if_var_fix-ads-space>
 				#upper .revenue_unit_wrap {
-					height: 105px !important;
+					height: 280px !important;
 					margin-top: 0px;
 					margin-bottom: 10px;
 				}
 				#lower .revenue_unit_wrap {
-					height: 105px !important;
+					height: 280px !important;
 					margin-top: 10px;
 				}
 				.sidebar .revenue_unit_wrap .adsense {
@@ -1368,8 +1340,11 @@
 					margin-left: auto;
 					margin-right: auto;
 				}
-				.tt_article_useless_p_margin .revenue_unit_wrap {
-					height: 105px !important;
+				.tt_article_useless_p_margin .revenue_unit_wrap .revenue_unit_item.adsense {
+					height: 280px !important;
+				}
+				.tt_article_useless_p_margin .revenue_unit_wrap .revenue_unit_item.dable {
+						height: 432px !important;
 				}
 			</s_if_var_fix-ads-space>
 			<s_if_var_hide-sidebar>
@@ -1529,12 +1504,13 @@
 				}
 			</s_if_var_hide-sidebar>
 			<s_not_var_list-meta-yn>
-				.cover-list ul li .excerpt {
+				.cover-list ul li .excerpt, article > .inner > ul li .excerpt {
 					-webkit-line-clamp: 3;
 				}
 			</s_not_var_list-meta-yn>
 			<s_not_var_list-thum-yn>
-				.cover-list ul li .title, .cover-list ul li .excerpt, .cover-list ul li .meta {
+				.cover-list ul li .title, .cover-list ul li .excerpt, .cover-list ul li .meta,
+				article > .inner > ul li .title, article > .inner > ul li .excerpt, article > .inner > ul li .meta {
 					max-width: 100%;
 					padding-left: 5px;
 				}
@@ -1545,48 +1521,105 @@
 		</script>
 	</head>
 	<body id="[##_body_id_##]">
-		<!-- 블로그 로딩 코드 start -->
-		<s_if_var_loading-screen>
-			<style type="text/css">
-			#waiting {
-				width: 100%;
-				height: 100%;
-				top: 0;
-				left: 0;
-				position: fixed;
-				display: flex;
-				background: white;
-				z-index: 999;
-				opacity: 0.7;
-			}
-			#waiting > img {
-				display: flex;
-				width: fit-content;
-				height: fit-content;
-				margin: auto;
-				box-shadow: none;
-			}
-			</style>
-			<div id="waiting">
-				<s_if_var_loading-screen-img>
-					<img src="[##_var_loading-screen-img_##]">
-				</s_if_var_loading-screen-img>
-				<s_not_var_loading-screen-img>
-					<img src="./images/loading.gif">
-				</s_not_var_loading-screen-img>
-			</div>
-			<script type="text/javascript">
-				$(window).on('load', function() {
-					setTimeout(function(){
-						$("#waiting").fadeOut();
-					}, 500);
-				});
-			</script>
-		</s_if_var_loading-screen>
-		<!-- 블로그 로딩 코드 end -->
 		<script src="./images/preload.min.js"></script>
 		<s_t3>
 			<div id="wrapper">
+				<!-- 블로그 로딩 코드 start -->
+				<s_if_var_loading-screen>
+					<style type="text/css">
+						#waiting {
+							width: 100%;
+							height: 100%;
+							top: 0;
+							left: 0;
+							position: fixed;
+							display: flex;
+							background: white;
+							z-index: 999;
+							opacity: 0.7;
+						}
+						#waiting > img {
+							display: flex;
+							width: fit-content;
+							height: fit-content;
+							margin: auto;
+							box-shadow: none;
+						}
+
+						#wrapper {
+							overflow: hidden !important;
+							height: calc(100vh + 1px) !important;
+						}
+
+						#wrapper.loaded {
+							overflow: unset !important;
+							height: unset !important;
+						}
+					</style>
+					<div id="waiting" style="display:none;">
+						<s_if_var_loading-screen-img>
+							<img src="[##_var_loading-screen-img_##]" class="loading-image">
+						</s_if_var_loading-screen-img>
+						<s_not_var_loading-screen-img>
+							<img src="./images/loading.gif" class="loading-image">
+						</s_not_var_loading-screen-img>
+					</div>
+					<script type="text/javascript">
+						var loadingTimer = 0;
+						var wrapperObserver = new MutationObserver(function(mutations) {
+							$('#wrapper').css('height','');
+						});
+						var config = {
+							attributes: true,
+							childList: true,
+							characterData: true
+						};
+						var wrapper = document.getElementById('wrapper');
+						
+						wrapperObserver.observe(wrapper, config);
+						
+						function afterLoaded() {
+							wrapperObserver.disconnect();
+							$('#wrapper').addClass('loaded');
+							$('#wrapper').off('scroll touchmove mousewheel');
+							var allIns = $('ins');
+							for(var i=0; i < allIns.length; i++) {
+								if((allIns.eq(i).height() == 0) && allIns.eq(i).parent().height() != 0) {
+									if('^HTML^BODY^'.indexOf(allIns.eq(i).parent().prop('tagName')) == -1) {
+										allIns.eq(i).parent().css('display','none');
+									}
+								}
+							}
+							$("#waiting").fadeOut();
+						}
+						
+						$('#wrapper').on('scroll touchmove mousewheel', function(event) {
+							event.preventDefault();
+							event.stopPropagation();
+							return false;
+						});
+
+						setTimeout(function() {
+							afterLoaded();
+						}, 5000);
+
+						$(function() {
+							$("#waiting").show();
+							loadingTimer = setTimeout(function(){
+								afterLoaded();
+								loadingTimer = 0;
+							}, 3000);
+						});
+
+						$(window).on('load', function() {
+							if(loadingTimer != 0) {
+								clearTimeout(loadingTimer);
+								afterLoaded();
+							}
+						});
+					</script>
+				</s_if_var_loading-screen>
+				<!-- 블로그 로딩 코드 end -->
 				<div class="top-button">
 					<div class="profile">
 						<button type="button">[##_blog_image_##]</button>
@@ -1630,17 +1663,24 @@
 					<div class="floating-toc-new"></div>
 					<div class="content-wrapper">
 						<aside class="sidebar">
-							<div>
+							<div class="inner">
 								<!-- 여백 만들기 -->
 								<div id="aside-top-blank" style="display:none;width:100%;"></div>
 								<s_sidebar>
 									<s_sidebar_element>
+										<!-- 구글 검색바 -->
+										<s_if_var_google-searchbar-ads>
+											<div style="margin-bottom:30px;height:34px;">
+												<script async src="https://cse.google.com/cse.js?cx=[##_var_google-searchbar-ads_##]"></script>
+												<div class="gcse-searchbox"></div>
+											</div>
+										</s_if_var_google-searchbar-ads>
+									</s_sidebar_element>
+									<s_sidebar_element>
 										<!-- 검색바 -->
 										<div class="search">
-											<s_search>
-												<input type="text" name="[##_search_name_##]" value="[##_search_text_##]" placeholder="검색 내용을 입력하세요." onkeypress="if (event.keyCode == 13) { [##_search_onclick_submit_##] }">
-												<button type="submit" onclick="[##_search_onclick_submit_##]">검색</button>
-											</s_search>
+											<input type="text" id="search_default" value="" placeholder="검색 내용을 입력하세요." onkeypress="if (event.keyCode == 13) { search_default() }">
+											<button type="submit" onclick="search_default()">검색</button>
 										</div>
 									</s_sidebar_element>
 									<s_sidebar_element>
@@ -1694,13 +1734,15 @@
 									</s_sidebar_element>
 									<s_sidebar_element>
 										<!-- 다크 모드 -->
-										<div class="module module_plugin">
-											<div class="dark-mode-box">
-												<h2>다크 모드</h2>
-												<button class="dark-mode-btn-dark" onclick="setDarkMode('+')" >&#xf186;</button> <!-- moon -->
-												<button class="dark-mode-btn-default" onclick="setDarkMode('-')">&#xf185;</button> <!-- sun -->
+										<s_not_var_forced-dark-mode>
+											<div class="module module_plugin">
+												<div class="dark-mode-box">
+													<h2>다크 모드</h2>
+													<button class="dark-mode-btn-dark" onclick="setDarkMode('+')" >&#xf186;</button> <!-- moon -->
+													<button class="dark-mode-btn-default" onclick="setDarkMode('-')">&#xf185;</button> <!-- sun -->
+												</div>
 											</div>
-										</div>
+										</s_not_var_forced-dark-mode>
 									</s_sidebar_element>
 									<s_sidebar_element>
 										<!-- 글자크기 -->
@@ -1850,7 +1892,7 @@
 														<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
 														<script>
 															if(recentCnt != 0 && recentCnt%[##_var_infeed-repeat-cnt-side_##] == 0) {
-																document.write('<li><ins class="adsbygoogle" style="display:block" data-ad-format="fluid" data-ad-layout-key="[##_var_infeed-data-ad-layout-key-side_##]" data-ad-client="[##_var_infeed-data-ad-client-side_##]" data-ad-slot="[##_var_infeed-data-ad-slot-side_##]"></ins></li>');
+																document.write('<li><ins class="adsbygoogle" style="display:block" data-ad-format="fluid" data-ad-layout-key="[##_var_infeed-data-ad-layout-key-side_##]" data-ad-client="[##_var_data-ad-client_##]" data-ad-slot="[##_var_infeed-data-ad-slot-side_##]"></ins></li>');
 																(adsbygoogle = window.adsbygoogle || []).push({});
 															}
 															recentCnt += 1;
@@ -1886,7 +1928,7 @@
 														<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
 														<script>
 															if(popularCnt != 0 && popularCnt%[##_var_infeed-repeat-cnt-side_##] == 0) {
-																document.write('<li><ins class="adsbygoogle" style="display:block" data-ad-format="fluid" data-ad-layout-key="[##_var_infeed-data-ad-layout-key-side_##]" data-ad-client="[##_var_infeed-data-ad-client-side_##]" data-ad-slot="[##_var_infeed-data-ad-slot-side_##]"></ins></li>');
+																document.write('<li><ins class="adsbygoogle" style="display:block" data-ad-format="fluid" data-ad-layout-key="[##_var_infeed-data-ad-layout-key-side_##]" data-ad-client="[##_var_data-ad-client_##]" data-ad-slot="[##_var_infeed-data-ad-slot-side_##]"></ins></li>');
 																(adsbygoogle = window.adsbygoogle || []).push({});
 															}
 															popularCnt += 1;
@@ -1909,19 +1951,20 @@
 									</s_sidebar_element>
 									<s_sidebar_element>
 										<!-- 일치하는 광고 -->
-										<div class="module module_plugin">
-											<h2 id="recommend-ads-title">추천 글</h2>
-											<div id="recommend-ads" class="revenue_unit_item adsense">
-												<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-												<ins class="adsbygoogle"
-														style="display:inline-block;"
-														data-ad-client="[##_var_sidebar-data-ad-client_##]"
-														data-ad-slot="[##_var_sidebar-data-ad-slot_##]"></ins>
+										<s_if_var_sidebar-data-ad-slot>
+											<div class="module module_plugin">
+												<div id="recommend-ads" class="revenue_unit_item adsense">
+													<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+													<ins class="adsbygoogle"
+															style="display:inline-block;"
+															data-ad-client="[##_var_data-ad-client_##]"
+															data-ad-slot="[##_var_sidebar-data-ad-slot_##]"></ins>
+												</div>
+												<script>
+													(adsbygoogle = window.adsbygoogle || []).push({});
+												</script>
 											</div>
-											<script>
-												(adsbygoogle = window.adsbygoogle || []).push({});
-											</script>
-										</div>
+										</s_if_var_sidebar-data-ad-slot>
 									</s_sidebar_element>
 									<s_sidebar_element>
 										<!-- 최근댓글 -->
@@ -1967,6 +2010,9 @@
 							</div>
 						</aside>
 						<article>
+							<s_if_var_google-searchbar-ads>
+								<div class="gcse-searchresults"></div>
+							</s_if_var_google-searchbar-ads>
 							<div id="upper">
 								[##_revenue_list_upper_##]
 							</div>
@@ -2006,8 +2052,8 @@
 										</div>
 									</s_cover>
 									<s_cover name='mynem-cover-list'>
+										<h2 class="header">[##_cover_title_##]</h2>
 										<div class="cover-list">
-											<h2 class="header">[##_cover_title_##]</h2>
 											<ul>
 												<s_if_var_infeed-google-ads>
 													<script>
@@ -2028,7 +2074,7 @@
 																layoutKey = "[##_var_infeed-data-ad-layout-key-small_##]";
 															}
 															if(cnt != 0 && cnt%[##_var_infeed-repeat-cnt_##] == 0) {
-																document.write('<li><ins class="adsbygoogle" style="display:block" data-ad-format="fluid" data-ad-layout-key="'+layoutKey+'" data-ad-client="[##_var_infeed-data-ad-client_##]" data-ad-slot="'+slot+'"></ins></li>');
+																document.write('<li><ins class="adsbygoogle" style="display:block" data-ad-format="fluid" data-ad-layout-key="'+layoutKey+'" data-ad-client="[##_var_data-ad-client_##]" data-ad-slot="'+slot+'"></ins></li>');
 																(adsbygoogle = window.adsbygoogle || []).push({});
 															}
 															cnt += 1;
@@ -2063,8 +2109,8 @@
 										</div>
 									</s_cover>
 									<s_cover name='mynem-cover-special'>
+										<h2 class="header">[##_cover_title_##]</h2>
 										<div class="cover-special">
-											<h2 class="header">[##_cover_title_##]</h2>
 											<ul>
 												<s_cover_item>
 													<li>
@@ -2102,7 +2148,9 @@
 									</div>
 								</div>
 								<div class="content-article">
-									[##_article_rep_desc_##]
+									<div itemprop="articleBody">
+										[##_article_rep_desc_##]
+									</div>
 								</div>
 							</s_page_rep>
 
@@ -2136,58 +2184,108 @@
 								</s_list_empty>
 							</s_list>
 							
-							<s_article_protected>
-								<s_index_article_rep>
-									<div class="post-item protected">
-										<a href="[##_article_rep_link_##]">
-											<span class="thum"></span>
-											<span class="title">[##_article_rep_title_##]</span>
-											<span class="excerpt">보호되어 있는 글 입니다.</span>
-											<span class="meta">
-												<span class="date">[##_article_rep_simple_date_##]</span>
-											</span>
-										</a>
-									</div>
-								</s_index_article_rep>
-
-								<s_permalink_article_rep>
-									<div class="content-article">
-										<form class="protected_form" onsubmit="{reloadEntry(14);return false;}">
-											<h2>보호되어 있는 글입니다.</h2>
-											<p>내용을 보시려면 비밀번호를 입력하세요.</p>
-											<input type="password" id="entry14password" name="entry14password" value="" placeholder="비밀번호">
-											<button type="submit" class="btn">확인</button>
-										</form>
-									</div>
-								</s_permalink_article_rep>
-							</s_article_protected>
-							
 							<div class="inner">
-								<s_article_rep>
-									<s_index_article_rep>
-										<div class="post-item">
-											<a href="[##_article_rep_link_##]">
-												<s_if_var_grid-thum-yn>
-													<span class="thum">
-														<s_article_rep_thumbnail>
-															<img src="//i1.daumcdn.net/thumb/C300x300/?fname=[##_article_rep_thumbnail_raw_url_##]" alt="">
-														</s_article_rep_thumbnail>
-													</span>
-												</s_if_var_grid-thum-yn>
-												<span class="title">[##_article_rep_title_##]</span>
-												<s_if_var_grid-excerpt-yn>
-													<span class="excerpt">[##_article_rep_summary_##]</span>
-												</s_if_var_grid-excerpt-yn>
-												<s_if_var_grid-meta-yn>
-													<span class="meta">
+								<s_article_protected>
+									<s_not_var_index-page-grid><ul></s_not_var_index-page-grid>
+										<s_index_article_rep>
+											<s_if_var_index-page-grid><div class="post-item protected"></s_if_var_index-page-grid><s_not_var_index-page-grid><li class="protected"></s_not_var_index-page-grid>
+												<a href="[##_article_rep_link_##]">
+													<s_if_var_index-page-grid>
+														<span class="thum" <s_not_var_grid-thum-yn>style="display:none;"</s_not_var_grid-thum-yn>>
+													</s_if_var_index-page-grid>
+													<s_not_var_index-page-grid>
+														<figure <s_not_var_list-thum-yn>style="display:none;"</s_not_var_list-thum-yn>>
+													</s_not_var_index-page-grid>
+													<s_if_var_index-page-grid></span></s_if_var_index-page-grid><s_not_var_index-page-grid></figure></s_not_var_index-page-grid>
+													<span class="title">[##_article_rep_title_##]</span>
+													<span class="excerpt">보호되어 있는 글 입니다.</span>
+													<span class="meta"
+														<s_if_var_index-page-grid><s_not_var_grid-meta-yn>style="display:none;"</s_not_var_grid-meta-yn></s_if_var_index-page-grid>
+														<s_not_var_index-page-grid><s_not_var_list-meta-yn>style="display:none;"</s_not_var_list-meta-yn></s_not_var_index-page-grid>
+													>
 														<span class="date">[##_article_rep_simple_date_##]</span>
 													</span>
-												</s_if_var_grid-meta-yn>
+												</a>
+											<s_if_var_index-page-grid></div></s_if_var_index-page-grid><s_not_var_index-page-grid></li></s_not_var_index-page-grid>
+										</s_index_article_rep>
+									<s_not_var_index-page-grid></ul></s_not_var_index-page-grid>
 
-											</a>
+									<s_permalink_article_rep>
+										<div class="content-article">
+											<form class="protected_form" onsubmit="{reloadEntry(14);return false;}">
+												<h2>보호되어 있는 글입니다.</h2>
+												<p>내용을 보시려면 비밀번호를 입력하세요.</p>
+												<input type="password" id="entry14password" name="entry14password" value="" placeholder="비밀번호">
+												<button type="submit" class="btn">확인</button>
+											</form>
 										</div>
-									</s_index_article_rep>
+									</s_permalink_article_rep>
+								</s_article_protected>
 
+								<s_not_var_index-page-grid>
+									<s_if_var_infeed-google-ads>
+										<script>
+											var cnt = 0;
+										</script>
+									</s_if_var_infeed-google-ads>
+								</s_not_var_index-page-grid>
+								<s_article_rep>
+									<s_not_var_index-page-grid>
+										<s_if_var_infeed-google-ads>
+											<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+											<script>
+												var layoutKey = "";
+												var slot = "";
+												if(window.innerWidth > 767) {
+													slot = "[##_var_infeed-data-ad-slot-big_##]";
+													layoutKey = "[##_var_infeed-data-ad-layout-key-big_##]";
+												} else {
+													slot = "[##_var_infeed-data-ad-slot-small_##]";
+													layoutKey = "[##_var_infeed-data-ad-layout-key-small_##]";
+												}
+												if(cnt != 0 && cnt%[##_var_infeed-repeat-cnt_##] == 0) {
+																						document.write('<ul><li><ins class="adsbygoogle" style="display:block" data-ad-format="fluid" data-ad-layout-key="'+layoutKey+'" data-ad-client="[##_var_data-ad-client_##]" data-ad-slot="'+slot+'"></ins></li></ul>');
+												(adsbygoogle = window.adsbygoogle || []).push({});
+												}
+												cnt += 1;
+											</script>
+										</s_if_var_infeed-google-ads>
+									</s_not_var_index-page-grid>
+									<s_not_var_index-page-grid><ul></s_not_var_index-page-grid>
+										<s_index_article_rep>
+											<s_if_var_index-page-grid><div class="post-item"></s_if_var_index-page-grid><s_not_var_index-page-grid><li></s_not_var_index-page-grid>
+												<a href="[##_article_rep_link_##]">
+													<s_if_var_index-page-grid>
+														<span class="thum" <s_not_var_grid-thum-yn>style="display:none;"</s_not_var_grid-thum-yn>>
+													</s_if_var_index-page-grid>
+													<s_not_var_index-page-grid>
+														<figure <s_not_var_list-thum-yn>style="display:none;"</s_not_var_list-thum-yn>>
+													</s_not_var_index-page-grid>
+														<s_article_rep_thumbnail>
+															<img src="//i1.daumcdn.net/thumb/C300x300/?fname=[##_article_rep_thumbnail_raw_url_##]" alt="" loading="lazy">
+														</s_article_rep_thumbnail>
+													<s_if_var_index-page-grid></span></s_if_var_index-page-grid><s_not_var_index-page-grid></figure></s_not_var_index-page-grid>
+													<span class="title">[##_article_rep_title_##]</span>
+													<span class="excerpt"
+														<s_if_var_index-page-grid><s_not_var_grid-excerpt-yn>style="display:none;"</s_not_var_grid-excerpt-yn></s_if_var_index-page-grid>
+													>
+														[##_article_rep_summary_##]
+													</span>
+													<span class="meta"
+														<s_if_var_index-page-grid><s_not_var_grid-meta-yn>style="display:none;"</s_not_var_grid-meta-yn></s_if_var_index-page-grid>
+														<s_not_var_index-page-grid><s_not_var_list-meta-yn>style="display:none;"</s_not_var_list-meta-yn></s_not_var_index-page-grid>
+													>
+														<span class="category">[##_article_rep_category_##]</span>
+														<span class="date">[##_article_rep_simple_date_##]</span>
+														<s_rp_count>
+															<span class="comment">&#xf4ad; [##_article_rep_rp_cnt_##]</span>
+														</s_rp_count>
+													</span>
+												</a>
+											<s_if_var_index-page-grid></div></s_if_var_index-page-grid><s_not_var_index-page-grid></li></s_not_var_index-page-grid>
+										</s_index_article_rep>
+									<s_not_var_index-page-grid></ul></s_not_var_index-page-grid>
+									
 									<s_permalink_article_rep>
 										<div class="content-title">
 											<div class="inner">
@@ -2217,7 +2315,7 @@
 													<div id="ad-top-left" class="revenue_unit_item adsense">
 														<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
 														<ins class="adsbygoogle top-left"
-																 data-ad-client="[##_var_content-data-ad-client_##]"
+																 data-ad-client="[##_var_data-ad-client_##]"
 																 data-ad-slot="[##_var_content-data-ad-slot-1_##]"
 																 data-ad-format="rectangle"
 																 data-full-width-responsive="true"
@@ -2233,7 +2331,7 @@
 													<div id="ad-top-right" class="revenue_unit_item adsense">
 														<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
 														<ins class="adsbygoogle top-right"
-																 data-ad-client="[##_var_content-data-ad-client_##]"
+																 data-ad-client="[##_var_data-ad-client_##]"
 																 data-ad-slot="[##_var_content-data-ad-slot-2_##]"
 																 data-ad-format="rectangle"
 																 data-full-width-responsive="true"
@@ -2245,41 +2343,9 @@
 												</div>
 											</s_if_var_content-google-ads>
 											<!-- 상단 광고 2개 삽입 end -->
-											[##_article_rep_desc_##]
-											<!-- 하단 광고 2개 삽입 start -->
-											<s_if_var_content-bottom-google-ads>
-												<div class="bottom-ads">
-													<div id="ad-bottom-left" class="revenue_unit_item adsense">
-														<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-														<ins class="adsbygoogle bottom-left"
-																 data-ad-client="[##_var_content-bottom-data-ad-client_##]"
-																 data-ad-slot="[##_var_content-bottom-data-ad-slot-1_##]"
-																 data-ad-format="rectangle"
-																 data-full-width-responsive="true"
-																 style="width:336px;"></ins>
-														<script>
-															if($(window).width() < 710) {
-																$('#ad-bottom-left').remove();
-															} else {
-																(adsbygoogle = window.adsbygoogle || []).push({});
-															}
-														</script>
-													</div>
-													<div id="ad-bottom-right" class="revenue_unit_item adsense">
-														<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-														<ins class="adsbygoogle bottom-right"
-																 data-ad-client="[##_var_content-bottom-data-ad-client_##]"
-																 data-ad-slot="[##_var_content-bottom-data-ad-slot-2_##]"
-																 data-ad-format="rectangle"
-																 data-full-width-responsive="true"
-																 style="width:336px;"></ins>
-														<script>
-															(adsbygoogle = window.adsbygoogle || []).push({});
-														</script>
-													</div>
-												</div>
-											</s_if_var_content-bottom-google-ads>
-											<!-- 하단 광고 2개 삽입 end -->
+											<div itemprop="articleBody">
+												[##_article_rep_desc_##]
+											</div>
 										</div>
 										<div style="margin-top:30px;"></div>
 										<s_tag_label>
@@ -2291,21 +2357,56 @@
 										<div style="margin-top:30px;"></div>
 										<s_if_var_related-google-ads>
 											<div class="related-articles">
-												<h2>추천 글</h2>
+												<h2>많이 본 글</h2>
 												<div class="related-articles-wrap">
 													<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
 													<ins class="adsbygoogle"
 															 style="display:block"
 															 data-ad-format="autorelaxed"
-															 data-ad-client="[##_var_related-data-ad-client_##]"
+															 data-ad-client="[##_var_data-ad-client_##]"
 															 data-ad-slot="[##_var_related-data-ad-slot_##]"></ins>
+													<script>
+														(adsbygoogle = window.adsbygoogle || []).push({});
+													</script>
 												</div>
-												<script>
-													(adsbygoogle = window.adsbygoogle || []).push({});
-												</script>
 											</div>
 											<div style="margin-top:30px;"></div>
 										</s_if_var_related-google-ads>
+										<!-- 하단 광고 2개 삽입 start -->
+										<s_if_var_content-bottom-google-ads>
+											<div class="bottom-ads">
+												<div id="ad-bottom-left" class="revenue_unit_item adsense">
+													<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+													<ins class="adsbygoogle bottom-left"
+															 data-ad-client="[##_var_data-ad-client_##]"
+															 data-ad-slot="[##_var_content-bottom-data-ad-slot-1_##]"
+															 data-ad-format="rectangle"
+															 data-full-width-responsive="true"
+															 style="width:336px;"></ins>
+													<script>
+														(adsbygoogle = window.adsbygoogle || []).push({});
+													</script>
+												</div>
+												<div id="ad-bottom-right" class="revenue_unit_item adsense">
+													<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+													<ins class="adsbygoogle bottom-right"
+															 data-ad-client="[##_var_data-ad-client_##]"
+															 data-ad-slot="[##_var_content-bottom-data-ad-slot-2_##]"
+															 data-ad-format="rectangle"
+															 data-full-width-responsive="true"
+															 style="width:336px;"></ins>
+													<script>
+														if($(window).width() < 710) {
+															$('#ad-bottom-right').remove();
+														} else {
+															(adsbygoogle = window.adsbygoogle || []).push({});
+														}
+													</script>
+												</div>
+											</div>
+											<div style="margin-top:30px;"></div>
+										</s_if_var_content-bottom-google-ads>
+										<!-- 하단 광고 2개 삽입 end -->
 										<div class="comments">
 											<h2>댓글<span class="count"><s_rp_count>[##_article_rep_rp_cnt_##]</s_rp_count></span></h2>
 											<s_rp>
@@ -2478,7 +2579,7 @@
 									<ins class="adsbygoogle"
 										 style="display:block"
 										 data-ad-format="autorelaxed"
-										 data-ad-client="[##_var_main-data-ad-client_##]"
+										 data-ad-client="[##_var_data-ad-client_##]"
 										 data-ad-slot="[##_var_main-data-ad-slot_##]"></ins>
 									<script>
 										if(!checkMainPage()) {
@@ -2505,7 +2606,7 @@
 						<a href="#" class="page-top">TOP</a>
 						<p class="meta"><s_if_var_footer-text-1>[##_var_footer-text-1_##]</s_if_var_footer-text-1></p>
 						<p class="copyright"><s_if_var_footer-text-2>[##_var_footer-text-2_##]</s_if_var_footer-text-2></p>
-						<p class="maker"><a href="https://sangminem.tistory.com/506" target="_blank"><font color="#ff7a00"><b>Mynem Skin 2.5.9</b> © Armynem</font></a></p>
+						<p class="maker"><a href="https://sangminem.tistory.com/506" target="_blank"><font color="#ff7a00"><b>Mynem Skin 2.6.0</b> © Armynem</font></a></p>
 					</div>
 				</footer>
 			</div>
@@ -2519,13 +2620,18 @@
 
 				<!-- 다크모드 버튼 -->
 				<s_not_var_dark-mode-floating>
-					<a class="dark-mode-on-btn" onclick="setDarkMode('-')" style="display:none;"></a>
-					<a class="dark-mode-off-btn" onclick="setDarkMode('+')" style="display:none;"></a>
+					<s_not_var_forced-dark-mode>
+						<a class="dark-mode-on-btn" onclick="setDarkMode('-')" style="display:none;"></a>
+						<a class="dark-mode-off-btn" onclick="setDarkMode('+')" style="display:none;"></a>
+					</s_not_var_forced-dark-mode>
 				</s_not_var_dark-mode-floating>
 
 				<!-- 공유 버튼 -->
 				<a class="share-btn"></a>
 				<div id='custom-sns' class='layer_post'></div>
+				
+				<!-- 댓글 이동 버튼 -->
+				<a class="move-comment-btn" style="display:none;"></a>
 				
 				<!-- 상단 이동 버튼 -->
 				<a class="move-top-btn"></a>
@@ -2623,6 +2729,15 @@
 			<input type='hidden' id='make-clipboard-link' value="[##_var_make-clipboard-link_##]">
 			<input type='hidden' id='alert-chromium' value="[##_var_alert-chromium_##]">
 			<input type='hidden' id='alert-chromium-text' value="[##_var_alert-chromium-text_##]">
+			<input type='hidden' id='article-google-ads' value="[##_var_article-google-ads_##]">
+			<input type='hidden' id='article-google-ads-type' value="[##_var_article-google-ads-type_##]">
+			<input type='hidden' id='article-google-ads-forced' value="[##_var_article-google-ads-forced_##]">
+			<input type='hidden' id='article-data-ad-slot-inarticle' value="[##_var_article-data-ad-slot-inarticle_##]">
+			<input type='hidden' id='article-data-ad-slot-display1' value="[##_var_article-data-ad-slot-display1_##]">
+			<input type='hidden' id='article-data-ad-slot-display2' value="[##_var_article-data-ad-slot-display2_##]">
+			<input type='hidden' id='article-google-ads-frequency' value="[##_var_article-google-ads-frequency_##]">
+			<input type='hidden' id='data-ad-client' value="[##_var_data-ad-client_##]">
+			<input type='hidden' id='auto-scroll-ads' value="[##_var_auto-scroll-ads_##]">
 		</s_t3>
 		<script src="./images/common.min.js"></script>
 		<script src="./images/jquery.toc.min.js"></script>

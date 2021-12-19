@@ -2,7 +2,7 @@
 <skin>
 	<information>
 		<name>Mynem Skin</name>
-		<version>2.5.9</version>
+		<version>2.6.0</version>
 		<description>
 			<![CDATA[ 심플하면서 막강한 기능을 가진 미넴 스킨 입니다.
 			많은 사용자가 원하는 방향으로 발전해 나갈 예정입니다. ]]>
@@ -62,7 +62,7 @@
 		</item>
 	</cover>
 	<variables>
-		<variablegroup name="주요 설정">
+		<variablegroup name="전체 설정">
 			<variable>
 				<name>content-middle-yn</name>
 				<label><![CDATA[ 컨텐츠 중앙 위치 ]]></label>
@@ -80,12 +80,47 @@
 				<default>1200</default>
 			</variable>
 			<variable>
+				<name>custom-font-forced</name>
+				<label><![CDATA[ 본문 개별 적용 글꼴 무시 ]]></label>
+				<description><![CDATA[]]></description>
+				<type>BOOL</type>
+				<option/>
+				<default>false</default>
+			</variable>
+			<variable>
+				<name>paper-style</name>
+				<label><![CDATA[ 종이질감 사용 ]]></label>
+				<description><![CDATA[]]></description>
+				<type>BOOL</type>
+				<option/>
+				<default>false</default>
+			</variable>
+			<variable>
+				<name>shadow-effect</name>
+				<label><![CDATA[ 그림자 효과 적용 ]]></label>
+				<description><![CDATA[]]></description>
+				<type>BOOL</type>
+				<option/>
+				<default>false</default>
+			</variable>
+			<variable>
+				<name>index-page-grid</name>
+				<label><![CDATA[ 인덱스 페이지 항목 형태 그리드로 변경 (기본 리스트 형태) ]]></label>
+				<description><![CDATA[]]></description>
+				<type>BOOL</type>
+				<option/>
+				<default>false</default>
+			</variable>
+		</variablegroup>
+
+		<variablegroup name="폰트 설정 (기본 설정 권장)">
+			<variable>
 				<name>custom-font</name>
 				<label><![CDATA[ 글꼴 선택 ]]></label>
 				<description><![CDATA[]]></description>
 				<type>SELECT</type>
-				<option><![CDATA[[{"name":"font-default","label":"기본","value":""}, {"name":"font-iropke","label":"이롭게바탕체","value":"Bitter,IropkeBatang,"}, {"name":"font-lexisaebom","label":"렉시새봄","value":"Bitter,LexiSaebomR,"}, {"name":"font-nanumsquare","label":"나눔스퀘어","value":"NanumSquare,"}]]]></option>
-				<default>Bitter,IropkeBatang,</default>
+				<option><![CDATA[[{"name":"font-default","label":"기본","value":""}, {"name":"font-iropke","label":"이롭게바탕체","value":"Bitter,IropkeBatang,"}, {"name":"font-ridibatang","label":"리디바탕","value":"RIDIBatang,"}]]]></option>
+				<default>RIDIBatang,</default>
 			</variable>
 			<variable>
 				<name>html-font-size</name>
@@ -97,11 +132,11 @@
 			</variable>
 			<variable>
 				<name>font-size-ratio</name>
-				<label><![CDATA[ 본문 폰트 크기 비율 (0~1 사이, 기본 1) ]]></label>
+				<label><![CDATA[ 본문 폰트 크기 비율 (기본 1, 0 ~ 1 사이) ]]></label>
 				<description><![CDATA[]]></description>
 				<type>STRING</type>
 				<option />
-				<default>0.94</default>
+				<default>1</default>
 			</variable>
 			<variable>
 				<name>html-line-height</name>
@@ -113,43 +148,11 @@
 			</variable>
 			<variable>
 				<name>mobile-font-ratio</name>
-				<label><![CDATA[ 모바일 글자 크기 비율 ]]></label>
+				<label><![CDATA[ 모바일 글자 크기 비율 (기본 0.9) ]]></label>
 				<description><![CDATA[]]></description>
 				<type>STRING</type>
 				<option />
 				<default>0.9</default>
-			</variable>
-			<variable>
-				<name>default-dark-mode</name>
-				<label><![CDATA[ 최초 다크 모드 설정 ]]></label>
-				<description><![CDATA[]]></description>
-				<type>BOOL</type>
-				<option/>
-				<default>false</default>
-			</variable>
-			<variable>
-				<name>forced-dark-mode</name>
-				<label><![CDATA[ 강제 다크 모드 설정 ]]></label>
-				<description><![CDATA[]]></description>
-				<type>BOOL</type>
-				<option/>
-				<default>false</default>
-			</variable>
-			<variable>
-				<name>fixed-header</name>
-				<label><![CDATA[ 헤더 고정 ]]></label>
-				<description><![CDATA[]]></description>
-				<type>BOOL</type>
-				<option/>
-				<default>true</default>
-			</variable>
-			<variable>
-				<name>blog-logo-image</name>
-				<label><![CDATA[ 블로그 상단 이미지 적용 ]]></label>
-				<description><![CDATA[]]></description>
-				<type>IMAGE</type>
-				<option />
-				<default></default>
 			</variable>
 		</variablegroup>
 
@@ -160,7 +163,7 @@
 				<description><![CDATA[]]></description>
 				<type>COLOR</type>
 				<option />
-				<default>#737373</default>
+				<default>#B38766</default>
 			</variable>
 			<variable>
 				<name>blog-menu-color</name>
@@ -176,7 +179,7 @@
 				<description><![CDATA[]]></description>
 				<type>COLOR</type>
 				<option />
-				<default>#E9E9E9</default>
+				<default>#FFFFFF</default>
 			</variable>
 			<variable>
 				<name>sidebar-color</name>
@@ -184,7 +187,7 @@
 				<description><![CDATA[]]></description>
 				<type>COLOR</type>
 				<option />
-				<default>#F5F5F5</default>
+				<default>#FFFDFA</default>
 			</variable>
 			<variable>
 				<name>sidebar-text-color</name>
@@ -192,7 +195,7 @@
 				<description><![CDATA[]]></description>
 				<type>COLOR</type>
 				<option />
-				<default>#4C4C4C</default>
+				<default>#CC834B</default>
 			</variable>
 			<variable>
 				<name>etc-color</name>
@@ -200,7 +203,7 @@
 				<description><![CDATA[]]></description>
 				<type>COLOR</type>
 				<option />
-				<default>#737373</default>
+				<default>#E67A27</default>
 			</variable>
 		</variablegroup>
 
@@ -260,6 +263,41 @@
 				<type>COLOR</type>
 				<option />
 				<default>#FF935B</default>
+			</variable>
+		</variablegroup>
+
+		<variablegroup name="다크 모드 관련 설정">
+			<variable>
+				<name>default-dark-mode</name>
+				<label><![CDATA[ 최초 방문 시 다크 모드 ]]></label>
+				<description><![CDATA[]]></description>
+				<type>BOOL</type>
+				<option/>
+				<default>false</default>
+			</variable>
+			<variable>
+				<name>forced-dark-mode</name>
+				<label><![CDATA[ 강제 다크 모드 (방문자가 변경할 수 없음) ]]></label>
+				<description><![CDATA[]]></description>
+				<type>BOOL</type>
+				<option/>
+				<default>false</default>
+			</variable>
+			<variable>
+				<name>dark-mode-floating</name>
+				<label><![CDATA[ 플로팅 다크 모드 버튼 숨기기 ]]></label>
+				<description><![CDATA[]]></description>
+				<type>BOOL</type>
+				<option/>
+				<default>false</default>
+			</variable>
+			<variable>
+				<name>forced-font-color</name>
+				<label><![CDATA[ 다크 모드 시 폰트 컬러 강제 변경 (어두운 색상을 이용한 글이 많을 경우) ]]></label>
+				<description><![CDATA[]]></description>
+				<type>BOOL</type>
+				<option/>
+				<default>true</default>
 			</variable>
 		</variablegroup>
 
@@ -375,7 +413,7 @@
 				<description><![CDATA[]]></description>
 				<type>STRING</type>
 				<option />
-				<default><![CDATA[ ]]></default>
+				<default><![CDATA[  ]]></default>
 			</variable>
 			<variable>
 				<name>profile-more-details</name>
@@ -383,7 +421,7 @@
 				<description><![CDATA[]]></description>
 				<type>STRING</type>
 				<option />
-				<default><![CDATA[ ]]></default>
+				<default><![CDATA[  ]]></default>
 			</variable>
 			<variable>
 				<name>fold-category</name>
@@ -395,11 +433,11 @@
 			</variable>
 			<variable>
 				<name>fold-category-target</name>
-				<label><![CDATA[ 접을 상위 카테고리 예)2,4 입력 시 2,4번째 상위 카테고리만 접힘, 빈 값 시 전체 접힘 ]]></label>
+				<label><![CDATA[ 펼칠 상위 카테고리 예)2,4 입력 시 2,4번째 상위 카테고리만 펼침 ]]></label>
 				<description><![CDATA[]]></description>
 				<type>STRING</type>
 				<option />
-				<default><![CDATA[ ]]></default>
+				<default><![CDATA[  ]]></default>
 			</variable>
 			<variable>
 				<name>fold-category-speed</name>
@@ -494,7 +532,7 @@
 			</variable>
 		</variablegroup>
 
-		<variablegroup name="본문 프로그레스바 설정">
+		<variablegroup name="본문 프로그레스바 표시 여부 설정">
 			<variable>
 				<name>progress-top</name>
 				<label><![CDATA[ 상단 (본문) ]]></label>
@@ -544,7 +582,7 @@
 				<description><![CDATA[]]></description>
 				<type>STRING</type>
 				<option />
-				<default><![CDATA[ 감사합니다 💕 ]]></default>
+				<default><![CDATA[ 행운 가득 담아 드려요 💕 ]]></default>
 			</variable>
 			<variable>
 				<name>make-bell-yn</name>
@@ -560,11 +598,27 @@
 				<description><![CDATA[]]></description>
 				<type>STRING</type>
 				<option />
-				<default><![CDATA[ 도움이<br>되셨다면<br>공감과 구독<br>부탁드려요 💖 ]]></default>
+				<default><![CDATA[ 도움이<br>되셨다면<br>공감 꾹 ~ !<br>부탁드려요 💖 ]]></default>
 			</variable>
 		</variablegroup>
 
-		<variablegroup name="문구 설정">
+		<variablegroup name="헤더/푸터 설정">
+			<variable>
+				<name>fixed-header</name>
+				<label><![CDATA[ 헤더 고정 ]]></label>
+				<description><![CDATA[]]></description>
+				<type>BOOL</type>
+				<option/>
+				<default>true</default>
+			</variable>
+			<variable>
+				<name>blog-logo-image</name>
+				<label><![CDATA[ 블로그 상단 이미지 적용 ]]></label>
+				<description><![CDATA[]]></description>
+				<type>IMAGE</type>
+				<option />
+				<default></default>
+			</variable>
 			<variable>
 				<name>footer-text-1</name>
 				<label><![CDATA[ 푸터 문구 1 ]]></label>
@@ -614,7 +668,7 @@
 				<description><![CDATA[]]></description>
 				<type>BOOL</type>
 				<option />
-				<default>true</default>
+				<default>false</default>
 			</variable>
 			<variable>
 				<name>fold-toc-yn</name>
@@ -670,7 +724,7 @@
 				<description><![CDATA[]]></description>
 				<type>STRING</type>
 				<option />
-				<default><![CDATA[ \f0da ]]></default>
+				<default><![CDATA[ \2022 ]]></default>
 			</variable>
 			<variable>
 				<name>toc-header-style-3</name>
@@ -678,26 +732,7 @@
 				<description><![CDATA[]]></description>
 				<type>STRING</type>
 				<option />
-				<default><![CDATA[ \2022 ]]></default>
-			</variable>
-		</variablegroup>
-
-		<variablegroup name="댓글 설정">
-			<variable>
-				<name>fold-comment-yn</name>
-				<label><![CDATA[ 대댓글 접기 사용 ]]></label>
-				<description><![CDATA[]]></description>
-				<type>BOOL</type>
-				<option />
-				<default>true</default>
-			</variable>
-			<variable>
-				<name>fold-comment-num</name>
-				<label><![CDATA[ 대댓글 접히는 기준 개수 ]]></label>
-				<description><![CDATA[]]></description>
-				<type>STRING</type>
-				<option />
-				<default>3</default>
+				<default><![CDATA[ \2219 ]]></default>
 			</variable>
 		</variablegroup>
 
@@ -735,7 +770,7 @@
 				<description><![CDATA[]]></description>
 				<type>STRING</type>
 				<option />
-				<default>1</default>
+				<default>2</default>
 			</variable>
 			<variable>
 				<name>sidebar-solid-style</name>
@@ -751,7 +786,7 @@
 				<description><![CDATA[]]></description>
 				<type>BOOL</type>
 				<option />
-				<default>false</default>
+				<default>true</default>
 			</variable>
 			<variable>
 				<name>title-solid-style</name>
@@ -799,50 +834,26 @@
 				<description><![CDATA[]]></description>
 				<type>BOOL</type>
 				<option />
-				<default>true</default>
+				<default>false</default>
 			</variable>
 		</variablegroup>
 
-		<variablegroup name="기타 설정">
+		<variablegroup name="유용한 기능">
 			<variable>
-				<name>use-fixed-ads-yn</name>
-				<label><![CDATA[ 플로팅 광고 사용 여부 ]]></label>
+				<name>fold-comment-yn</name>
+				<label><![CDATA[ 대댓글 접기 사용 ]]></label>
 				<description><![CDATA[]]></description>
 				<type>BOOL</type>
-				<option/>
+				<option />
 				<default>true</default>
 			</variable>
 			<variable>
-				<name>fixed-ads-type</name>
-				<label><![CDATA[ 플로팅 광고 종류 ]]></label>
+				<name>fold-comment-num</name>
+				<label><![CDATA[ 대댓글 접히는 기준 개수 ]]></label>
 				<description><![CDATA[]]></description>
-				<type>SELECT</type>
-				<option><![CDATA[[{"name":"matched","label":"사이드바 일치하는 광고","value":"matched"}, {"name":"adsense","label":"사이드바 기본 애드센스","value":"adsense"}, {"name":"adfit","label":"사이드바 기본 애드핏","value":"adfit"}]]]></option>
-				<default>adsense</default>
-			</variable>
-			<variable>
-				<name>custom-font-forced</name>
-				<label><![CDATA[ 본문 적용 글꼴 무시 ]]></label>
-				<description><![CDATA[]]></description>
-				<type>BOOL</type>
-				<option/>
-				<default>false</default>
-			</variable>
-			<variable>
-				<name>fix-ads-space</name>
-				<label><![CDATA[ 광고영역 크기고정 ]]></label>
-				<description><![CDATA[]]></description>
-				<type>BOOL</type>
-				<option/>
-				<default>false</default>
-			</variable>
-			<variable>
-				<name>paper-style</name>
-				<label><![CDATA[ 종이질감 사용 ]]></label>
-				<description><![CDATA[]]></description>
-				<type>BOOL</type>
-				<option/>
-				<default>true</default>
+				<type>STRING</type>
+				<option />
+				<default>3</default>
 			</variable>
 			<variable>
 				<name>lazy-loading</name>
@@ -861,28 +872,12 @@
 				<default>false</default>
 			</variable>
 			<variable>
-				<name>dark-mode-floating</name>
-				<label><![CDATA[ 플로팅 다크 모드 버튼 숨기기 ]]></label>
+				<name>make-clipboard-link</name>
+				<label><![CDATA[ 본문 제목에 링크 복사 버튼 생성 ]]></label>
 				<description><![CDATA[]]></description>
 				<type>BOOL</type>
-				<option/>
+				<option />
 				<default>false</default>
-			</variable>
-			<variable>
-				<name>forced-font-color</name>
-				<label><![CDATA[ 다크 모드 시 폰트 컬러 강제 변경 (어두운 색상을 이용한 글이 많을 경우) ]]></label>
-				<description><![CDATA[]]></description>
-				<type>BOOL</type>
-				<option/>
-				<default>true</default>
-			</variable>
-			<variable>
-				<name>shadow-effect</name>
-				<label><![CDATA[ 그림자 효과 적용 ]]></label>
-				<description><![CDATA[]]></description>
-				<type>BOOL</type>
-				<option/>
-				<default>true</default>
 			</variable>
 			<variable>
 				<name>recommend-contents</name>
@@ -901,22 +896,6 @@
 				<default><![CDATA[ 잠깐만요! 이 글도 한 번 보고 가세요 🧡 ]]></default>
 			</variable>
 			<variable>
-				<name>adsense-refresh</name>
-				<label><![CDATA[ 구글 광고 리프레시 (사이드바 광고만 해당) ]]></label>
-				<description><![CDATA[]]></description>
-				<type>BOOL</type>
-				<option />
-				<default>false</default>
-			</variable>
-			<variable>
-				<name>make-clipboard-link</name>
-				<label><![CDATA[ 본문 제목에 링크 복사 버튼 생성 ]]></label>
-				<description><![CDATA[]]></description>
-				<type>BOOL</type>
-				<option />
-				<default>true</default>
-			</variable>
-			<variable>
 				<name>alert-chromium</name>
 				<label><![CDATA[ 크로미움 기반 브라우저 아닐 시에 안내 팝업 ]]></label>
 				<description><![CDATA[]]></description>
@@ -930,7 +909,7 @@
 				<description><![CDATA[]]></description>
 				<type>STRING</type>
 				<option />
-				<default><![CDATA[ 미넴 스킨은 크로미움 기반 브라우저에서 최적화 되었습니다. ]]></default>
+				<default><![CDATA[ 해당 브라우저에서는 미넴 스킨이 올바르게 동작하지 않을 수 있습니다. ]]></default>
 			</variable>
 			<variable>
 				<name>loading-screen</name>
@@ -950,30 +929,76 @@
 			</variable>
 		</variablegroup>
 
-		<variablegroup name="사이드바 구글 일치하는 광고 (사용 여부는 사이드바에서 설정)">
+		<variablegroup name="광고 관련 설정">
 			<variable>
-				<name>sidebar-data-ad-client</name>
+				<name>use-fixed-ads-yn</name>
+				<label><![CDATA[ 플로팅 광고 사용 여부 ]]></label>
+				<description><![CDATA[]]></description>
+				<type>BOOL</type>
+				<option/>
+				<default>false</default>
+			</variable>
+			<variable>
+				<name>fixed-ads-type</name>
+				<label><![CDATA[ 플로팅 광고 종류 ]]></label>
+				<description><![CDATA[]]></description>
+				<type>SELECT</type>
+				<option><![CDATA[[{"name":"matched","label":"사이드바 일치하는 광고","value":"matched"}, {"name":"adsense","label":"사이드바 기본 애드센스","value":"adsense"}, {"name":"adfit","label":"사이드바 기본 애드핏","value":"adfit"}]]]></option>
+				<default>matched</default>
+			</variable>
+			<variable>
+				<name>auto-scroll-ads</name>
+				<label><![CDATA[ 플로팅 광고 자동 스크롤 (일치하는 광고일 경우) ]]></label>
+				<description><![CDATA[]]></description>
+				<type>BOOL</type>
+				<option/>
+				<default>false</default>
+			</variable>
+			<variable>
+				<name>adsense-refresh</name>
+				<label><![CDATA[ 구글 광고 리프레시 (사이드바 애드센스 기본 및 일치하는 광고 지원) ]]></label>
+				<description><![CDATA[]]></description>
+				<type>BOOL</type>
+				<option />
+				<default>false</default>
+			</variable>
+			<variable>
+				<name>fix-ads-space</name>
+				<label><![CDATA[ 광고영역 크기 고정 (CLS 수치 개선 목적) ]]></label>
+				<description><![CDATA[]]></description>
+				<type>BOOL</type>
+				<option/>
+				<default>false</default>
+			</variable>
+		</variablegroup>
+
+		<variablegroup name="애드센스 광고 (공통)">
+			<variable>
+				<name>data-ad-client</name>
 				<label><![CDATA[ data-ad-client ]]></label>
 				<description><![CDATA[]]></description>
 				<type>STRING</type>
 				<option />
-				<default><![CDATA[]]></default>
+				<default><![CDATA[  ]]></default>
 			</variable>
+		</variablegroup>
+
+		<variablegroup name="사이드바 구글 일치하는 광고 (사용 여부는 사이드바에서 설정)">
 			<variable>
 				<name>sidebar-data-ad-slot</name>
 				<label><![CDATA[ data-ad-slot ]]></label>
 				<description><![CDATA[]]></description>
 				<type>STRING</type>
 				<option />
-				<default><![CDATA[]]></default>
+				<default><![CDATA[  ]]></default>
 			</variable>
 			<variable>
 				<name>matched-ads-height</name>
-				<label><![CDATA[ height (기본: 900) ]]></label>
+				<label><![CDATA[ height (기본: 1200) ]]></label>
 				<description><![CDATA[]]></description>
 				<type>STRING</type>
 				<option />
-				<default>900</default>
+				<default>1200</default>
 			</variable>
 		</variablegroup>
 
@@ -987,20 +1012,12 @@
 				<default>false</default>
 			</variable>
 			<variable>
-				<name>content-data-ad-client</name>
-				<label><![CDATA[ data-ad-client (공통) ]]></label>
-				<description><![CDATA[]]></description>
-				<type>STRING</type>
-				<option />
-				<default><![CDATA[]]></default>
-			</variable>
-			<variable>
 				<name>content-data-ad-slot-1</name>
 				<label><![CDATA[ data-ad-slot (첫번째) ]]></label>
 				<description><![CDATA[]]></description>
 				<type>STRING</type>
 				<option />
-				<default><![CDATA[]]></default>
+				<default><![CDATA[  ]]></default>
 			</variable>
 			<variable>
 				<name>content-data-ad-slot-2</name>
@@ -1008,7 +1025,7 @@
 				<description><![CDATA[]]></description>
 				<type>STRING</type>
 				<option />
-				<default><![CDATA[]]></default>
+				<default><![CDATA[  ]]></default>
 			</variable>
 		</variablegroup>
 
@@ -1022,20 +1039,12 @@
 				<default>false</default>
 			</variable>
 			<variable>
-				<name>content-bottom-data-ad-client</name>
-				<label><![CDATA[ data-ad-client (공통) ]]></label>
-				<description><![CDATA[]]></description>
-				<type>STRING</type>
-				<option />
-				<default><![CDATA[]]></default>
-			</variable>
-			<variable>
 				<name>content-bottom-data-ad-slot-1</name>
 				<label><![CDATA[ data-ad-slot (첫번째) ]]></label>
 				<description><![CDATA[]]></description>
 				<type>STRING</type>
 				<option />
-				<default><![CDATA[]]></default>
+				<default><![CDATA[  ]]></default>
 			</variable>
 			<variable>
 				<name>content-bottom-data-ad-slot-2</name>
@@ -1043,7 +1052,7 @@
 				<description><![CDATA[]]></description>
 				<type>STRING</type>
 				<option />
-				<default><![CDATA[]]></default>
+				<default><![CDATA[  ]]></default>
 			</variable>
 		</variablegroup>
 
@@ -1057,20 +1066,12 @@
 				<default>false</default>
 			</variable>
 			<variable>
-				<name>main-data-ad-client</name>
-				<label><![CDATA[ data-ad-client ]]></label>
-				<description><![CDATA[]]></description>
-				<type>STRING</type>
-				<option />
-				<default><![CDATA[]]></default>
-			</variable>
-			<variable>
 				<name>main-data-ad-slot</name>
 				<label><![CDATA[ data-ad-slot ]]></label>
 				<description><![CDATA[]]></description>
 				<type>STRING</type>
 				<option />
-				<default><![CDATA[]]></default>
+				<default><![CDATA[  ]]></default>
 			</variable>
 			<variable>
 				<name>main-ad-title</name>
@@ -1078,7 +1079,7 @@
 				<description><![CDATA[]]></description>
 				<type>STRING</type>
 				<option />
-				<default><![CDATA[추천 글]]></default>
+				<default><![CDATA[ 💲 추천 글 ]]></default>
 			</variable>
 		</variablegroup>
 
@@ -1092,20 +1093,12 @@
 				<default>false</default>
 			</variable>
 			<variable>
-				<name>related-data-ad-client</name>
-				<label><![CDATA[ data-ad-client ]]></label>
-				<description><![CDATA[]]></description>
-				<type>STRING</type>
-				<option />
-				<default><![CDATA[]]></default>
-			</variable>
-			<variable>
 				<name>related-data-ad-slot</name>
 				<label><![CDATA[ data-ad-slot ]]></label>
 				<description><![CDATA[]]></description>
 				<type>STRING</type>
 				<option />
-				<default><![CDATA[]]></default>
+				<default><![CDATA[  ]]></default>
 			</variable>
 		</variablegroup>
 
@@ -1127,20 +1120,12 @@
 				<default><![CDATA[2]]></default>
 			</variable>
 			<variable>
-				<name>infeed-data-ad-client</name>
-				<label><![CDATA[ data-ad-client ]]></label>
-				<description><![CDATA[]]></description>
-				<type>STRING</type>
-				<option />
-				<default><![CDATA[]]></default>
-			</variable>
-			<variable>
 				<name>infeed-data-ad-slot-big</name>
 				<label><![CDATA[ data-ad-slot - 리스트 커버(대) ]]></label>
 				<description><![CDATA[]]></description>
 				<type>STRING</type>
 				<option />
-				<default><![CDATA[]]></default>
+				<default><![CDATA[  ]]></default>
 			</variable>
 			<variable>
 				<name>infeed-data-ad-slot-small</name>
@@ -1148,7 +1133,7 @@
 				<description><![CDATA[]]></description>
 				<type>STRING</type>
 				<option />
-				<default><![CDATA[]]></default>
+				<default><![CDATA[  ]]></default>
 			</variable>
 			<variable>
 				<name>infeed-data-ad-layout-key-big</name>
@@ -1156,7 +1141,7 @@
 				<description><![CDATA[]]></description>
 				<type>STRING</type>
 				<option />
-				<default><![CDATA[]]></default>
+				<default><![CDATA[  ]]></default>
 			</variable>
 			<variable>
 				<name>infeed-data-ad-layout-key-small</name>
@@ -1164,7 +1149,7 @@
 				<description><![CDATA[]]></description>
 				<type>STRING</type>
 				<option />
-				<default><![CDATA[]]></default>
+				<default><![CDATA[  ]]></default>
 			</variable>
 		</variablegroup>
 
@@ -1194,20 +1179,12 @@
 				<default><![CDATA[3]]></default>
 			</variable>
 			<variable>
-				<name>infeed-data-ad-client-side</name>
-				<label><![CDATA[ data-ad-client ]]></label>
-				<description><![CDATA[]]></description>
-				<type>STRING</type>
-				<option />
-				<default><![CDATA[]]></default>
-			</variable>
-			<variable>
 				<name>infeed-data-ad-slot-side</name>
 				<label><![CDATA[ data-ad-slot ]]></label>
 				<description><![CDATA[]]></description>
 				<type>STRING</type>
 				<option />
-				<default><![CDATA[]]></default>
+				<default><![CDATA[  ]]></default>
 			</variable>
 			<variable>
 				<name>infeed-data-ad-layout-key-side</name>
@@ -1215,9 +1192,79 @@
 				<description><![CDATA[]]></description>
 				<type>STRING</type>
 				<option />
-				<default><![CDATA[]]></default>
+				<default><![CDATA[  ]]></default>
 			</variable>
 		</variablegroup>
+
+		<variablegroup name="글 중간 광고 자동 삽입">
+			<variable>
+				<name>article-google-ads</name>
+				<label><![CDATA[ 사용 여부 ]]></label>
+				<description><![CDATA[]]></description>
+				<type>BOOL</type>
+				<option/>
+				<default>false</default>
+			</variable>
+			<variable>
+				<name>article-google-ads-frequency</name>
+				<label><![CDATA[ 빈도 (기본 60라인마다 삽입) ]]></label>
+				<description><![CDATA[]]></description>
+				<type>STRING</type>
+				<option />
+				<default><![CDATA[ 60 ]]></default>
+			</variable>
+			<variable>
+				<name>article-google-ads-forced</name>
+				<label><![CDATA[ 기존 삽입 광고 무시 ]]></label>
+				<description><![CDATA[]]></description>
+				<type>BOOL</type>
+				<option/>
+				<default>false</default>
+			</variable>
+			<variable>
+				<name>article-google-ads-type</name>
+				<label><![CDATA[ 광고 종류 ]]></label>
+				<description><![CDATA[]]></description>
+				<type>SELECT</type>
+				<option><![CDATA[[{"name":"inarticle","label":"콘텐츠 내 삽입 광고","value":"inarticle"}, {"name":"display","label":"디스플레이 사각 광고","value":"display"}, {"name":"mixed","label":"콘텐츠 내 삽입 + 디스플레이 사각 광고 혼합","value":"mixed"}]]]></option>
+				<default>mixed</default>
+			</variable>
+			<variable>
+				<name>article-data-ad-slot-inarticle</name>
+				<label><![CDATA[ data-ad-slot - 콘텐츠 내 삽입 광고 ]]></label>
+				<description><![CDATA[]]></description>
+				<type>STRING</type>
+				<option />
+				<default><![CDATA[  ]]></default>
+			</variable>
+			<variable>
+				<name>article-data-ad-slot-display1</name>
+				<label><![CDATA[ data-ad-slot - 디스플레이 사각 광고1 ]]></label>
+				<description><![CDATA[]]></description>
+				<type>STRING</type>
+				<option />
+				<default><![CDATA[  ]]></default>
+			</variable>
+			<variable>
+				<name>article-data-ad-slot-display2</name>
+				<label><![CDATA[ data-ad-slot - 디스플레이 사각 광고2 ]]></label>
+				<description><![CDATA[]]></description>
+				<type>STRING</type>
+				<option />
+				<default><![CDATA[  ]]></default>
+			</variable>
+		</variablegroup>
+
+		<variablegroup name="구글 검색바 광고 설정">
+			<variable>
+				<name>google-searchbar-ads</name>
+				<label><![CDATA[ https://cse.google.com /cse.js?cx= 코드 ]]></label>
+				<description><![CDATA[]]></description>
+				<type>STRING</type>
+				<option />
+				<default><![CDATA[  ]]></default>
+			</variable>
+		</variablegroup>		
 
 		<variablegroup name="고정 추천 글 설정 (사용 여부는 사이드바에서 설정)">
 			<variable>
@@ -1234,7 +1281,7 @@
 				<description><![CDATA[]]></description>
 				<type>STRING</type>
 				<option />
-				<default><![CDATA[ ]]></default>
+				<default><![CDATA[  ]]></default>
 			</variable>
 			<variable>
 				<name>best-post-src-1</name>
@@ -1242,15 +1289,15 @@
 				<description><![CDATA[]]></description>
 				<type>STRING</type>
 				<option />
-				<default><![CDATA[ ]]></default>
+				<default><![CDATA[  ]]></default>
 			</variable>
 			<variable>
 				<name>best-post-hl1</name>
-				<label><![CDATA[ 추천 글 1 강조 ]]></label>
+				<label><![CDATA[  ]]></label>
 				<description><![CDATA[]]></description>
 				<type>BOOL</type>
 				<option/>
-				<default>false</default>
+				<default>true</default>
 			</variable>
 			<variable>
 				<name>best-post-title-2</name>
@@ -1258,7 +1305,7 @@
 				<description><![CDATA[]]></description>
 				<type>STRING</type>
 				<option />
-				<default><![CDATA[ ]]></default>
+				<default><![CDATA[  ]]></default>
 			</variable>
 			<variable>
 				<name>best-post-src-2</name>
@@ -1266,7 +1313,7 @@
 				<description><![CDATA[]]></description>
 				<type>STRING</type>
 				<option />
-				<default><![CDATA[ ]]></default>
+				<default><![CDATA[  ]]></default>
 			</variable>
 			<variable>
 				<name>best-post-hl2</name>
@@ -1282,7 +1329,7 @@
 				<description><![CDATA[]]></description>
 				<type>STRING</type>
 				<option />
-				<default><![CDATA[ ]]></default>
+				<default><![CDATA[  ]]></default>
 			</variable>
 			<variable>
 				<name>best-post-src-3</name>
@@ -1290,7 +1337,7 @@
 				<description><![CDATA[]]></description>
 				<type>STRING</type>
 				<option />
-				<default><![CDATA[ ]]></default>
+				<default><![CDATA[  ]]></default>
 			</variable>
 			<variable>
 				<name>best-post-hl3</name>
@@ -1306,7 +1353,7 @@
 				<description><![CDATA[]]></description>
 				<type>STRING</type>
 				<option />
-				<default><![CDATA[ ]]></default>
+				<default><![CDATA[  ]]></default>
 			</variable>
 			<variable>
 				<name>best-post-src-4</name>
@@ -1314,7 +1361,7 @@
 				<description><![CDATA[]]></description>
 				<type>STRING</type>
 				<option />
-				<default><![CDATA[ ]]></default>
+				<default><![CDATA[  ]]></default>
 			</variable>
 			<variable>
 				<name>best-post-hl4</name>
@@ -1330,7 +1377,7 @@
 				<description><![CDATA[]]></description>
 				<type>STRING</type>
 				<option />
-				<default><![CDATA[ ]]></default>
+				<default><![CDATA[  ]]></default>
 			</variable>
 			<variable>
 				<name>best-post-src-5</name>
@@ -1338,7 +1385,7 @@
 				<description><![CDATA[]]></description>
 				<type>STRING</type>
 				<option />
-				<default><![CDATA[ ]]></default>
+				<default><![CDATA[  ]]></default>
 			</variable>
 			<variable>
 				<name>best-post-hl5</name>
@@ -1354,7 +1401,7 @@
 				<description><![CDATA[]]></description>
 				<type>STRING</type>
 				<option />
-				<default><![CDATA[ ]]></default>
+				<default><![CDATA[  ]]></default>
 			</variable>
 			<variable>
 				<name>best-post-src-6</name>
@@ -1362,7 +1409,7 @@
 				<description><![CDATA[]]></description>
 				<type>STRING</type>
 				<option />
-				<default><![CDATA[ ]]></default>
+				<default><![CDATA[  ]]></default>
 			</variable>
 			<variable>
 				<name>best-post-title-7</name>
@@ -1370,7 +1417,7 @@
 				<description><![CDATA[]]></description>
 				<type>STRING</type>
 				<option />
-				<default><![CDATA[ ]]></default>
+				<default><![CDATA[  ]]></default>
 			</variable>
 			<variable>
 				<name>best-post-src-7</name>
@@ -1378,7 +1425,7 @@
 				<description><![CDATA[]]></description>
 				<type>STRING</type>
 				<option />
-				<default><![CDATA[ ]]></default>
+				<default><![CDATA[ /37 ]]></default>
 			</variable>
 			<variable>
 				<name>best-post-title-8</name>
@@ -1421,7 +1468,7 @@
 				<description><![CDATA[]]></description>
 				<type>BOOL</type>
 				<option/>
-				<default>false</default>
+				<default>true</default>
 			</variable>
 			<variable>
 				<name>bgm-autoplay-mobile-yn</name>
@@ -1433,7 +1480,7 @@
 			</variable>
 			<variable>
 				<name>init-bgm-volume</name>
-				<label><![CDATA[ 최초 볼륨 (기본 0.05) ]]></label>
+				<label><![CDATA[ 최초 볼륨 (0 ~ 1) ]]></label>
 				<description><![CDATA[]]></description>
 				<type>STRING</type>
 				<option />
@@ -1445,7 +1492,7 @@
 				<description><![CDATA[]]></description>
 				<type>STRING</type>
 				<option />
-				<default><![CDATA[ ]]></default>
+				<default><![CDATA[  ]]></default>
 			</variable>
 			<variable>
 				<name>bgm-src-1</name>
@@ -1453,7 +1500,7 @@
 				<description><![CDATA[]]></description>
 				<type>STRING</type>
 				<option />
-				<default><![CDATA[ ]]></default>
+				<default><![CDATA[  ]]></default>
 			</variable>
 			<variable>
 				<name>bgm-title-2</name>
