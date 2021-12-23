@@ -1565,6 +1565,7 @@
 						</s_not_var_loading-screen-img>
 					</div>
 					<script type="text/javascript">
+						var doneFlag = false;
 						var loadingTimer = 0;
 						var wrapperObserver = new MutationObserver(function(mutations) {
 							$('#wrapper').css('height','');
@@ -1579,18 +1580,26 @@
 						wrapperObserver.observe(wrapper, config);
 						
 						function afterLoaded() {
-							wrapperObserver.disconnect();
-							$('#wrapper').addClass('loaded');
-							$('#wrapper').off('scroll touchmove mousewheel');
-							var allIns = $('ins');
-							for(var i=0; i < allIns.length; i++) {
-								if((allIns.eq(i).height() == 0) && allIns.eq(i).parent().height() != 0) {
-									if('^HTML^BODY^'.indexOf(allIns.eq(i).parent().prop('tagName')) == -1) {
-										allIns.eq(i).parent().css('display','none');
+							if(!doneFlag) {
+								wrapperObserver.disconnect();
+								$('#wrapper').addClass('loaded');
+								$('#wrapper').off('scroll touchmove mousewheel');
+								$("#waiting").fadeOut();
+								setTimeout(function() {
+									doneFlag = true;
+									smoothScroll();
+								}, 500);
+								/*
+								var allIns = $('ins');
+								for(var i=0; i < allIns.length; i++) {
+									if((allIns.eq(i).height() == 0) && allIns.eq(i).parent().height() != 0) {
+										if('^HTML^BODY^'.indexOf(allIns.eq(i).parent().prop('tagName')) == -1) {
+											allIns.eq(i).parent().css('display','none');
+										}
 									}
 								}
+								*/
 							}
-							$("#waiting").fadeOut();
 						}
 						
 						$('#wrapper').on('scroll touchmove mousewheel', function(event) {
@@ -1893,7 +1902,7 @@
 														<script>
 															if(recentCnt != 0 && recentCnt%[##_var_infeed-repeat-cnt-side_##] == 0) {
 																document.write('<li><ins class="adsbygoogle" style="display:block" data-ad-format="fluid" data-ad-layout-key="[##_var_infeed-data-ad-layout-key-side_##]" data-ad-client="[##_var_data-ad-client_##]" data-ad-slot="[##_var_infeed-data-ad-slot-side_##]"></ins></li>');
-																(adsbygoogle = window.adsbygoogle || []).push({});
+																try {(adsbygoogle = window.adsbygoogle || []).push({});}catch(e){}
 															}
 															recentCnt += 1;
 														</script>
@@ -1929,7 +1938,7 @@
 														<script>
 															if(popularCnt != 0 && popularCnt%[##_var_infeed-repeat-cnt-side_##] == 0) {
 																document.write('<li><ins class="adsbygoogle" style="display:block" data-ad-format="fluid" data-ad-layout-key="[##_var_infeed-data-ad-layout-key-side_##]" data-ad-client="[##_var_data-ad-client_##]" data-ad-slot="[##_var_infeed-data-ad-slot-side_##]"></ins></li>');
-																(adsbygoogle = window.adsbygoogle || []).push({});
+																try {(adsbygoogle = window.adsbygoogle || []).push({});}catch(e){}
 															}
 															popularCnt += 1;
 														</script>
@@ -1961,7 +1970,7 @@
 															data-ad-slot="[##_var_sidebar-data-ad-slot_##]"></ins>
 												</div>
 												<script>
-													(adsbygoogle = window.adsbygoogle || []).push({});
+													try {(adsbygoogle = window.adsbygoogle || []).push({});}catch(e){}
 												</script>
 											</div>
 										</s_if_var_sidebar-data-ad-slot>
@@ -2075,7 +2084,7 @@
 															}
 															if(cnt != 0 && cnt%[##_var_infeed-repeat-cnt_##] == 0) {
 																document.write('<li><ins class="adsbygoogle" style="display:block" data-ad-format="fluid" data-ad-layout-key="'+layoutKey+'" data-ad-client="[##_var_data-ad-client_##]" data-ad-slot="'+slot+'"></ins></li>');
-																(adsbygoogle = window.adsbygoogle || []).push({});
+																try {(adsbygoogle = window.adsbygoogle || []).push({});}catch(e){}
 															}
 															cnt += 1;
 														</script>
@@ -2245,7 +2254,7 @@
 												}
 												if(cnt != 0 && cnt%[##_var_infeed-repeat-cnt_##] == 0) {
 																						document.write('<ul><li><ins class="adsbygoogle" style="display:block" data-ad-format="fluid" data-ad-layout-key="'+layoutKey+'" data-ad-client="[##_var_data-ad-client_##]" data-ad-slot="'+slot+'"></ins></li></ul>');
-												(adsbygoogle = window.adsbygoogle || []).push({});
+													try {(adsbygoogle = window.adsbygoogle || []).push({});}catch(e){}
 												}
 												cnt += 1;
 											</script>
@@ -2324,7 +2333,7 @@
 															if($(window).width() < 710) {
 																$('#ad-top-left').remove();
 															} else {
-																(adsbygoogle = window.adsbygoogle || []).push({});
+																try {(adsbygoogle = window.adsbygoogle || []).push({});}catch(e){}
 															}
 														</script>
 													</div>
@@ -2337,7 +2346,7 @@
 																 data-full-width-responsive="true"
 																 style="width:336px;"></ins>
 														<script>
-															(adsbygoogle = window.adsbygoogle || []).push({});
+															try {(adsbygoogle = window.adsbygoogle || []).push({});}catch(e){}
 														</script>
 													</div>
 												</div>
@@ -2366,7 +2375,7 @@
 															 data-ad-client="[##_var_data-ad-client_##]"
 															 data-ad-slot="[##_var_related-data-ad-slot_##]"></ins>
 													<script>
-														(adsbygoogle = window.adsbygoogle || []).push({});
+														try {(adsbygoogle = window.adsbygoogle || []).push({});}catch(e){}
 													</script>
 												</div>
 											</div>
@@ -2384,7 +2393,7 @@
 															 data-full-width-responsive="true"
 															 style="width:336px;"></ins>
 													<script>
-														(adsbygoogle = window.adsbygoogle || []).push({});
+														try {(adsbygoogle = window.adsbygoogle || []).push({});}catch(e){}
 													</script>
 												</div>
 												<div id="ad-bottom-right" class="revenue_unit_item adsense">
@@ -2399,7 +2408,7 @@
 														if($(window).width() < 710) {
 															$('#ad-bottom-right').remove();
 														} else {
-															(adsbygoogle = window.adsbygoogle || []).push({});
+															try {(adsbygoogle = window.adsbygoogle || []).push({});}catch(e){}
 														}
 													</script>
 												</div>
@@ -2589,7 +2598,7 @@
 											}
 											mainAds.remove();
 										} else {
-											(adsbygoogle = window.adsbygoogle || []).push({});
+											try {(adsbygoogle = window.adsbygoogle || []).push({});}catch(e){}
 										}
 									</script>
 								</div>
