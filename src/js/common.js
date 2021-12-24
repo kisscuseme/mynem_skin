@@ -361,11 +361,31 @@ function smoothScroll(e) {
     var moveFlag = false;
     var moveFlagForComment = false;
     var headerHeight = $('#fixed-header').val()?($('header').length>0?$('header').height()+5:0):0;
+    var enableAnimation = true;
     
     if(typeof aHref !== 'undefined' && aHref.length > 1 && aHref.indexOf('#') > -1) {
         var regExp = /[\{\}\[\]\/?.,;:|\)*~`!^\-_+<>@\#$%&\\\=\(\'\"]/gi;
         offsetTop = $('#' + aHref.substr(1).replace(regExp,"\\$&")).offset().top - addHeightByAnchorAds('top');
         moveFlag = true;
+        
+        if(!isNaN(Number(aHref.substring(aHref.indexOf('#comment')+8)))) {
+            enableAnimation = false;
+            if(!((contentMiddleYn && (window.innerWidth-$('.content-wrapper').outerWidth())/2 > 250)
+              ||(!contentMiddleYn && window.innerWidth > 1413))) {
+                if(floatingTocNew) {
+                    title.html("&#xf103;");
+                    title.addClass('close');
+                    floatingTocNew.css('width','fit-content');
+                    floatingTocNew.css('transform','scale(0.8)');
+                    if(((window.innerWidth > 1079 && window.innerWidth < 1400) && (floatingTocPostion && !contentMiddleYn))
+                        || (window.innerWidth > articleMaxWidth+32 && (floatingTocPostion && contentMiddleYn))) {
+                        floatingTocNew.css('right','-8px');
+                    } else {
+                        floatingTocNew.css('left','-8px');
+                    }
+                }
+            }
+        }
     }
 
     if($(self).hasClass('move-top-btn')) {
@@ -386,9 +406,13 @@ function smoothScroll(e) {
         var distance = Math.abs(windowTop - offsetTop - headerHeight);
         var calcSpeed = 300*(distance/2000);
         var speed = calcSpeed<500?500:(calcSpeed>3000?3000:calcSpeed);
-        $('html, body').animate({
-            scrollTop: offsetTop - headerHeight
-        }, speed, 'swing');
+        if(enableAnimation) {
+            $('html, body').animate({
+                scrollTop: offsetTop - headerHeight
+            }, speed, 'swing');
+        } else {
+            $('html, body').scrollTop(offsetTop - headerHeight);
+        }
         smoothScrollTimer = setTimeout(function() {
             if(moveFlag) {
                 if(repeatCnt < 3 && offsetTop != 0) {
@@ -893,6 +917,8 @@ function common(){
             sidebarInsParent.eq(i).css('background-image','none');
         }
     }
+
+    $('article .tags').html($('article .tags').html().replaceAll(',\n',''));
 }
 
 function updateTagsAttr() {
@@ -1961,6 +1987,22 @@ async function pushAds(index, ins){
         });
     })(ins);
     try {(adsbygoogle = window.adsbygoogle || []).push({});}catch(e){console.log(e);}
+}
+
+function initAllGlobalVaules() {
+    floatingTocNew = $('.floating-toc-new');
+    bookToc = $('.book-toc');
+    contentMiddleYn = $('#content-middle-yn').val();
+    animating = false;
+    mobileAnimating = false;
+    timer = 0;
+    clickFloatingFlag = true;
+    title = null;
+    floatingTocPostion = $('#floating-toc-position').val();
+    adsTocPosition = $('#ads-toc-position').val();
+    articleMaxWidth = Number($('#article-max-width').val());
+    clickContentFlag = true;
+    tocUnfoldYn = $('#toc-unfold-yn').val();
 }
 
 $(document).ready(function() {
