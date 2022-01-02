@@ -368,7 +368,7 @@ function smoothScroll(e) {
         offsetTop = $('#' + aHref.substr(1).replace(regExp,"\\$&")).offset().top - addHeightByAnchorAds('top');
         moveFlag = true;
         
-        if(!isNaN(Number(aHref.substring(aHref.indexOf('#comment')+8)))) {
+        if(aHref.indexOf('#comment') > -1 && !isNaN(Number(aHref.substring(aHref.indexOf('#comment')+8)))) {
             enableAnimation = false;
             if(!((contentMiddleYn && (window.innerWidth-$('.content-wrapper').outerWidth())/2 > 250)
               ||(!contentMiddleYn && window.innerWidth > 1413))) {
@@ -393,7 +393,7 @@ function smoothScroll(e) {
     }
 
     if($(self).hasClass('move-comment-btn')) {
-        offsetTop = $('.pagination').offset().top - $(window).innerHeight() - addHeightByAnchorAds('top') + headerHeight + 40;
+        offsetTop = $('.pagination').offset().top - $(window).innerHeight() - addHeightByAnchorAds('bottom') + headerHeight + 40;
         moveFlagForComment = true;
     }
 
@@ -415,7 +415,7 @@ function smoothScroll(e) {
         }
         smoothScrollTimer = setTimeout(function() {
             if(moveFlag) {
-                if(repeatCnt < 3 && offsetTop != 0) {
+                if(repeatCnt < 3 && offsetTop != currentPosition) {
                     if(self) {
                         $(self).click();
                     } else {
@@ -444,8 +444,11 @@ function showToast(msg, slot, time) {
 
     var toast = $('#toast');
 
+    toast.children().html(msg);
+
     if(slot == 'top') {
-        toast.css('top', 'calc(33px + ' + addHeightByAnchorAds('top') + 'px)');
+        var topPosition = toast.outerHeight()/2 + 10;
+        toast.css('top', 'calc(' + topPosition + 'px + ' + addHeightByAnchorAds('top') + 'px)');
         toast.css('bottom', '');
     } else if(slot == 'bottom') {
         toast.css('top', '');
@@ -454,8 +457,8 @@ function showToast(msg, slot, time) {
         toast.css('top', 'calc(50% - ' + (addHeightByAnchorAds('bottom')+addHeightByAnchorAds('top'))/2 + 'px)');
         toast.css('bottom', '');
     }
-
-    toast.children().html(msg);
+    toast.css('border','1px solid #00000033');
+ 
     setTimeout(function() {
         toast.fadeIn(500, function() {
             msgTimer = setTimeout(function() {
@@ -918,7 +921,9 @@ function common(){
         }
     }
 
-    $('article .tags').html($('article .tags').html().replaceAll(',\n',''));
+    if($('article .tags').length > 0) {
+        $('article .tags').html($('article .tags').html().replaceAll(',\n',''));
+    }
 }
 
 function updateTagsAttr() {
