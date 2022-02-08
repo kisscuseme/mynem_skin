@@ -433,17 +433,27 @@
 				.content-comment {
 					background-color: [##_var_etc-color_##]33;
 				}
+				.content-article u {
+					text-decoration-color: [##_var_etc-color_##]99;
+				}
+				.content-close-btn:after {
+					color: [##_var_etc-color_##]ff;
+				}
 
 				/* solid style */
 				<s_if_var_sidebar-solid-style>
 					.comment-form .field {
-						border-top: [##_var_border-size_##]px solid [##_var_etc-color_##]55;
 						border-left: [##_var_border-size_##]px solid [##_var_etc-color_##]55;
 						border-right: [##_var_border-size_##]px solid [##_var_etc-color_##]55;
 						border-bottom: 0px;
+						border-top: 0px;
+					}
+					.comment-form .field input[type=text] {
+						border-top: [##_var_border-size_##]px solid [##_var_etc-color_##]55;
 					}
 					.comment-form .field input[type=password] {
 						border-left: [##_var_border-size_##]px solid [##_var_etc-color_##]55;
+						border-top: [##_var_border-size_##]px solid [##_var_etc-color_##]55;
 					}
 					.container_postbtn .postbtn_like,
 					.container_postbtn .btn_menu_toolbar {
@@ -584,6 +594,12 @@
 					body.dark-mode .content-comment {
 						background-color: [##_var_etc-color-d_##]33;
 					}
+					body.dark-mode .content-article u {
+						text-decoration-color: [##_var_etc-color-d_##]99;
+					}
+					body.dark-mode .content-close-btn:after {
+						color: [##_var_etc-color-d_##]ff;
+					}
 
 					/* solid style */
 					<s_if_var_sidebar-solid-style>
@@ -695,15 +711,18 @@
 			</s_if_var_category-header-style-3>
 			<s_if_var_toc-header-style-1>
 				#toc > li:before {content: "[##_var_toc-header-style-1_##]" !important}
-				#toc > li a.selected:after {content:"\f060" !important;font-size:0.8em;margin-left:5px;}
+				#toc > li a:after {content:"\f060" !important;font-size:0.8em;margin-left:5px;opacity:0;}
+				#toc > li a.selected:after {opacity:1;}
 			</s_if_var_toc-header-style-1>
 			<s_if_var_toc-header-style-2>
 				#toc > li ul li:before {content: "[##_var_toc-header-style-2_##]" !important}
-				#toc > li ul li a.selected:after {content:"\f060" !important;font-size:0.8em;margin-left:5px;}
+				#toc > li ul li a:after {content:"\f060" !important;font-size:0.8em;margin-left:5px;opacity:0;}
+				#toc > li ul li a.selected:after {opacity:1;}
 			</s_if_var_toc-header-style-2>
 			<s_if_var_toc-header-style-3>
 				#toc > li ul li ul li:before {content: "[##_var_toc-header-style-3_##]" !important}
-				#toc > li ul li ul li a.selected:after {content:"\f060" !important;font-size:0.8em;margin-left:5px;}
+				#toc > li ul li ul li a:after {content:"\f060" !important;font-size:0.8em;margin-left:5px;opacity:0;}
+				#toc > li ul li ul li a.selected:after {opacity:1;}
 			</s_if_var_toc-header-style-3>
 			<s_not_var_width-toc-yn>
 				.book-toc {width:fit-content}
@@ -770,6 +789,7 @@
 						content: "\f0c9";
 						position: absolute;
 						visibility: visible;
+						font-family: 'Font_Awesome_5_Free';
 					}
 					article {
 						max-width: [##_var_article-max-width_##]px;
@@ -953,6 +973,7 @@
 						content: "\f0c9";
 						position: absolute;
 						visibility: visible;
+						font-family: 'Font_Awesome_5_Free';
 					}
 					article {
 						float: none !important;
@@ -1102,7 +1123,8 @@
 					}
 				}
 				.floating-toc-new {
-					width: calc((100vw - [##_var_article-max-width_##]px - 140px) / 2);
+					max-width: calc((100vw - [##_var_article-max-width_##]px - 140px) / 2);
+					min-width: 50px;
 				}
 			</s_if_var_content-middle-yn>
 			<s_not_var_content-middle-yn>
@@ -1169,6 +1191,7 @@
 						content: "\f0c9";
 						position: absolute;
 						visibility: visible;
+						font-family: 'Font_Awesome_5_Free';
 					}
 					article {
 						float: none !important;
@@ -1394,6 +1417,7 @@
 						content: "\f0c9";
 						position: absolute;
 						visibility: visible;
+						font-family: 'Font_Awesome_5_Free';
 					}
 					article {
 						float: none !important;
@@ -2615,7 +2639,7 @@
 						<a href="#" class="page-top">TOP</a>
 						<p class="meta"><s_if_var_footer-text-1>[##_var_footer-text-1_##]</s_if_var_footer-text-1></p>
 						<p class="copyright"><s_if_var_footer-text-2>[##_var_footer-text-2_##]</s_if_var_footer-text-2></p>
-						<p class="maker"><a href="https://sangminem.tistory.com/506" target="_blank"><font color="#ff7a00"><b>Mynem Skin 2.6.0</b> © Armynem</font></a></p>
+						<p class="maker"><a href="https://sangminem.tistory.com/506" target="_blank"><font color="#ff7a00"><b>Mynem Skin 2.6.1</b> © Armynem</font></a></p>
 					</div>
 				</footer>
 			</div>
@@ -2663,6 +2687,7 @@
 			<!-- 이전/다음 글 박스 -->
 			<s_if_var_recommend-contents>
 				<div id="recommend-contents" class="recommend-contents-wrap" style="display:none;">
+					<div class="content-close-btn" onclick="recommendPostClose()"></div>
 					<div class="content-comment">
 						[##_var_content-comment_##]
 					</div>

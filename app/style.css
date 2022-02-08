@@ -1412,6 +1412,11 @@ animation-play-state: paused;
 	margin-left:10px;
 	font-size:0.8em;
 }
+.content-article u {
+	text-decoration-color: red;
+	text-decoration-style: wavy;
+	text-decoration-thickness: 0.08em;
+}
 
 /* override */
 #tt-body-page h2[data-ke-size],
@@ -2659,6 +2664,13 @@ body.dark-mode td figure.imageblock, #tt-body-page td figure.imageblock {
 	    border-width: 0px !important;
 }
 
+body.dark-mode #chartdiv tspan {
+	fill: #d6d6d6;
+}
+body.dark-mode #chartdiv g[stroke="#000000"] {
+	stroke: #ffffff;
+}
+
 /* profile */
 .profile-desc {
 	font-size:0.8em;
@@ -2691,6 +2703,7 @@ body.dark-mode td figure.imageblock, #tt-body-page td figure.imageblock {
 	font-style: italic;
 	border-radius: 5px;
 	font-size: 0.8em;
+	text-align: center;
 }
 .content-box {
 	padding: 5px;
@@ -2723,6 +2736,18 @@ body.dark-mode td figure.imageblock, #tt-body-page td figure.imageblock {
 }
 .no-post {
 	opacity: 0.5;
+}
+.content-close-btn {
+	position:absolute;
+	right:14px;
+	top:-2px;
+	cursor: pointer;
+}
+.content-close-btn:after {
+	content: "\f410";
+	position: absolute;
+	line-height: 1;
+	font-size: 0.9em;
 }
 
 /* mobile menu */

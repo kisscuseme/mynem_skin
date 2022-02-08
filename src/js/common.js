@@ -145,15 +145,14 @@ function clickFloatingTitle() {
         } else {
             if(title.hasClass('close')) {
                 title.html("&#xf102;");
-                floatingTocNew.css('width','80%');
-                floatingTocNew.css('max-width','250px');
+                floatingTocNew.css('max-width','80%');
                 floatingTocNew.css('transform','scale(1.0)');
                 checkContentPosition();
                 if(((window.innerWidth > 1079 && window.innerWidth < 1400) && (floatingTocPostion && !contentMiddleYn))
                   || (window.innerWidth > articleMaxWidth+32 && (floatingTocPostion && contentMiddleYn))) {
                     floatingTocNew.css('right','0px');
                 } else {
-                    floatingTocNew.css('left','0px');
+                    floatingTocNew.css('right','0px');
                 }
             }
             $('#toc-body').slideToggle(300, 'linear', function() {
@@ -168,7 +167,7 @@ function clickFloatingTitle() {
                       || (window.innerWidth > articleMaxWidth+32 && (floatingTocPostion && contentMiddleYn))) {
                         floatingTocNew.css('right','-8px');
                     } else {
-                        floatingTocNew.css('left','-8px');
+                        floatingTocNew.css('right','-8px');
                     }
                 }
                 clickFloatingFlag = true;
@@ -226,21 +225,6 @@ function appendTocNew() {
                     animating = true;
                     mobileAnimating = false;
                     initFloatingTocNew();
-
-                    var sideValue = 0;
-                    if(contentMiddleYn) {
-                        if(floatingTocPostion) { //오른쪽
-                            sideValue = (window.innerWidth - $('.content-wrapper').width())/2 - floatingTocNew.outerWidth() - 42;
-                            floatingTocNew.css('right', sideValue);
-                        } else { //왼쪽
-                            sideValue = (window.innerWidth - $('.content-wrapper').width())/2 + $('.content-wrapper').width() + 32;
-                            floatingTocNew.css('right', sideValue);
-                            
-                        }
-                    } else {
-                        sideValue = ((window.innerWidth - $('.content-wrapper').width()) - floatingTocNew.outerWidth())/2 - 52;
-                        floatingTocNew.css('right', sideValue);
-                    }
                     
                     if(tocUnfoldYn && contentMiddleYn) {
                         $('#toc-body').css('display','');
@@ -251,6 +235,21 @@ function appendTocNew() {
                         title.html("&#xf103;");
                         title.addClass('close');
                     }
+
+                    var sideValue = 0;
+                    if(contentMiddleYn) {
+                        if(floatingTocPostion) { //오른쪽
+                            sideValue = (window.innerWidth - $('.content-wrapper').width())/2 - floatingTocNew.outerWidth() - 40;
+                            floatingTocNew.css('right', sideValue);
+                        } else { //왼쪽
+                            sideValue = (window.innerWidth - $('.content-wrapper').width())/2 + $('.content-wrapper').width() + 32;
+                            floatingTocNew.css('right', sideValue);
+                        }
+                    } else {
+                        sideValue = ((window.innerWidth - $('.content-wrapper').width()) - floatingTocNew.outerWidth())/2 - 52;
+                        floatingTocNew.css('right', sideValue);
+                    }
+
                     floatingTocNew.animate({
                         'opacity': '1.0'
                     }, 300);
@@ -282,7 +281,7 @@ function appendTocNew() {
                       || (window.innerWidth > articleMaxWidth+32 && (floatingTocPostion && contentMiddleYn))) {
                         floatingTocNew.css('right','-8px');
                     } else {
-                        floatingTocNew.css('left','-8px');
+                        floatingTocNew.css('right','-8px');
                     }
                 }
             } else {
@@ -497,23 +496,23 @@ function commonProgressBar() {
 function progressBarVertical() {
     $pbv.css('height',((contentsCurrentPosition>1?1:contentsCurrentPosition)*100)+'%');
     $pbv.css('left',($('.content-wrapper').offset().left+Number($('#border-size').val()))+'px');
-    $pbv.css('opacity',0.8-(0.5*(contentsCurrentPosition>1?1:contentsCurrentPosition)));
+    $pbv.css('opacity',0.3+(0.5*(contentsCurrentPosition>1?1:contentsCurrentPosition)));
 }
 
 function progressBarHorizontal() {
     $pbh.css('width',((contentsCurrentPosition>1?1:contentsCurrentPosition)*100)+'%');
-    $pbh.css('opacity',0.8-(0.5*(contentsCurrentPosition>1?1:contentsCurrentPosition)));
+    $pbh.css('opacity',0.3+(0.5*(contentsCurrentPosition>1?1:contentsCurrentPosition)));
 }
 
 function progressBarEtcVertical() {
     $pbev.css('height',(likeButtonPosition>0?etcCurrentPosition*100:0)+'%');
     $pbev.css('left',($('.content-wrapper').outerWidth()+$('.content-wrapper').offset().left-5-Number($('#border-size').val()))+'px');
-    $pbev.css('opacity',0.8-(0.5*etcCurrentPosition));
+    $pbev.css('opacity',0.3+(0.5*etcCurrentPosition));
 }
 
 function progressBarEtcHorizontal() {
     $pbeh.css('width',(likeButtonPosition>0?etcCurrentPosition*100:0)+'%');
-    $pbeh.css('opacity',0.8-(0.5*etcCurrentPosition));
+    $pbeh.css('opacity',0.3+(0.5*etcCurrentPosition));
 }
 
 function scrollProgressBar() {
@@ -1037,11 +1036,13 @@ function lazyLoading() {
     
                 return new Promise(resolve => {
                     const observer = new IntersectionObserver(async entries => {
-                        const [entry] = entries;
+                        if(entries) {
+                            const [entry] = entries;
     
-                        if (entry.isIntersecting) {
-                            resolve();
-                            observer.disconnect();
+                            if (entry.isIntersecting) {
+                                resolve();
+                                observer.disconnect();
+                            }
                         }
                     }, intersectionObserverOptions);
                     observer.observe(element);
@@ -1665,15 +1666,19 @@ function recommendPost() {
                     $('#recommend-contents').css(reCommendStartPosition, '-350px');
                     $('#recommend-contents').css('display','block');
 
+                    if(floatingTocPostion) {
+                        $('.content-close-btn').css('right','312px');
+                    }
+
                     animateStyle[reCommendStartPosition] = rightMargin+'px';
-                    recommendPostTimer = $('#recommend-contents').animate(animateStyle, 1000, 'swing', function() {});
+                    $('#recommend-contents').animate(animateStyle, 1000, 'swing', function() {});
                     recommendPostTimer = setTimeout(function() {
                         animateStyle[reCommendStartPosition] = '-350px';
                         $('#recommend-contents').animate(animateStyle, 1000, 'swing', function() {
                             $('#recommend-contents').css('display','none');
                             recommendPostTimer = 0;
                         });
-                    }, 10000);
+                    }, 15000);
                 }
             }
         } else {
@@ -1681,6 +1686,10 @@ function recommendPost() {
         }
         preRecommendPosition = window.scrollY;
     }
+}
+
+function recommendPostClose() {
+    $('#recommend-contents').fadeOut();
 }
 
 function addHeightByAnchorAds(type) {
