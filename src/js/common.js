@@ -1729,6 +1729,10 @@ function commonForScroll() {
     $('.floating-button').css('bottom', addHeightByAnchorAds('bottom')+15+'px');
     $('#wrapper').css('padding-bottom',addHeightByAnchorAds('bottom')+'px');
     
+    //공유 버튼 오류 수정
+    if($('#tistorySnsLayer').css('display') != 'none') {
+        $('#tistorySnsLayer').css('display','none');
+    }
 }
 
 function refreshAds(type) {
@@ -2003,6 +2007,44 @@ async function pushAds(index, ins){
     try {(adsbygoogle = window.adsbygoogle || []).push({});}catch(e){console.log(e);}
 }
 
+function calcDday(date) {
+    var now = new Date();
+    var today = new Date(now.getFullYear(), now.getMonth(), now.getDate());
+    var base = new Date(date.substring(0,4), Number(date.substring(4,6))-1, date.substring(6,8));
+    var dDay = (today - base) / 1000 / 60 / 60 / 24;
+    if(dDay < 0) {
+        return "D" + dDay;
+    } else if(dDay == 0) {
+        return "D-day!";
+    } else {
+        return "D+" + dDay;
+    }
+}
+
+function setDday() {
+    var date1 = $('#d-day-date-1').val();
+    var date2 = $('#d-day-date-2').val();
+    var date3 = $('#d-day-date-3').val();
+    var date4 = $('#d-day-date-4').val();
+    var date5 = $('#d-day-date-5').val();
+
+    if(date1) {
+        $("#d-day1").text(calcDday(date1));
+    }
+    if(date2) {
+        $("#d-day2").text(calcDday(date2));
+    }
+    if(date3) {
+        $("#d-day3").text(calcDday(date3));
+    }
+    if(date4) {
+        $("#d-day4").text(calcDday(date4));
+    }
+    if(date5) {
+        $("#d-day5").text(calcDday(date5));
+    }
+}
+
 function initAllGlobalVaules() {
     floatingTocNew = $('.floating-toc-new');
     bookToc = $('.book-toc');
@@ -2039,6 +2081,7 @@ $(document).ready(function() {
     autoScroll();
     autoAppendAds();
     autoTranslate();
+    setDday();
     common();
     
     $(window).on('scroll resize', function() {

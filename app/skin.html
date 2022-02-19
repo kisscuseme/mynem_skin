@@ -247,7 +247,7 @@
 				.sidebar .notice, .sidebar .recent, .sidebar .popular, .sidebar .recent-comment,
 				.sidebar .tags, .sidebar .archives, .sidebar .count, .sidebar .profile-info,
 				.sidebar .module_plugin, .sidebar .revenue_unit_wrap, .content-title, .content-article pre,
-				figure.fileblock a, #tt-body-page figure.fileblock a, .sidebar .best-post,
+				figure.fileblock a, #tt-body-page figure.fileblock a, .sidebar .best-post, .sidebar .d-day,
 				figure[data-ke-type='opengraph'] a, #tt-body-page figure[data-ke-type='opengraph'] a,
 				.related-articles-wrap, .main-ads, #ad-top-left, #ad-top-right, #ad-bottom-left, #ad-bottom-right,
 				.book-toc, .floating-toc-new, #tistorySnsLayer.layer_post, #toast,
@@ -262,7 +262,7 @@
 				body.dark-mode .sidebar .notice, body.dark-mode .sidebar .recent, body.dark-mode .sidebar .popular, body.dark-mode .sidebar .recent-comment,
 				body.dark-mode .sidebar .tags, body.dark-mode .sidebar .archives, body.dark-mode .sidebar .count, body.dark-mode .sidebar .profile-info,
 				body.dark-mode .sidebar .module_plugin, body.dark-mode .sidebar .revenue_unit_wrap, body.dark-mode .content-title, body.dark-mode .content-article pre,
-				body.dark-mode figure.fileblock a, body.dark-mode #tt-body-page figure.fileblock a, body.dark-mode .sidebar .best-post,
+				body.dark-mode figure.fileblock a, body.dark-mode #tt-body-page figure.fileblock a, body.dark-mode .sidebar .best-post, body.dark-mode .sidebar .d-day,
 				body.dark-mode figure[data-ke-type='opengraph'] a, body.dark-mode #tt-body-page figure[data-ke-type='opengraph'] a,
 				body.dark-mode .related-articles-wrap, body.dark-mode .main-ads, body.dark-mode #ad-top-left, body.dark-mode #ad-top-right,
 				body.dark-mode #ad-bottom-left, body.dark-mode #ad-bottom-right, body.dark-mode article > .inner > ul li a, body.dark-mode article > .inner > ul li figure
@@ -310,6 +310,32 @@
 			}
 			</s_if_var_best-post-hl5>
 			
+			<s_if_var_d-day-hl1>
+			.sidebar .d-day li:nth-child(1) .d-day-text {
+				color: [##_var_d-day-hl1_##]
+			}
+			</s_if_var_d-day-hl1>
+			<s_if_var_d-day-hl2>
+			.sidebar .d-day li:nth-child(2) .d-day-text {
+				color: [##_var_d-day-hl2_##]
+			}
+			</s_if_var_d-day-hl2>
+			<s_if_var_d-day-hl3>
+			.sidebar .d-day li:nth-child(3) .d-day-text {
+				color: [##_var_d-day-hl3_##]
+			}
+			</s_if_var_d-day-hl3>
+			<s_if_var_d-day-hl4>
+			.sidebar .d-day li:nth-child(4) .d-day-text {
+				color: [##_var_d-day-hl4_##]
+			}
+			</s_if_var_d-day-hl4>
+			<s_if_var_d-day-hl5>
+			.sidebar .d-day li:nth-child(5) .d-day-text {
+				color: [##_var_d-day-hl5_##]
+			}
+			</s_if_var_d-day-hl5>
+
 			<s_if_var_matched-ads-height>
 				.sidebar #recommend-ads.revenue_unit_item.adsense {
 					height:  [##_var_matched-ads-height_##]px;
@@ -396,7 +422,7 @@
 				.share-btn:after,.dark-mode-on-btn:after,.dark-mode-off-btn:after, .font-size-up-btn:after, .font-size-down-btn:after,
 				#toc > li a:after, #toc > li > ul > li a:after, #toc > li > ul > li > ul > li a:after {color:[##_var_etc-color_##]}
 				#toc-title p #toggle, .floating-icon:after, .sidebar .recent-comment ul li a:before, .sidebar .archives ul li a:before,
-				.sidebar .notice ul li a:before, .sidebar .best-post ul li a:before,
+				.sidebar .notice ul li a:before, .sidebar .best-post ul li a:before, .sidebar .d-day ul li span:first-child:before,
 				.sidebar .category .category_list .link_item:before, .bgm-header, h2 .bgm-btn,
 				.sidebar .category .sub_category_list .link_sub_item:before,
 				#toc > li:before, #toc > li > ul > li:before, #toc > li > ul > li > ul > li:before {color:[##_var_etc-color_##] !important;opacity:0.7;}
@@ -465,7 +491,7 @@
 					.sidebar .category, .sidebar .notice, .sidebar .recent, .sidebar .profile-info, 
 					.sidebar .popular, .sidebar .recent-comment, .sidebar .tags, #tistorySnsLayer.layer_post,
 					.sidebar .count, .sidebar .module_plugin, .archives, .comment-form textarea,
-					.comment-list .tt_more_preview_comments_text, .sidebar .best-post,
+					.comment-list .tt_more_preview_comments_text, .sidebar .best-post, .sidebar .d-day,
 					figure.fileblock, #tt-body-page figure.fileblock {
 						border: [##_var_border-size_##]px solid [##_var_etc-color_##]55;
 					}
@@ -559,7 +585,7 @@
 					body.dark-mode .share-btn:after, body.dark-mode .dark-mode-on-btn:after, body.dark-mode .dark-mode-off-btn:after, body.dark-mode .font-size-up-btn:after, body.dark-mode .font-size-down-btn:after,
 					body.dark-mode #toc > li a:after, body.dark-mode #toc > li > ul > li a:after, body.dark-mode #toc > li > ul > li > ul > li a:after {color:[##_var_etc-color-d_##]}
 					body.dark-mode #toc-title p #toggle, body.dark-mode .floating-icon:after, body.dark-mode .sidebar .recent-comment ul li a:before, body.dark-mode .sidebar .archives ul li a:before,
-					body.dark-mode .sidebar .notice ul li a:before, body.dark-mode .sidebar .best-post ul li a:before,
+					body.dark-mode .sidebar .notice ul li a:before, body.dark-mode .sidebar .best-post ul li a:before, body.dark-mode .sidebar .d-day ul li span:first-child:before,
 					body.dark-mode .sidebar .category .category_list .link_item:before, body.dark-mode .bgm-header, body.dark-mode h2 .bgm-btn,
 					body.dark-mode .sidebar .category .sub_category_list .link_sub_item:before,
 					body.dark-mode #toc > li:before, body.dark-mode #toc > li > ul > li:before, body.dark-mode #toc > li > ul > li > ul > li:before {color:[##_var_etc-color-d_##] !important;opacity:0.7;}
@@ -622,7 +648,7 @@
 						body.dark-mode .sidebar .category, body.dark-mode .sidebar .notice, body.dark-mode .sidebar .recent, body.dark-mode .sidebar .profile-info, 
 						body.dark-mode .sidebar .popular, body.dark-mode .sidebar .recent-comment, body.dark-mode .sidebar .tags, body.dark-mode #tistorySnsLayer.layer_post,
 						body.dark-mode .sidebar .count, body.dark-mode .sidebar .module_plugin, body.dark-mode .archives, body.dark-mode .comment-form textarea,
-						body.dark-mode .comment-list .tt_more_preview_comments_text, body.dark-mode .sidebar .best-post,
+						body.dark-mode .comment-list .tt_more_preview_comments_text, body.dark-mode .sidebar .best-post, body.dark-mode .sidebar .d-day,
 						body.dark-mode figure.fileblock, body.dark-mode #tt-body-page figure.fileblock {
 							border: [##_var_border-size_##]px solid [##_var_etc-color-d_##]55;
 						}
@@ -1693,7 +1719,7 @@
 						<div class="progress-bar-etc-horizontal" <s_not_var_progress-bottom>style="display:none;"</s_not_var_progress-bottom>></div>
 						<div class="progress-bar-etc-vertical" <s_not_var_progress-right>style="display:none;"</s_not_var_progress-right>></div>
 					</div>
-					<div class="floating-toc-new"></div>
+					<div class="floating-toc-new" style="display:none;"></div>
 					<div class="content-wrapper">
 						<aside class="sidebar">
 							<div class="inner">
@@ -1819,6 +1845,39 @@
 													&#xf027; <!-- volume down btn -->
 												</button>
 											</div>
+										</div>
+									</s_sidebar_element>
+									<s_sidebar_element>
+										<!-- 디데이 -->
+										<div class="d-day">
+											<h2>D-Day</h2>
+											<ul>
+												<s_if_var_d-day-date-1>
+													<s_if_var_d-day-text-1>
+														<li class="d-day-box"><span id="d-day1" class="d-day-cnt"></span><span class="d-day-text">[##_var_d-day-text-1_##]</span></li>
+													</s_if_var_d-day-text-1>
+												</s_if_var_d-day-date-1>
+												<s_if_var_d-day-date-2>
+													<s_if_var_d-day-text-2>
+														<li class="d-day-box"><span id="d-day2" class="d-day-cnt"></span><span class="d-day-text">[##_var_d-day-text-2_##]</span></li>
+													</s_if_var_d-day-text-2>
+												</s_if_var_d-day-date-2>
+												<s_if_var_d-day-date-3>
+													<s_if_var_d-day-text-3>
+														<li class="d-day-box"><span id="d-day3" class="d-day-cnt"></span><span class="d-day-text">[##_var_d-day-text-3_##]</span></li>
+													</s_if_var_d-day-text-3>
+												</s_if_var_d-day-date-3>
+												<s_if_var_d-day-date-4>
+													<s_if_var_d-day-text-4>
+														<li class="d-day-box"><span id="d-day4" class="d-day-cnt"></span><span class="d-day-text">[##_var_d-day-text-4_##]</span></li>
+													</s_if_var_d-day-text-4>
+												</s_if_var_d-day-date-4>
+												<s_if_var_d-day-date-5>
+													<s_if_var_d-day-text-5>
+														<li class="d-day-box"><span id="d-day5" class="d-day-cnt"></span><span class="d-day-text">[##_var_d-day-text-5_##]</span></li>
+													</s_if_var_d-day-text-5>
+												</s_if_var_d-day-date-5>
+											</ul>
 										</div>
 									</s_sidebar_element>
 									<s_sidebar_element>
@@ -2390,7 +2449,7 @@
 										<div style="margin-top:30px;"></div>
 										<s_if_var_related-google-ads>
 											<div class="related-articles">
-												<h2>많이 본 글</h2>
+												<h2>[##_var_related-ad-title_##]</h2>
 												<div class="related-articles-wrap">
 													<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
 													<ins class="adsbygoogle"
@@ -2639,7 +2698,7 @@
 						<a href="#" class="page-top">TOP</a>
 						<p class="meta"><s_if_var_footer-text-1>[##_var_footer-text-1_##]</s_if_var_footer-text-1></p>
 						<p class="copyright"><s_if_var_footer-text-2>[##_var_footer-text-2_##]</s_if_var_footer-text-2></p>
-						<p class="maker"><a href="https://sangminem.tistory.com/506" target="_blank"><font color="#ff7a00"><b>Mynem Skin 2.6.1</b> © Armynem</font></a></p>
+						<p class="maker"><a href="https://sangminem.tistory.com/506" target="_blank"><font color="#ff7a00"><b>Mynem Skin 2.6.2</b> © Armynem</font></a></p>
 					</div>
 				</footer>
 			</div>
@@ -2772,6 +2831,11 @@
 			<input type='hidden' id='article-google-ads-frequency' value="[##_var_article-google-ads-frequency_##]">
 			<input type='hidden' id='data-ad-client' value="[##_var_data-ad-client_##]">
 			<input type='hidden' id='auto-scroll-ads' value="[##_var_auto-scroll-ads_##]">
+			<input type='hidden' id='d-day-date-1' value="[##_var_d-day-date-1_##]">
+			<input type='hidden' id='d-day-date-2' value="[##_var_d-day-date-2_##]">
+			<input type='hidden' id='d-day-date-3' value="[##_var_d-day-date-3_##]">
+			<input type='hidden' id='d-day-date-4' value="[##_var_d-day-date-4_##]">
+			<input type='hidden' id='d-day-date-5' value="[##_var_d-day-date-5_##]">
 		</s_t3>
 		<script src="./images/common.min.js"></script>
 		<script src="./images/jquery.toc.min.js"></script>

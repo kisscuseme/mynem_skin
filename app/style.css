@@ -31,6 +31,18 @@
 	font-display: auto;
 }
 
+/* d-day */
+.d-day-box {
+	display: grid;
+	grid-template-columns: 1fr 3fr;
+}
+.d-day-cnt {
+	font-weight: bold;
+}
+.d-day-text {
+	font-style: normal;
+}
+
 /* common */
 *:focus {
 	outline: 0;
@@ -825,7 +837,8 @@ body.dark-mode .sidebar .category ul li ul li ul li:last-child {
 .sidebar .profile-info,
 .sidebar .module_plugin,
 .sidebar .revenue_unit_wrap,
-.sidebar .best-post {
+.sidebar .best-post,
+.sidebar .d-day {
 	margin-bottom: 30px;
 }
 .sidebar .notice ul li,
@@ -834,7 +847,8 @@ body.dark-mode .sidebar .category ul li ul li ul li:last-child {
 .sidebar .recent-comment ul li,
 .sidebar .archives ul li,
 .sidebar .module_plugin div:not(#recommend-ads),
-.sidebar .best-post ul li {
+.sidebar .best-post ul li,
+.sidebar .d-day ul li {
 	font-size: 0.875em;
 	padding-top: 10px;
 	padding-left: 10px;
@@ -846,12 +860,14 @@ body.dark-mode .sidebar .category ul li ul li ul li:last-child {
 .sidebar .recent-comment ul li:last-child,
 .sidebar .archives ul li:last-child,
 .sidebar .module_plugin div:last-child,
-.sidebar .best-post ul li:last-child {
+.sidebar .best-post ul li:last-child,
+.sidebar .d-day ul li:last-child {
 	padding-bottom: 10px;
 }
 .sidebar .notice ul li a,
 .sidebar .best-post ul li a,
-.sidebar .archives ul li a {
+.sidebar .archives ul li a,
+.sidebar .d-day ul li a {
 	font-size: 0.875em;
 }
 .sidebar .recent-comment ul li a {
@@ -864,7 +880,8 @@ body.dark-mode .sidebar .category ul li ul li ul li:last-child {
 .sidebar .recent-comment ul li a:before,
 .sidebar .archives ul li a:before,
 .sidebar .notice ul li a:before, 
-.sidebar .best-post ul li a:before {
+.sidebar .best-post ul li a:before,
+.sidebar .d-day ul li span:first-child:before {
 	content: "\f105";
 	padding-right: 3px;
 }

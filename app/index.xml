@@ -2,7 +2,7 @@
 <skin>
 	<information>
 		<name>Mynem Skin</name>
-		<version>2.6.1</version>
+		<version>2.6.2</version>
 		<description>
 			<![CDATA[ 심플하면서 막강한 기능을 가진 미넴 스킨 입니다.
 			많은 사용자가 원하는 방향으로 발전해 나갈 예정입니다. ]]>
@@ -1083,7 +1083,7 @@
 			</variable>
 		</variablegroup>
 
-		<variablegroup name="본문 구글 일치하는 광고">
+		<variablegroup name="본문 하단 구글 일치하는 광고">
 			<variable>
 				<name>related-google-ads</name>
 				<label><![CDATA[ 사용 여부 ]]></label>
@@ -1099,6 +1099,14 @@
 				<type>STRING</type>
 				<option />
 				<default><![CDATA[  ]]></default>
+			</variable>
+			<variable>
+				<name>related-ad-title</name>
+				<label><![CDATA[ 타이틀 ]]></label>
+				<description><![CDATA[]]></description>
+				<type>STRING</type>
+				<option />
+				<default><![CDATA[ 많이 본 글 ]]></default>
 			</variable>
 		</variablegroup>
 
@@ -1266,6 +1274,129 @@
 			</variable>
 		</variablegroup>		
 
+		<variablegroup name="D-Day (사용 여부는 사이드바에서 설정)">
+			<variable>
+				<name>d-day-text-1</name>
+				<label><![CDATA[ 타이틀 1 ]]></label>
+				<description><![CDATA[]]></description>
+				<type>STRING</type>
+				<option />
+				<default><![CDATA[  ]]></default>
+			</variable>
+			<variable>
+				<name>d-day-date-1</name>
+				<label><![CDATA[ 날짜(YYYYMMDD) 1 ]]></label>
+				<description><![CDATA[]]></description>
+				<type>STRING</type>
+				<option />
+				<default><![CDATA[  ]]></default>
+			</variable>
+			<variable>
+				<name>d-day-hl1</name>
+				<label><![CDATA[ D-Day 1 강조 ]]></label>
+				<description><![CDATA[]]></description>
+				<type>COLOR</type>
+				<option/>
+				<default>false</default>
+			</variable>
+			<variable>
+				<name>d-day-text-2</name>
+				<label><![CDATA[ 타이틀 2 ]]></label>
+				<description><![CDATA[]]></description>
+				<type>STRING</type>
+				<option />
+				<default><![CDATA[  ]]></default>
+			</variable>
+			<variable>
+				<name>d-day-date-2</name>
+				<label><![CDATA[ 날짜(YYYYMMDD) 2 ]]></label>
+				<description><![CDATA[]]></description>
+				<type>STRING</type>
+				<option />
+				<default><![CDATA[  ]]></default>
+			</variable>
+			<variable>
+				<name>d-day-hl2</name>
+				<label><![CDATA[ D-Day 2 강조 ]]></label>
+				<description><![CDATA[]]></description>
+				<type>COLOR</type>
+				<option/>
+				<default>false</default>
+			</variable>
+			<variable>
+				<name>d-day-text-3</name>
+				<label><![CDATA[ 타이틀 3 ]]></label>
+				<description><![CDATA[]]></description>
+				<type>STRING</type>
+				<option />
+				<default><![CDATA[  ]]></default>
+			</variable>
+			<variable>
+				<name>d-day-date-3</name>
+				<label><![CDATA[ 날짜(YYYYMMDD) 3 ]]></label>
+				<description><![CDATA[]]></description>
+				<type>STRING</type>
+				<option />
+				<default><![CDATA[  ]]></default>
+			</variable>
+			<variable>
+				<name>d-day-hl3</name>
+				<label><![CDATA[ D-Day 3 강조 ]]></label>
+				<description><![CDATA[]]></description>
+				<type>COLOR</type>
+				<option/>
+				<default>false</default>
+			</variable>
+			<variable>
+				<name>d-day-text-4</name>
+				<label><![CDATA[ 타이틀 4 ]]></label>
+				<description><![CDATA[]]></description>
+				<type>STRING</type>
+				<option />
+				<default><![CDATA[  ]]></default>
+			</variable>
+			<variable>
+				<name>d-day-date-4</name>
+				<label><![CDATA[ 날짜(YYYYMMDD) 4 ]]></label>
+				<description><![CDATA[]]></description>
+				<type>STRING</type>
+				<option />
+				<default><![CDATA[  ]]></default>
+			</variable>
+			<variable>
+				<name>d-day-hl4</name>
+				<label><![CDATA[ D-Day 4 강조 ]]></label>
+				<description><![CDATA[]]></description>
+				<type>COLOR</type>
+				<option/>
+				<default>false</default>
+			</variable>
+			<variable>
+				<name>d-day-text-5</name>
+				<label><![CDATA[ 타이틀 5 ]]></label>
+				<description><![CDATA[]]></description>
+				<type>STRING</type>
+				<option />
+				<default><![CDATA[  ]]></default>
+			</variable>
+			<variable>
+				<name>d-day-date-5</name>
+				<label><![CDATA[ 날짜(YYYYMMDD) 5 ]]></label>
+				<description><![CDATA[]]></description>
+				<type>STRING</type>
+				<option />
+				<default><![CDATA[  ]]></default>
+			</variable>
+			<variable>
+				<name>d-day-hl5</name>
+				<label><![CDATA[ D-Day 5 강조 ]]></label>
+				<description><![CDATA[]]></description>
+				<type>COLOR</type>
+				<option/>
+				<default>false</default>
+			</variable>
+		</variablegroup>
+
 		<variablegroup name="고정 추천 글 설정 (사용 여부는 사이드바에서 설정)">
 			<variable>
 				<name>best-post-h2</name>
@@ -1293,7 +1424,7 @@
 			</variable>
 			<variable>
 				<name>best-post-hl1</name>
-				<label><![CDATA[  ]]></label>
+				<label><![CDATA[ 추천 글 1 강조 ]]></label>
 				<description><![CDATA[]]></description>
 				<type>BOOL</type>
 				<option/>
