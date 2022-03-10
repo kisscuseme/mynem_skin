@@ -389,7 +389,7 @@
 				<description><![CDATA[]]></description>
 				<type>BOOL</type>
 				<option/>
-				<default>false</default>
+				<default>true</default>
 			</variable>
 			<variable>
 				<name>profile-title</name>
@@ -413,7 +413,7 @@
 				<description><![CDATA[]]></description>
 				<type>STRING</type>
 				<option />
-				<default><![CDATA[  ]]></default>
+				<default><![CDATA[ 꾸미기 > 스킨 편집 > 문구 수정 ]]></default>
 			</variable>
 			<variable>
 				<name>profile-more-details</name>
@@ -421,7 +421,7 @@
 				<description><![CDATA[]]></description>
 				<type>STRING</type>
 				<option />
-				<default><![CDATA[  ]]></default>
+				<default><![CDATA[ 꾸미기 > 사이드바 > 프로필 추가/제거 ]]></default>
 			</variable>
 			<variable>
 				<name>fold-category</name>
@@ -688,7 +688,7 @@
 			</variable>
 			<variable>
 				<name>toc-unfold-yn</name>
-				<label><![CDATA[ 목차 펼치기 ]]></label>
+				<label><![CDATA[ 플로팅 목차 펼치기 ]]></label>
 				<description><![CDATA[]]></description>
 				<type>BOOL</type>
 				<option />
@@ -861,7 +861,7 @@
 				<description><![CDATA[]]></description>
 				<type>BOOL</type>
 				<option/>
-				<default>false</default>
+				<default>true</default>
 			</variable>
 			<variable>
 				<name>change-font-size-floating</name>
@@ -994,11 +994,11 @@
 			</variable>
 			<variable>
 				<name>matched-ads-height</name>
-				<label><![CDATA[ height (기본: 1200) ]]></label>
+				<label><![CDATA[ height (기본: 900) ]]></label>
 				<description><![CDATA[]]></description>
 				<type>STRING</type>
 				<option />
-				<default>1200</default>
+				<default>900</default>
 			</variable>
 		</variablegroup>
 
@@ -1281,7 +1281,7 @@
 				<description><![CDATA[]]></description>
 				<type>STRING</type>
 				<option />
-				<default><![CDATA[  ]]></default>
+				<default><![CDATA[ 2023년 ]]></default>
 			</variable>
 			<variable>
 				<name>d-day-date-1</name>
@@ -1289,15 +1289,15 @@
 				<description><![CDATA[]]></description>
 				<type>STRING</type>
 				<option />
-				<default><![CDATA[  ]]></default>
+				<default><![CDATA[ 20230101 ]]></default>
 			</variable>
 			<variable>
 				<name>d-day-hl1</name>
-				<label><![CDATA[ D-Day 1 강조 ]]></label>
+				<label><![CDATA[ D-Day 1 강조 색 ]]></label>
 				<description><![CDATA[]]></description>
 				<type>COLOR</type>
 				<option/>
-				<default>false</default>
+				<default>#FF5400</default>
 			</variable>
 			<variable>
 				<name>d-day-text-2</name>
@@ -1317,11 +1317,11 @@
 			</variable>
 			<variable>
 				<name>d-day-hl2</name>
-				<label><![CDATA[ D-Day 2 강조 ]]></label>
+				<label><![CDATA[ D-Day 2 강조 색 ]]></label>
 				<description><![CDATA[]]></description>
 				<type>COLOR</type>
 				<option/>
-				<default>false</default>
+				<default></default>
 			</variable>
 			<variable>
 				<name>d-day-text-3</name>
@@ -1341,11 +1341,11 @@
 			</variable>
 			<variable>
 				<name>d-day-hl3</name>
-				<label><![CDATA[ D-Day 3 강조 ]]></label>
+				<label><![CDATA[ D-Day 3 강조 색 ]]></label>
 				<description><![CDATA[]]></description>
 				<type>COLOR</type>
 				<option/>
-				<default>false</default>
+				<default></default>
 			</variable>
 			<variable>
 				<name>d-day-text-4</name>
@@ -1365,11 +1365,11 @@
 			</variable>
 			<variable>
 				<name>d-day-hl4</name>
-				<label><![CDATA[ D-Day 4 강조 ]]></label>
+				<label><![CDATA[ D-Day 4 강조 색 ]]></label>
 				<description><![CDATA[]]></description>
 				<type>COLOR</type>
 				<option/>
-				<default>false</default>
+				<default></default>
 			</variable>
 			<variable>
 				<name>d-day-text-5</name>
@@ -1389,11 +1389,11 @@
 			</variable>
 			<variable>
 				<name>d-day-hl5</name>
-				<label><![CDATA[ D-Day 5 강조 ]]></label>
+				<label><![CDATA[ D-Day 5 강조 색 ]]></label>
 				<description><![CDATA[]]></description>
 				<type>COLOR</type>
 				<option/>
-				<default>false</default>
+				<default></default>
 			</variable>
 		</variablegroup>
 
@@ -1412,7 +1412,7 @@
 				<description><![CDATA[]]></description>
 				<type>STRING</type>
 				<option />
-				<default><![CDATA[  ]]></default>
+				<default><![CDATA[ 미넴 스킨 자주 묻는 질문(FAQ) ]]></default>
 			</variable>
 			<variable>
 				<name>best-post-src-1</name>
@@ -1420,7 +1420,7 @@
 				<description><![CDATA[]]></description>
 				<type>STRING</type>
 				<option />
-				<default><![CDATA[  ]]></default>
+				<default><![CDATA[ https://sangminem.tistory.com/579 ]]></default>
 			</variable>
 			<variable>
 				<name>best-post-hl1</name>

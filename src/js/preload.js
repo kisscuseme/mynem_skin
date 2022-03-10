@@ -28,14 +28,21 @@ function checkMainPage() {
 }
 
 function browserCheck(type){
+    var userAgent = navigator.userAgent.toLowerCase();
     if(type == 'mac') {
-        if(navigator.userAgent.toLowerCase().indexOf('macintosh') > 0) {
+        if(userAgent.indexOf('macintosh') > 0) {
             return true;
         } else {
             return false;
         }
     } else if(type == 'ios') {
-        if(navigator.userAgent.toLowerCase().indexOf('iphone') > 0) {
+        if(userAgent.indexOf('iphone') > 0) {
+            return true;
+        } else {
+            return false;
+        }
+    } else if(type == 'firefox') {
+        if(userAgent.indexOf('firefox') > 0) {
             return true;
         } else {
             return false;

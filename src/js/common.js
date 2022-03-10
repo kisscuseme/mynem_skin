@@ -239,10 +239,10 @@ function appendTocNew() {
                     var sideValue = 0;
                     if(contentMiddleYn) {
                         if(floatingTocPostion) { //오른쪽
-                            sideValue = (window.innerWidth - $('.content-wrapper').width())/2 - floatingTocNew.outerWidth() - 40;
+                            sideValue = (window.innerWidth - $('.content-wrapper').width())/2 - floatingTocNew.outerWidth() - (browserCheck('firefox')?45:40);
                             floatingTocNew.css('right', sideValue);
                         } else { //왼쪽
-                            sideValue = (window.innerWidth - $('.content-wrapper').width())/2 + $('.content-wrapper').width() + 32;
+                            sideValue = (window.innerWidth - $('.content-wrapper').width())/2 + $('.content-wrapper').width() + (browserCheck('firefox')?27:32);
                             floatingTocNew.css('right', sideValue);
                         }
                     } else {
@@ -456,7 +456,6 @@ function showToast(msg, slot, time) {
         toast.css('top', 'calc(50% - ' + (addHeightByAnchorAds('bottom')+addHeightByAnchorAds('top'))/2 + 'px)');
         toast.css('bottom', '');
     }
-    toast.css('border','1px solid #00000033');
  
     setTimeout(function() {
         toast.fadeIn(500, function() {
@@ -628,10 +627,10 @@ function changeFontSize(type) {
             fontSize = 2;
         }
     } else if(type === '-') {
-        if(fontSize > 1) {
+        if(fontSize > 0.9) {
             fontSize -= 0.05;
         } else {
-            fontSize = 1;
+            fontSize = 0.9;
         }
     }
     $('article').attr('style', 'font-size: '+fontSize+'em !important');
@@ -1011,7 +1010,7 @@ function lazyLoading() {
                         $img.css('width',width+'px');
                         $img.css('height',height+'px');
                     }
-                    $img.css('opacity','0.2');
+                    $img.css('opacity','0.0');
     
                     if(img.getAttribute('srcset') != null){
                         img.setAttribute('data-srcset', img.getAttribute('srcset'));
@@ -1055,7 +1054,7 @@ function lazyLoading() {
             if(image.getAttribute('srcset') != null){
                 image.setAttribute('srcset', image.getAttribute('data-srcset'));
             }
-            $(image).animate({'opacity':'1.0'});
+            $(image).animate({'opacity':'1.0'}, 600);
         });
     }
 }
@@ -1085,9 +1084,9 @@ function fixedRecommendAds(type) {
                         var tocOffsetSide = 0;
                         if(contentMiddleYn) {
                             if((adsTocPosition && floatingTocPostion) || (!adsTocPosition && !floatingTocPostion)) {
-                                tocOffsetSide = (window.innerWidth - $('.content-wrapper').width())/2 - tocTarget.outerWidth() - 23;
+                                tocOffsetSide = (window.innerWidth - $('.content-wrapper').width())/2 - tocTarget.outerWidth() - (browserCheck('firefox')?28:23);
                             } else {
-                                tocOffsetSide = (window.innerWidth - $('.content-wrapper').width())/2 + $('.content-wrapper').width() + 18;
+                                tocOffsetSide = (window.innerWidth - $('.content-wrapper').width())/2 + $('.content-wrapper').width() + (browserCheck('firefox')?13:18);
                             }
                         } else {
                             tocOffsetSide = window.innerWidth - $('.content-wrapper').width() - tocTarget.outerWidth() - 80;
@@ -1102,10 +1101,14 @@ function fixedRecommendAds(type) {
                         var adjustTop = fixedAdsType=='adsense'?-15:5;
                         // if (fixedAdsType=='matched') adjustTop -= 15;
                         var fixTopPosition = tocTarget.height()*(1-scaleRatio)/2 - adjustTop;
+                        var paddingBottom = 5;
+                        var paddingTop = 10;
                         tocTarget.css('top', 'calc(' + (tocOffsetTop+headerHeight+addHeightByAnchorAds('top')) + 'px - ' + fixTopPosition + 'px)');
                         tocTarget.css('transform', 'scale('+scaleRatio+')');
                         tocTarget.css('right', tocOffsetSide + 'px');
-                        tocTarget.children().css('max-height', adjustInnerHeight + 'px');
+                        tocTarget.css('padding-bottom', paddingBottom+'px');
+                        tocTarget.css('padding-top', paddingTop+'px');
+                        tocTarget.children().css('max-height', (adjustInnerHeight-paddingBottom-paddingTop) + 'px');
                         tocTarget.children().css('overflow', 'hidden');
 
                         // var tocTargetCoupang = $('aside .coupang');
@@ -1678,7 +1681,7 @@ function recommendPost() {
                             $('#recommend-contents').css('display','none');
                             recommendPostTimer = 0;
                         });
-                    }, 15000);
+                    }, 15*1000);
                 }
             }
         } else {
@@ -1783,15 +1786,15 @@ function autoScroll() {
                 var adsHeightRatio = $sidebarAds.length > 0?($sidebarAds[0].scrollHeight - $sidebarAds.height()) / $sidebarAds.height():0;
                 if($sidebarAds.length > 0) {
                     var goalPosition = 0;
-                    if(adsHeightRatio > 0.2) {
+                    if(adsHeightRatio > 0.1) {
                         var scrollHeight = $sidebarAds[0].scrollHeight;
                         var currentPosition = $sidebarAds.scrollTop();
                         var innerHeight = $sidebarAds.innerHeight();
-                        var speed = (scrollHeight - innerHeight - currentPosition)*13;
+                        var speed = (scrollHeight - innerHeight - currentPosition)*30;
                         goalPosition = scrollHeight - innerHeight;
                         if(Math.ceil(currentPosition + innerHeight) >= scrollHeight) {
                             goalPosition = 0;
-                            speed = (scrollHeight - innerHeight)*13;
+                            speed = (scrollHeight - innerHeight)*30;
                         }
                     }
                     $sidebarAds.animate({
@@ -2015,7 +2018,7 @@ function calcDday(date) {
     if(dDay < 0) {
         return "D" + dDay;
     } else if(dDay == 0) {
-        return "D-day!";
+        return "D-Day!";
     } else {
         return "D+" + dDay;
     }

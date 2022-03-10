@@ -55,10 +55,6 @@ a {
 	color: #000;
 	cursor: pointer;
 }
-a:hover, button:hover {
-	opacity: 0.8;
-	transition: all 0.1s linear;
-}
 ul li {
 	list-style: none;
 }
@@ -267,22 +263,6 @@ article h2,
 	margin-left: 7px;
 	font-style: normal;
 }
-
-@keyframes post-item-ani {
-	25% {
-		transform: rotate( 0.5deg ) scale(1.005);
-	}
-  50% {
-    transform: rotate( 0deg ) scale(1);
-  }
-	75% {
-		transform: rotate( -0.5deg ) scale(1.005);
-	}
-}
-.post-item a:hover {
-	opacity: 1.0;
-	animation: post-item-ani 0.8s linear 1;
-}
 .post-item {
 	float: left;
 	width: 31%;
@@ -318,7 +298,7 @@ article h2,
 	top: 0;
 	left: 0;
 	z-index: -1;
-	opacity: 0.3;
+	opacity: 0.7;
 }
 .post-item .thum img {
 	width: 100%;
@@ -390,7 +370,7 @@ article h2,
 	top: 0;
 	left: 0;
 	z-index: -1;
-	opacity: 0.3;
+	opacity: 0.7;
 }
 
 article > .inner {
@@ -431,17 +411,13 @@ article > .inner > ul li figure:before {
 	top: 0;
 	left: 0;
 	z-index: -1;
-	opacity: 0.3;
+	opacity: 0.7;
 }
 article > .inner > ul li figure img {
 	width: 100%;
 	height: 100%;
 	position: absolute;
 	object-fit: cover;
-}
-article > .inner > ul li figure img:hover {
-	transform: scale(1.05);
-	transition: all 0.1s linear;
 }
 article > .inner > ul li .title {
 	display: block;
@@ -536,17 +512,13 @@ article > .inner .meta .category {
 	top: 0;
 	left: 0;
 	z-index: -1;
-	opacity: 0.3;
+	opacity: 0.7;
 }
 .cover-list ul li figure img {
 	width: 100%;
 	height: 100%;
 	position: absolute;
 	object-fit: cover;
-}
-.cover-list ul li figure img:hover {
-	transform: scale(1.05);
-	transition: all 0.1s linear;
 }
 .cover-list ul li .title {
 	display: block;
@@ -612,21 +584,6 @@ article > .inner .meta .category {
 	text-align: center;
 	padding: 5px;
 	margin-bottom: 5px;
-}
-@keyframes cover-special-ani {
-	25% {
-		transform: scale(0.995);
-	}
-  50% {
-    transform: scale(1);
-  }
-	75% {
-		transform: scale(1.005);
-	}
-}
-.cover-special ul li img:hover {
-	opacity: 1.0;
-	animation: cover-special-ani 0.8s linear 1;
 }
 .cover-special ul li img {
 	max-width: 100%;
@@ -906,10 +863,6 @@ body.dark-mode .sidebar .category ul li ul li ul li:last-child {
 	margin: 0 10px 0 0;
 	overflow: hidden;
 	position: relative;
-}
-.sidebar .content-item ul li img:hover {
-	transform: scale(1.05);
-	transition: all 0.1s linear;
 }
 .sidebar .content-item ul li a {
 	display: block;
@@ -1497,6 +1450,10 @@ figure[data-ke-type='opengraph'] div.og-text {
 td figure.imageblock, #tt-body-page td figure.imageblock {
 	border-width: 0px;
 }
+figure figcaption {
+	padding-top: 0px;
+	min-height: auto;
+}
 
 /* another category */
 article .another_category {
@@ -1977,12 +1934,12 @@ article .tags a {
 	-o-transform: translate(-50%, -50%);
 	transform: translate(-50%, -50%);
 	padding: 10px 15px 10px;
-	border-radius: 5%;
 	z-index: 999;
 	background: #fff;
 	border-radius: 10px;
 	width: max-content;
 	max-width: 80vw;
+	-webkit-mask-image: -webkit-radial-gradient(white, black);
 }
 .toast-wrap:after {
 	content: "";
@@ -2570,8 +2527,9 @@ table.gsc-search-box td {
 }
 
 /* space fix */
-.revenue_unit_wrap {
+.adsbygoogle {
 	overflow: hidden;
+	max-width: -webkit-fill-available;
 }
 .gcse-searchbox {
 	height: 31px;
@@ -2663,9 +2621,11 @@ body.dark-mode .profile-details, body.dark-mode figure figcaption {
 body.dark-mode .btn_menu_toolbar, body.dark-mode #wrapper div div.profile button {
 	opacity: 0.5;
 }
+/*
 body.dark-mode ins, body.dark-mode img, body.dark-mode #___gcse_1 {
 	opacity: 0.95 !important;
 }
+*/
 body.dark-mode .another_category.another_category_color_gray h4,
 body.dark-mode .container_postbtn .btn_post .txt_like,
 body.dark-mode .comment-list ul li .author-meta .control .link a,
@@ -2813,7 +2773,7 @@ body.dark-mode #chartdiv g[stroke="#000000"] {
 		top: 0;
 		left: 0;
 		z-index: -1;
-		opacity: 0.3;
+		opacity: 0.7;
 	}
 	.cover-list ul li a {
 		height: 120px;
@@ -2880,7 +2840,7 @@ body.dark-mode #chartdiv g[stroke="#000000"] {
 		top: 0;
 		left: 0;
 		z-index: -1;
-		opacity: 0.3;
+		opacity: 0.7;
 	}
 	article > .inner > ul li a {
 		height: 120px;

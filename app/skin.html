@@ -10,6 +10,7 @@
 		<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bitter:ital,wght@0,400;0,600;1,400;1,600&display=auto" as="font" crossorigin="anonymous">
 		<link rel="preload" href="./style.css" as="style">
 		<link rel="stylesheet" href="./style.css">
+		<link rel="stylesheet" href="./images/custom.css">
 		<style>
 			<s_if_var_custom-font>
 				@font-face {
@@ -434,7 +435,7 @@
 				.progress-bar-etc-vertical, .progress-bar-etc-horizontal,
 				.sidebar .close:before, .sidebar .close:after {background-color:[##_var_etc-color_##]}
 				.move-top-btn, .move-comment-btn, .top-button .menu button, .sidebar .close, .top-button .profile button,
-				.share-btn, .dark-mode-on-btn, .dark-mode-off-btn, .font-size-up-btn, .font-size-down-btn
+				.share-btn, .dark-mode-on-btn, .dark-mode-off-btn, .font-size-up-btn, .font-size-down-btn, .toast-wrap
 				{border: [##_var_border-size_##]px solid [##_var_etc-color_##]55 !important}
 				.comment-list ul li .author-meta .control .link a {border: 1px solid [##_var_etc-color_##]55}
 				::-webkit-scrollbar-thumb, #toc-body::-webkit-scrollbar-thumb {background-color:[##_var_etc-color_##]55 !important}
@@ -597,7 +598,7 @@
 					body.dark-mode .progress-bar-etc-vertical, body.dark-mode .progress-bar-etc-horizontal,
 					body.dark-mode .sidebar .close:before, body.dark-mode .sidebar .close:after {background-color:[##_var_etc-color-d_##]}
 					body.dark-mode .move-top-btn, body.dark-mode .move-comment-btn, body.dark-mode .top-button .menu button, body.dark-mode .sidebar .close, body.dark-mode .top-button .profile button,
-					body.dark-mode .share-btn, body.dark-mode .dark-mode-on-btn, body.dark-mode .dark-mode-off-btn, body.dark-mode .font-size-up-btn, body.dark-mode .font-size-down-btn
+					body.dark-mode .share-btn, body.dark-mode .dark-mode-on-btn, body.dark-mode .dark-mode-off-btn, body.dark-mode .font-size-up-btn, body.dark-mode .font-size-down-btn, body.dark-mode .toast-wrap
 					{border: [##_var_border-size_##]px solid [##_var_etc-color-d_##]55 !important}
 					body.dark-mode .search input {border-bottom: [##_var_border-size_##]px solid [##_var_etc-color-d_##]55;}
 					body.dark-mode article .another_category.another_category_color_gray a, body.dark-mode .comment-list ul li .author-meta .control button:before,
@@ -1369,12 +1370,12 @@
 			</s_not_var_content-middle-yn>
 			<s_if_var_fix-ads-space>
 				#upper .revenue_unit_wrap {
-					height: 280px !important;
+					height: 334px !important;
 					margin-top: 0px;
 					margin-bottom: 10px;
 				}
 				#lower .revenue_unit_wrap {
-					height: 280px !important;
+					height: 334px !important;
 					margin-top: 10px;
 				}
 				.sidebar .revenue_unit_wrap .adsense {
@@ -1390,7 +1391,7 @@
 					margin-right: auto;
 				}
 				.tt_article_useless_p_margin .revenue_unit_wrap .revenue_unit_item.adsense {
-					height: 280px !important;
+					height: 334px !important;
 				}
 				.tt_article_useless_p_margin .revenue_unit_wrap .revenue_unit_item.dable {
 						height: 432px !important;
@@ -1568,6 +1569,27 @@
 		</style>
 		<script>
 			window.$ = window.jQuery = window.tjQuery;
+			var pageLoaded = false;
+			function adPush() {
+				//try{(adsbygoogle = window.adsbygoogle || []).push({});}catch(e){}
+				(adsbygoogle = window.adsbygoogle || []).push({});
+			}
+			function adPushDelay() {
+				(new Promise(function(resolve, reject) {
+					var timer = 0;
+					timer = setInterval(function() {
+						if(pageLoaded) {
+							clearInterval(timer);
+							resolve();
+						}
+					}, 200);
+				})).then(function(){
+					setTimeout(function() {
+						//try{(adsbygoogle = window.adsbygoogle || []).push({});}catch(e){}
+						(adsbygoogle = window.adsbygoogle || []).push({});
+					}, 500);
+				});
+			}
 		</script>
 	</head>
 	<body id="[##_body_id_##]">
@@ -1985,7 +2007,7 @@
 														<script>
 															if(recentCnt != 0 && recentCnt%[##_var_infeed-repeat-cnt-side_##] == 0) {
 																document.write('<li><ins class="adsbygoogle" style="display:block" data-ad-format="fluid" data-ad-layout-key="[##_var_infeed-data-ad-layout-key-side_##]" data-ad-client="[##_var_data-ad-client_##]" data-ad-slot="[##_var_infeed-data-ad-slot-side_##]"></ins></li>');
-																try {(adsbygoogle = window.adsbygoogle || []).push({});}catch(e){}
+																adPush();
 															}
 															recentCnt += 1;
 														</script>
@@ -2021,7 +2043,7 @@
 														<script>
 															if(popularCnt != 0 && popularCnt%[##_var_infeed-repeat-cnt-side_##] == 0) {
 																document.write('<li><ins class="adsbygoogle" style="display:block" data-ad-format="fluid" data-ad-layout-key="[##_var_infeed-data-ad-layout-key-side_##]" data-ad-client="[##_var_data-ad-client_##]" data-ad-slot="[##_var_infeed-data-ad-slot-side_##]"></ins></li>');
-																try {(adsbygoogle = window.adsbygoogle || []).push({});}catch(e){}
+																adPush();
 															}
 															popularCnt += 1;
 														</script>
@@ -2048,12 +2070,12 @@
 												<div id="recommend-ads" class="revenue_unit_item adsense">
 													<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
 													<ins class="adsbygoogle"
-															style="display:inline-block;"
+															style="display:inline-block;transform:scale(1.15);padding-top:55px;"
 															data-ad-client="[##_var_data-ad-client_##]"
 															data-ad-slot="[##_var_sidebar-data-ad-slot_##]"></ins>
 												</div>
 												<script>
-													try {(adsbygoogle = window.adsbygoogle || []).push({});}catch(e){}
+													adPush();
 												</script>
 											</div>
 										</s_if_var_sidebar-data-ad-slot>
@@ -2167,7 +2189,7 @@
 															}
 															if(cnt != 0 && cnt%[##_var_infeed-repeat-cnt_##] == 0) {
 																document.write('<li><ins class="adsbygoogle" style="display:block" data-ad-format="fluid" data-ad-layout-key="'+layoutKey+'" data-ad-client="[##_var_data-ad-client_##]" data-ad-slot="'+slot+'"></ins></li>');
-																try {(adsbygoogle = window.adsbygoogle || []).push({});}catch(e){}
+																adPush();
 															}
 															cnt += 1;
 														</script>
@@ -2336,8 +2358,8 @@
 													layoutKey = "[##_var_infeed-data-ad-layout-key-small_##]";
 												}
 												if(cnt != 0 && cnt%[##_var_infeed-repeat-cnt_##] == 0) {
-																						document.write('<ul><li><ins class="adsbygoogle" style="display:block" data-ad-format="fluid" data-ad-layout-key="'+layoutKey+'" data-ad-client="[##_var_data-ad-client_##]" data-ad-slot="'+slot+'"></ins></li></ul>');
-													try {(adsbygoogle = window.adsbygoogle || []).push({});}catch(e){}
+													document.write('<ul><li><ins class="adsbygoogle" style="display:block" data-ad-format="fluid" data-ad-layout-key="'+layoutKey+'" data-ad-client="[##_var_data-ad-client_##]" data-ad-slot="'+slot+'"></ins></li></ul>');
+													adPush();
 												}
 												cnt += 1;
 											</script>
@@ -2416,7 +2438,7 @@
 															if($(window).width() < 710) {
 																$('#ad-top-left').remove();
 															} else {
-																try {(adsbygoogle = window.adsbygoogle || []).push({});}catch(e){}
+																adPush();
 															}
 														</script>
 													</div>
@@ -2429,7 +2451,7 @@
 																 data-full-width-responsive="true"
 																 style="width:336px;"></ins>
 														<script>
-															try {(adsbygoogle = window.adsbygoogle || []).push({});}catch(e){}
+															adPush();
 														</script>
 													</div>
 												</div>
@@ -2458,7 +2480,7 @@
 															 data-ad-client="[##_var_data-ad-client_##]"
 															 data-ad-slot="[##_var_related-data-ad-slot_##]"></ins>
 													<script>
-														try {(adsbygoogle = window.adsbygoogle || []).push({});}catch(e){}
+														adPush();
 													</script>
 												</div>
 											</div>
@@ -2476,7 +2498,7 @@
 															 data-full-width-responsive="true"
 															 style="width:336px;"></ins>
 													<script>
-														try {(adsbygoogle = window.adsbygoogle || []).push({});}catch(e){}
+														adPush();
 													</script>
 												</div>
 												<div id="ad-bottom-right" class="revenue_unit_item adsense">
@@ -2491,7 +2513,7 @@
 														if($(window).width() < 710) {
 															$('#ad-bottom-right').remove();
 														} else {
-															try {(adsbygoogle = window.adsbygoogle || []).push({});}catch(e){}
+															adPush();
 														}
 													</script>
 												</div>
@@ -2499,6 +2521,7 @@
 											<div style="margin-top:30px;"></div>
 										</s_if_var_content-bottom-google-ads>
 										<!-- 하단 광고 2개 삽입 end -->
+										<div style="margin-top:30px;"></div>
 										<div class="comments">
 											<h2>댓글<span class="count"><s_rp_count>[##_article_rep_rp_cnt_##]</s_rp_count></span></h2>
 											<s_rp>
@@ -2681,7 +2704,7 @@
 											}
 											mainAds.remove();
 										} else {
-											try {(adsbygoogle = window.adsbygoogle || []).push({});}catch(e){}
+											adPush();
 										}
 									</script>
 								</div>
@@ -2842,5 +2865,10 @@
 		<script src="./images/custom.js"></script>
 		<script src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit2"></script>
 		<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+		<script>
+			window.onload = function() {
+				pageLoaded = true;
+			}
+		</script>
 	</body>
 </html>
