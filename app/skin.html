@@ -266,10 +266,10 @@
 				body.dark-mode figure.fileblock a, body.dark-mode #tt-body-page figure.fileblock a, body.dark-mode .sidebar .best-post, body.dark-mode .sidebar .d-day,
 				body.dark-mode figure[data-ke-type='opengraph'] a, body.dark-mode #tt-body-page figure[data-ke-type='opengraph'] a,
 				body.dark-mode .related-articles-wrap, body.dark-mode .main-ads, body.dark-mode #ad-top-left, body.dark-mode #ad-top-right,
-				body.dark-mode #ad-bottom-left, body.dark-mode #ad-bottom-right, body.dark-mode article > .inner > ul li a, body.dark-mode article > .inner > ul li figure
+				body.dark-mode #ad-bottom-left, body.dark-mode #ad-bottom-right, body.dark-mode article > .inner > ul li a, body.dark-mode article > .inner > ul li figure,
 				body.dark-mode .book-toc, body.dark-mode .floating-toc-new, body.dark-mode #tistorySnsLayer.layer_post, body.dark-mode #toast,
 				body.dark-mode img:not(.flag, .title-image, .loading-image), body.dark-mode .sidebar .content-item .thum, body.dark-mode .content-box, body.dark-mode .content-comment {
-					box-shadow: 0 0 16px -4px #222 !important;
+					box-shadow: 0 0 16px -4px #555 !important;
 				}
 			</s_if_var_shadow-effect>
 
@@ -445,7 +445,7 @@
 					color:[##_var_etc-color_##] !important;
 				}
 				.sidebar .category ul li ul li {
-					border-bottom: [##_var_border-size_##]px dashed [##_var_etc-color_##]55;
+					border-bottom: [##_var_border-size_##]px dotted [##_var_etc-color_##]55;
 				}
 				.comment-list ul li ul li:after {
 					background: linear-gradient(90deg, [##_var_etc-color_##]55, transparent 50%);
@@ -467,8 +467,18 @@
 					color: [##_var_etc-color_##]ff;
 				}
 
+				/* custom border size */
+				<s_if_var_border-size>
+					.container_postbtn .postbtn_like + .btn_menu_toolbar{
+						height: calc(30px + ([##_var_border-size_##]px * 2));
+					}
+				</s_if_var_border-size>
+
 				/* solid style */
 				<s_if_var_sidebar-solid-style>
+					.bgm-title-wrap {
+						width: calc(220px - [##_var_border-size_##]px);
+					}
 					.comment-form .field {
 						border-left: [##_var_border-size_##]px solid [##_var_etc-color_##]55;
 						border-right: [##_var_border-size_##]px solid [##_var_etc-color_##]55;
@@ -486,8 +496,12 @@
 					.container_postbtn .btn_menu_toolbar {
 						border: [##_var_border-size_##]px solid [##_var_etc-color_##]55 !important;
 					}
-					.comment-list, .comment-list ul li ul li {
-						border-top: [##_var_border-size_##]px dashed [##_var_etc-color_##]55;
+					.comment-list ul li, .comment-list ul li ul li {
+						border-top: [##_var_border-size_##]px dotted [##_var_etc-color_##]55;
+						border-bottom: 0px;
+					}
+					.comment-list {
+						border-bottom: [##_var_border-size_##]px dotted [##_var_etc-color_##]55;
 					}
 					.sidebar .category, .sidebar .notice, .sidebar .recent, .sidebar .profile-info, 
 					.sidebar .popular, .sidebar .recent-comment, .sidebar .tags, #tistorySnsLayer.layer_post,
@@ -498,6 +512,13 @@
 					}
 					#___gcse_1 {
 						border: [##_var_border-size_##]px solid [##_var_etc-color_##]55;
+					}
+					.gsc-input-box {
+						border: [##_var_border-size_##]px solid [##_var_etc-color_##]55 !important;
+					}			
+					.gsc-search-button-v2 {
+						border: [##_var_border-size_##]px solid [##_var_etc-color_##] !important;
+						background-color: [##_var_etc-color_##] !important;
 					}
 				</s_if_var_sidebar-solid-style>
 				<s_if_var_content-solid-style>
@@ -526,7 +547,7 @@
 					}
 				</s_if_var_cover-solid-style>
 				<s_if_var_ads-solid-style>
-					.main-ads, #ad-top-left, #ad-top-right, #ad-bottom-left, #ad-bottom-right {
+					#ad-top-left, #ad-top-right, #ad-bottom-left, #ad-bottom-right {
 						border: [##_var_border-size_##]px solid [##_var_etc-color_##]55;
 					}
 				</s_if_var_ads-solid-style>
@@ -606,7 +627,7 @@
 						color:[##_var_etc-color-d_##] !important;
 					}
 					body.dark-mode .sidebar .category ul li ul li {
-						border-bottom: [##_var_border-size_##]px dashed [##_var_etc-color-d_##]55;
+						border-bottom: [##_var_border-size_##]px dotted [##_var_etc-color-d_##]55;
 					}
 					body.dark-mode .comment-list ul li ul li:after {
 						background: linear-gradient(90deg, [##_var_etc-color_##]55, transparent 50%);
@@ -644,7 +665,7 @@
 							border: [##_var_border-size_##]px solid [##_var_etc-color-d_##]55 !important;
 						}
 						body.dark-mode .comment-list, body.dark-mode .comment-list ul li ul li {
-							border-top: [##_var_border-size_##]px dashed [##_var_etc-color-d_##]55;
+							border-top: [##_var_border-size_##]px dotted [##_var_etc-color-d_##]55;
 						}
 						body.dark-mode .sidebar .category, body.dark-mode .sidebar .notice, body.dark-mode .sidebar .recent, body.dark-mode .sidebar .profile-info, 
 						body.dark-mode .sidebar .popular, body.dark-mode .sidebar .recent-comment, body.dark-mode .sidebar .tags, body.dark-mode #tistorySnsLayer.layer_post,
@@ -680,7 +701,7 @@
 						}
 					</s_if_var_cover-solid-style>
 					<s_if_var_ads-solid-style>
-						body.dark-mode .main-ads, body.dark-mode #ad-top-left, body.dark-mode #ad-top-right, body.dark-mode #ad-bottom-left, body.dark-mode #ad-bottom-right {
+						body.dark-mode #ad-top-left, body.dark-mode #ad-top-right, body.dark-mode #ad-bottom-left, body.dark-mode #ad-bottom-right {
 							border: [##_var_border-size_##]px solid [##_var_etc-color-d_##]55;
 						}
 					</s_if_var_ads-solid-style>
@@ -1751,7 +1772,7 @@
 									<s_sidebar_element>
 										<!-- 구글 검색바 -->
 										<s_if_var_google-searchbar-ads>
-											<div style="margin-bottom:30px;height:34px;">
+											<div style="margin-bottom:30px;height:calc(32px + ([##_var_border-size_##]px * 2));">
 												<script async src="https://cse.google.com/cse.js?cx=[##_var_google-searchbar-ads_##]"></script>
 												<div class="gcse-searchbox"></div>
 											</div>
@@ -2066,7 +2087,7 @@
 									<s_sidebar_element>
 										<!-- 일치하는 광고 -->
 										<s_if_var_sidebar-data-ad-slot>
-											<div class="module module_plugin">
+											<div class="module module_plugin" style="overflow:hidden;padding-top:5px;">
 												<div id="recommend-ads" class="revenue_unit_item adsense">
 													<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
 													<ins class="adsbygoogle"
@@ -2721,25 +2742,25 @@
 						<a href="#" class="page-top">TOP</a>
 						<p class="meta"><s_if_var_footer-text-1>[##_var_footer-text-1_##]</s_if_var_footer-text-1></p>
 						<p class="copyright"><s_if_var_footer-text-2>[##_var_footer-text-2_##]</s_if_var_footer-text-2></p>
-						<p class="maker"><a href="https://sangminem.tistory.com/506" target="_blank"><font color="#ff7a00"><b>Mynem Skin 2.6.2</b> © Armynem</font></a></p>
+						<p class="maker"><a href="https://sangminem.tistory.com/506" target="_blank"><font color="#ff7a00"><b>Mynem Skin 2.6.3</b> © Armynem</font></a></p>
 					</div>
 				</footer>
 			</div>
 			
 			<div class="floating-button">
 				<!-- 글자 크기 조절 버튼 -->
-				<s_not_var_change-font-size-floating>
+				<s_if_var_change-font-size-floating>
 					<a class="font-size-up-btn" onclick="changeFontSize('+')"></a>
 					<a class="font-size-down-btn" onclick="changeFontSize('-')"></a>
-				</s_not_var_change-font-size-floating>
+				</s_if_var_change-font-size-floating>
 
 				<!-- 다크모드 버튼 -->
-				<s_not_var_dark-mode-floating>
+				<s_if_var_dark-mode-floating>
 					<s_not_var_forced-dark-mode>
 						<a class="dark-mode-on-btn" onclick="setDarkMode('-')" style="display:none;"></a>
 						<a class="dark-mode-off-btn" onclick="setDarkMode('+')" style="display:none;"></a>
 					</s_not_var_forced-dark-mode>
-				</s_not_var_dark-mode-floating>
+				</s_if_var_dark-mode-floating>
 
 				<!-- 공유 버튼 -->
 				<a class="share-btn"></a>

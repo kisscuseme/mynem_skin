@@ -909,10 +909,18 @@ function common(){
         }
     }
 
-    var sidebarInsParent = $('.sidebar ins, .sidebar .coupang, .sidebar .tenping, .sidebar .donaricano').parent();
+    var sidebarInsParent = $('.sidebar ins, .sidebar .coupang, .sidebar .tenping, .sidebar div[id*="dablewidget"]').parent();
     for(var i=0;i<sidebarInsParent.length;i++) {
         if(sidebarInsParent.eq(i).prop('className') == 'module module_plugin') {
-            sidebarInsParent.eq(i).css('border', 'none');
+            // sidebarInsParent.eq(i).css('border', 'none');
+            // sidebarInsParent.eq(i).css('box-shadow', 'none');
+            sidebarInsParent.eq(i).attr('style', 'border:none !important;box-shadow:none !important');
+        } else if(sidebarInsParent.eq(i).prop('className').indexOf('revenue_unit_item') > -1) {
+            // sidebarInsParent.eq(i).parent().css('border', 'none');
+            // sidebarInsParent.eq(i).parent().css('box-shadow', 'none');
+            if(sidebarInsParent.eq(i).attr('id') != 'recommend-ads') {
+                sidebarInsParent.eq(i).parent().attr('style', 'border:none !important;box-shadow:none !important');
+            }
         }
         if(sidebarInsParent.eq(i).css('background-image').indexOf('adsense.svg') > -1) {
             sidebarInsParent.eq(i).css('background-image','none');
@@ -1139,6 +1147,7 @@ function fixedRecommendAds(type) {
     
         if(removeStyleFlag) {
             tocTarget.removeAttr('style');
+            tocTarget.css('overflow','hidden');
             // $('aside .coupang').removeAttr('style');
         }
     }

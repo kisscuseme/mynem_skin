@@ -1560,7 +1560,6 @@ article .tags a {
 }
 .comment-list {
 	margin-bottom: 60px;
-	border-top: 1px dashed #ccc;
 }
 .comment-list ul li {
 	display: inline-block;
@@ -1576,7 +1575,7 @@ article .tags a {
 }
 .comment-list .tt_more_preview_comments_text {
 	display: block;
-	margin: -1px 0 0;
+	margin: 10px 0;
 	padding: 12px 0 12px;
 	border: 1px solid #ccc;
 	text-align: center;
@@ -1798,10 +1797,6 @@ article .tags a {
 	font-size: 0.77em !important;
 	color: #fff;
 	vertical-align: middle;
-}
-
-.comment-list .tt_more_preview_comments_text {
-	margin-top: 5px;
 }
 
 /* maker : armynem */
