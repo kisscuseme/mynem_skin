@@ -92,6 +92,7 @@ function checkContentPosition(firstTime) {
     var titleList = $('.content-article').find('h2,h3,h4');
     var scrollY = window.scrollY + 50 + ($('#fixed-header').val()?($('header').length>0?$('header').height()+5:0):0) + addHeightByAnchorAds('top');
     var checkPoint = -1;
+    var lastPoint = false;
     if(titleList.length > 1) {
         var tocList = $('.floating-toc-new #toc').find('a');
         for(var i=0; i < titleList.length; i++) {
@@ -116,7 +117,18 @@ function checkContentPosition(firstTime) {
                     tocList.eq(i).addClass('floating-toc-title-ani');
                     tocList.eq(i).addClass('selected');
                     checkPoint = i;
-                    break;
+
+                    if(titleList.length > tocList.length) {
+                        var lastOne = tocList.eq(i-1).parent();
+                        var parent = lastOne.parent().parent('li');
+                        var parentparent = parent.parent().parent('li');
+                        if(parent.length > 0){
+                            subTitleFold(parent);
+                        }
+                        if(parentparent.length > 0){
+                            subTitleFold(parentparent);
+                        }
+                    }
                 }
             }
         }
