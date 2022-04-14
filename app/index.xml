@@ -695,8 +695,16 @@
 				<default>true</default>
 			</variable>
 			<variable>
+				<name>floating-toc-subtitle-fold</name>
+				<label><![CDATA[ 플로팅 목차 제목2,3 자동 접힘 ]]></label>
+				<description><![CDATA[]]></description>
+				<type>BOOL</type>
+				<option />
+				<default>true</default>
+			</variable>
+			<variable>
 				<name>floating-toc-position</name>
-				<label><![CDATA[ 플로팅 목차 오른쪽 등장 (기본 왼쪽) ]]></label>
+				<label><![CDATA[ 플로팅 목차 오른쪽 등장 (기본 왼쪽, 컨텐츠 중앙 위치 시 적용) ]]></label>
 				<description><![CDATA[]]></description>
 				<type>BOOL</type>
 				<option />
@@ -994,11 +1002,11 @@
 			</variable>
 			<variable>
 				<name>matched-ads-height</name>
-				<label><![CDATA[ height (기본: 900) ]]></label>
+				<label><![CDATA[ height (기본: 960) ]]></label>
 				<description><![CDATA[]]></description>
 				<type>STRING</type>
 				<option />
-				<default>900</default>
+				<default>960</default>
 			</variable>
 		</variablegroup>
 

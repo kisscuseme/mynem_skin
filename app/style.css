@@ -1451,7 +1451,7 @@ td figure.imageblock, #tt-body-page td figure.imageblock {
 	border-width: 0px;
 }
 figure figcaption {
-	padding-top: 0px;
+	padding: 6px 0px 5px;
 	min-height: auto;
 }
 
@@ -2305,6 +2305,7 @@ table.gsc-search-box td {
 
 .floating-button a {
 	margin-left: 5px;
+	backdrop-filter: blur(1px);
 }
 
 /* change font size button */
@@ -2508,7 +2509,7 @@ table.gsc-search-box td {
 
 /* scroll style */
 ::-webkit-scrollbar {
-	width: 5px;
+	width: 10px;
 	height: 5px;
 }
 ::-webkit-scrollbar-thumb {
@@ -2570,7 +2571,7 @@ table.gsc-search-box td {
 }
 
 body.dark-mode section,body.dark-mode header,body.dark-mode footer, body.dark-mode .comment-form input,
-body.dark-mode .floating-toc-new, body.dark-mode .sidebar .close,
+body.dark-mode .floating-toc-new, body.dark-mode .sidebar .close, body.dark-mode textarea,
 body.dark-mode .sidebar .profile ul, body.dark-mode .comment-list ul li .author-meta .control .link a, body.dark-mode .top-button .menu button {
 	background: #000000;
 }
@@ -2583,7 +2584,7 @@ body.dark-mode #tistorySnsLayer.layer_post a:hover {
 	color: #1e1e1e !important;
 }
 body.dark-mode .sidebar h2, body.dark-mode.mobile-menu aside,
-body.dark-mode textarea, body.dark-mode .top-button .profile ul li a {
+body.dark-mode .top-button .profile ul li a {
 	color:#d6d6d6;
 	background-color:#1e1e1e;
 }
@@ -2676,6 +2677,7 @@ body.dark-mode #chartdiv g[stroke="#000000"] {
 	border-radius: 5px;
 	font-size: 0.8em;
 	text-align: center;
+	backdrop-filter: blur(1px);
 }
 .content-box {
 	padding: 5px;
@@ -2684,6 +2686,7 @@ body.dark-mode #chartdiv g[stroke="#000000"] {
 	align-items: center;
 	border-radius: 5px;
 	font-weight: bold;
+	backdrop-filter: blur(1px);
 }
 .content-box .content-arrow:nth-child(1) {
 	padding-right: 5px;
@@ -2714,6 +2717,7 @@ body.dark-mode #chartdiv g[stroke="#000000"] {
 	right:14px;
 	top:-2px;
 	cursor: pointer;
+	z-index: 1;
 }
 .content-close-btn:after {
 	content: "\f410";

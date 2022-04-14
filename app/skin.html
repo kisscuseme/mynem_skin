@@ -466,31 +466,30 @@
 				.content-close-btn:after {
 					color: [##_var_etc-color_##]ff;
 				}
-
+			
 				/* custom border size */
-				<s_if_var_border-size>
+			  <s_if_var_border-size>
 					.container_postbtn .postbtn_like + .btn_menu_toolbar{
 						height: calc(30px + ([##_var_border-size_##]px * 2));
+					}
+					.bgm-title-wrap {
+						width: calc(220px - [##_var_border-size_##]px);
 					}
 				</s_if_var_border-size>
 
 				/* solid style */
 				<s_if_var_sidebar-solid-style>
-					.bgm-title-wrap {
-						width: calc(220px - [##_var_border-size_##]px);
-					}
 					.comment-form .field {
-						border-left: [##_var_border-size_##]px solid [##_var_etc-color_##]55;
-						border-right: [##_var_border-size_##]px solid [##_var_etc-color_##]55;
-						border-bottom: 0px;
-						border-top: 0px;
+						border: 0px;
 					}
 					.comment-form .field input[type=text] {
 						border-top: [##_var_border-size_##]px solid [##_var_etc-color_##]55;
+						border-left: [##_var_border-size_##]px solid [##_var_etc-color_##]55;
 					}
 					.comment-form .field input[type=password] {
-						border-left: [##_var_border-size_##]px solid [##_var_etc-color_##]55;
 						border-top: [##_var_border-size_##]px solid [##_var_etc-color_##]55;
+						border-left: [##_var_border-size_##]px solid [##_var_etc-color_##]55;
+						border-right: [##_var_border-size_##]px solid [##_var_etc-color_##]55;
 					}
 					.container_postbtn .postbtn_like,
 					.container_postbtn .btn_menu_toolbar {
@@ -552,7 +551,7 @@
 					}
 				</s_if_var_ads-solid-style>
 				<s_if_var_image-solid-style>
-					figure.imageblock, #tt-body-page figure.imageblock,
+					figure.imageblock span[data-lightbox], #tt-body-page figure.imageblock span[data-lightbox],
 					figure.imagegridblock > div > span > img, #tt-body-page figure.imagegridblock > div > span > img {
 						border: [##_var_border-size_##]px solid [##_var_etc-color_##]55;
 					}
@@ -652,14 +651,18 @@
 					/* solid style */
 					<s_if_var_sidebar-solid-style>
 						body.dark-mode .comment-form .field {
-							border-top: [##_var_border-size_##]px solid [##_var_etc-color-d_##];
-							border-left: [##_var_border-size_##]px solid [##_var_etc-color-d_##];
-							border-right: [##_var_border-size_##]px solid [##_var_etc-color-d_##];
-							border-bottom: 0px;
+							border: 0px;
 						}
 						body.dark-mode .comment-form .field input[type=password] {
-							border-left: [##_var_border-size_##]px solid [##_var_etc-color-d_##];
+							border-top: [##_var_border-size_##]px solid [##_var_etc-color-d_##]55;
+							border-left: [##_var_border-size_##]px solid [##_var_etc-color-d_##]55;
+							border-right: [##_var_border-size_##]px solid [##_var_etc-color-d_##]55;
 						}
+						body.dark-mode .comment-form .field input[type=text] {
+							border-top: [##_var_border-size_##]px solid [##_var_etc-color-d_##]55;
+							border-left: [##_var_border-size_##]px solid [##_var_etc-color-d_##]55;
+						}
+
 						body.dark-mode .container_postbtn .postbtn_like,
 						body.dark-mode .container_postbtn .btn_menu_toolbar {
 							border: [##_var_border-size_##]px solid [##_var_etc-color-d_##]55 !important;
@@ -1177,19 +1180,23 @@
 			</s_if_var_content-middle-yn>
 			<s_not_var_content-middle-yn>
 				article {
-					width: calc(100vw - 330px - 395px);
+					width: calc(100vw - 330px - 395px<s_if_var_cover-solid-style> - [##_var_border-size_##]px</s_if_var_cover-solid-style>);
+					padding-left: 30px;
+					max-width: calc([##_var_article-max-width_##]px - 310px<s_if_var_cover-solid-style> + ([##_var_border-size_##]px / 2)</s_if_var_cover-solid-style>);
 				}
 				section .content-wrapper {
 					margin-left: 10px;
 					margin-right: 330px;
+					max-width: [##_var_article-max-width_##]px;
 				}
 				header .inner, footer .inner {
 					margin-left: 10px;
 					margin-right: 330px;
+					max-width: [##_var_article-max-width_##]px;
 				}
 				@media (max-width: 1400px) {
 					article {
-						width: calc(100vw - 330px - 6px);
+						width: calc(100vw - 395px<s_if_var_cover-solid-style> - [##_var_border-size_##]px</s_if_var_cover-solid-style>);
 					}
 					section .content-wrapper {
 						margin-right: 1px;
@@ -1246,6 +1253,9 @@
 						width: auto;
 						padding-left: 0px;
 						padding-right: 0px;
+					}
+					header .inner, footer .inner {
+						margin-right: 10px;
 					}
 					.mobile-menu aside {
 						right: 0;
@@ -2880,6 +2890,7 @@
 			<input type='hidden' id='d-day-date-3' value="[##_var_d-day-date-3_##]">
 			<input type='hidden' id='d-day-date-4' value="[##_var_d-day-date-4_##]">
 			<input type='hidden' id='d-day-date-5' value="[##_var_d-day-date-5_##]">
+			<input type='hidden' id='floating-toc-subtitle-fold' value="[##_var_floating-toc-subtitle-fold_##]">
 		</s_t3>
 		<script src="./images/common.min.js"></script>
 		<script src="./images/jquery.toc.min.js"></script>

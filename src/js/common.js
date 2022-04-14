@@ -24,6 +24,7 @@ var adsTocPosition = $('#ads-toc-position').val();
 var articleMaxWidth = Number($('#article-max-width').val());
 var clickContentFlag = true;
 var tocUnfoldYn = $('#toc-unfold-yn').val();
+var minusRight = String(-8 -1*Number($('#border-size').val()))+'px';
 function clickContentTitle() {
     if(clickContentFlag) {
         clickContentFlag = false;
@@ -87,18 +88,25 @@ function makeToc() {
     }
 }
 
-function checkContentPosition() {
+function checkContentPosition(firstTime) {
     var titleList = $('.content-article').find('h2,h3,h4');
     var scrollY = window.scrollY + 50 + ($('#fixed-header').val()?($('header').length>0?$('header').height()+5:0):0) + addHeightByAnchorAds('top');
+    var checkPoint = -1;
     if(titleList.length > 1) {
+        var tocList = $('.floating-toc-new #toc').find('a');
         for(var i=0; i < titleList.length; i++) {
-            var tocList = $('.floating-toc-new #toc').find('a');
+            if(firstTime) {
+                tocList.removeAttr('class');
+                tocList.parent().removeAttr('class');
+                subTitleFold(tocList.eq(i).parent());
+            }
             if(i < titleList.length-1) {
                 if(titleList.eq(i).offset().top < scrollY && titleList.eq(i+1).offset().top > scrollY) {
                     tocList.removeAttr('class');
                     tocList.parent().removeAttr('class');
                     tocList.eq(i).addClass('floating-toc-title-ani');
                     tocList.eq(i).addClass('selected');
+                    checkPoint = i;
                     break;
                 }
             } else {
@@ -107,9 +115,77 @@ function checkContentPosition() {
                     tocList.parent().removeAttr('class');
                     tocList.eq(i).addClass('floating-toc-title-ani');
                     tocList.eq(i).addClass('selected');
+                    checkPoint = i;
                     break;
                 }
             }
+        }
+
+        if(checkPoint != -1) {
+            var current = tocList.eq(checkPoint).parent();
+            var child = current.children('ul').children('li');
+            var childchild = child.children('ul').children('li');
+            var parent = current.parent().parent('li');
+            var parentparent = parent.parent().parent('li');
+            if(child.length > 0) {
+                subTitleUnfold(current);
+            }
+            if(childchild.length > 0) {
+                subTitleFold(child);
+            }
+            if(parent.length > 0) {
+                subTitleUnfold(parent);
+            }
+            if(parentparent.length > 0) {
+                subTitleUnfold(parentparent);
+            }
+
+            var currentPrev = current.prev();
+            if(currentPrev.length > 0) {
+                subTitleFold(currentPrev);
+            }
+
+            var currentNext = current.next();
+            if(currentNext.length > 0) {
+                subTitleFold(currentNext);
+            }
+
+            var parentNext = parent.next();
+            if(parentNext.length > 0) {
+                subTitleFold(parentNext);
+            }
+
+            var parentparentNext = parentparent.next();
+            if(parentparentNext.length > 0) {
+                subTitleFold(parentparentNext);
+            }
+        }
+    }
+}
+
+function checkMobileSize() {
+    return (contentMiddleYn && (window.innerWidth-$('.content-wrapper').outerWidth())/2 > 250) || (!contentMiddleYn && window.innerWidth > 1413);
+}
+
+var subtitleFoldYn = $('#floating-toc-subtitle-fold').val();
+function subTitleFold(mainTitle){
+    if(subtitleFoldYn && checkMobileSize()) {
+        var subTitleList = mainTitle.children('ul').children('li');
+        if(subTitleList.length > 0) {
+            subTitleList.slideUp(300,'linear',function(){
+                setFloatingTocPosition();
+            });
+        }
+    }
+}
+
+function subTitleUnfold(mainTitle){
+    if(subtitleFoldYn && checkMobileSize()) {
+        var subTitleList = mainTitle.children('ul').children('li');
+        if(subTitleList.length > 0) {
+            subTitleList.slideDown(300,'linear',function(){
+                setFloatingTocPosition();
+            });
         }
     }
 }
@@ -120,8 +196,7 @@ function clickFloatingTitle() {
         floatingTocNew.css('height','');
         $('.floating-toc-new #toc').css('display','');
         // 여유공간이 있을 경우
-        if((contentMiddleYn && (window.innerWidth-$('.content-wrapper').outerWidth())/2 > 250)
-          ||(!contentMiddleYn && window.innerWidth > 1413)) {
+        if(checkMobileSize()) {
             if(title.hasClass('close')) {
                 if(!contentMiddleYn || (contentMiddleYn && adsTocPosition)) {
                     fixedRecommendAds('unfold');
@@ -165,9 +240,9 @@ function clickFloatingTitle() {
                     floatingTocNew.css('transform','scale(0.8)');
                     if(((window.innerWidth > 1079 && window.innerWidth < 1400) && (floatingTocPostion && !contentMiddleYn))
                       || (window.innerWidth > articleMaxWidth+32 && (floatingTocPostion && contentMiddleYn))) {
-                        floatingTocNew.css('right','-8px');
+                        floatingTocNew.css('right',minusRight);
                     } else {
-                        floatingTocNew.css('right','-8px');
+                        floatingTocNew.css('right',minusRight);
                     }
                 }
                 clickFloatingFlag = true;
@@ -185,18 +260,18 @@ function makeFloatingToc() {
         floatingTocNew.append(tocBody);
         floatingTocNew.css('height','19px');
         title = $('#toc-title>p>span#toggle');
-        $('#toc-title').off('click').on('click', function(){
+
+        //목차 여닫기
+        $('#toc-title').off('click touchend').on('click touchend', function(){
             clickFloatingTitle();
         });
 
-        $('#toc-title').off('touchend').on('touchend', function(){
-            clickFloatingTitle();
-        });
-
-        //목차 항목 클릭
-        $('#toc-body').find('a').off('click').on('click', function(){
+        //해당 목차로 이동
+        $('#toc-body').find('a').off('click touchend').on('click touchend', function(){
             checkPosition();
         });
+
+        checkContentPosition(true);
     }
 }
 
@@ -215,18 +290,31 @@ function initFloatingTocNew() {
     title.addClass('close');
 }
 
+function setFloatingTocPosition() {
+    var sideValue = 0;
+    if(contentMiddleYn) {
+        if(floatingTocPostion) { //오른쪽
+            sideValue = (window.innerWidth - $('.content-wrapper').width())/2 - floatingTocNew.outerWidth() - (browserCheck('firefox')?45:43) - Number($('#border-size').val());            
+        } else { //왼쪽
+            sideValue = (window.innerWidth - $('.content-wrapper').width())/2 + $('.content-wrapper').width() + (browserCheck('firefox')?27:32) + Number($('#border-size').val());
+        }
+    } else {
+        sideValue = window.innerWidth - $('.content-wrapper').width() - floatingTocNew.outerWidth() - (browserCheck('firefox')?95:90) - Number($('#border-size').val());
+    }
+    floatingTocNew.css('right', sideValue);
+}
+
 function appendTocNew() {
     if(bookToc.length > 0 && title != null) {
         var headerHeight = $('#fixed-header').val()?$('header').height():0;
-        if((contentMiddleYn && (window.innerWidth-$('.content-wrapper').outerWidth())/2 > 250)
-          ||(!contentMiddleYn && window.innerWidth > 1413)) {
+        if(checkMobileSize()) {
             if(window.scrollY > bookToc.outerHeight() + bookToc.offset().top - headerHeight - addHeightByAnchorAds('top')) {
                 if(!animating) {
                     animating = true;
                     mobileAnimating = false;
                     initFloatingTocNew();
                     
-                    if(tocUnfoldYn && contentMiddleYn) {
+                    if(tocUnfoldYn) {
                         $('#toc-body').css('display','');
                         floatingTocNew.css('height','');
                         title.html("&#xf102;");
@@ -236,19 +324,8 @@ function appendTocNew() {
                         title.addClass('close');
                     }
 
-                    var sideValue = 0;
-                    if(contentMiddleYn) {
-                        if(floatingTocPostion) { //오른쪽
-                            sideValue = (window.innerWidth - $('.content-wrapper').width())/2 - floatingTocNew.outerWidth() - (browserCheck('firefox')?45:40);
-                            floatingTocNew.css('right', sideValue);
-                        } else { //왼쪽
-                            sideValue = (window.innerWidth - $('.content-wrapper').width())/2 + $('.content-wrapper').width() + (browserCheck('firefox')?27:32);
-                            floatingTocNew.css('right', sideValue);
-                        }
-                    } else {
-                        sideValue = ((window.innerWidth - $('.content-wrapper').width()) - floatingTocNew.outerWidth())/2 - 52;
-                        floatingTocNew.css('right', sideValue);
-                    }
+                    checkContentPosition(true);
+                    setFloatingTocPosition();
 
                     floatingTocNew.animate({
                         'opacity': '1.0'
@@ -279,9 +356,9 @@ function appendTocNew() {
                     floatingTocNew.css('transform','scale(0.8)');
                     if(((window.innerWidth > 1079 && window.innerWidth < 1400) && (floatingTocPostion && !contentMiddleYn))
                       || (window.innerWidth > articleMaxWidth+32 && (floatingTocPostion && contentMiddleYn))) {
-                        floatingTocNew.css('right','-8px');
+                        floatingTocNew.css('right',minusRight);
                     } else {
-                        floatingTocNew.css('right','-8px');
+                        floatingTocNew.css('right',minusRight);
                     }
                 }
             } else {
@@ -369,8 +446,7 @@ function smoothScroll(e) {
         
         if(aHref.indexOf('#comment') > -1 && !isNaN(Number(aHref.substring(aHref.indexOf('#comment')+8)))) {
             enableAnimation = false;
-            if(!((contentMiddleYn && (window.innerWidth-$('.content-wrapper').outerWidth())/2 > 250)
-              ||(!contentMiddleYn && window.innerWidth > 1413))) {
+            if(!checkMobileSize()) {
                 if(floatingTocNew) {
                     title.html("&#xf103;");
                     title.addClass('close');
@@ -378,9 +454,9 @@ function smoothScroll(e) {
                     floatingTocNew.css('transform','scale(0.8)');
                     if(((window.innerWidth > 1079 && window.innerWidth < 1400) && (floatingTocPostion && !contentMiddleYn))
                         || (window.innerWidth > articleMaxWidth+32 && (floatingTocPostion && contentMiddleYn))) {
-                        floatingTocNew.css('right','-8px');
+                        floatingTocNew.css('right',minusRight);
                     } else {
-                        floatingTocNew.css('left','-8px');
+                        floatingTocNew.css('left',minusRight);
                     }
                 }
             }
@@ -930,6 +1006,14 @@ function common(){
     if($('article .tags').length > 0) {
         $('article .tags').html($('article .tags').html().replaceAll(',\n',''));
     }
+
+    //댓글 특수문자 버그 임시 조치
+    var commentList = $('.comment-list > ul li');
+    for(var i=0; i < commentList.length; i++) {
+        if(commentList.eq(i).find('> p').text().indexOf('\\') > -1) {
+            commentList.eq(i).find('> p').html('<span style="color:#999">특수문자 관련 티스토리 버그로 인해 댓글이 표시되지 않습니다. 특수문자 제거 후 정상 이용 가능합니다.</span>')
+        }
+    }
 }
 
 function updateTagsAttr() {
@@ -1092,12 +1176,12 @@ function fixedRecommendAds(type) {
                         var tocOffsetSide = 0;
                         if(contentMiddleYn) {
                             if((adsTocPosition && floatingTocPostion) || (!adsTocPosition && !floatingTocPostion)) {
-                                tocOffsetSide = (window.innerWidth - $('.content-wrapper').width())/2 - tocTarget.outerWidth() - (browserCheck('firefox')?28:23);
+                                tocOffsetSide = (window.innerWidth - $('.content-wrapper').width())/2 - tocTarget.outerWidth() - (browserCheck('firefox')?28:28) - Number($('#border-size').val());
                             } else {
-                                tocOffsetSide = (window.innerWidth - $('.content-wrapper').width())/2 + $('.content-wrapper').width() + (browserCheck('firefox')?13:18);
+                                tocOffsetSide = (window.innerWidth - $('.content-wrapper').width())/2 + $('.content-wrapper').width() + (browserCheck('firefox')?13:18) + Number($('#border-size').val());
                             }
                         } else {
-                            tocOffsetSide = window.innerWidth - $('.content-wrapper').width() - tocTarget.outerWidth() - 80;
+                            tocOffsetSide = window.innerWidth - $('.content-wrapper').width() - tocTarget.outerWidth() - 80 - Number($('#border-size').val());
                         }
                         var scaleRatio = 0.9;
                         var anchorAdsHeight = addHeightByAnchorAds('top') + addHeightByAnchorAds('bottom');
@@ -1501,8 +1585,7 @@ function detectTop() {
 }
 
 function foldFloatingToc() {
-    if(!((contentMiddleYn && (window.innerWidth-$('.content-wrapper').outerWidth())/2 > 250)
-      ||(!contentMiddleYn && window.innerWidth > 1413))) {
+    if(!checkMobileSize()) {
         if(title != null && title.length > 0 && !title.hasClass('close')) {
             clickFloatingTitle();
         }
@@ -1674,7 +1757,7 @@ function recommendPost() {
                         rightMargin = (window.innerWidth - 310) / 2;
                     }
 
-                    $('#recommend-contents').css('bottom', (addHeightByAnchorAds('bottom')+60)+'px');
+                    $('#recommend-contents').css('bottom', (addHeightByAnchorAds('bottom')+60+2*Number($('#border-size').val()))+'px');
                     $('#recommend-contents').css(reCommendStartPosition, '-350px');
                     $('#recommend-contents').css('display','block');
 
