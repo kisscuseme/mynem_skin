@@ -963,7 +963,7 @@ function common(){
         }
     });
 
-    if($('.comments').length > 0) {
+    if($('.comments').length > 0 && $('body').attr('id').indexOf('guestbook') < 0) {
         $('.move-comment-btn').css('display','');
     }
 
