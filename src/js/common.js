@@ -184,9 +184,7 @@ function subTitleFold(mainTitle){
     if(subtitleFoldYn && checkMobileSize()) {
         var subTitleList = mainTitle.children('ul').children('li');
         if(subTitleList.length > 0) {
-            subTitleList.slideUp(300,'linear',function(){
-                setFloatingTocPosition();
-            });
+            subTitleList.slideUp(300,'linear');
         }
     }
 }
@@ -195,9 +193,7 @@ function subTitleUnfold(mainTitle){
     if(subtitleFoldYn && checkMobileSize()) {
         var subTitleList = mainTitle.children('ul').children('li');
         if(subTitleList.length > 0) {
-            subTitleList.slideDown(300,'linear',function(){
-                setFloatingTocPosition();
-            });
+            subTitleList.slideDown(300,'linear');
         }
     }
 }
@@ -303,17 +299,21 @@ function initFloatingTocNew() {
 }
 
 function setFloatingTocPosition() {
-    var sideValue = 0;
+    var rightSideValue = '';
+    var leftSideValue = '';
     if(contentMiddleYn) {
         if(floatingTocPostion) { //오른쪽
-            sideValue = (window.innerWidth - $('.content-wrapper').width())/2 - floatingTocNew.outerWidth() - (browserCheck('firefox')?45:43) - Number($('#border-size').val());            
+            // rightSideValue = (window.innerWidth - $('.content-wrapper').width())/2 - floatingTocNew.outerWidth() - (browserCheck('firefox')?45:43) - Number($('#border-size').val());            
+            leftSideValue = (window.innerWidth - $('.content-wrapper').width())/2 + $('.content-wrapper').width() + (browserCheck('firefox')?27:32) + Number($('#border-size').val());
         } else { //왼쪽
-            sideValue = (window.innerWidth - $('.content-wrapper').width())/2 + $('.content-wrapper').width() + (browserCheck('firefox')?27:32) + Number($('#border-size').val());
+            rightSideValue = (window.innerWidth - $('.content-wrapper').width())/2 + $('.content-wrapper').width() + (browserCheck('firefox')?27:32) + Number($('#border-size').val());
         }
     } else {
-        sideValue = window.innerWidth - $('.content-wrapper').width() - floatingTocNew.outerWidth() - (browserCheck('firefox')?95:90) - Number($('#border-size').val());
+        // rightSideValue = window.innerWidth - $('.content-wrapper').width() - floatingTocNew.outerWidth() - (browserCheck('firefox')?95:90) - Number($('#border-size').val());
+        leftSideValue = $('.content-wrapper').width() + (browserCheck('firefox')?80:80) + Number($('#border-size').val());
     }
-    floatingTocNew.css('right', sideValue);
+    floatingTocNew.css('right', rightSideValue);
+    floatingTocNew.css('left', leftSideValue);
 }
 
 function appendTocNew() {
