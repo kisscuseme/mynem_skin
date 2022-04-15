@@ -1682,8 +1682,8 @@
 						
 						wrapperObserver.observe(wrapper, config);
 						
-						function afterLoaded() {
-							if(!doneFlag) {
+						function afterLoaded(forceDo) {
+							if(!doneFlag || forceDo) {
 								wrapperObserver.disconnect();
 								$('#wrapper').addClass('loaded');
 								$('#wrapper').off('scroll touchmove mousewheel');
@@ -1711,15 +1711,11 @@
 							return false;
 						});
 
-						setTimeout(function() {
-							afterLoaded();
-						}, 5000);
-
 						$(function() {
 							$("#waiting").show();
 							loadingTimer = setTimeout(function(){
-								afterLoaded();
 								loadingTimer = 0;
+								afterLoaded(true);
 							}, 3000);
 						});
 
