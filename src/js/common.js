@@ -1213,7 +1213,6 @@ function fixedRecommendAds(type) {
                         tocTarget.css('padding-bottom', paddingBottom+'px');
                         tocTarget.css('padding-top', paddingTop+'px');
                         tocTarget.children().css('max-height', (adjustInnerHeight-paddingBottom-paddingTop) + 'px');
-                        tocTarget.children().css('overflow', 'hidden');
 
                         // var tocTargetCoupang = $('aside .coupang');
                         // tocTargetCoupang.css('position', 'fixed');

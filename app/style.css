@@ -890,6 +890,9 @@ body.dark-mode .sidebar .category ul li ul li ul li:last-child {
 	line-height: 1;
 	color: #888;
 }
+.sidebar #recommend-ads {
+	overflow: hidden;
+}
 .sidebar #recommend-ads.revenue_unit_item.adsense {
 	width: 290px;
 	padding: 10px;
