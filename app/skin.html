@@ -141,7 +141,7 @@
 			footer .copyright {
 				font-size: calc(0.8em * [##_var_font-size-ratio_##]) !important;
 			}
-			.comment-form .submit button {
+			.comment-form .submit button, .comment-form .submit .upload-image-label {
 				font-size: calc(0.77em * [##_var_font-size-ratio_##]) !important;
 				width: calc(100px * [##_var_font-size-ratio_##]);
 				height: calc(36px * [##_var_font-size-ratio_##]);
@@ -223,7 +223,7 @@
 				footer .copyright {
 					font-size: calc(0.8em * [##_var_mobile-font-ratio_##] * [##_var_font-size-ratio_##]) !important;
 				}
-				.comment-form .submit button {
+				.comment-form .submit button, .comment-form .submit .upload-image-label {
 					font-size: calc(0.77em * [##_var_mobile-font-ratio_##] * [##_var_font-size-ratio_##]) !important;
 					width: calc(100px * [##_var_mobile-font-ratio_##] * [##_var_font-size-ratio_##]);
 					height: calc(36px * [##_var_mobile-font-ratio_##] * [##_var_font-size-ratio_##]);
@@ -430,7 +430,7 @@
 				.content-article h2 {border-left: [##_var_etc-color_##]ff 12px solid !important;border-bottom: 0px solid [##_var_etc-color_##]ff !important;}
 				.content-article h3 {border-left: [##_var_etc-color_##]cc 10px solid !important;border-bottom: 0px solid [##_var_etc-color_##]cc !important;}
 				.content-article h4 {border-left: [##_var_etc-color_##]88 8px solid !important;border-bottom: 0px solid [##_var_etc-color_##]88 !important;}
-				.comment-form .submit button,
+				.comment-form .submit button, .comment-form .submit .upload-image-label,
 				.progress-bar-vertical, .progress-bar-horizontal,
 				.progress-bar-etc-vertical, .progress-bar-etc-horizontal,
 				.sidebar .close:before, .sidebar .close:after {background-color:[##_var_etc-color_##]}
@@ -613,7 +613,7 @@
 					body.dark-mode .content-article h2 {border-left: [##_var_etc-color-d_##]ff 12px solid !important;border-bottom: 0px solid [##_var_etc-color-d_##]ff !important;}
 					body.dark-mode .content-article h3 {border-left: [##_var_etc-color-d_##]cc 10px solid !important;border-bottom: 0px solid [##_var_etc-color-d_##]cc !important;}
 					body.dark-mode .content-article h4 {border-left: [##_var_etc-color-d_##]88 8px solid !important;border-bottom: 0px solid [##_var_etc-color-d_##]88 !important;}
-					body.dark-mode .comment-form .submit button,
+					body.dark-mode .comment-form .submit button, body.dark-mode .comment-form .submit .upload-image-label,
 					body.dark-mode .progress-bar-vertical, body.dark-mode .progress-bar-horizontal,
 					body.dark-mode .progress-bar-etc-vertical, body.dark-mode .progress-bar-etc-horizontal,
 					body.dark-mode .sidebar .close:before, body.dark-mode .sidebar .close:after {background-color:[##_var_etc-color-d_##]}
@@ -1629,45 +1629,10 @@
 			<div id="wrapper">
 				<!-- 블로그 로딩 코드 start -->
 				<s_if_var_loading-screen>
-					<style type="text/css">
-						#waiting {
-							width: 100%;
-							height: 100%;
-							top: 0;
-							left: 0;
-							position: fixed;
-							display: flex;
-							background: white;
-							z-index: 999;
-							opacity: 0.7;
-						}
-						#waiting > img {
-							display: flex;
-							width: fit-content;
-							height: fit-content;
-							margin: auto;
-							box-shadow: none;
-						}
-
-						#wrapper {
-							overflow: hidden !important;
-							height: calc(100vh + 1px) !important;
-						}
-
-						#wrapper.loaded {
-							overflow: unset !important;
-							height: unset !important;
-						}
-					</style>
-					<div id="waiting" style="display:none;">
-						<s_if_var_loading-screen-img>
-							<img src="[##_var_loading-screen-img_##]" class="loading-image">
-						</s_if_var_loading-screen-img>
-						<s_not_var_loading-screen-img>
-							<img src="./images/loading.gif" class="loading-image">
-						</s_not_var_loading-screen-img>
-					</div>
 					<script type="text/javascript">
+						if(location.href.indexOf('#') > -1) {
+							$('#wrapper').addClass('loaded');
+						}
 						var doneFlag = false;
 						var loadingTimer = 0;
 						var wrapperObserver = new MutationObserver(function(mutations) {
@@ -1679,13 +1644,15 @@
 							characterData: true
 						};
 						var wrapper = document.getElementById('wrapper');
-						
+
 						wrapperObserver.observe(wrapper, config);
-						
+
 						function afterLoaded(forceDo) {
 							if(!doneFlag || forceDo) {
 								wrapperObserver.disconnect();
-								$('#wrapper').addClass('loaded');
+								if(location.href.indexOf('#') == -1) {
+									$('#wrapper').addClass('loaded');
+								}
 								$('#wrapper').off('scroll touchmove mousewheel');
 								$("#waiting").fadeOut();
 								setTimeout(function() {
@@ -1693,18 +1660,18 @@
 									smoothScroll();
 								}, 500);
 								/*
-								var allIns = $('ins');
-								for(var i=0; i < allIns.length; i++) {
-									if((allIns.eq(i).height() == 0) && allIns.eq(i).parent().height() != 0) {
-										if('^HTML^BODY^'.indexOf(allIns.eq(i).parent().prop('tagName')) == -1) {
-											allIns.eq(i).parent().css('display','none');
+									var allIns = $('ins');
+									for(var i=0; i < allIns.length; i++) {
+										if((allIns.eq(i).height() == 0) && allIns.eq(i).parent().height() != 0) {
+											if('^HTML^BODY^'.indexOf(allIns.eq(i).parent().prop('tagName')) == -1) {
+												allIns.eq(i).parent().css('display','none');
+											}
 										}
 									}
-								}
-								*/
+									*/
 							}
 						}
-						
+
 						$('#wrapper').on('scroll touchmove mousewheel', function(event) {
 							event.preventDefault();
 							event.stopPropagation();
@@ -2091,7 +2058,7 @@
 										</div>
 									</s_sidebar_element>
 									<s_sidebar_element>
-										<!-- 일치하는 광고 -->
+										<!-- 멀티플렉스 광고 -->
 										<s_if_var_sidebar-data-ad-slot>
 											<div class="module module_plugin" style="overflow:hidden;padding-top:5px;">
 												<div id="recommend-ads" class="revenue_unit_item adsense">
@@ -2552,9 +2519,30 @@
 										<div class="comments">
 											<h2>댓글<span class="count"><s_rp_count>[##_article_rep_rp_cnt_##]</s_rp_count></span></h2>
 											<s_rp>
+												<s_rp_input_form>
+													<div class="comment-form">
+														<s_rp_member>
+															<div class="field">
+																<s_rp_guest>
+																	<input type="text" name="[##_rp_input_name_##]" placeholder="이름" value="[##_guest_name_##]">
+																	<input type="password" name="[##_rp_input_password_##]" maxlength="8" placeholder="비밀번호" value="[##_rp_admin_check_##]">
+																</s_rp_guest>
+																<div class="secret">
+																	<input type="checkbox" name="[##_rp_input_is_secret_##]" id="secret">
+																	<label for="secret" tabindex="0">비밀글</label>
+																</div>
+															</div>
+														</s_rp_member>
+														<textarea name="[##_rp_input_comment_##]" cols="" rows="4" placeholder="여러분의 소중한 댓글을 입력해주세요."></textarea>
+														<div class="submit">
+															<button type="submit" class="btn" onclick="[##_rp_onclick_submit_##]">등록</button>
+														</div>
+													</div>
+												</s_rp_input_form>
+
 												<s_rp_container>
 													<div class="comment-list">
-														<ul>
+														<ul class="comment-reverse">
 															<s_rp_rep>
 																<li id="[##_rp_rep_id_##]">
 																	<div class="author-meta">
@@ -2597,27 +2585,6 @@
 														</ul>
 													</div>
 												</s_rp_container>
-
-												<s_rp_input_form>
-													<div class="comment-form">
-														<s_rp_member>
-															<div class="field">
-																<s_rp_guest>
-																	<input type="text" name="[##_rp_input_name_##]" placeholder="이름" value="[##_guest_name_##]">
-																	<input type="password" name="[##_rp_input_password_##]" maxlength="8" placeholder="비밀번호" value="[##_rp_admin_check_##]">
-																</s_rp_guest>
-																<div class="secret">
-																	<input type="checkbox" name="[##_rp_input_is_secret_##]" id="secret">
-																	<label for="secret" tabindex="0">비밀글</label>
-																</div>
-															</div>
-														</s_rp_member>
-														<textarea name="[##_rp_input_comment_##]" cols="" rows="4" placeholder="여러분의 소중한 댓글을 입력해주세요."></textarea>
-														<div class="submit">
-															<button type="submit" class="btn" onclick="[##_rp_onclick_submit_##]">등록</button>
-														</div>
-													</div>
-												</s_rp_input_form>
 											</s_rp>
 										</div>
 									</s_permalink_article_rep>
@@ -2713,7 +2680,7 @@
 									<a [##_next_page_##] class="next [##_no_more_next_##]">다음</a>
 								</div>
 							</s_paging>
-							<!-- 메인 일치하는 광고 -->
+							<!-- 메인 멀티플렉스 광고 -->
 							<s_if_var_main-google-ads>
 								<s_if_var_main-ad-title><h2>[##_var_main-ad-title_##]</h2></s_if_var_main-ad-title>
 								<div class="main-ads">
@@ -2748,7 +2715,7 @@
 						<a href="#" class="page-top">TOP</a>
 						<p class="meta"><s_if_var_footer-text-1>[##_var_footer-text-1_##]</s_if_var_footer-text-1></p>
 						<p class="copyright"><s_if_var_footer-text-2>[##_var_footer-text-2_##]</s_if_var_footer-text-2></p>
-						<p class="maker"><a href="https://sangminem.tistory.com/506" target="_blank"><font color="#ff7a00"><b>Mynem Skin 2.6.3</b> © Armynem</font></a></p>
+						<p class="maker"><a href="https://sangminem.tistory.com/506" target="_blank"><font color="#ff7a00"><b>Mynem Skin 2.7.0</b> © Armynem</font></a></p>
 					</div>
 				</footer>
 			</div>
@@ -2792,6 +2759,16 @@
 
 			<!-- 1픽셀 이미지 -->
 			<img id="blank-img" src="./images/blank.png" style="display:none;">
+
+			<!-- 로딩 이미지 -->
+			<div id="waiting" style="display:none;">
+				<s_if_var_loading-screen-img>
+					<img src="[##_var_loading-screen-img_##]" class="loading-image">
+				</s_if_var_loading-screen-img>
+				<s_not_var_loading-screen-img>
+					<img src="./images/loading.gif" class="loading-image">
+				</s_not_var_loading-screen-img>
+			</div>
 
 			<!-- 이전/다음 글 박스 -->
 			<s_if_var_recommend-contents>
@@ -2887,6 +2864,8 @@
 			<input type='hidden' id='d-day-date-4' value="[##_var_d-day-date-4_##]">
 			<input type='hidden' id='d-day-date-5' value="[##_var_d-day-date-5_##]">
 			<input type='hidden' id='floating-toc-subtitle-fold' value="[##_var_floating-toc-subtitle-fold_##]">
+			<input type='hidden' id='upload-images-yn' value="[##_var_upload-images-yn_##]">
+			<input type='hidden' id='imgur-client-id' value="[##_var_imgur-client-id_##]">
 		</s_t3>
 		<script src="./images/common.min.js"></script>
 		<script src="./images/jquery.toc.min.js"></script>

@@ -6,6 +6,17 @@ function delay(ms) {
     });
 }
 
+function strFormat() {
+    var args = Array.prototype.slice.call(arguments, 1);
+    return arguments[0].replace(/\{(\d+)\}/g, function (match, index) {
+        return args[index];
+    });
+}
+
+function getValueById(id) {
+    return $('#'+id).val();
+}
+
 function googleTranslateElementInit2() {
     new google.translate.TranslateElement({pageLanguage: 'ko', autoDisplay: false}, 'google_translate_element2');
 }
@@ -411,17 +422,19 @@ function appendTocNew() {
     }
 }
 
-function copyTitleToClipboard(titleIndex) {
-    var tocLink = $('#toc a');
+function copyToClipboard(text) {
     var dummy = document.createElement("textarea");
     document.body.appendChild(dummy);
-    dummy.value = tocLink.eq(titleIndex).prop('href');
+    dummy.value = text;
     dummy.select();
     document.execCommand("copy");
     document.body.removeChild(dummy);
+}
+function copyTitleToClipboard(titleIndex) {
+    var tocLink = $('#toc a');
+    copyToClipboard(tocLink.eq(titleIndex).prop('href'));
     showToast("링크 복사 완료!");
 }
-
 function makeClipboardLink() {
     if($('#make-clipboard-link').val()) {
         var tocLink = $('#toc a');
@@ -443,11 +456,11 @@ function smoothScrollEvent() {
 
 function smoothScroll(e) {
     var self = e?this:null;
-    var aHref = e?$.attr(self, 'href'):window.decodeURIComponent(location.href.substring(location.href.indexOf('#')));
+    var aHrefFull = e?$.attr(self, 'href'):location.href;
+    var aHref = aHrefFull?window.decodeURIComponent(aHrefFull.substring(aHrefFull.indexOf('#'))):undefined;
     var windowTop = $(window).scrollTop();
     var offsetTop = 0;
     var moveFlag = false;
-    var moveFlagForComment = false;
     var headerHeight = $('#fixed-header').val()?($('header').length>0?$('header').height()+5:0):0;
     var enableAnimation = true;
     
@@ -456,10 +469,10 @@ function smoothScroll(e) {
         offsetTop = $('#' + aHref.substr(1).replace(regExp,"\\$&")).offset().top - addHeightByAnchorAds('top');
         moveFlag = true;
         
-        if(aHref.indexOf('#comment') > -1 && !isNaN(Number(aHref.substring(aHref.indexOf('#comment')+8)))) {
+        if(aHref.indexOf('#comment') > -1 && !isNaN(Number(aHref.substring(aHref.indexOf('#comment')+8))) && aHref.indexOf('#void') == -1) {
             enableAnimation = false;
             if(!checkMobileSize()) {
-                if(floatingTocNew) {
+                if(floatingTocNew.children().length > 0) {
                     title.html("&#xf103;");
                     title.addClass('close');
                     floatingTocNew.css('width','fit-content');
@@ -480,8 +493,9 @@ function smoothScroll(e) {
     }
 
     if($(self).hasClass('move-comment-btn')) {
-        offsetTop = $('.pagination').offset().top - $(window).innerHeight() + headerHeight + 40;
-        moveFlagForComment = true;
+        // offsetTop = $('.pagination').offset().top - $(window).innerHeight() + headerHeight + 40;
+        offsetTop = $('.comments').offset().top - headerHeight + 50 - addHeightByAnchorAds('top');
+        moveFlag = true;
     }
 
     if(currentPosition != (offsetTop - headerHeight)) {
@@ -489,7 +503,7 @@ function smoothScroll(e) {
         smoothScrollTimer = 0;
     }
 
-    if(moveFlag || moveFlagForComment) {
+    if(moveFlag) {
         var distance = Math.abs(windowTop - offsetTop - headerHeight);
         var calcSpeed = 300*(distance/2000);
         var speed = calcSpeed<500?500:(calcSpeed>3000?3000:calcSpeed);
@@ -501,21 +515,19 @@ function smoothScroll(e) {
             $('html, body').scrollTop(offsetTop - headerHeight);
         }
         smoothScrollTimer = setTimeout(function() {
-            if(moveFlag) {
-                if(repeatCnt < 3 && offsetTop != currentPosition) {
-                    if(self) {
-                        $(self).click();
-                    } else {
-                        smoothScroll();
-                    }
-                    
-                    repeatCnt++;
-                    currentPosition = offsetTop;
+            if(repeatCnt < 3 && offsetTop != currentPosition) {
+                if(self) {
+                    $(self).click();
                 } else {
-                    repeatCnt = 0;
-                    smoothScrollTimer = 0;
-                    currentPosition = null;
+                    smoothScroll();
                 }
+                
+                repeatCnt++;
+                currentPosition = offsetTop;
+            } else {
+                repeatCnt = 0;
+                smoothScrollTimer = 0;
+                currentPosition = null;
             }
         }, speed);
 
@@ -629,7 +641,7 @@ function foldReply(elem) {
         if(pElem.find('div').length > 0) {
             $elem.find('p').eq(0).find('div').remove();
         }
-        var moreButton = '<div onclick="unfoldReply(this)" class="more-reply">'+ (reply.length-Number($('#fold-comment-num').val())) + '개 이전 댓글 보기' +'</div>';
+        var moreButton = strFormat('<div onclick="unfoldReply(this)" class="more-reply">{0}개 이전 댓글 보기' +'</div>', (reply.length-Number($('#fold-comment-num').val())));
         pElem.append(moreButton);
     }
 }
@@ -641,29 +653,31 @@ function unfoldReply(elem) {
     }
     $elem.find('p').eq(0).find('div').remove();
 }
+var initFoldReplyFlag = true;
 function initFoldReply() {
     if($('#fold-comment-yn').val()) {
-        var commentList = $('article').find('.inner').find('.comment-list>ul>li');
-        if(commentList.length > 0) {
-            for(var i=0;i<commentList.length;i++) {
-                var reply = commentList.eq(i).find('ul>li');
-                if(reply.length > Number($('#fold-comment-num').val())) {
-                    foldReply(commentList[i]);
+        if(initFoldReplyFlag) {
+            initFoldReplyFlag = false;
+            var commentList = $('article').find('.inner').find('.comment-list>ul>li');
+            if(commentList.length > 0) {
+                for(var i=0;i<commentList.length;i++) {
+                    var reply = commentList.eq(i).find('ul>li');
+                    if(reply.length > Number($('#fold-comment-num').val())) {
+                        foldReply(commentList[i]);
+                    }
                 }
             }
         }
     }
 }
 
+var pattern = /(^|[\s\n]|<[A-Za-z]*\/?>)((?:https?|ftp):\/\/[\-A-Z0-9+\u0026\u2019@#\/%?=()~_|!:,.;]*[\-A-Z0-9+\u0026@#\/%=~()_|])/gi;
 function commentAutoLink() {
     (function() {
-        var autoLink,
-                slice = [].slice;
-
-        autoLink = function() {
-            var callback, k, linkAttributes, option, options, pattern, v;
+        var slice = [].slice;
+        function autoLink() {
+            var callback, k, linkAttributes, option, options, v;
             options = 1 <= arguments.length ? slice.call(arguments, 0) : [];
-            pattern = /(^|[\s\n]|<[A-Za-z]*\/?>)((?:https?|ftp):\/\/[\-A-Z0-9+\u0026\u2019@#\/%?=()~_|!:,.;]*[\-A-Z0-9+\u0026@#\/%=~()_|])/gi;
             if (!(options.length > 0)) {
                 return this.replace(pattern, "$1<a class='auto-link' href='$2'>$2</a>");
             }
@@ -682,7 +696,17 @@ function commentAutoLink() {
             })()).join('');
             return this.replace(pattern, function(match, space, url) {
                 var link;
-                link = (typeof callback === "function" ? callback(url) : void 0) || ("<a class='auto-link' href='" + url + "'" + linkAttributes + ">" + url + "</a>");
+                // imgur 이미지 인식 (임시)
+                if(url.indexOf('i.imgur.com') > 0) {
+                    if(url.indexOf('.png') > 0 || url.indexOf('.jpg') > 0) {
+                        link = (typeof callback === "function" ? callback(url) : void 0) || strFormat("<span data-url='{0}' data-lightbox='lightbox'><img class='auto-img' src='{0}'/></span>", url);
+                    } else if(url.indexOf('.mp4') > 0) {
+                        link = (typeof callback === "function" ? callback(url) : void 0) || strFormat("<video class='auto-video' autoplay muted loop src='{0}'></video>", url);
+                    }
+                }
+                if(!link) {
+                    link = (typeof callback === "function" ? callback(url) : void 0) || strFormat("<a class='auto-link' href='{0}'{1}>{0}</a>", url, linkAttributes);
+                }
                 return "" + space + link;
             });
         };
@@ -694,10 +718,22 @@ function commentAutoLink() {
     var commentList = $('div.comment-list>ul>li>p');
     var replyList = $('div.comment-list>ul>li>ul>li>p');
     for(var i=0; i < commentList.length; i++) {
-        commentList[i].innerHTML = commentList[i].innerHTML.autoLink({ target: "_blank" });
+        if(commentList[i] && commentList[i].innerHTML.indexOf('<img class="auto-img"') == -1
+          && commentList[i].innerHTML.indexOf('<video class="auto-video"') == -1
+          && commentList[i].innerHTML.indexOf('<a class="auto-link"') == -1) {
+            commentList[i].innerHTML.replace(pattern, function(){
+                commentList[i].innerHTML = commentList[i].innerHTML.autoLink({ target: "_blank" });
+            });
+        }
     }
     for(var j=0; j < replyList.length; j++) {
-        replyList[j].innerHTML = replyList[j].innerHTML.autoLink({ target: "_blank" });
+        if(replyList[j] && replyList[j].innerHTML.indexOf('<img class="auto-img"') == -1
+          && replyList[j].innerHTML.indexOf('<video class="auto-video"') == -1
+          && replyList[j].innerHTML.indexOf('<a class="auto-link"') == -1) {
+            replyList[j].innerHTML.replace(pattern, function(){
+                replyList[j].innerHTML = replyList[j].innerHTML.autoLink({ target: "_blank" });
+            });
+        }
     }
 }
 
@@ -789,6 +825,97 @@ function toastAfterLike() {
     }
 }
 
+function uploadImage() {
+    if(getValueById('upload-images-yn')) {
+        var commentForm = $('.comment-form .submit');
+        if(commentForm.length > 0 && $('#upload-image').length == 0) {
+            initFoldReplyFlag = true;
+            commentForm.append('<input type="file" id="upload-image" accept="image/gif, image/jpeg, image/png" hidden/>');
+            commentForm.prepend('<label for="upload-image" class="upload-image-label"><div>이미지 첨부</div></label>');
+    
+            const textarea = document.getElementsByName("comment")[0];    
+            const fileInput = document.getElementById("upload-image");
+        
+            function upload(file) {
+                if (file && file.size < Math.pow(2,20)*5) {
+                    $("#waiting").show();
+                    const formData = new FormData();
+                    formData.append("image", file);
+                    fetch("https://api.imgur.com/3/image", {
+                        method: "POST",
+                        headers: {
+                            Authorization: "Client-ID " + getValueById('imgur-client-id'),
+                            Accept: "application/json",
+                        },
+                        body: formData,
+                    }).then(function(res) {
+                        return res.json();
+                    }).then(function(json) {
+                        if (json.success) {
+                            const { data } = json;
+                            var link = data.animated && data.mp4 ? data.mp4 : data.link;
+                            textarea.value += `${textarea.value ? "\n" : ""}${link}`;
+                            copyToClipboard(link);
+                            showToast("이미지 업로드 성공! 원하는 위치에 붙여넣기 하실 수 있습니다.");
+                            $("#waiting").hide();
+                        } else {
+                            showToast("업로드 실패: " + json.data.error.message);
+                            $("#waiting").hide();
+                        }
+                    }).catch(function(error) {
+                        showToast("업로드 중 예외 발생: " + error);
+                        $("#waiting").hide();
+                    });
+                } else {
+                    showToast("이미지 용량이 너무 큽니다. (최대 5MB)");
+                }
+            };
+        
+            if (fileInput) {
+                $('#upload-image').on('click touchstart' , function(){
+                    $(this).val('');
+                });
+                
+                $('#upload-image').on("change", function() {
+                    upload(fileInput.files[0]);
+                });
+            }
+    
+            // function handleDrop(event) {
+            //     event.preventDefault();
+        
+            //     const { files } = event.dataTransfer;
+        
+            //     if (files.length) {
+            //         upload(files[0]);
+            //     }
+            // };
+        
+            // function handlePaste(event) {
+            //     event.preventDefault();
+        
+            //     const { files } = event.clipboardData;
+        
+            //     if (files.length) {
+            //         upload(files[0]);
+            //     }
+            // };
+        
+            // const preventDefault = (event) => {
+            //     event.preventDefault();
+            // };
+        
+            // if (textarea) {
+            //     textarea.addEventListener("dragenter", preventDefault);
+            //     textarea.addEventListener("dragleave", preventDefault);
+            //     textarea.addEventListener("dragover", preventDefault);
+            //     textarea.addEventListener("drop", handleDrop);
+            //     textarea.addEventListener("paste", handlePaste);
+            // }
+        }
+    }
+}
+
 function common(){
     var $profile = $(".top-button .profile");
     var $menu = $(".top-button .menu");
@@ -820,17 +947,16 @@ function common(){
         document.location.href = 'https://www.tistory.com/auth/logout?redirectUrl=' + encodeURIComponent(window.TistoryBlog.url);
     });
     
-    var updateFlag = true;
-    $('.comment-content, span.count > span').bind('DOMSubtreeModified', function () { //.comment-content, span.count > span DOMNodeInserted DOMNodeRemoved DOMSubtreeModified
-        if(updateFlag){
-            updateFlag = false;
-            setTimeout(function(){
-                commentAutoLink();
-                initFoldReply();
-                updateFlag = true;
-            }, 500);
-        }
-    });
+    
+    // $('.comment-content, span.count > span, .comment-list > ul > li > p').bind('DOMSubtreeModified', function (e) { //.comment-content, span.count > span DOMNodeInserted DOMNodeRemoved DOMSubtreeModified
+    //     console.log(e);
+    // });
+
+    setInterval(function(){
+        commentAutoLink();
+        initFoldReply();
+        uploadImage();
+    }, 1000);
 
     var searchFlag = true;
     var searchTimer = 0;
@@ -893,7 +1019,7 @@ function common(){
             $("body").append('<div id="dimmed"/>');
             $('section').css('z-index','');
             if ( !$(".sidebar .profile").length ){
-                $(".sidebar").append('<div class="profile" /><button type="button" class="close">닫기</button>');
+                $(".sidebar").append('<div class="profile"></div><button type="button" class="close">닫기</button>');
                 $profile.find("ul").clone().appendTo(".sidebar .profile");
 
                 var $profileMobile = $(".sidebar .profile");
@@ -2188,6 +2314,7 @@ $(document).ready(function() {
     autoAppendAds();
     autoTranslate();
     setDday();
+    uploadImage();
     common();
     
     $(window).on('scroll resize', function() {
