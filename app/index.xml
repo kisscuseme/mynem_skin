@@ -2,7 +2,7 @@
 <skin>
 	<information>
 		<name>Mynem Skin</name>
-		<version>2.7.0</version>
+		<version>2.7.1</version>
 		<description>
 			<![CDATA[ 심플하면서 막강한 기능을 가진 미넴 스킨 입니다.
 			많은 사용자가 원하는 방향으로 발전해 나갈 예정입니다. ]]>
@@ -687,6 +687,14 @@
 				<default>false</default>
 			</variable>
 			<variable>
+				<name>auto-toc-position</name>
+				<label><![CDATA[ 자동 목차 위치 (본문에 목차 태그가 없거나 목차 태그 무시 기능 사용 시) ]]></label>
+				<description><![CDATA[]]></description>
+				<type>SELECT</type>
+				<option><![CDATA[[{"name":"article-top","label":"본문 맨 위","value":"article-top"}, {"name":"before-first-toc","label":"첫 제목 태그 직전","value":"before-first-toc"}]]]></option>
+				<default>article-top</default>
+			</variable>
+			<variable>
 				<name>toc-unfold-yn</name>
 				<label><![CDATA[ 플로팅 목차 펼치기 ]]></label>
 				<description><![CDATA[]]></description>
@@ -778,7 +786,7 @@
 				<description><![CDATA[]]></description>
 				<type>STRING</type>
 				<option />
-				<default>2</default>
+				<default>1</default>
 			</variable>
 			<variable>
 				<name>sidebar-solid-style</name>
@@ -1023,6 +1031,25 @@
 				<type>STRING</type>
 				<option />
 				<default>960</default>
+			</variable>
+		</variablegroup>
+
+		<variablegroup name="사이드바 쿠팡 광고 (사용 여부는 사이드바에서 설정, 사이드바 구글 멀티플렉스 광고 대신 사용 목적)">
+			<variable>
+				<name>sidebar-coupang-id</name>
+				<label><![CDATA[ 광고 ID ]]></label>
+				<description><![CDATA[]]></description>
+				<type>STRING</type>
+				<option />
+				<default><![CDATA[  ]]></default>
+			</variable>
+			<variable>
+				<name>sidebar-coupang-tracking-code</name>
+				<label><![CDATA[ 계정 ID ]]></label>
+				<description><![CDATA[]]></description>
+				<type>STRING</type>
+				<option />
+				<default><![CDATA[  ]]></default>
 			</variable>
 		</variablegroup>
 

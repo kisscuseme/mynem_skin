@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg
+   xmlns:osb="http://www.openswatchbook.org/uri/2009/osb"
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   viewBox="0 0 120 120"
+   version="1.1"
+   id="svg8">
+  <defs
+     id="defs2">
+    <linearGradient
+       id="linearGradient2850"
+       osb:paint="solid">
+      <stop
+         style="stop-color:#ffeeaa;stop-opacity:1;"
+         offset="0"
+         id="stop2848" />
+    </linearGradient>
+  </defs>
+  <metadata
+     id="metadata5">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+        <dc:title></dc:title>
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <g
+     id="layer1">
+    <rect
+       style="fill:#ffffff;fill-opacity:1;stroke-width:0.353759;stroke-opacity:0"
+       id="rect858"
+       width="120"
+       height="120" />
+    <g
+       id="g3174"
+       transform="translate(-7,-4.5)">
+      <path
+         style="fill:#ececec;stroke-width:0.310999;stroke-opacity:0"
+         id="path863"
+         transform="matrix(1.1549903,0.01440908,-0.01409952,1.1301769,-59.67979,-52.929626)"
+         d="M 146.46577,123.03125 111.44653,143.62089 76.105757,123.58815 75.784229,82.965777 110.80347,62.376139 146.14424,82.408874 Z" />
+      <path
+         style="fill:#4d4d4d;stroke-width:0.310999;stroke-opacity:0"
+         id="path865"
+         transform="matrix(0.46375444,-0.00249234,0.00516737,0.46006496,90.895115,-22.3506)"
+         d="M -52.19055,190.55639 -51.627043,89.954573 35.214932,140.74349 Z" />
+      <rect
+         style="fill:#b3b3b3;fill-opacity:1;stroke-width:0.255439;stroke-opacity:0"
+         id="rect2966"
+         width="23.598503"
+         height="0.6329093"
+         x="65.447792"
+         y="-67.676193"
+         transform="rotate(90)" />
+      <rect
+         style="fill:#b3b3b3;fill-opacity:1;stroke-width:0.255439;stroke-opacity:0"
+         id="rect2966-6-9"
+         width="23.598503"
+         height="0.6329093"
+         x="67.614525"
+         y="-23.949514"
+         transform="matrix(0.86861709,0.49548395,0.49548395,-0.86861709,0,0)" />
+    </g>
+  </g>
+</svg>

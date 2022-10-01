@@ -35,7 +35,7 @@ var adsTocPosition = $('#ads-toc-position').val();
 var articleMaxWidth = Number($('#article-max-width').val());
 var clickContentFlag = true;
 var tocUnfoldYn = $('#toc-unfold-yn').val();
-var minusRight = String(-8 -1*Number($('#border-size').val()))+'px';
+var minusRight = String(-11 -1*Number($('#border-size').val()))+'px';
 function clickContentTitle() {
     if(clickContentFlag) {
         clickContentFlag = false;
@@ -59,17 +59,20 @@ function makeToc() {
     var titleLength = $('.content-article h2,h3,h4').length - $('.another_category h4').length - $('h3.tit_list_type').length;
 
     if(titleLength > 0) {
-        if($('.book-toc').length == 1) {
-            if($('#auto-toc-yn').val()) {
-                $('.book-toc').css('display', 'block');
+        if($('#auto-toc-yn').val()) {
+            if($('.book-toc').length > 0 && $('#ignore-toc-yn').val()) {
+                $('.book-toc').remove();
             }
-        } else if($('.book-toc').length > 1) {
-            if($('#ignore-toc-yn').val()) {
-                $('.book-toc').eq(1).remove();
-            } else {
-                $('.book-toc').eq(0).remove();
+
+            if($('.book-toc').length == 0) {
+                if($('#auto-toc-position').val() == 'article-top') {
+                    // 본문 맨 처음인 경우
+                    $('.content-article').prepend('<div class="book-toc" style="display:block;"><p>목차</p><ul id="toc"></ul></div>');
+                } else if($('#auto-toc-position').val() == 'before-first-toc') {
+                    // 첫 제목 바로 직전인 경우
+                    $('.content-article h2,h3,h4').eq(0).before('<div class="book-toc" style="display:block;"><p>목차</p><ul id="toc"></ul></div>');
+                }
             }
-            $('.book-toc').css('display', 'block');
         }
 
         var $toc = $("#toc");
@@ -1146,12 +1149,19 @@ function common(){
     }
 
     //댓글 특수문자 버그 임시 조치
-    var commentList = $('.comment-list > ul li');
-    for(var i=0; i < commentList.length; i++) {
-        if(commentList.eq(i).find('> p').text().indexOf('\\') > -1) {
-            commentList.eq(i).find('> p').html('<span style="color:#999">특수문자 관련 티스토리 버그로 인해 댓글이 표시되지 않습니다. 특수문자 제거 후 정상 이용 가능합니다.</span>')
-        }
-    }
+    // var commentList = $('.comment-list > ul li');
+    // for(var i=0; i < commentList.length; i++) {
+    //     if(commentList.eq(i).find('> p').text().indexOf('\\') > -1) {
+    //         commentList.eq(i).find('> p').html('<span style="color:#999">특수문자 관련 티스토리 버그로 인해 댓글이 표시되지 않습니다. 특수문자 제거 후 정상 이용 가능합니다.</span>')
+    //     }
+    // }
+
+    // 구독하기 버튼 좌측 하단 자동 이동
+    $('#menubar_wrapper').parent().removeClass().addClass('menu_toolbar').addClass('toolbar_lb');
+
+    // 미넴스킨 푸터 스크립트로 생성
+    $('.copyright').after('<p class="maker"><a href="https://sangminem.tistory.com/506" target="_blank"><font color="#ff7a00"><b>Mynem Skin 2.7.1</b> © Armynem</font></a></p>');
+
 }
 
 function updateTagsAttr() {

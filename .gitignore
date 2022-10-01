@@ -55,7 +55,7 @@ Thumbs.db
 *.ttf
 
 #images
-*.svg
+# *.svg
 *.png
 *.jpg
 

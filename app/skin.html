@@ -2075,6 +2075,18 @@
 										</s_if_var_sidebar-data-ad-slot>
 									</s_sidebar_element>
 									<s_sidebar_element>
+										<!-- 쿠팡 광고 -->
+										<s_not_var_sidebar-data-ad-slot>
+											<s_if_var_sidebar-coupang-id>
+												<div class="module module_plugin" style="overflow:hidden;padding-top:5px;">
+													<div id="recommend-ads" class="revenue_unit_item adsense">
+														<iframe src="https://ads-partners.coupang.com/widgets.html?id=[##_var_sidebar-coupang-id_##]&template=carousel&trackingCode=[##_var_sidebar-coupang-tracking-code_##]&subId=&width=280&height=900" width="280" height="900" frameborder="0" scrolling="yes" referrerpolicy="unsafe-url"></iframe>
+													</div>
+												</div>
+											</s_if_var_sidebar-coupang-id>
+										</s_not_var_sidebar-data-ad-slot>
+									</s_sidebar_element>
+									<s_sidebar_element>
 										<!-- 최근댓글 -->
 										<div class="recent-comment">
 											<h2>최근 댓글</h2>
@@ -2413,10 +2425,6 @@
 										</div>
 
 										<div class="content-article">
-											<div class="book-toc" style="display:none;">
-												<p>목차</p>
-												<ul id="toc"></ul>
-											</div>
 											<!-- 상단 광고 2개 삽입 start -->
 											<s_if_var_content-google-ads>
 												<div class="top-ads">
@@ -2715,7 +2723,6 @@
 						<a href="#" class="page-top">TOP</a>
 						<p class="meta"><s_if_var_footer-text-1>[##_var_footer-text-1_##]</s_if_var_footer-text-1></p>
 						<p class="copyright"><s_if_var_footer-text-2>[##_var_footer-text-2_##]</s_if_var_footer-text-2></p>
-						<p class="maker"><a href="https://sangminem.tistory.com/506" target="_blank"><font color="#ff7a00"><b>Mynem Skin 2.7.0</b> © Armynem</font></a></p>
 					</div>
 				</footer>
 			</div>
@@ -2828,6 +2835,7 @@
 			<input type='hidden' id='auto-toc-yn' value="[##_var_auto-toc-yn_##]">
 			<input type='hidden' id='use-floating-toc-yn' value="[##_var_use-floating-toc-yn_##]">
 			<input type='hidden' id='ignore-toc-yn' value="[##_var_ignore-toc-yn_##]">
+			<input type='hidden' id='auto-toc-position' value="[##_var_auto-toc-position_##]">
 			<input type='hidden' id='dark-mode' value="[##_var_dark-mode_##]">
 			<input type='hidden' id='default-dark-mode' value="[##_var_default-dark-mode_##]">
 			<input type='hidden' id='forced-dark-mode' value="[##_var_forced-dark-mode_##]">

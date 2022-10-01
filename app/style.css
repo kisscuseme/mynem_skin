@@ -31,6 +31,11 @@
 	font-display: auto;
 }
 
+/* round style */
+.content-wrapper, .content-title, .book-toc, .floating-toc-new {
+	border-radius: 10px;
+}
+
 /* d-day */
 .d-day-box {
 	display: grid;
@@ -2147,7 +2152,7 @@ table.gsc-search-box td {
 .book-toc {
 	position: relative;
 	padding: 10px 20px 10px 15px;
-	margin: 10px 0 10px 0;
+	margin: 15px 0 15px 0;
 	z-index: 1;
 }
 .book-toc:after {
@@ -2494,8 +2499,8 @@ table.gsc-search-box td {
 	min-height: 30px;
 	min-width: 25px;
 }
-.postbtn_like .wrap_btn_share {
-	display: none;
+.postbtn_like .wrap_btn_share, .container_postbtn .btn_post .ico_share {
+	width: 0 !important;
 }
 #tistorySnsLayer.layer_post .ico_arrbt {
 	display: none;
@@ -3022,7 +3027,7 @@ body.dark-mode #chartdiv g[stroke="#000000"] {
 		line-height: 1.15;
 	}
 	.book-toc {
-		margin: 5px 0 5px 0;
+		margin: 10px 0 10px 0;
 		padding: 8px 16px 8px 12px;
 	}
 	.floating-toc-new #toc-body {
