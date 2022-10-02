@@ -4,8 +4,7 @@
 	font-family:"Font_Awesome_5_Free";
 	src:url(./images/fa-solid-900.woff2) format("woff2"),
 		url(./images/fa-solid-900.woff) format("woff"),
-		url(./images/fa-solid-900.ttf) format("truetype"),
-		url(./images/fa-solid-900.svg#fontawesome) format("svg");
+		url(./images/fa-solid-900.ttf) format("truetype");
 	font-style:normal;
 	font-weight:900;
 	font-display: auto;
@@ -14,8 +13,7 @@
 	font-family:"Font_Awesome_5_Free_regular";
 	src:url(./images/fa-regular-400.woff2) format("woff2"),
 		url(./images/fa-regular-400.woff) format("woff"),
-		url(./images/fa-regular-400.ttf) format("truetype"),
-		url(./images/fa-regular-400.svg#fontawesome) format("svg");
+		url(./images/fa-regular-400.ttf) format("truetype");
 	font-style:normal;
 	font-weight:400;
 	font-display: auto;
@@ -24,8 +22,7 @@
 	font-family:"Font_Awesome_5_Free_brands";
 	src:url(./images/fa-brands-400.woff2) format("woff2"),
 		url(./images/fa-brands-400.woff) format("woff"),
-		url(./images/fa-brands-400.ttf) format("truetype"),
-		url(./images/fa-brands-400.svg#fontawesome) format("svg");
+		url(./images/fa-brands-400.ttf) format("truetype");
 	font-style:normal;
 	font-weight:400;
 	font-display: auto;
@@ -33,7 +30,7 @@
 
 /* round style */
 .content-wrapper, .content-title, .book-toc, .floating-toc-new {
-	border-radius: 10px;
+	border-radius: 5px;
 }
 
 /* d-day */
