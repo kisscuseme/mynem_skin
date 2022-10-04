@@ -2009,8 +2009,7 @@ article .tags a {
 .like_bubble .inner{
 	position: absolute;
 	z-index: -1;
-	width: 152px;
-	margin-left: 3px;
+	margin-left: 24px;
 	line-height: 1.4em;
 	color: #ce7b16;
 	font-size: 0.94em;
