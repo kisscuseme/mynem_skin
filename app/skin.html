@@ -1694,6 +1694,11 @@
 						});
 					</script>
 				</s_if_var_loading-screen>
+				<s_not_var_loading-screen>
+					<script>
+						$(function() {$('#wrapper').addClass('loaded');});
+					</script>
+				</s_not_var_loading-screen>
 				<!-- 블로그 로딩 코드 end -->
 				<div class="top-button">
 					<div class="profile">
