@@ -1519,6 +1519,7 @@ article .another_category th {
 	font-size: 1rem !important;
 	text-overflow: ellipsis;
 	white-space: nowrap;
+	line-height: 1.7;
 }
 article .another_category th:before {
 	content: "\f0da";
