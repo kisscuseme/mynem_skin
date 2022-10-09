@@ -1160,8 +1160,18 @@ function common(){
     $('#menubar_wrapper').parent().removeClass().addClass('menu_toolbar').addClass('toolbar_lb');
 
     // 미넴스킨 푸터 스크립트로 생성
-    $('.copyright').after('<p class="maker"><a href="https://sangminem.tistory.com/506" target="_blank"><font color="#ff7a00"><b>Mynem Skin 2.7.1</b> © Armynem</font></a></p>');
+    $('.copyright').after('<p class="maker"><a href="https://sangminem.tistory.com/506" target="_blank"><font color="#ff7a00"><b>Mynem Skin 2.7.2</b> © Armynem</font></a></p>');
 
+    //최근 댓글 imgur 링크 대체
+    var recentCommentObject = $('.recent-comment > ul > li > a');
+    for(var i=0;i < recentCommentObject.length; i++) {
+        var imgurLink = recentCommentObject.eq(i).html().replace(pattern, function(match, space, url) {
+            return url
+        });
+        if(imgurLink.indexOf('https://i.imgur.com/') > -1) {
+            recentCommentObject.eq(i).html(recentCommentObject.eq(i).html().replace(imgurLink, '[업로드 이미지]'));
+        }
+    }
 }
 
 function updateTagsAttr() {

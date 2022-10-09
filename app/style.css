@@ -28,11 +28,6 @@
 	font-display: auto;
 }
 
-/* round style */
-.content-wrapper, .content-title, .book-toc, .floating-toc-new {
-	border-radius: 5px;
-}
-
 /* d-day */
 .d-day-box {
 	display: grid;
@@ -120,7 +115,8 @@ header p {
 	font-size: 1.6em !important;
 	line-height: 32px;
 	letter-spacing: -0.2px;
-	padding-right: 50px;
+	/* padding-right: 50px; */
+	width: calc(100% - 55px);
 }
 header p a {
 	font-weight: bold;

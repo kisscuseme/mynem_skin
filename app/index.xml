@@ -2,7 +2,7 @@
 <skin>
 	<information>
 		<name>Mynem Skin</name>
-		<version>2.7.1</version>
+		<version>2.7.2</version>
 		<description>
 			<![CDATA[ 심플하면서 막강한 기능을 가진 미넴 스킨 입니다.
 			많은 사용자가 원하는 방향으로 발전해 나갈 예정입니다. ]]>
@@ -111,6 +111,46 @@
 				<option/>
 				<default>false</default>
 			</variable>
+			<variable>
+				<name>title-position</name>
+				<label><![CDATA[ 블로그 제목 위치 ]]></label>
+				<description><![CDATA[]]></description>
+				<type>SELECT</type>
+				<option><![CDATA[[{"name":"center","label":"중앙","value":"center"}, {"name":"left","label":"좌측","value":"left"}]]]></option>
+				<default>center</default>
+			</variable>
+			<variable>
+				<name>round-style</name>
+				<label><![CDATA[ 테두리 둥근 스타일 ]]></label>
+				<description><![CDATA[]]></description>
+				<type>BOOL</type>
+				<option/>
+				<default>true</default>
+			</variable>
+			<variable>
+				<name>round-style-border-radius</name>
+				<label><![CDATA[ 테두리 border-radius(px) ]]></label>
+				<description><![CDATA[]]></description>
+				<type>STRING</type>
+				<option />
+				<default>5</default>
+			</variable>
+			<variable>
+				<name>title-modern-style</name>
+				<label><![CDATA[ 제목 모던 스타일 ]]></label>
+				<description><![CDATA[]]></description>
+				<type>BOOL</type>
+				<option/>
+				<default>false</default>
+			</variable>
+			<variable>
+				<name>text_underline_style</name>
+				<label><![CDATA[ 본문 텍스트 밑줄 스타일 ]]></label>
+				<description><![CDATA[]]></description>
+				<type>SELECT</type>
+				<option><![CDATA[[{"name":"wavy","label":"물결","value":"wavy"}, {"name":"solid","label":"한 줄","value":"solid"}, {"name":"double","label":"두 줄","value":"double"}]]]></option>
+				<default>center</default>
+			</variable>
 		</variablegroup>
 
 		<variablegroup name="폰트 설정 (기본 설정 권장)">
@@ -124,11 +164,11 @@
 			</variable>
 			<variable>
 				<name>html-font-size</name>
-				<label><![CDATA[ 기준 폰트 크기 (기본 18, 단위 px) ]]></label>
+				<label><![CDATA[ 기준 폰트 크기 (기본 17, 단위 px) ]]></label>
 				<description><![CDATA[]]></description>
 				<type>STRING</type>
 				<option />
-				<default>18</default>
+				<default>17</default>
 			</variable>
 			<variable>
 				<name>font-size-ratio</name>
@@ -136,7 +176,7 @@
 				<description><![CDATA[]]></description>
 				<type>STRING</type>
 				<option />
-				<default>1</default>
+				<default>0.9</default>
 			</variable>
 			<variable>
 				<name>html-line-height</name>
@@ -187,7 +227,7 @@
 				<description><![CDATA[]]></description>
 				<type>COLOR</type>
 				<option />
-				<default>#F6F6F6</default>
+				<default>#FFF6F6</default>
 			</variable>
 			<variable>
 				<name>sidebar-text-color</name>
@@ -203,7 +243,7 @@
 				<description><![CDATA[]]></description>
 				<type>COLOR</type>
 				<option />
-				<default>#353535</default>
+				<default>#FF565E</default>
 			</variable>
 		</variablegroup>
 
