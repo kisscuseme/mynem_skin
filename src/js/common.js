@@ -334,7 +334,7 @@ function appendTocNew() {
     if(bookToc.length > 0 && title != null) {
         var headerHeight = $('#fixed-header').val()?$('header').height():0;
         if(checkMobileSize()) {
-            if(window.scrollY > bookToc.outerHeight() + bookToc.offset().top - headerHeight - addHeightByAnchorAds('top')) {
+            if(($('#toc-force-start').val() && window.scrollY > addHeightByAnchorAds('top')) || window.scrollY > bookToc.outerHeight() + bookToc.offset().top - headerHeight - addHeightByAnchorAds('top')) {
                 if(!animating) {
                     animating = true;
                     mobileAnimating = false;
@@ -1160,7 +1160,7 @@ function common(){
     $('#menubar_wrapper').parent().removeClass().addClass('menu_toolbar').addClass('toolbar_lb');
 
     // 미넴스킨 푸터 스크립트로 생성
-    $('.copyright').after('<p class="maker"><a href="https://sangminem.tistory.com/506" target="_blank"><font color="#ff7a00"><b>Mynem Skin 2.7.2</b> © Armynem</font></a></p>');
+    $('.copyright').after('<p class="maker"><a href="https://sangminem.tistory.com/506" target="_blank"><font color="#ff7a00"><b>Mynem Skin 2.7.3</b> © Armynem</font></a></p>');
 
     //최근 댓글 imgur 링크 대체
     var recentCommentObject = $('.recent-comment > ul > li > a');
@@ -1856,24 +1856,53 @@ function replaceLink() {
 
 var prePostFlag = true;
 var nextPostFlag = true;
-function makeRecommendBlock(type, currentIndex) {
+function makeRecommendBlock(count, currentDate) {
+    var type = 'both';
+    if(count == 'single') {
+        var checkDate = $('.another_category tr').eq(0).find('td').text().replaceAll('.','');
+        if(currentDate >= checkDate) {
+            type = 'next';
+        } else {
+            type = 'pre';
+        }
+    }
+
     if(prePostFlag && type == 'pre') {
         prePostFlag = false;
-        $('#pre-content').append($('.another_category tr').eq(currentIndex+1).find('a').clone());
-        $('#next-content').append('<a href="#" class="no-post">다음 글 없음</a>');
+        $('#pre-content').append($('.another_category tr').eq(0).find('a').clone());
+        $('#next-content').append('<a href="#" class="no-post">표시할 글 없음</a>');
         $('.content-box .content-arrow').eq(1).addClass('no-post');
     } else if(nextPostFlag && type == 'next') {
         nextPostFlag = false;
-        $('#next-content').append($('.another_category tr').eq(currentIndex-1).find('a').clone());
-        $('#pre-content').append('<a href="#" class="no-post">이전 글 없음</a>');
+        $('#next-content').append($('.another_category tr').eq(0).find('a').clone());
+        $('#pre-content').append('<a href="#" class="no-post">표시할 글 없음</a>');
         $('.content-box .content-arrow').eq(0).addClass('no-post');
     } else if(prePostFlag && nextPostFlag && type == 'both') {
         prePostFlag = false;
         nextPostFlag = false;
-        $('#pre-content').append($('.another_category tr').eq(currentIndex+1).find('a').clone());
-        $('#next-content').append($('.another_category tr').eq(currentIndex-1).find('a').clone());
+        $('#pre-content').append($('.another_category tr').eq(1).find('a').clone());
+        $('#next-content').append($('.another_category tr').eq(0).find('a').clone());
     }
 }
+
+// function makeRecommendBlock(type, currentIndex) {
+//     if(prePostFlag && type == 'pre') {
+//         prePostFlag = false;
+//         $('#pre-content').append($('.another_category tr').eq(currentIndex+1).find('a').clone());
+//         $('#next-content').append('<a href="#" class="no-post">표시할 글 없음</a>');
+//         $('.content-box .content-arrow').eq(1).addClass('no-post');
+//     } else if(nextPostFlag && type == 'next') {
+//         nextPostFlag = false;
+//         $('#next-content').append($('.another_category tr').eq(currentIndex-1).find('a').clone());
+//         $('#pre-content').append('<a href="#" class="no-post">표시할 글 없음</a>');
+//         $('.content-box .content-arrow').eq(0).addClass('no-post');
+//     } else if(prePostFlag && nextPostFlag && type == 'both') {
+//         prePostFlag = false;
+//         nextPostFlag = false;
+//         $('#pre-content').append($('.another_category tr').eq(currentIndex+1).find('a').clone());
+//         $('#next-content').append($('.another_category tr').eq(currentIndex-1).find('a').clone());
+//     }
+// }
 
 var recommendPostFlag = true;
 var recommendPostTimer = 0;
@@ -1886,23 +1915,32 @@ function recommendPost() {
             if(recommendPostFlag) {
                 recommendPostFlag = false;
                 var anotherCategory = $('.another_category tr');
-                var currentIndex = -1;
-                if(anotherCategory.length > 1) {
-                    for(var i=0;i<anotherCategory.length;i++) {
-                        if(anotherCategory.eq(i).find('a.current').length > 0) {
-                            currentIndex = i;
-                            break;
-                        }
-                    }
-                    if(currentIndex > 0 && currentIndex < anotherCategory.length-1) { //이전글, 다음글 가능
-                        makeRecommendBlock('both', currentIndex); 
-                    } else {
-                        if(currentIndex == 0) { //이전글 가능
-                            makeRecommendBlock('pre', currentIndex); 
-                        } else if(anotherCategory.length > 1) { //다음글 가능
-                            makeRecommendBlock('next', currentIndex);
-                        }
-                    }
+                // var currentIndex = -1;
+                // if(anotherCategory.length > 1) {
+                //     for(var i=0;i<anotherCategory.length;i++) {
+                //         if(anotherCategory.eq(i).find('a.current').length > 0) {
+                //             currentIndex = i;
+                //             break;
+                //         }
+                //     }
+
+                //     if(currentIndex > 0 && currentIndex < anotherCategory.length-1) { //이전글, 다음글 가능
+                //         makeRecommendBlock('both', currentIndex);
+                //     } else {
+                //         if(currentIndex == 0) { //이전글 가능
+                //             makeRecommendBlock('pre', currentIndex); 
+                //         } else if(anotherCategory.length > 1) { //다음글 가능
+                //             makeRecommendBlock('next', currentIndex);
+                //         }
+                //     }
+                // }
+
+                var tempDate = $('.content-title .date').text().replaceAll('.','').split(' ');
+                var currentDate = tempDate[0] + ('0'+tempDate[1]).substring(0,2) + ('0'+tempDate[2]).substring(0,2);
+                if(anotherCategory.length == 1) {
+                    makeRecommendBlock('single', currentDate);
+                } else {
+                    makeRecommendBlock('both', currentDate);
                 }
     
                 if((!prePostFlag || !nextPostFlag) && recommendPostTimer == 0) {
