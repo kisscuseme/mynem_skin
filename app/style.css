@@ -1991,6 +1991,7 @@ article .tags a {
   height: 190px;
 	margin: auto !important;
 	display: flex;
+	padding-top: 15px;
 }
 .like_bubble span{
 	color: #ffbc26;
@@ -2012,9 +2013,7 @@ article .tags a {
 	font-size: 0.94em;
 	font-weight: bold;
 	animation: rotate 5s linear infinite;
-	display: flex;
-	justify-content: center;
-  align-items: center;
+	text-align: center;
 	margin-top: 38px;
 }
 @keyframes blinker-rotate {
@@ -2312,7 +2311,8 @@ table.gsc-search-box td {
 
 /* like button style  */
 .container_postbtn {
-	text-align: center;
+	justify-content: center;
+	padding: 20px 0 !important;
 }
 .container_postbtn button {
 	vertical-align: top !important;

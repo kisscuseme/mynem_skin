@@ -1,0 +1,1 @@
+uglify.bat && zip.bat

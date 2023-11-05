@@ -1,0 +1,1 @@
+uglifyjs ./src/js/preload.js -m -c -o ./app/images/preload.min.js && uglifyjs ./src/js/common.js -m -c -o ./app/images/common.min.js

@@ -811,7 +811,7 @@ function makeBell() {
         if(location.href.indexOf('notice') < 0) {
             var makeBellStr = $('#make-bell').val().replaceAll("&lt;","<").replaceAll("&gt;",">")
             var bubbleTag = '<div class="like_bubble"><span class="bubble_image"></span><div class="inner">' + makeBellStr + '</div></div>';
-            $(bubbleTag).insertBefore($('.container_postbtn').children().eq(0));
+            $(bubbleTag).insertBefore($('.container_postbtn'));
         }
     }
 }
